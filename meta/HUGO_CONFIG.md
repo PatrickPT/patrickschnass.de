@@ -1,21 +1,32 @@
 # Hugo & Blowfish Technical Settings
 
-## Primary Params (hugo.toml)
+## 1. Primary Params (hugo.toml)
+This configuration forces the light theme and enables the interactive background.
+
 ```toml
+baseURL = "[https://www.patrickschnass.de/](https://www.patrickschnass.de/)"
+languageCode = "de-DE"
+title = "Patrick Schnass | AI Strategy"
+theme = "blowfish"
+
 [params]
   colorScheme = "blowfish"
-  defaultAppearance = "light"
-  autoSwitchAppearance = false # Keep it clean and white
+  defaultAppearance = "light" # Force Light Mode
+  autoSwitchAppearance = false # Disable toggle to keep the "Clean White" look
+  enableSearch = false # Keep it simple for a consulting profile
 
   [params.header]
     layout = "fixed"
-    logo = "logo.png" # Optional
+    logo = "logo.png" # Placeholder
 
   [params.homepage]
-    layout = "profile" # High-authority expert look
+    layout = "profile" # The "Executive Card" layout
     showDescription = true
-    showRecent = true
+    showRecent = true 
 
   [params.main]
-    background = "graph" # Interactive technical background
+    background = "graph" # The interactive particle background
     enableVisualTests = false
+
+  [params.footer]
+    showScrollToTop = true
