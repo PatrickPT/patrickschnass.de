@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Patrick Schnass | AI Strategy</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Patrick Schnass | AI Strategy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language>
+    <copyright>© 2026 </copyright>
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Legacy Post</title>
+      <link>http://localhost:1313/posts/archive/legacy-test/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/archive/legacy-test/</guid>
+      <description>&lt;p&gt;This is a placeholder for legacy content.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>The Economist in the Server Room</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;Many AI consultants offer theory. I offer production-grade reality.&lt;/p&gt;&#xA;&lt;p&gt;With a &lt;strong&gt;Master of Science in Economics&lt;/strong&gt;, I view every algorithm through the lens of marginal utility and ROI.&#xA;As &lt;strong&gt;Head of Data Science at Vodafone&lt;/strong&gt;, I navigate the complexities of legacy IT, governance, and organizational politics daily.&lt;/p&gt;&#xA;&lt;p&gt;I don&amp;rsquo;t sell software. I sell clarity. My goal is to help German Mittelstand and Enterprise companies turn &amp;lsquo;AI Initiatives&amp;rsquo; into profitable business processes.&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

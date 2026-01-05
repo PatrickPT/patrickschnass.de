@@ -1,0 +1,15 @@
+<div class="card p-6 bg-neutral-100 dark:bg-neutral-800 rounded-lg shadow-sm border border-neutral-200 dark:border-neutral-700">
+  {{ if .Get "icon" }}
+  <div class="mb-4 text-primary-500">
+    <span class="icon-lg">
+      {{ partial "icon.html" (dict "name" (.Get "icon")) }}
+    </span>
+  </div>
+  {{ end }}
+  {{ if .Get "header" }}
+  <h3 class="text-xl font-bold mb-2 text-neutral-900 dark:text-neutral-100">{{ .Get "header" }}</h3>
+  {{ end }}
+  <div class="text-neutral-700 dark:text-neutral-300">
+    {{ .Inner | markdownify }}
+  </div>
+</div>
