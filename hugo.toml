@@ -1,6 +1,6 @@
 baseURL = "https://www.patrickschnass.de/"
 languageCode = "de-DE"
-title = "Patrick Schnaß | AI Advisor"
+title = "Patrick Schnaß | AI Advisory"
 theme = "blowfish"
 
 [params]
@@ -17,6 +17,7 @@ theme = "blowfish"
     name = "Patrick Schnaß"
     image = "patrick.png"
     headline = "AI Advisory"
+    bio = "Helping enterprises turn AI initiatives into profitable business processes"
     links = [
       { linkedin = "https://www.linkedin.com/in/patrickschnass/" },
       { github = "https://github.com/PatrickPT" }
