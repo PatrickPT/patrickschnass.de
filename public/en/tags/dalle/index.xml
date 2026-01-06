@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DallE on Patrick Schnaß | AI Advisory</title>
-    <link>http://localhost:1313/en/tags/dalle/</link>
+    <link>http://localhost:53753/en/tags/dalle/</link>
     <description>Recent content in DallE on Patrick Schnaß | AI Advisory</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
-    <lastBuildDate>Fri, 13 Jan 2023 09:28:09 +0000</lastBuildDate><atom:link href="http://localhost:1313/en/tags/dalle/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Jan 2023 09:28:09 +0000</lastBuildDate><atom:link href="http://localhost:53753/en/tags/dalle/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Hands on with Latent Diffusion Models</title>
-      <link>http://localhost:1313/posts/hands-on-latent-diffusion-models/</link>
+      <link>http://localhost:53753/posts/hands-on-latent-diffusion-models/</link>
       <pubDate>Fri, 13 Jan 2023 09:28:09 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/hands-on-latent-diffusion-models/</guid>
+      <guid>http://localhost:53753/posts/hands-on-latent-diffusion-models/</guid>
       <description>Learn how to use Latent Diffusion Models to generate images.</description>
       
     </item>
