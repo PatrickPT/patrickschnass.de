@@ -1,4 +1,4 @@
-# Project: Strategic AI Consulting Launch (Patrick Schnass)
+# Project: Strategic AI Consulting Launch (Patrick Schnaß)
 # Date: January 2026
 
 ## 1. Executive Intent

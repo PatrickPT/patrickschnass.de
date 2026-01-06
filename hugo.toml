@@ -1,26 +1,35 @@
 baseURL = "https://www.patrickschnass.de/"
 languageCode = "de-DE"
-title = "Patrick Schnass | AI Strategy"
+title = "Patrick Schnaß | AI Advisor"
 theme = "blowfish"
 
 [params]
   colorScheme = "blowfish"
-  defaultAppearance = "light" # Force Light Mode
-  autoSwitchAppearance = false # Disable toggle to keep the "Clean White" look
-  enableSearch = false # Keep it simple for a consulting profile
+  defaultAppearance = "light"
+  autoSwitchAppearance = false
+  enableSearch = false
+  logo = "favicon/android-chrome-64x64.png"
 
   [params.header]
     layout = "fixed"
-    logo = "logo.png" # Placeholder
+
+  [params.author]
+    name = "Patrick Schnaß"
+    image = "patrick.png"
+    headline = "AI Advisory"
+    links = [
+      { linkedin = "https://www.linkedin.com/in/patrickschnass/" },
+      { github = "https://github.com/PatrickPT" }
+    ]
 
   [params.homepage]
     layout = "profile" # The "Executive Card" layout
     showDescription = true
-    showRecent = true 
+    showRecent = false 
 
   [params.main]
     background = "graph" # The interactive particle background
-    enableVisualTests = false
+    enableVisualTests = true
 
   [params.footer]
     showScrollToTop = true
@@ -35,19 +44,37 @@ theme = "blowfish"
   weight = 10
 
 [[menu.main]]
+  identifier = "contact"
+  name = "Contact"
+  url = "/#contact"
+  weight = 20
+
+[[menu.main]]
   identifier = "services"
   name = "Services"
   url = "/#services"
-  weight = 20
+  weight = 30
 
 [[menu.main]]
   identifier = "about"
   name = "About"
   url = "/about"
-  weight = 30
+  weight = 40
+
+[[menu.main]]
+  identifier = "blog"
+  name = "Blog"
+  url = "/posts"
+  weight = 50
 
 [[menu.main]]
   identifier = "linkedin"
-  name = "LinkedIn"
+  pre = "linkedin"
   url = "https://www.linkedin.com/in/patrickschnass/"
-  weight = 40
+  weight = 60
+
+[[menu.main]]
+  identifier = "github"
+  pre = "github"
+  url = "https://github.com/PatrickPT"
+  weight = 70

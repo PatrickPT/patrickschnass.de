@@ -1,58 +1,33 @@
 ---
-title: "Patrick Schnass | AI Strategy"
+title: "Patrick Schnaß"
 description: "Strategic AI Advisory. Built on Scale, Driven by Impact."
 layout: "profile"
 showAuthor: false
 ---
 
-# Strategic AI Advisory. Built on Scale, Driven by Impact.
+<section id="contact" class="snap-section">
 
-I bridge the gap between economic ROI and technological reality. As Head of Data Science at a leading Telco, I don't just advise on AI—I build it.
+## Build on Scale, Drive by Impact
 
-[Schedule Strategy Call](mailto:contact@patrickschnass.de) {.btn .btn-primary}
+I help you turn your 'AI Initiatives' into profitable business processes. Let's connect and discuss how I can help you.
 
-<div id="services"></div>
+{{< button href="https://calendar.app.google/zWqqgZniojA1xWkz8" >}}
+Schedule Call
+{{< /button >}}
 
-## Services
+</section>
 
-{{< card header="The AI Reality Check (Audit)" icon="check-badge" >}}
+<section id="services" class="snap-section section-alt">
+<div class="services-card">
+
+### AI Reality Check
 Independent validation of your AI roadmap and vendor selection. Stop wasting budget on hype. I assess technical feasibility and economic viability.
-{{< /card >}}
 
-{{< card header="Data Org & Talent Design" icon="users" >}}
+### Rebuild your Data Org
 Building the engine. I help you define roles, reporting lines, and hiring frameworks to build a high-performance Data Team that sticks.
-{{< /card >}}
 
-{{< card header="Executive AI Sparring" icon="chat-bubble-left-right" >}}
-Confidential 1:1 advisory for C-Level executives. We filter signal from noise and identify the high-impact use cases for your specific business model.
-{{< /card >}}
+### Executive AI Sparring
+Confidential 1:1 advisory. We filter signal from noise and identify the high-impact use cases for your specific business model.
 
-## Expertise
-
-{{< chart >}}
-type: 'radar',
-data: {
-  labels: ['Strategy', 'ROI Focus', 'Technology', 'Governance', 'Execution', 'Scale'],
-  datasets: [{
-    label: 'Expertise',
-    data: [95, 100, 90, 85, 95, 90],
-    backgroundColor: 'rgba(37, 99, 235, 0.2)',
-    borderColor: 'rgb(37, 99, 235)',
-    pointBackgroundColor: 'rgb(37, 99, 235)',
-    pointBorderColor: '#fff',
-    pointHoverBackgroundColor: '#fff',
-    pointHoverBorderColor: 'rgb(37, 99, 235)'
-  }]
-},
-options: {
-  scales: {
-    r: {
-        angleLines: {
-            display: false
-        },
-        suggestedMin: 50,
-        suggestedMax: 100
-    }
-  }
-}
-{{< /chart >}}
+</div>
+</section>

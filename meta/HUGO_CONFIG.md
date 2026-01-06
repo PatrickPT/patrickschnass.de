@@ -6,7 +6,7 @@ This configuration forces the light theme and enables the interactive background
 ```toml
 baseURL = "[https://www.patrickschnass.de/](https://www.patrickschnass.de/)"
 languageCode = "de-DE"
-title = "Patrick Schnass | AI Strategy"
+title = "Patrick Schnaß | AI Strategy"
 theme = "blowfish"
 
 [params]

@@ -1,26 +1,108 @@
 :root {
-    /* Enforce Pure White Background */
     --color-neutral-50: 255 255 255;
     --color-neutral-100: 249 250 251;
-    /* Very light gray for cards */
-
-    /* High Contrast Text */
     --color-neutral-800: 31 41 55;
-    /* Dark Charcoal */
     --color-primary-500: 37 99 235;
-    /* Professional Blue Accent */
 }
 
-/* Make the interactive canvas subtle */
+/* Hide heading anchor links (the # symbols) */
+.heading-anchor,
+.anchor,
+a[href^="#"]:has(> span:only-child) {
+    display: none !important;
+}
+
+/* Subtle interactive canvas */
 #background-canvas {
     opacity: 0.3 !important;
-    /* Low opacity to not distract */
     pointer-events: auto;
 }
 
-/* Typography polish */
+/* Typography */
 body {
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     letter-spacing: -0.01em;
-    /* Tighter, modern feel */
+}
+
+/* ====== FULL PAGE SCROLL SNAP (Only when snap-sections exist) ====== */
+html:has(.snap-section) {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+/* Each snap section fills the viewport */
+.snap-section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Alternating section - gray card with white frame */
+.section-alt {
+    background-color: white;
+    padding: 3rem;
+}
+
+.section-alt>* {
+    background-color: rgb(243 244 246);
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 48rem;
+    width: 100%;
+}
+
+.dark .section-alt {
+    background-color: rgb(17 24 39);
+}
+
+.dark .section-alt>* {
+    background-color: rgb(31 41 55);
+}
+
+/* Service headers - dark gray */
+.section-alt h3 {
+    color: rgb(55 65 81);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.section-alt h3:first-of-type {
+    margin-top: 0;
+}
+
+.dark .section-alt h3 {
+    color: rgb(209 213 219);
+}
+
+/* Make the profile header also a snap section */
+article>header {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Hide the prose wrapper's default padding */
+.prose>.snap-section {
+    max-width: none;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .prose>.snap-section {
+        margin-left: -3rem;
+        margin-right: -3rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
 }

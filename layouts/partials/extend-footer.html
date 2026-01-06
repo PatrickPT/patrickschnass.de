@@ -1,0 +1,53 @@
+<script>
+    function initTabs() {
+        const tabClickHandler = (event) => {
+            const button = event.target.closest(".tab__button");
+            if (!button) return;
+
+            const container = button.closest(".tab__container");
+            if (!container) return;
+
+            const tabIndex = parseInt(button.dataset.tabIndex);
+            activateTab(container, tabIndex);
+        };
+
+        document.addEventListener("click", tabClickHandler);
+    }
+
+    function activateTab(container, activeIndex) {
+        const buttons = container.querySelectorAll(".tab__button");
+        const panels = container.querySelectorAll(".tab__panel");
+
+        buttons.forEach((btn, index) => {
+            if (index === activeIndex) {
+                btn.classList.add("tab--active");
+                btn.setAttribute("aria-selected", "true");
+                // Style override for border
+                btn.style.borderColor = "var(--color-primary-500)";
+                btn.style.color = "var(--color-primary-500)";
+            } else {
+                btn.classList.remove("tab--active");
+                btn.setAttribute("aria-selected", "false");
+                btn.style.borderColor = "transparent";
+                btn.style.color = "inherit";
+            }
+        });
+
+        panels.forEach((panel, index) => {
+            if (index === activeIndex) {
+                panel.classList.remove("hidden");
+                panel.classList.add("block");
+            } else {
+                panel.classList.add("hidden");
+                panel.classList.remove("block");
+            }
+        });
+    }
+
+    // Ensure init on load
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initTabs);
+    } else {
+        initTabs();
+    }
+</script>
