@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DallE on Patrick Schnaß | AI Advisory</title>
+    <title>DallE on Patrick Schnaß | KI Beratung</title>
     <link>http://localhost:1313/tags/dalle/</link>
-    <description>Recent content in DallE on Patrick Schnaß | AI Advisory</description>
+    <description>Recent content in DallE on Patrick Schnaß | KI Beratung</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>de-DE</language>
+    <language>de</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
     <lastBuildDate>Fri, 13 Jan 2023 09:28:09 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/dalle/index.xml" rel="self" type="application/rss+xml" />
     

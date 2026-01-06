@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Archive on Patrick Schnaß | AI Advisory</title>
+    <title>Archive on Patrick Schnaß | KI Beratung</title>
     <link>http://localhost:1313/posts/archive/</link>
-    <description>Recent content in Archive on Patrick Schnaß | AI Advisory</description>
+    <description>Recent content in Archive on Patrick Schnaß | KI Beratung</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>de-DE</language>
+    <language>de</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
     <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/archive/index.xml" rel="self" type="application/rss+xml" />
     

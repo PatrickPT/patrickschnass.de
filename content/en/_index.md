@@ -11,9 +11,22 @@ showAuthor: false
 
 I help you turn your 'AI Initiatives' into profitable business processes. Let's connect and discuss how I can help you.
 
-{{< button href="https://calendar.app.google/zWqqgZniojA1xWkz8" >}}
-Schedule Call
-{{< /button >}}
+<!-- Google Calendar Appointment Scheduling -->
+<link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+<script>
+(function() {
+  var target = document.currentScript;
+  window.addEventListener('load', function() {
+    calendar.schedulingButton.load({
+      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LuEwDn8POT8P603ixQSg5XmHAFvXPy4lvjPSZ1mwUSfg-E7cnqU8Mv5m7IaAQT6YS42O7Fq9U?gv=true',
+      color: '#039BE5',
+      label: 'Book appointment',
+      target,
+    });
+  });
+})();
+</script>
 
 </section>
 

@@ -1,12 +1,124 @@
 baseURL = "https://www.patrickschnass.de/"
-languageCode = "de-DE"
-title = "Patrick Schnaß | AI Advisory"
+defaultContentLanguage = "de"
 theme = "blowfish"
+
+[languages]
+  [languages.de]
+    languageCode = "de"
+    languageName = "Deutsch"
+    title = "Patrick Schnaß | KI Beratung"
+    weight = 1
+    contentDir = "content/de"
+
+    [languages.de.params]
+      displayName = "DE"
+
+    [languages.de.params.author]
+      headline = "KI Beratung"
+      bio = "Ich helfe Unternehmen, KI-Initiativen in profitable Geschäftsprozesse zu verwandeln"
+
+    [[languages.de.menu.main]]
+      identifier = "home"
+      name = "Startseite"
+      url = "/"
+      weight = 10
+
+    [[languages.de.menu.main]]
+      identifier = "contact"
+      name = "Kontakt"
+      url = "/#contact"
+      weight = 20
+
+    [[languages.de.menu.main]]
+      identifier = "services"
+      name = "Leistungen"
+      url = "/#services"
+      weight = 30
+
+    [[languages.de.menu.main]]
+      identifier = "about"
+      name = "Über mich"
+      url = "/about"
+      weight = 40
+
+    [[languages.de.menu.main]]
+      identifier = "blog"
+      name = "Blog"
+      url = "/en/posts"
+      weight = 50
+
+    [[languages.de.menu.main]]
+      identifier = "linkedin"
+      pre = "linkedin"
+      url = "https://www.linkedin.com/in/patrickschnass/"
+      weight = 60
+
+    [[languages.de.menu.main]]
+      identifier = "github"
+      pre = "github"
+      url = "https://github.com/PatrickPT"
+      weight = 70
+
+  [languages.en]
+    languageCode = "en"
+    languageName = "English"
+    title = "Patrick Schnaß | AI Advisory"
+    weight = 2
+    contentDir = "content/en"
+
+    [languages.en.params]
+      displayName = "EN"
+
+    [languages.en.params.author]
+      headline = "AI Advisory"
+      bio = "Helping enterprises turn AI initiatives into profitable business processes"
+
+    [[languages.en.menu.main]]
+      identifier = "home"
+      name = "Home"
+      url = "/"
+      weight = 10
+
+    [[languages.en.menu.main]]
+      identifier = "contact"
+      name = "Contact"
+      url = "/#contact"
+      weight = 20
+
+    [[languages.en.menu.main]]
+      identifier = "services"
+      name = "Services"
+      url = "/#services"
+      weight = 30
+
+    [[languages.en.menu.main]]
+      identifier = "about"
+      name = "About"
+      url = "/about"
+      weight = 40
+
+    [[languages.en.menu.main]]
+      identifier = "blog"
+      name = "Blog"
+      url = "/en/posts"
+      weight = 50
+
+    [[languages.en.menu.main]]
+      identifier = "linkedin"
+      pre = "linkedin"
+      url = "https://www.linkedin.com/in/patrickschnass/"
+      weight = 60
+
+    [[languages.en.menu.main]]
+      identifier = "github"
+      pre = "github"
+      url = "https://github.com/PatrickPT"
+      weight = 70
 
 [params]
   colorScheme = "blowfish"
   defaultAppearance = "light"
-  autoSwitchAppearance = false
+  autoSwitchAppearance = true
   enableSearch = false
   logo = "favicon/android-chrome-64x64.png"
 
@@ -16,66 +128,23 @@ theme = "blowfish"
   [params.author]
     name = "Patrick Schnaß"
     image = "patrick.png"
-    headline = "AI Advisory"
-    bio = "Helping enterprises turn AI initiatives into profitable business processes"
     links = [
       { linkedin = "https://www.linkedin.com/in/patrickschnass/" },
       { github = "https://github.com/PatrickPT" }
     ]
 
   [params.homepage]
-    layout = "profile" # The "Executive Card" layout
+    layout = "profile"
     showDescription = true
     showRecent = false 
 
   [params.main]
-    background = "graph" # The interactive particle background
+    background = "graph"
     enableVisualTests = true
 
   [params.footer]
     showScrollToTop = true
+    showThemeAttribution = false
 
 [markup.goldmark.renderer]
   unsafe = true
-
-[[menu.main]]
-  identifier = "home"
-  name = "Home"
-  url = "/"
-  weight = 10
-
-[[menu.main]]
-  identifier = "contact"
-  name = "Contact"
-  url = "/#contact"
-  weight = 20
-
-[[menu.main]]
-  identifier = "services"
-  name = "Services"
-  url = "/#services"
-  weight = 30
-
-[[menu.main]]
-  identifier = "about"
-  name = "About"
-  url = "/about"
-  weight = 40
-
-[[menu.main]]
-  identifier = "blog"
-  name = "Blog"
-  url = "/posts"
-  weight = 50
-
-[[menu.main]]
-  identifier = "linkedin"
-  pre = "linkedin"
-  url = "https://www.linkedin.com/in/patrickschnass/"
-  weight = 60
-
-[[menu.main]]
-  identifier = "github"
-  pre = "github"
-  url = "https://github.com/PatrickPT"
-  weight = 70

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LLM on Patrick Schnaß | AI Advisory</title>
+    <title>LLM on Patrick Schnaß | KI Beratung</title>
     <link>http://localhost:1313/tags/llm/</link>
-    <description>Recent content in LLM on Patrick Schnaß | AI Advisory</description>
+    <description>Recent content in LLM on Patrick Schnaß | KI Beratung</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>de-DE</language>
+    <language>de</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
     <lastBuildDate>Sun, 09 Feb 2025 18:30:57 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/llm/index.xml" rel="self" type="application/rss+xml" />
     

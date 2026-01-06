@@ -12,6 +12,15 @@ a[href^="#"]:has(> span:only-child) {
     display: none !important;
 }
 
+/* Logo color inversion for dark mode */
+.logo {
+    filter: invert(0);
+}
+
+.dark .logo {
+    filter: invert(1);
+}
+
 /* Subtle interactive canvas */
 #background-canvas {
     opacity: 0.3 !important;
@@ -57,11 +66,11 @@ html:has(.snap-section) {
 }
 
 .dark .section-alt {
-    background-color: rgb(17 24 39);
+    background-color: transparent;
 }
 
 .dark .section-alt>* {
-    background-color: rgb(31 41 55);
+    background-color: rgb(75 85 99);
 }
 
 /* Service headers - dark gray */

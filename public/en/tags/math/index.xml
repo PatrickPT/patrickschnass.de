@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Math on Patrick Schnaß | AI Advisory</title>
+    <link>http://localhost:1313/en/tags/math/</link>
+    <description>Recent content in Math on Patrick Schnaß | AI Advisory</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2026 Patrick Schnaß</copyright>
+    <lastBuildDate>Fri, 20 Jan 2023 14:50:18 +0100</lastBuildDate><atom:link href="http://localhost:1313/en/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Latent Diffusion Models: What is all the fuzz about?</title>
+      <link>http://localhost:1313/posts/latent-diffusion-models/</link>
+      <pubDate>Fri, 20 Jan 2023 14:50:18 +0100</pubDate>
+      
+      <guid>http://localhost:1313/posts/latent-diffusion-models/</guid>
+      <description>Learn how Latent Diffusion Models work and the mathematical intuition behind them.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
