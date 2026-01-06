@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Architecture on Patrick Schnaß | AI Advisory</title>
+    <link>http://localhost:1313/tags/architecture/</link>
+    <description>Recent content in Architecture on Patrick Schnaß | AI Advisory</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language>
+    <copyright>© 2026 Patrick Schnaß</copyright>
+    <lastBuildDate>Sun, 09 Feb 2025 18:30:57 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>DeepSeek-R1 explored</title>
+      <link>http://localhost:1313/posts/deepseek/</link>
+      <pubDate>Sun, 09 Feb 2025 18:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/deepseek/</guid>
+      <description>Why DeepSeek-R1 was a significant step for Open Source AI.</description>
+      
+    </item>
+    
+    <item>
+      <title>A view on BLT</title>
+      <link>http://localhost:1313/posts/blt/</link>
+      <pubDate>Thu, 02 Jan 2025 09:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/blt/</guid>
+      <description>Byte Latent Transformer (BLT), a tokenizer-free architecture for NLP.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

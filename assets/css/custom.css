@@ -80,8 +80,8 @@ html:has(.snap-section) {
     color: rgb(209 213 219);
 }
 
-/* Make the profile header also a snap section */
-article>header {
+/* Make the profile header also a snap section (only on homepage with snap sections) */
+html:has(.snap-section) article>header {
     scroll-snap-align: start;
     min-height: 100vh;
     display: flex;

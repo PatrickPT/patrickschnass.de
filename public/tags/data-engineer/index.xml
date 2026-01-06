@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Engineer on Patrick Schnaß | AI Advisory</title>
+    <link>http://localhost:1313/tags/data-engineer/</link>
+    <description>Recent content in Data Engineer on Patrick Schnaß | AI Advisory</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language>
+    <copyright>© 2026 Patrick Schnaß</copyright>
+    <lastBuildDate>Sun, 02 Jul 2023 15:01:23 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/data-engineer/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Road to GCP Professional Data Engineer</title>
+      <link>http://localhost:1313/posts/PDE/</link>
+      <pubDate>Sun, 02 Jul 2023 15:01:23 +0100</pubDate>
+      
+      <guid>http://localhost:1313/posts/PDE/</guid>
+      <description>My learning journey to get certified</description>
+      
+    </item>
+    
+  </channel>
+</rss>

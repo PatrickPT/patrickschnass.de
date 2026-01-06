@@ -1,0 +1,1301 @@
+<!doctype html>
+<html
+  lang="de-DE"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="light"
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="de-DE">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>What is PEFT? &middot; Patrick Schnaß | AI Advisory</title>
+    <meta name="title" content="What is PEFT? &middot; Patrick Schnaß | AI Advisory">
+  
+
+  
+  
+    <meta name="description" content="Fine-tuning of Large Language Models with Parameter Efficient.">
+  
+  
+    <meta name="keywords" content="LLM,GenAI,">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/peft/">
+  
+
+  
+  
+    <meta name="author" content="Patrick Schnaß">
+  
+  
+    
+      
+        
+          <link href="https://www.linkedin.com/in/patrickschnass/" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://github.com/PatrickPT" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/peft/">
+  <meta property="og:site_name" content="Patrick Schnaß | AI Advisory">
+  <meta property="og:title" content="What is PEFT?">
+  <meta property="og:description" content="Fine-tuning of Large Language Models with Parameter Efficient.">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-11-01T18:30:57+00:00">
+    <meta property="article:modified_time" content="2023-11-01T18:30:57+00:00">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="GenAI">
+    <meta property="og:image" content="http://localhost:1313/posts/2023_11_01_Parameter_Efficient_Finetuning/images/LoRA.jpg">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/posts/2023_11_01_Parameter_Efficient_Finetuning/images/LoRA.jpg">
+  <meta name="twitter:title" content="What is PEFT?">
+  <meta name="twitter:description" content="Fine-tuning of Large Language Models with Parameter Efficient.">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.9b97f58406c0ad04d41a74bbc9d276dd79c12e1333bd83f8b1708995b0f2cacb235e5f35a2e51463f3fd138c5fdab0213eb051a5590dc9bc61bc8998fa56464b.css"
+    integrity="sha512-m5f1hAbArQTUGnS7ydJ23XnBLhMzvYP4sXCJlbDyyssjXl81ouUUY/P9E4xf2rAhPrBRpVkNybxhvImY&#43;lZGSw==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.eb1cab4fe4b9f760444cfbaf02c7410770218e3a2789ec108c0d7d741aa0fbc02e43567bc4e4f2ed05e6acc6096e291a4ff0cf8e6e852fcc31e4be9e48c33c63.js"
+      integrity="sha512-6xyrT&#43;S592BETPuvAsdBB3AhjjoniewQjA19dBqg&#43;8AuQ1Z7xOTy7QXmrMYJbikaT/DPjm6FL8wx5L6eSMM8Yw=="
+      data-copy="Copy"
+      data-copied="Copied"></script>
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "What is PEFT?",
+    "headline": "What is PEFT?",
+    
+    "inLanguage": "de-DE",
+    "url" : "http://localhost:1313/posts/peft/",
+    "author" : {
+      "@type": "Person",
+      "name": "Patrick Schnaß"
+    },
+    "copyrightYear": "2023",
+    "dateCreated": "2023-11-01T18:30:57\u002b00:00",
+    "datePublished": "2023-11-01T18:30:57\u002b00:00",
+    
+    "dateModified": "2023-11-01T18:30:57\u002b00:00",
+    
+    "keywords": ["LLM","GenAI"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "2213"
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral bf-scrollbar">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        Skip to main content
+      </a>
+    </div>
+    
+    
+      <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 z-100">
+  <div
+    id="menu-blur"
+    class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl bg-neutral/25 dark:bg-neutral-800/25"></div>
+  <div class="relative m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32">
+    <div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
+  
+    
+    
+      <div>
+        <a href="/" class="flex">
+          <span class="sr-only">Patrick Schnaß | AI Advisory</span>
+          
+            <img
+              src="/favicon/android-chrome-64x64.png"
+              width="25"
+              height="30"
+              class="logo max-h-20 max-w-20 object-scale-down object-left nozoom"
+              alt="">
+          
+        </a>
+      </div>
+    
+  
+  
+    <a href="/" class="text-base font-medium truncate min-w-0 shrink">
+      Patrick Schnaß | AI Advisory
+    </a>
+  
+  <div class="flex items-center ms-auto">
+    <div class="hidden md:flex">
+      <nav class="flex items-center gap-x-5 h-12">
+  
+    
+      
+  
+    <a
+      href="/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Home"
+      title="">
+      
+      
+        <span class="text-base font-medium break-normal">
+          Home
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/#contact"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Contact"
+      title="">
+      
+      
+        <span class="text-base font-medium break-normal">
+          Contact
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/#services"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Services"
+      title="">
+      
+      
+        <span class="text-base font-medium break-normal">
+          Services
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/about"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="About"
+      title="">
+      
+      
+        <span class="text-base font-medium break-normal">
+          About
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/posts"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Blog"
+      title="">
+      
+      
+        <span class="text-base font-medium break-normal">
+          Blog
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="https://www.linkedin.com/in/patrickschnass/"
+      
+        target="_blank"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="linkedin"
+      title="">
+      
+        <span >
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span>
+        </span>
+      
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="https://github.com/PatrickPT"
+      
+        target="_blank"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="github"
+      title="">
+      
+        <span >
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span>
+        </span>
+      
+      
+    </a>
+  
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="flex items-center">
+      <button
+        id="appearance-switcher"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base bf-icon-color-hover">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    </div>
+  
+</nav>
+
+
+
+    </div>
+    <div class="flex md:hidden">
+      <div class="flex items-center h-14 gap-4">
+  
+
+  
+    <button
+      id="appearance-switcher-mobile"
+      type="button"
+      aria-label="Dark mode switcher"
+      class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400">
+      <div class="dark:hidden">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+      </div>
+      <div class="hidden dark:block">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+      </div>
+    </button>
+  
+
+  
+    <input type="checkbox" id="mobile-menu-toggle" autocomplete="off" class="hidden peer">
+    <label for="mobile-menu-toggle" class="flex items-center justify-center cursor-pointer bf-icon-color-hover">
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+    </label>
+
+    <div
+      role="dialog"
+      aria-modal="true"
+      style="scrollbar-gutter: stable;"
+      class="fixed inset-0 z-50 invisible overflow-y-auto px-6 py-20 opacity-0 transition-[opacity,visibility] duration-300 peer-checked:visible peer-checked:opacity-100 bg-neutral-50/97 dark:bg-neutral-900/99
+      bf-scrollbar">
+      <label
+        for="mobile-menu-toggle"
+        class="fixed end-8 top-5 flex items-center justify-center z-50 h-12 w-12 cursor-pointer select-none rounded-full bf-icon-color-hover border bf-border-color bf-border-color-hover bg-neutral-50 dark:bg-neutral-900">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </label>
+      <nav class="mx-auto max-w-md space-y-6">
+        
+  
+    
+    <div class="px-2">
+      <a
+        href="/"
+        aria-label="Home"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          Home
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/#contact"
+        aria-label="Contact"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          Contact
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/#services"
+        aria-label="Services"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          Services
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/about"
+        aria-label="About"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          About
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/posts"
+        aria-label="Blog"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          Blog
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="https://www.linkedin.com/in/patrickschnass/"
+        aria-label="linkedin"
+        
+          target="_blank"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+          <span class="flex items-center justify-center h-8 w-8 text-2xl">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span>
+          </span>
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="https://github.com/PatrickPT"
+        aria-label="github"
+        
+          target="_blank"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+          <span class="flex items-center justify-center h-8 w-8 text-2xl">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span>
+          </span>
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+
+        
+  
+
+        
+  
+
+      </nav>
+    </div>
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<script
+  type="text/javascript"
+  src="/js/background-blur.min.605b3b942818f0ab5a717ae446135ec46b8ee5a2ad12ae56fb90dc2a76ce30c388f9fec8bcc18db15bd47e3fa8a09d779fa12aa9c184cf614a315bc72c6c163d.js"
+  integrity="sha512-YFs7lCgY8KtacXrkRhNexGuO5aKtEq5W&#43;5DcKnbOMMOI&#43;f7IvMGNsVvUfj&#43;ooJ13n6EqqcGEz2FKMVvHLGwWPQ=="
+  data-blur-id="menu-blur"></script>
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        What is PEFT?
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2023-11-01T18:30:57&#43;00:00">November 1, 2023</time><span class="px-2 text-primary-500">&middot;</span><span>2213 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">11 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+      
+        
+        
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Patrick Schnaß"
+        src="/patrick_hu_fe0c2285bbac30b1.png"
+        data-zoom-src="/patrick_hu_a5a586b022a9f652.png">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        Author
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Patrick Schnaß
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">Helping enterprises turn AI initiatives into profitable business processes</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://www.linkedin.com/in/patrickschnass/"
+          target="_blank"
+          aria-label="Linkedin"
+          title="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/PatrickPT"
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          
+<h1 class="relative group">TL;DR
+    <div id="tldr" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#tldr" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p>Parameter Efficient Fine-Tuning is a technique that aims to reduce computational and storage resources during the fine-tuning of Large Language Models.</p>
+
+<h1 class="relative group">Why should i care?
+    <div id="why-should-i-care" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#why-should-i-care" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p>Fine-tuning is a common technique used to enhance the performance of large language models. Essentially, fine-tuning involves training a pre-trained model on a new, similar task. It has become a crucial step in model optimization. However, when these models consist of billions of parameters, fine-tuning becomes computational and storage heavy, leading to the development of Parameter Efficient Fine-Tuning methods.</p>
+<p>Parameter Efficient Fine-Tuning is a collection of techniques that aim to reduce computational and storage resources during the fine-tuning process. Rather than tuning all parameters, these methods strategically select and fine-tune a fraction of them. The rest of the parameters are frozen or updated with a lower precision format, saving memory and computational requirements. This technique also mitigates the risk of overfitting, enhances learning efficiency, and allows for more adaptability in applying large language models across a variety of tasks.</p>
+
+<h1 class="relative group">Use Parameter-Efficient Fine-Tuning
+    <div id="use-parameter-efficient-fine-tuning" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#use-parameter-efficient-fine-tuning" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p>The process of parameter-efficient fine-tuning (PEFT) may exhibit variations depending on the specific implementation and the pre-trained model in use. Nevertheless, below are summarized all steps involved in PEFT:</p>
+<p><strong>Pre-training:</strong> Initially, a large-scale model undergoes pre-training on a substantial dataset, commonly for a generic task like image classification or language modeling. This phase equips the model with foundational knowledge and meaningful data representations.
+Task-specific dataset: Assemble or generate a dataset tailored to the particular task for which you intend to fine-tune the pre-trained model. This dataset must be labeled and faithfully represent the target task.</p>
+<p><strong>Parameter identification:</strong> Identify or estimate the significance and relevance of parameters within the pre-trained model for the target task. This step helps in discerning which parameters should be prioritized during the fine-tuning process. Techniques such as importance estimation, sensitivity analysis, or gradient-based methods can be employed for parameter assessment.</p>
+<p><strong>Subset selection:</strong> Choose a subset of the pre-trained model&rsquo;s parameters based on their importance or applicability to the target task. The selection process can involve setting specific criteria, like a threshold on importance scores or selecting the top-k most relevant parameters.</p>
+<p><strong>Fine-tuning:</strong> Initialize the chosen subset of parameters with values from the pre-trained model and lock the remaining parameters. Fine-tune the selected parameters by employing the task-specific dataset. This typically entails training the model on the target task data using optimization techniques like Stochastic Gradient Descent (SGD) or Adam.</p>
+<p><strong>Evaluation:</strong> Assess the performance of the fine-tuned model on a validation set or by utilizing relevant evaluation metrics for the target task. This step serves to gauge the efficacy of PEFT in achieving the desired performance while reducing the number of parameters.</p>
+<p><strong>Iterative refinement (optional):</strong> Depending on performance and specific requirements, you may opt to iterate and refine the PEFT process. This can involve adjusting the criteria for parameter selection, exploring different subsets, or conducting additional fine-tuning epochs to further optimize the model&rsquo;s performance.
+It&rsquo;s crucial to note that the specific implementation details and techniques employed in PEFT can differ across research papers and real-world applications.</p>
+
+<h1 class="relative group">PEFT Techniques
+    <div id="peft-techniques" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#peft-techniques" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+
+<h2 class="relative group">Adapter Modules
+    <div id="adapter-modules" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#adapter-modules" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Adapter modules represent a specialized type of component that can be integrated into pre-trained language models to tailor their hidden representations during the fine-tuning process. These adapters are typically inserted following the multi-head attention and feed-forward layers within the transformer architecture, allowing for selective updates to the adapter parameters while keeping the remainder of the model parameters unchanged.</p>
+<p>Incorporating adapters is a straightforward procedure. The essential steps involve adding adapter modules to each transformer layer and positioning a classifier layer atop the pre-trained model. By updating the parameters of the adapters and the classifier head, one can enhance the pre-trained model&rsquo;s performance on specific tasks without the need for a comprehensive model update. This approach not only saves time but also conserves computational resources while delivering notable results.</p>
+<p>But how does fine-tuning using an adapter actually work? The adapter module itself consists of two feed-forward projection layers linked by a non-linear activation layer, and it incorporates a skip connection that bypasses the feed-forward layers.</p>
+<p>Consider an adapter placed immediately after the multi-head attention layer. In this case, the input to the adapter layer is the hidden representation denoted as <code>h'</code> derived from the multi-head attention layer. Within the adapter layer, <code>h</code> follows two distinct paths: one through the skip connection, which leaves the input unaltered, and the other through the feed-forward layers, facilitating the necessary modifications.</p>
+<p><figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="Fine-Tuning Adapters"
+    src="/posts/2023_11_01_Parameter_Efficient_Finetuning/images/Adapter.jpg"
+    ></figure>
+
+<em>picture from <a href="https://www.leewayhertz.com/parameter-efficient-fine-tuning/"  target="_blank">A Guide to PEFT</a></em></p>
+<p>To begin, the first feed-forward layer initially projects <code>h</code> into a lower-dimensional space, which has fewer dimensions than <code>h</code> itself. Subsequently, the input traverses through a non-linear activation function, and the second feed-forward layer then reprojects it back to the same dimensionality as <code>h</code>. The outcomes generated by these two paths are combined through summation to yield the adapter module&rsquo;s ultimate output.</p>
+<p>The skip-connection dutifully maintains the original input <code>h</code> of the adapter, while the feed-forward path generates an incremental alteration, denoted as <code>Δh</code>, predicated on the original <code>h</code>. By introducing this incremental change, <code>Δh</code>, acquired from the feed-forward layer, to the original <code>h</code> from the previous layer, the adapter orchestrates a modification to the hidden representation calculated by the pre-trained model. This process empowers the adapter to adapt the pre-trained model&rsquo;s hidden representation, thereby influencing its output for a specific task.</p>
+
+<h2 class="relative group">LoRA
+    <div id="lora" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#lora" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Low-Rank Adaptation (LoRA) in the context of fine-tuning large language models offers an alternative approach for tailoring models to specific tasks or domains. Much like adapters, LoRA is a compact trainable submodule that seamlessly integrates into the transformer architecture. LoRA operation involves preserving the pre-trained model weights while introducing trainable rank decomposition matrices into each layer of the transformer architecture. This process significantly reduces the number of trainable parameters for downstream tasks. Remarkably, LoRA can achieve a reduction of up to 10,000 times in the number of trainable parameters and reduce GPU memory requirements by a factor of 3, all while maintaining or surpassing the performance of fine-tuned models across various tasks. LoRA also facilitates more efficient task-switching, lowers hardware constraints, and incurs no additional inference latency.</p>
+<p>So, how does LoRA function? LoRA modules are inserted in parallel with the components of the pre-trained transformer model, specifically adjacent to the feed-forward layers. Each feed-forward layer includes two projection layers separated by a non-linear layer, wherein an input vector is transformed into an output vector with different dimensionality using an affine transformation. The LoRA layers are positioned alongside each of the two feed-forward layers.</p>
+<p><figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="Low-Rank Adaptation"
+    src="/posts/2023_11_01_Parameter_Efficient_Finetuning/images/LoRA.jpg"
+    ></figure>
+
+<em>picture from <a href="https://www.leewayhertz.com/parameter-efficient-fine-tuning/"  target="_blank">A Guide to PEFT</a></em></p>
+<p>Now, let&rsquo;s delve into the interaction between the feed-forward up-project layer and the adjacent LoRA module. The original parameters of the feed-forward layer take the output from the preceding layer, which is represented by <code>dmodel</code>, and project it into <code>dFFW</code> (where <code>FFW</code> stands for feed-forward). The adjacent LoRA module comprises two feed-forward layers. The first of these takes the same input as the feed-forward up-project layer and projects it into an <code>r</code>-dimensional vector, significantly smaller than <code>dmodel</code>. Subsequently, the second feed-forward layer transforms this vector into another vector with a dimensionality of <code>dFFW</code>. The two vectors are then combined through addition to create the final representation.</p>
+<p>As discussed earlier, fine-tuning involves adjusting the hidden representation <code>h</code> computed by the original transformer model. In this context, the hidden representation generated by the feed-forward up-project layer of the original transformer corresponds to <code>h</code>. Simultaneously, the vector computed by the LoRA module represents the incremental change <code>Δh</code> applied to modify the original <code>h</code>. Consequently, the summation of the original representation and the incremental change yields the updated hidden representation <code>h</code>.</p>
+<p>By incorporating LoRA modules alongside the feed-forward layers and a classifier head atop the pre-trained model, task-specific parameters for each individual task are kept to a minimum.</p>
+
+<h2 class="relative group">QLoRA
+    <div id="qlora" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#qlora" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Compressing model parameters even more, QLoRA – or Quantized LoRA – takes the concepts of LoRA and applies a quantization technique. Instead of storing these new low-rank parameters in standard floating-point format, QLoRA stores them in a lower precision format, such as INT8 or INT4.</p>
+<p>This method drastically reduces the number of bits required to store these parameters. As a result, QLoRA offers a significant reduction in the memory and computational requirements, vastly improving parameter efficiency during the fine-tuning process.</p>
+
+<h2 class="relative group">Prefix Tuning
+    <div id="prefix-tuning" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#prefix-tuning" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Prefix-tuning offers a lightweight and cost-effective alternative to the conventional fine-tuning of large pre-trained language models for natural language generation tasks. Traditional fine-tuning entails the comprehensive updating and storage of all model parameters for each specific task, an endeavor that can be financially burdensome given the expansive scale of contemporary models. In contrast, prefix-tuning maintains the pre-trained language model parameters unchanged and focuses on optimizing a small, continuous, task-specific vector known as the &ldquo;prefix.&rdquo; In prefix-tuning, the prefix constitutes a set of independent parameters that undergo training alongside the language model. The primary aim of prefix-tuning is to discover a context that guides the language model to generate text that effectively addresses a particular task.</p>
+<p>The prefix can be perceived as a sequence of &ldquo;virtual tokens&rdquo; to which subsequent tokens can attend. Remarkably, by updating a mere 0.1% of the model&rsquo;s parameters, prefix-tuning manages to achieve performance comparable to traditional fine-tuning in full-data settings, outperforming it in scenarios with limited data, and exhibiting superior extrapolation to examples featuring topics not encountered during training.</p>
+<p><figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="Prefix Tuning"
+    src="/posts/2023_11_01_Parameter_Efficient_Finetuning/images/Prefix-tuning.jpg"
+    ></figure>
+
+<em>picture from <a href="https://www.leewayhertz.com/parameter-efficient-fine-tuning/"  target="_blank">A Guide to PEFT</a></em></p>
+<p>Much like the aforementioned PEFT techniques, the ultimate objective of prefix-tuning is to attain <code>h</code> prime (<code>h'</code>). Prefix-tuning utilizes these prefixes to adapt the hidden representations derived from the original pre-trained language models. The modification is achieved by adding the incremental change <code>Δh</code> to the initial hidden representation <code>h'</code> resulting in the modified representation <code>h</code> prime (<code>h'</code>).</p>
+<p>In the realm of prefix-tuning, only the prefixes undergo updates, while the remainder of the model&rsquo;s layers remain static and unchanged. This focused approach allows for enhanced efficiency and economy in addressing natural language generation tasks.</p>
+
+<h2 class="relative group">Prompt Tuning
+    <div id="prompt-tuning" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#prompt-tuning" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Prompt tuning stands as a potent PEFT technique designed for the precise adaptation of pre-trained language models to specific downstream tasks. Unlike the conventional &ldquo;model tuning&rdquo; approach, where every parameter in the pre-trained model undergoes adjustments for each task, prompt tuning introduces the concept of learning soft prompts through backpropagation. These soft prompts can be fine-tuned for distinct tasks by incorporating labeled examples. The results are remarkable, as prompt tuning excels in outperforming few-shot learning methods like GPT-3, particularly gaining competitiveness as model sizes expand. It bolsters the robustness of domain transfer and opens the door to efficient prompt ensembling. Unlike model tuning, which necessitates creating task-specific copies of the entire pre-trained model for each task, prompt tuning simply requires storing a small task-specific prompt for each task. This approach simplifies the process of reusing a single frozen model across a multitude of downstream tasks.</p>
+<p><figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="Prompt Tuning"
+    src="/posts/2023_11_01_Parameter_Efficient_Finetuning/images/Prompt-tuning.jpeg"
+    ></figure>
+
+<em>picture from <a href="https://www.leewayhertz.com/parameter-efficient-fine-tuning/"  target="_blank">A Guide to PEFT</a></em></p>
+<p>Prompt tuning serves as a simplified variant of prefix tuning. In this method, specific vectors are appended at the commencement of a sequence, specifically at the input layer. When presented with an input sentence, the embedding layer proceeds to convert each token into its corresponding word embedding, while the prefix embeddings are prepended to the sequence of token embeddings. Subsequently, the pre-trained transformer layers process the entire embedding sequence in a manner akin to how a transformer model treats a standard sequence. During the fine-tuning process, only the prefix embeddings undergo adjustments, while the remainder of the transformer model remains locked and unaltered.</p>
+<p>Prompt tuning offers numerous advantages compared to traditional fine-tuning approaches. It significantly enhances efficiency and mitigates computational demands. Furthermore, the exclusive fine-tuning of prefix embeddings minimizes the risk of overfitting to the training data, thereby producing models that are more resilient and capable of generalizing effectively.</p>
+
+<h1 class="relative group">Benefits
+    <div id="benefits" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#benefits" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p><strong>Cost Savings:</strong> PEFT significantly reduces computational and storage costs by fine-tuning a small number of additional model parameters while keeping most of the pre-trained LLM parameters frozen.</p>
+<p><strong>Mitigating Knowledge Loss:</strong> PEFT effectively addresses the issue of catastrophic forgetting that can occur during full fine-tuning of LLMs, as it updates only a limited set of parameters.</p>
+<p><strong>Enhanced Performance in Low-Data Scenarios:</strong> PEFT methods have demonstrated superior performance in situations with limited data, and they exhibit better generalization to out-of-domain scenarios compared to full fine-tuning.</p>
+<p><strong>Portability Advantage:</strong> PEFT approaches enable users to obtain compact checkpoints, typically a few megabytes in size, in contrast to the larger checkpoints produced by full fine-tuning. This makes it convenient to deploy and utilize the trained weights from PEFT for various tasks without the need to replace the entire model.</p>
+<p><strong>Comparable Performance to Full Fine-Tuning:</strong> PEFT allows achieving performance on par with full fine-tuning while utilizing only a small number of trainable parameters.</p>
+
+<h1 class="relative group">Conclusion
+    <div id="conclusion" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#conclusion" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p>The challenges associated with fine-tuning large language models, such as high memory requirements and computational burden, have prompted researchers to create innovative solutions like LoRa, QLoRa and other parameter efficient fine-tuning methods. By creating a balance between computational power and performance, these techniques make the power of large language models more accessible and applicable to an array of tasks. As natural language processing continues to advance, the importance of such computation-friendly and efficient methods will undoubtedly continue to grow.</p>
+
+<h1 class="relative group">Resources
+    <div id="resources" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#resources" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://github.com/huggingface/peft"  target="_blank">https://github.com/huggingface/peft</a> [Repo]</p>
+<p><a href="https://towardsdatascience.com/parameter-efficient-fine-tuning-peft-for-llms-a-comprehensive-introduction-e52d03117f95"  target="_blank">Introduction to PEFT</a> [Blogpost]</p>
+<p><a href="https://www.leewayhertz.com/parameter-efficient-fine-tuning/"  target="_blank">A Guide to PEFT</a> [Blogpost]</p>
+<p><a href="https://markovate.com/blog/parameter-efficient-fine-tuning-peft-of-llms-a-practical-guide/"  target="_blank">A practical guide to PEFT</a> [Blogpost]</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_posts/2023_11_01_Parameter_Efficient_Finetuning/2023_11_01_Parameter_Efficient_Finetuning.md"
+          data-oid-likes="likes_posts/2023_11_01_Parameter_Efficient_Finetuning/2023_11_01_Parameter_Efficient_Finetuning.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/hands-on-rag/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;Hands on with Retrieval Augmented Generation
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2023-10-07T10:30:00&#43;00:00">October 7, 2023</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/quantllm/">
+              <span class="leading-6">
+                LLM Quantization in a nutshell&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2024-01-28T09:30:57&#43;00:00">January 28, 2024</time>
+              </span>
+            
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top"
+    title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2026
+          Patrick Schnaß
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+      </p>
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+    <script>
+    function initTabs() {
+        const tabClickHandler = (event) => {
+            const button = event.target.closest(".tab__button");
+            if (!button) return;
+
+            const container = button.closest(".tab__container");
+            if (!container) return;
+
+            const tabIndex = parseInt(button.dataset.tabIndex);
+            activateTab(container, tabIndex);
+        };
+
+        document.addEventListener("click", tabClickHandler);
+    }
+
+    function activateTab(container, activeIndex) {
+        const buttons = container.querySelectorAll(".tab__button");
+        const panels = container.querySelectorAll(".tab__panel");
+
+        buttons.forEach((btn, index) => {
+            if (index === activeIndex) {
+                btn.classList.add("tab--active");
+                btn.setAttribute("aria-selected", "true");
+                
+                btn.style.borderColor = "var(--color-primary-500)";
+                btn.style.color = "var(--color-primary-500)";
+            } else {
+                btn.classList.remove("tab--active");
+                btn.setAttribute("aria-selected", "false");
+                btn.style.borderColor = "transparent";
+                btn.style.color = "inherit";
+            }
+        });
+
+        panels.forEach((panel, index) => {
+            if (index === activeIndex) {
+                panel.classList.remove("hidden");
+                panel.classList.add("block");
+            } else {
+                panel.classList.add("hidden");
+                panel.classList.remove("block");
+            }
+        });
+    }
+
+    
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initTabs);
+    } else {
+        initTabs();
+    }
+</script>
+  
+</footer>
+
+    </div>
+  </body>
+  
+</html>
