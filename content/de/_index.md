@@ -63,6 +63,7 @@ def execute_strategy():
 
 ```python
 """
+Filtern des AI Marketings und
 Validierung Ihrer KI-Roadmap 
 """
 
@@ -84,6 +85,7 @@ def reality_check(roadmap):
 ```python
 """
 Hochleistungs-Data-Team aufbauen
+und die Zukunft Ihres Unternehmens gestalten
 """
 
 class DataTeam:
@@ -104,7 +106,7 @@ class DataTeam:
 ```python
 """
 AI Use Cases und Technologien 
-für Ihre Business Model identifizieren
+für Ihr Business Model identifizieren
 """
 
 def sparring_session(executive):

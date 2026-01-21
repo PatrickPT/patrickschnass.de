@@ -52,9 +52,9 @@ def execute_strategy():
 <div class="services-carousel">
 
 <div class="carousel-tabs">
-    <button class="carousel-tab is-active" data-index="0">AI Hype vs Reality</button>
-    <button class="carousel-tab" data-index="1">Efficient Data Org </button>
-    <button class="carousel-tab" data-index="2">AI Consulting</button>
+    <button class="carousel-tab is-active" data-index="0">AI Reality Check</button>
+    <button class="carousel-tab" data-index="1">Scale your data org</button>
+    <button class="carousel-tab" data-index="2">AI Guidance</button>
 </div>
 
 <div class="carousel-panels">
@@ -63,7 +63,8 @@ def execute_strategy():
 
 ```python
 """
-Validation of your AI roadmap 
+Cut throught the marketing noise
+and validate your AI roadmap
 """
 
 def reality_check(roadmap):
@@ -84,6 +85,7 @@ def reality_check(roadmap):
 ```python
 """
 Build a high-performance Data Team
+to shape your companies future
 """
 
 class DataTeam:
