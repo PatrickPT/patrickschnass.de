@@ -24,8 +24,9 @@ def execute_strategy():
     engine = scale.build_robust()
     return Impact.drive(engine)
 ```
-## Let's start working on your AI strategy.
+## Let's start working on your AI strategy
 
+<div class="action-buttons">
 <!-- Google Calendar Appointment Scheduling -->
 <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
 <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
@@ -42,6 +43,8 @@ def execute_strategy():
   });
 })();
 </script>
+<a href="mailto:p.schnass@gmail.com" class="custom-contact-button">Email Me</a>
+</div>
 
 </section>
 

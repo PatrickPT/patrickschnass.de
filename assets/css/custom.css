@@ -336,3 +336,46 @@ html:not(.dark) .progress-dot {
 .about-links a:hover {
     text-decoration: underline;
 }
+
+/* ====== CONTACT BUTTONS ====== */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.custom-contact-button {
+    background-color: #039BE5;
+    /* Match Google Calendar Blue */
+    color: white !important;
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
+    /* Try adding Google Sans first just in case, fall back to Roboto */
+    font-weight: 600;
+    /* reset to 500 but rely on font family match if possible, or try 600/700 depending on result */
+    /* Wait, user says "lighter". If I used 700 and they say lighter, maybe it's the font thickness itself. Google Sans is geometric. */
+    /* Let's try explicit 600, which is often used for buttons */
+    font-size: 16px;
+    letter-spacing: 0.25px;
+    /* Add slight spacing often found in localized buttons */
+    padding: 0 24px;
+    height: 46px;
+    /* Match typical Google button height */
+    line-height: 46px;
+    /* Vertically center text */
+    border-radius: 4px;
+    text-decoration: none !important;
+    display: inline-block;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    transition: background-color 0.2s;
+    cursor: pointer;
+    -webkit-font-smoothing: antialiased;
+    /* Ensure crisp webfont rendering */
+}
+
+.custom-contact-button:hover {
+    background-color: #0288D1;
+    text-decoration: none !important;
+    box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+}

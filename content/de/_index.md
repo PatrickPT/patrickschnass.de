@@ -26,6 +26,7 @@ def execute_strategy():
 ```
 ## Lassen Sie uns an Ihrer KI-Strategie arbeiten.
 
+<div class="action-buttons">
 <!-- Google Calendar Appointment Scheduling -->
 <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
 <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
@@ -42,6 +43,8 @@ def execute_strategy():
   });
 })();
 </script>
+<a href="mailto:p.schnass@gmail.com" class="custom-contact-button">E-Mail schreiben</a>
+</div>
 
 </section>
 
