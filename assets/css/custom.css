@@ -379,3 +379,39 @@ html:not(.dark) .progress-dot {
     text-decoration: none !important;
     box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
 }
+
+/* ====== MOBILE OPTIMIZATION ====== */
+@media (max-width: 768px) {
+
+    /* Smaller code font on mobile */
+    .snap-section pre {
+        font-size: 0.7rem !important;
+        padding: 0.75rem 0.5rem !important;
+    }
+
+    /* Smaller docstrings on mobile */
+    .snap-section .chroma .sd,
+    .snap-section .highlight .sd,
+    .snap-section .sd,
+    .snap-section .s2,
+    .snap-section .dl {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+        padding-bottom: 0.5rem;
+    }
+
+    /* Reduce spacing for line numbers */
+    .snap-section .lntd:first-child {
+        padding-right: 0.5rem;
+    }
+
+    /* Stack buttons on very small screens if needed, or just adjust gap */
+    .action-buttons {
+        gap: 0.5rem;
+    }
+
+    .custom-contact-button {
+        padding: 0 16px;
+        font-size: 14px;
+    }
+}
