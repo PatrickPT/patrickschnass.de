@@ -1,23 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Patrick Schnaß</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on Patrick Schnaß</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>de</language>
-    <copyright>© 2026 Patrick Schnaß</copyright>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Über mich</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/about/</guid>
-      <description>&lt;h2 class=&#34;relative group&#34;&gt;Hallo, ich bin Patrick&#xA;    &lt;div id=&#34;hallo-ich-bin-patrick&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Technologe aus Leidenschaft mit großer Begeisterung für Künstliche Intelligenz und Data Science.&lt;/p&gt;&#xA;&lt;p&gt;Derzeit leite ich die &lt;strong&gt;Data Science Abteilung bei Vodafone&lt;/strong&gt;, wo mein Team und ich maschinelles Lernen und KI anwenden, um Lösungen zu entwickeln, die Impact schaffen und Kundenerlebnisse verbessern. Meine Rolle ermöglicht es mir, die Brücke zwischen KI-Forschung und realen Anwendungen zu schlagen und sicherzustellen, dass unsere Modelle nicht nur lokal existieren, sondern aktiv zu Entscheidungsfindung, Automatisierung und Optimierung beitragen.&lt;/p&gt;</description>
-      
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Patrick Schnaß</title><link>https://www.patrickschnass.de/</link><description>Recent content on Patrick Schnaß</description><generator>Hugo -- gohugo.io</generator><language>de</language><copyright>© 2026 Patrick Schnaß</copyright><atom:link href="https://www.patrickschnass.de/index.xml" rel="self" type="application/rss+xml"/><item><title>Über mich</title><link>https://www.patrickschnass.de/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.patrickschnass.de/about/</guid><description>&lt;h2 class="relative group"&gt;Hallo, ich bin Patrick
+ &lt;div id="hallo-ich-bin-patrick" class="anchor"&gt;&lt;/div&gt;
+ 
+&lt;/h2&gt;
+&lt;p&gt;Technologe aus Leidenschaft mit großer Begeisterung für Künstliche Intelligenz und Data Science.&lt;/p&gt;
+&lt;p&gt;Derzeit leite ich die &lt;strong&gt;Data Science Abteilung bei Vodafone&lt;/strong&gt;, wo mein Team und ich maschinelles Lernen und KI anwenden, um Lösungen zu entwickeln, die Impact schaffen und Kundenerlebnisse verbessern. Meine Rolle ermöglicht es mir, die Brücke zwischen KI-Forschung und realen Anwendungen zu schlagen und sicherzustellen, dass unsere Modelle nicht nur lokal existieren, sondern aktiv zu Entscheidungsfindung, Automatisierung und Optimierung beitragen.&lt;/p&gt;</description></item></channel></rss>
