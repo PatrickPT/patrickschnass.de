@@ -8,11 +8,13 @@ showAuthor: false
 <section id="contact" class="snap-section">
 
 ```python
-# Stop Experimenting
+"""
+Stop Experimenting and Start Transforming
+"""
+
 if current_status == "experimenting":
     stop()  # Break the loop
 
-# Start Transforming
 import scale
 from advisory import Impact
 
@@ -21,10 +23,7 @@ def execute_strategy():
     engine = scale.build_robust()
     return Impact.drive(engine)
 ```
-
-## Ich kann Ihnen helfen KI in profitable Geschäftsprozesse zu verwandeln. 
-
-Lassen Sie uns besprechen, wie ich Sie unterstützen kann.
+## Lassen Sie uns an Ihrer KI-Strategie arbeiten.
 
 <!-- Google Calendar Appointment Scheduling -->
 <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
@@ -49,9 +48,9 @@ Lassen Sie uns besprechen, wie ich Sie unterstützen kann.
 <div class="services-carousel">
 
 <div class="carousel-tabs">
-    <button class="carousel-tab is-active" data-index="0">KI Reality Check</button>
-    <button class="carousel-tab" data-index="1">Data Org Aufbau</button>
-    <button class="carousel-tab" data-index="2">Executive Sparring</button>
+    <button class="carousel-tab is-active" data-index="0">Reality Check</button>
+    <button class="carousel-tab" data-index="1">Data Org</button>
+    <button class="carousel-tab" data-index="2">AI Sparring</button>
 </div>
 
 <div class="carousel-panels">
@@ -59,15 +58,20 @@ Lassen Sie uns besprechen, wie ich Sie unterstützen kann.
 <div class="carousel-panel is-active" data-index="0">
 
 ```python
+"""
+Unabhängige Validierung Ihrer KI-Roadmap 
+und Anbieterauswahl
+"""
+
 def reality_check(roadmap):
     # Schluss mit dem Hype
-    machbarkeit = bewerten(roadmap)
-    roi = wirtschaftlichkeit()
+    feasibility = assess(roadmap)
+    roi = calculate_viability()
     
-    if machbarkeit.ist_real:
-        return optimieren(roadmap)
+    if feasibility.is_real:
+        return optimize(roadmap)
     else:
-        return strategie_pivot()
+        return pivot_strategy()
 ```
 
 </div>
@@ -75,15 +79,19 @@ def reality_check(roadmap):
 <div class="carousel-panel" data-index="1">
 
 ```python
+"""
+Ein Hochleistungs-Data-Team aufbauen, das bleibt
+"""
+
 class DataTeam:
     def __init__(self):
-        self.rollen = definiere_rollen()
-        self.struktur = reporting_setup()
+        self.roles = define_roles()
+        self.structure = set_reporting()
     
-    def aufbauen(self):
-        # Hochleistungsteam
-        einstellen(self.rahmen)
-        return Team.das_bleibt()
+    def build(self):
+        # High-performance team
+        hire(self.framework)
+        return Team.that_sticks()
 ```
 
 </div>
@@ -91,13 +99,18 @@ class DataTeam:
 <div class="carousel-panel" data-index="2">
 
 ```python
+"""
+Signal von Rauschen filtern und wirkungsstarke
+Use Cases für Ihr Geschäftsmodell identifizieren.
+"""
+
 def sparring_session(executive):
     # Vertrauliches 1:1
-    signal = rauschen_filtern(markt)
-    cases = high_impact_finden(
-        geschaeft=executive.modell
+    signal = filter_noise(market)
+    cases = find_high_impact(
+        business=executive.model
     )
-    return strategische_klarheit()
+    return strategic_clarity()
 ```
 
 </div>
@@ -167,4 +180,22 @@ def sparring_session(executive):
 
 </section>
 
+<section id="about" class="snap-section">
+<div class="about-section">
 
+<img src="/patrick.png" alt="Patrick Schnaß" class="about-photo">
+
+## Hallo, ich bin Patrick
+
+Ich bin ein Technologe aus Leidenschaft mit Begeisterung für Künstliche Intelligenz, Data Science und lebenslanges Lernen.
+
+Derzeit leite ich die **Data Science Abteilung bei Vodafone**, wo mein Team und ich maschinelles Lernen und KI anwenden, um Lösungen zu entwickeln, die Geschäftswert schaffen und Kundenerlebnisse verbessern.
+
+<div class="about-links">
+
+[LinkedIn](https://www.linkedin.com/in/patrickschnass/) | [GitHub](https://github.com/PatrickPT) | [Datenschutz & Impressum](/gdpr)
+
+</div>
+
+</div>
+</section>

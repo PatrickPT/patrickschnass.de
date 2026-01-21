@@ -279,3 +279,43 @@ html:not(.dark) .progress-dot {
     width: 24px;
     border-radius: 4px;
 }
+
+/* ====== ABOUT SECTION ====== */
+.about-section {
+    text-align: center;
+    max-width: 40rem;
+    padding: 0 1rem;
+}
+
+.about-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.5rem auto;
+    display: block;
+    border: 3px solid rgba(59, 130, 246, 0.5);
+}
+
+.about-section h2 {
+    margin-bottom: 1rem;
+}
+
+.about-section p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.about-links {
+    margin-top: 2rem;
+}
+
+.about-links a {
+    color: rgba(59, 130, 246, 0.9);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.about-links a:hover {
+    text-decoration: underline;
+}

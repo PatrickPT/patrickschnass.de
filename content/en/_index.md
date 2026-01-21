@@ -180,4 +180,22 @@ def sparring_session(executive):
 
 </section>
 
+<section id="about" class="snap-section">
+<div class="about-section">
 
+<img src="/patrick.png" alt="Patrick Schnaß" class="about-photo">
+
+## Hi, I'm Patrick
+
+I'm a technologist at heart with a passion for artificial intelligence, data science, and lifelong learning.
+
+Currently, I lead the **Data Science department at Vodafone**, where my team and I apply machine learning and AI to create solutions that drive business value and enhance customer experiences.
+
+<div class="about-links">
+
+[LinkedIn](https://www.linkedin.com/in/patrickschnass/) | [GitHub](https://github.com/PatrickPT) | [Privacy & Imprint](/gdpr)
+
+</div>
+
+</div>
+</section>

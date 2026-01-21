@@ -6,7 +6,7 @@ theme = "blowfish"
   [languages.de]
     languageCode = "de"
     languageName = "Deutsch"
-    title = "Patrick Schnaß | KI Beratung"
+    title = "Patrick Schnaß"
     weight = 1
     contentDir = "content/de"
 
@@ -38,7 +38,7 @@ theme = "blowfish"
     [[languages.de.menu.main]]
       identifier = "about"
       name = "Über mich"
-      url = "/about"
+      url = "/#about"
       weight = 40
 
     [[languages.de.menu.main]]
@@ -62,7 +62,7 @@ theme = "blowfish"
   [languages.en]
     languageCode = "en"
     languageName = "English"
-    title = "Patrick Schnaß | AI Advisory"
+    title = "Patrick Schnaß"
     weight = 2
     contentDir = "content/en"
 
@@ -94,7 +94,7 @@ theme = "blowfish"
     [[languages.en.menu.main]]
       identifier = "about"
       name = "About"
-      url = "/about"
+      url = "/#about"
       weight = 40
 
     [[languages.en.menu.main]]
