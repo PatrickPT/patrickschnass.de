@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="light"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=53753&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="en">
@@ -28,7 +28,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:53753/posts/latent-diffusion-models/">
+  <link rel="canonical" href="http://localhost:1313/posts/latent-diffusion-models/">
   
 
   
@@ -52,7 +52,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:53753/posts/latent-diffusion-models/">
+  <meta property="og:url" content="http://localhost:1313/posts/latent-diffusion-models/">
   <meta property="og:site_name" content="Patrick Schnaß | AI Advisory">
   <meta property="og:title" content="Latent Diffusion Models: What is all the fuzz about?">
   <meta property="og:description" content="Learn how Latent Diffusion Models work and the mathematical intuition behind them.">
@@ -116,8 +116,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.d79152e057e50292de8f0371f157437579e0f14606a88d665ef27376278151108e638fc2c2b5687fa70cc7ec9f616cfe46422a7dface5955ad0b9c4fcd6589be.css"
-    integrity="sha512-15FS4FflApLejwNx8VdDdXng8UYGqI1mXvJzdieBURCOY4/CwrVof6cMx&#43;yfYWz&#43;RkIqffrOWVWtC5xPzWWJvg==">
+    href="/css/main.bundle.min.1d7dca134831dc4beaa82f2c9fce60e7eba554311f371b5447b195606c5d8b9a47d8a3e38b813e12d89d7025741fcfec0ef7567f3d6735e1914b4def4ec14d04.css"
+    integrity="sha512-HX3KE0gx3EvqqC8sn85g5&#43;ulVDEfNxtUR7GVYGxdi5pH2KPji4E&#43;EtidcCV0H8/sDvdWfz1nNeGRS03vTsFNBA==">
 
   
   
@@ -223,7 +223,7 @@
     "headline": "Latent Diffusion Models: What is all the fuzz about?",
     
     "inLanguage": "en",
-    "url" : "http://localhost:53753/posts/latent-diffusion-models/",
+    "url" : "http://localhost:1313/posts/latent-diffusion-models/",
     "author" : {
       "@type": "Person",
       "name": "Patrick Schnaß"
@@ -237,7 +237,7 @@
     "keywords": ["Math","stable-diffusion","latent-diffusion-models","Notes"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "3481"
+    "wordCount": "3468"
   }]
   </script>
 
@@ -769,7 +769,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2023-01-20T14:50:18&#43;01:00">20 January 2023</time><span class="px-2 text-primary-500">&middot;</span><span>3481 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">17 mins</span>
+      <time datetime="2023-01-20T14:50:18&#43;01:00">20 January 2023</time><span class="px-2 text-primary-500">&middot;</span><span>3468 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">17 mins</span>
     
 
     
@@ -899,11 +899,6 @@
 <h1 class="relative group">TL;DR
     <div id="tldr" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#tldr" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>The following learning notes try to give some intuition on how <a href="https://stability.ai/blog/stable-diffusion-public-release"  target="_blank">Stable Diffusion</a> works, some mathematical intuition on Diffusion Models and an introduction to Latent Diffusion Models.</p>
 <p><strong>The following sources were extensively used during creation of this learning notes. Passages may be reutilized to create a reasonable overview of the topic. Credit goes to the authors of the following papers and posts.</strong></p>
@@ -941,11 +936,6 @@
 <h1 class="relative group">What is this post about:
     <div id="what-is-this-post-about" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#what-is-this-post-about" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>A brand-new category of cutting-edge generative models called diffusion models generate a variety of high-resolution images.
 They have already received a great deal of attention as a result of OpenAI, Nvidia, and Google&rsquo;s success in training massive models.
@@ -953,11 +943,6 @@ We&rsquo;ll take a deeper look into <strong>Denoising Diffusion Probabilistic Mo
 
 <h1 class="relative group">Intuition on Diffusion Models
     <div id="intuition-on-diffusion-models" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#intuition-on-diffusion-models" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>You may ask &ldquo;What is the intuition behind diffusion models?&rdquo;
@@ -974,11 +959,6 @@ Then you may outline the structures you want to paint based on your memory on th
 
 <h1 class="relative group">What are Diffusion Models?
     <div id="what-are-diffusion-models" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#what-are-diffusion-models" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>The idea of diffusion for generative modeling was introduced in (<a href="https://arxiv.org/abs/1503.03585"  target="_blank">Sohl-Dickstein et al., 2015</a>). However, it took until (<a href="https://arxiv.org/abs/1907.05600"  target="_blank">Song et al., 2019</a>) (at Stanford University), and then (<a href="https://arxiv.org/abs/2006.11239"  target="_blank">Ho et al., 2020</a>) (at Google Brain) who independently improved the approach.
@@ -1005,20 +985,10 @@ DDPM  which we are focussing on originally was introduced in a paper by (<a href
 <h1 class="relative group">I want to see the math
     <div id="i-want-to-see-the-math" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#i-want-to-see-the-math" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 
 <h2 class="relative group">Diffusion
     <div id="diffusion" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#diffusion" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <!-- At a high level, Diffusion Models work by first representing the input signal as a set of latent variables, which are then transformed through a series of probabilistic transformations to produce the output signal. The transformation process is designed to smooth out the noise in the input signal and reconstruct a cleaner version of the signal. --> 
@@ -1050,11 +1020,6 @@ DDPM  which we are focussing on originally was introduced in a paper by (<a href
 
 <h2 class="relative group">Forward Diffusion
     <div id="forward-diffusion" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#forward-diffusion" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>Given a data point from a real data distribution $x_0 \sim q(x)$ we define a
@@ -1099,11 +1064,6 @@ $$</p>
 <h2 class="relative group">Reverse Diffusion
     <div id="reverse-diffusion" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#reverse-diffusion" aria-label="Anchor">#</a>
-    </span>
-    
 </h2>
 <p>$q(x_{t-1} \vert x_t)$ which denotes the Reverse Process is intractable since statistical estimates of it require computations involving the entire dataset and therefore we need to learn a model $p_0$ to approximate these conditional probabilities in order to run the reverse diffusion process.</p>
 <p>We need to learn a model $p_0$ to approximate these conditional probabilities</p>
@@ -1129,11 +1089,6 @@ $\Sigma_\theta (x_{t},t)$ as the variance</p>
 
 <h2 class="relative group">Optimization of the Loss Function
     <div id="optimization-of-the-loss-function" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#optimization-of-the-loss-function" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>To derive an objective function to learn the mean of the backward process, the authors observe that the combination of $q$ and $p_\theta$ can be seen as a variational auto-encoder (VAE) <a href="https://arxiv.org/abs/1312.6114"  target="_blank">(Kingma et al., 2013)</a>.</p>
@@ -1226,11 +1181,6 @@ $$</p>
 <h1 class="relative group">Neural Nets
     <div id="neural-nets" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#neural-nets" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>The neural network needs to take in a noised image at a particular time step and return the predicted noise. Note that the predicted noise is a tensor that has the same size/resolution as the input image. So technically, the network takes in and outputs tensors of the same shape. What type of neural network can we use for this?</p>
 <p>What is typically used here is very similar to that of an Autoencoder, which you may remember from typical &ldquo;intro to deep learning&rdquo; tutorials. Autoencoders have a so-called &ldquo;bottleneck&rdquo; layer in between the encoder and decoder. The encoder first encodes an image into a smaller hidden representation called the &ldquo;bottleneck&rdquo;, and the decoder then decodes that hidden representation back into an actual image. This forces the network to only keep the most important information in the bottleneck layer.</p>
@@ -1247,11 +1197,6 @@ $$</p>
 
 <h1 class="relative group">The math on Latent Diffusion
     <div id="the-math-on-latent-diffusion" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-math-on-latent-diffusion" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>It is very slow to generate a sample from DDPM by following the Markov chain of the reverse diffusion process, as
@@ -1300,11 +1245,6 @@ $$</p>
 <h1 class="relative group">And what is the result?
     <div id="and-what-is-the-result" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#and-what-is-the-result" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p><figure><img
     class="my-0 rounded-md"
@@ -1329,11 +1269,6 @@ $$</p>
 
 <h1 class="relative group">Ressources
     <div id="ressources" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ressources" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p><a href="https://huggingface.co/blog/annotated-diffusion"  target="_blank">The Annotated Diffusion Model</a></p>

@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="light"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=53753&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="en">
@@ -28,7 +28,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:53753/posts/transformers/">
+  <link rel="canonical" href="http://localhost:1313/posts/transformers/">
   
 
   
@@ -52,7 +52,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:53753/posts/transformers/">
+  <meta property="og:url" content="http://localhost:1313/posts/transformers/">
   <meta property="og:site_name" content="Patrick Schnaß | AI Advisory">
   <meta property="og:title" content="Attention is all you need?">
   <meta property="og:description" content="Explore the Transformer Architecture.">
@@ -114,8 +114,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.d79152e057e50292de8f0371f157437579e0f14606a88d665ef27376278151108e638fc2c2b5687fa70cc7ec9f616cfe46422a7dface5955ad0b9c4fcd6589be.css"
-    integrity="sha512-15FS4FflApLejwNx8VdDdXng8UYGqI1mXvJzdieBURCOY4/CwrVof6cMx&#43;yfYWz&#43;RkIqffrOWVWtC5xPzWWJvg==">
+    href="/css/main.bundle.min.1d7dca134831dc4beaa82f2c9fce60e7eba554311f371b5447b195606c5d8b9a47d8a3e38b813e12d89d7025741fcfec0ef7567f3d6735e1914b4def4ec14d04.css"
+    integrity="sha512-HX3KE0gx3EvqqC8sn85g5&#43;ulVDEfNxtUR7GVYGxdi5pH2KPji4E&#43;EtidcCV0H8/sDvdWfz1nNeGRS03vTsFNBA==">
 
   
   
@@ -221,7 +221,7 @@
     "headline": "Attention is all you need?",
     
     "inLanguage": "en",
-    "url" : "http://localhost:53753/posts/transformers/",
+    "url" : "http://localhost:1313/posts/transformers/",
     "author" : {
       "@type": "Person",
       "name": "Patrick Schnaß"
@@ -235,7 +235,7 @@
     "keywords": ["Transformers","Foundations"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "817"
+    "wordCount": "806"
   }]
   </script>
 
@@ -767,7 +767,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2023-08-30T11:50:57&#43;00:00">30 August 2023</time><span class="px-2 text-primary-500">&middot;</span><span>817 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
+      <time datetime="2023-08-30T11:50:57&#43;00:00">30 August 2023</time><span class="px-2 text-primary-500">&middot;</span><span>806 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
     
 
     
@@ -897,11 +897,6 @@
 <h1 class="relative group">Transformers: A Deep Dive into the Transformer Architecture
     <div id="transformers-a-deep-dive-into-the-transformer-architecture" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#transformers-a-deep-dive-into-the-transformer-architecture" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>Transformers are a revolutionary type of neural network architecture introduced in the seminal paper <a href="https://arxiv.org/abs/1706.03762"  target="_blank"><em>Attention is All You Need</em></a> by Vaswani et al. (2017). They have dramatically advanced the field of Natural Language Processing (NLP) and beyond, powering tasks like language translation, text summarization, and even applications in computer vision.</p>
 <p><figure><img
@@ -919,11 +914,6 @@
 <h2 class="relative group">Introduction
     <div id="introduction" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#introduction" aria-label="Anchor">#</a>
-    </span>
-    
 </h2>
 <p>Before the advent of Transformers, sequence-to-sequence tasks were predominantly handled by Recurrent Neural Networks (RNNs) and their variants (LSTMs and GRUs). While effective in many scenarios, RNNs process input tokens sequentially and struggle with long-range dependencies. Transformers overcome these limitations through the use of attention mechanisms that allow for parallel processing and a more flexible handling of context.</p>
 <hr>
@@ -931,20 +921,10 @@
 <h2 class="relative group">Key Components of the Transformer
     <div id="key-components-of-the-transformer" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#key-components-of-the-transformer" aria-label="Anchor">#</a>
-    </span>
-    
 </h2>
 
 <h3 class="relative group">1. Self-Attention Mechanism
     <div id="1-self-attention-mechanism" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#1-self-attention-mechanism" aria-label="Anchor">#</a>
-    </span>
     
 </h3>
 <p>At the core of the Transformer architecture lies the <strong>self-attention mechanism</strong>. This mechanism allows each token in the input to dynamically focus on other tokens, thereby capturing contextual relationships regardless of their distance in the sequence.</p>
@@ -962,11 +942,6 @@
 <h3 class="relative group">2. Multi-Head Attention
     <div id="2-multi-head-attention" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#2-multi-head-attention" aria-label="Anchor">#</a>
-    </span>
-    
 </h3>
 <p>Rather than applying a single attention operation, Transformers use <strong>multi-head attention</strong>. This technique involves splitting the embeddings into several subspaces, applying self-attention in parallel, and then concatenating the results. Each &ldquo;head&rdquo; can capture different aspects of the relationships between tokens.</p>
 <p><figure><img
@@ -983,11 +958,6 @@
 <h3 class="relative group">3. Positional Encoding
     <div id="3-positional-encoding" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#3-positional-encoding" aria-label="Anchor">#</a>
-    </span>
-    
 </h3>
 <p>Because Transformers process input sequences in parallel, they lack an inherent sense of token order. <strong>Positional encodings</strong> are added to the input embeddings to inject sequence information. A common method is to use sine and cosine functions at different frequencies:</p>
 <p>[
@@ -1000,11 +970,6 @@ PE_{(pos, 2i+1)} = \cos!\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
 
 <h3 class="relative group">4. Encoder-Decoder Structure
     <div id="4-encoder-decoder-structure" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#4-encoder-decoder-structure" aria-label="Anchor">#</a>
-    </span>
     
 </h3>
 <p>The original Transformer architecture is divided into two main parts:</p>
@@ -1031,20 +996,10 @@ PE_{(pos, 2i+1)} = \cos!\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
 <h2 class="relative group">Mathematical Background and Implementation Details
     <div id="mathematical-background-and-implementation-details" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mathematical-background-and-implementation-details" aria-label="Anchor">#</a>
-    </span>
-    
 </h2>
 
 <h3 class="relative group">Mathematical Insights
     <div id="mathematical-insights" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mathematical-insights" aria-label="Anchor">#</a>
-    </span>
     
 </h3>
 <p>The mathematical formulations underpinning Transformers are central to their effectiveness:</p>
@@ -1055,11 +1010,6 @@ PE_{(pos, 2i+1)} = \cos!\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
 
 <h3 class="relative group">Practical Implementation
     <div id="practical-implementation" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#practical-implementation" aria-label="Anchor">#</a>
-    </span>
     
 </h3>
 <p>Building a Transformer involves several key steps:</p>
@@ -1097,11 +1047,6 @@ PE_{(pos, 2i+1)} = \cos!\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
 
 <h2 class="relative group">Conclusion
     <div id="conclusion" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#conclusion" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>Transformers have fundamentally transformed the landscape of machine learning by introducing a mechanism that can effectively capture long-range dependencies while enabling parallel computation. Their versatility and performance have not only pushed the boundaries in NLP but are also inspiring innovations in other fields like computer vision and reinforcement learning.</p>

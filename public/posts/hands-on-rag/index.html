@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="light"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=53753&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="en">
@@ -28,7 +28,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:53753/posts/hands-on-rag/">
+  <link rel="canonical" href="http://localhost:1313/posts/hands-on-rag/">
   
 
   
@@ -52,7 +52,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:53753/posts/hands-on-rag/">
+  <meta property="og:url" content="http://localhost:1313/posts/hands-on-rag/">
   <meta property="og:site_name" content="Patrick Schnaß | AI Advisory">
   <meta property="og:title" content="Hands on with Retrieval Augmented Generation">
   <meta property="og:description" content="Build a Chatbot that uses Retrieval Augmented Generation to retrieve domain specific knowledge.">
@@ -65,12 +65,12 @@
     <meta property="article:tag" content="AI Design">
     <meta property="article:tag" content="LLM">
     <meta property="article:tag" content="GenAI">
-    <meta property="og:image" content="http://localhost:53753/posts/2023_09_29_Retrieval_Augmented_Generation/images/rag-with-llamaindex.jpeg">
-    <meta property="og:image" content="http://localhost:53753/posts/2023_09_29_Retrieval_Augmented_Generation/images/rag_high_level.jpg">
+    <meta property="og:image" content="http://localhost:1313/posts/2023_09_29_Retrieval_Augmented_Generation/images/rag-with-llamaindex.jpeg">
+    <meta property="og:image" content="http://localhost:1313/posts/2023_09_29_Retrieval_Augmented_Generation/images/rag_high_level.jpg">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:53753/posts/2023_09_29_Retrieval_Augmented_Generation/images/rag-with-llamaindex.jpeg">
+  <meta name="twitter:image" content="http://localhost:1313/posts/2023_09_29_Retrieval_Augmented_Generation/images/rag-with-llamaindex.jpeg">
   <meta name="twitter:title" content="Hands on with Retrieval Augmented Generation">
   <meta name="twitter:description" content="Build a Chatbot that uses Retrieval Augmented Generation to retrieve domain specific knowledge.">
 
@@ -119,8 +119,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.d79152e057e50292de8f0371f157437579e0f14606a88d665ef27376278151108e638fc2c2b5687fa70cc7ec9f616cfe46422a7dface5955ad0b9c4fcd6589be.css"
-    integrity="sha512-15FS4FflApLejwNx8VdDdXng8UYGqI1mXvJzdieBURCOY4/CwrVof6cMx&#43;yfYWz&#43;RkIqffrOWVWtC5xPzWWJvg==">
+    href="/css/main.bundle.min.1d7dca134831dc4beaa82f2c9fce60e7eba554311f371b5447b195606c5d8b9a47d8a3e38b813e12d89d7025741fcfec0ef7567f3d6735e1914b4def4ec14d04.css"
+    integrity="sha512-HX3KE0gx3EvqqC8sn85g5&#43;ulVDEfNxtUR7GVYGxdi5pH2KPji4E&#43;EtidcCV0H8/sDvdWfz1nNeGRS03vTsFNBA==">
 
   
   
@@ -226,7 +226,7 @@
     "headline": "Hands on with Retrieval Augmented Generation",
     
     "inLanguage": "en",
-    "url" : "http://localhost:53753/posts/hands-on-rag/",
+    "url" : "http://localhost:1313/posts/hands-on-rag/",
     "author" : {
       "@type": "Person",
       "name": "Patrick Schnaß"
@@ -240,7 +240,7 @@
     "keywords": ["Hands On","AI Design","LLM","GenAI"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "979"
+    "wordCount": "978"
   }]
   </script>
 
@@ -772,7 +772,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2023-10-07T10:30:00&#43;00:00">7 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>979 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+      <time datetime="2023-10-07T10:30:00&#43;00:00">7 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>978 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
     
 
     
@@ -902,21 +902,11 @@
 <h1 class="relative group">TL;DR
     <div id="tldr" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#tldr" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>This blogpost shows an example for a Chatbot that uses Retrieval Augmented Generation to retrieve domain specific knowledge before querying a Large Language Model</p>
 
 <h1 class="relative group">Hands on with Retrieval Augmented Generation
     <div id="hands-on-with-retrieval-augmented-generation" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#hands-on-with-retrieval-augmented-generation" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>For a primer on Retrieval Augmented Generation please read my other post <a href="/posts/rag_intro" >What is Retrieval Augmented Generation?</a>.</p>
@@ -925,21 +915,11 @@
 <h1 class="relative group">Prerequisites
     <div id="prerequisites" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#prerequisites" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>All the code mentioned here can be found on <a href="https://github.com/PatrickPT/RAG_LLM_example"  target="_blank">github</a>. The code can be run in a Docker container(even on a Raspberry Pi if you like). You need to add contextual data which you want to query and also use an API Key from OpenAI.</p>
 
 <h1 class="relative group">Dependencies
     <div id="dependencies" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#dependencies" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>The complete python code is containerized with docker and can be run via docker compose.
@@ -953,11 +933,6 @@ It uses the following main dependencies:</p>
 
 <h1 class="relative group">Overview
     <div id="overview" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#overview" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>The <strong>Knowledge Bot</strong> is a web-based chatbot that provides information and answers questions related to any data which is given as context based on Retrieval Augmented Generation Architecture. It utilizes the <code>llama_index</code> library for data indexing and OpenAI&rsquo;s GPT-3.5-Turbo model for generating responses.</p>
@@ -976,11 +951,6 @@ It uses the following main dependencies:</p>
 <h1 class="relative group">Features
     <div id="features" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#features" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <ul>
 <li>Ask questions related to your indexed documents.</li>
@@ -991,29 +961,49 @@ It uses the following main dependencies:</p>
 <h1 class="relative group">Setup
     <div id="setup" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#setup" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>To run the Knowledge Bot locally with docker, follow these steps:</p>
 <ol>
 <li>
 <p>Clone this repository to your local machine:</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/PatrickPT/RAG_LLM_example.git</span></span></code></pre></div></div>
+<div class="highlight-wrapper"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/PatrickPT/RAG_LLM_example.git</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
 </li>
 <li>
 <p>Create your OpenAI Key</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd RAG_LLM_example
-</span></span><span style="display:flex;"><span>cd .streamlit
-</span></span><span style="display:flex;"><span>nano .streamlit/secrets.toml
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Insert your API Key as openai_key = &#34;API Key&#34; and save</span></span></span></code></pre></div></div>
+<div class="highlight-wrapper"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> RAG_LLM_example
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> .streamlit
+</span></span><span class="line"><span class="cl">nano .streamlit/secrets.toml
+</span></span><span class="line"><span class="cl"><span class="c1"># Insert your API Key as openai_key = &#34;API Key&#34; and save</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div>
 </li>
 <li>
 <p>Create your documents or change the input_dir parameter in config.yaml to your folder(which needs to be accessible from the docker container)</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd data
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Insert the contextual documents the LLM should use in that folder</span></span></span></code></pre></div></div>
+<div class="highlight-wrapper"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> data
+</span></span><span class="line"><span class="cl"><span class="c1"># Insert the contextual documents the LLM should use in that folder</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div>
 </li>
 <li>
 <p>Change the <code>config.yaml</code> file accordingly to your prior changes</p>
@@ -1028,18 +1018,20 @@ It uses the following main dependencies:</p>
 </li>
 <li>
 <p>Run docker compose</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose up -d</span></span></code></pre></div></div>
+<div class="highlight-wrapper"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
 </li>
 </ol>
 <p>PS: content in <code>/.streamlit</code> and <code>/data</code> is ignored by git.</p>
 
 <h1 class="relative group">Code
     <div id="code" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#code" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>This small project is a Streamlit-based web application that serves as a chatbot powered by the &ldquo;llama_index&rdquo; package and OpenAI&rsquo;s GPT-3.5-Turbo model. It allows users to ask questions related to all documents which are stored in <code>/data</code> and provides informative responses.</p>
@@ -1129,11 +1121,6 @@ if st.session_state.messages[-1][&quot;role&quot;] != &quot;assistant&quot;:
 
 <h1 class="relative group">Resources
     <div id="resources" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#resources" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p><a href="https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/"  target="_blank">Build a chatbot with custom data sources, powered by LlamaIndex</a></p>

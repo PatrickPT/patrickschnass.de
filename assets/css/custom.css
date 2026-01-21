@@ -115,3 +115,167 @@ html:has(.snap-section) article>header {
         padding-right: 3rem;
     }
 }
+
+/* ====== TABBED CAROUSEL FOR SERVICES ====== */
+.services-carousel {
+    width: 100%;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+/* Tab buttons container */
+.carousel-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.carousel-tab {
+    padding: 0.75rem 1.25rem;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+html:not(.dark) .carousel-tab {
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.carousel-tab:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+html:not(.dark) .carousel-tab:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: black;
+}
+
+.carousel-tab.is-active {
+    background: rgba(59, 130, 246, 0.8);
+    color: white;
+}
+
+html:not(.dark) .carousel-tab.is-active {
+    background: rgba(59, 130, 246, 0.9);
+    color: white;
+}
+
+/* Carousel panels container */
+.carousel-panels {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-panel {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.carousel-panel.is-active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Code blocks on landing page (all snap-sections) */
+.snap-section pre {
+    margin: 0 !important;
+    border-radius: 0.75rem;
+    text-align: left;
+    font-size: 0.85rem !important;
+    padding: 1rem 1.5rem 1rem 0.5rem;
+}
+
+.snap-section .highlight {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: inline-block;
+    min-width: auto;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Show line numbers with padding */
+.snap-section .lntd:first-child {
+    padding-right: 1rem;
+    padding-left: 0.5rem;
+    user-select: none;
+    opacity: 0.5;
+}
+
+.snap-section .lntable {
+    width: auto;
+}
+
+/* Remove ALL underlines from code blocks */
+.highlight,
+.highlight *,
+.carousel-panel .highlight *,
+pre,
+pre *,
+code,
+code *,
+.chroma,
+.chroma *,
+.lntable,
+.lntable *,
+.lntd,
+.lntd *,
+.lnt,
+.lnt *,
+.ln,
+.ln *,
+.cl,
+.cl *,
+.line,
+.line * {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/* Progress bar */
+.carousel-progress {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+html:not(.dark) .progress-dot {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.progress-dot.is-active {
+    background: rgba(59, 130, 246, 0.8);
+    width: 24px;
+    border-radius: 4px;
+}

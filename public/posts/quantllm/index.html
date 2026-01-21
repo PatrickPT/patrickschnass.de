@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="light"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=53753&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="en">
@@ -28,7 +28,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:53753/posts/quantllm/">
+  <link rel="canonical" href="http://localhost:1313/posts/quantllm/">
   
 
   
@@ -52,7 +52,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:53753/posts/quantllm/">
+  <meta property="og:url" content="http://localhost:1313/posts/quantllm/">
   <meta property="og:site_name" content="Patrick Schnaß | AI Advisory">
   <meta property="og:title" content="LLM Quantization in a nutshell">
   <meta property="og:description" content="An exploration of LLM quantization methods.">
@@ -114,8 +114,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.d79152e057e50292de8f0371f157437579e0f14606a88d665ef27376278151108e638fc2c2b5687fa70cc7ec9f616cfe46422a7dface5955ad0b9c4fcd6589be.css"
-    integrity="sha512-15FS4FflApLejwNx8VdDdXng8UYGqI1mXvJzdieBURCOY4/CwrVof6cMx&#43;yfYWz&#43;RkIqffrOWVWtC5xPzWWJvg==">
+    href="/css/main.bundle.min.1d7dca134831dc4beaa82f2c9fce60e7eba554311f371b5447b195606c5d8b9a47d8a3e38b813e12d89d7025741fcfec0ef7567f3d6735e1914b4def4ec14d04.css"
+    integrity="sha512-HX3KE0gx3EvqqC8sn85g5&#43;ulVDEfNxtUR7GVYGxdi5pH2KPji4E&#43;EtidcCV0H8/sDvdWfz1nNeGRS03vTsFNBA==">
 
   
   
@@ -221,7 +221,7 @@
     "headline": "LLM Quantization in a nutshell",
     
     "inLanguage": "en",
-    "url" : "http://localhost:53753/posts/quantllm/",
+    "url" : "http://localhost:1313/posts/quantllm/",
     "author" : {
       "@type": "Person",
       "name": "Patrick Schnaß"
@@ -235,7 +235,7 @@
     "keywords": ["LLM","GenAI"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "896"
+    "wordCount": "879"
   }]
   </script>
 
@@ -767,7 +767,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2024-01-28T09:30:57&#43;00:00">28 January 2024</time><span class="px-2 text-primary-500">&middot;</span><span>896 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+      <time datetime="2024-01-28T09:30:57&#43;00:00">28 January 2024</time><span class="px-2 text-primary-500">&middot;</span><span>879 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
     
 
     
@@ -897,22 +897,12 @@
 <h1 class="relative group">LLM Quantization in a Nutshell: A Detailed Exploration
     <div id="llm-quantization-in-a-nutshell-a-detailed-exploration" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#llm-quantization-in-a-nutshell-a-detailed-exploration" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>Quantization is a critical technique to reduce the precision of large language models (LLMs), making them lighter and more efficient without a significant loss in performance. This post delves into the nuts and bolts of quantization, explains the underlying math, and examines practical aspects using tools like llama.cpp.</p>
 <hr>
 
 <h2 class="relative group">TL;DR
     <div id="tldr" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#tldr" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>LLM quantization reduces the numerical precision of model parameters to decrease memory usage and improve inference speed. Whether applying post-training quantization or quantization-aware training, the goal is to strike an optimal balance between model efficiency and accuracy. Tools like llama.cpp make deploying quantized LLMs on commodity hardware increasingly accessible.</p>
@@ -921,20 +911,10 @@
 <h2 class="relative group">Introduction to Quantization
     <div id="introduction-to-quantization" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#introduction-to-quantization" aria-label="Anchor">#</a>
-    </span>
-    
 </h2>
 
 <h3 class="relative group">The Technical Foundation of LLM Quantization
     <div id="the-technical-foundation-of-llm-quantization" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-technical-foundation-of-llm-quantization" aria-label="Anchor">#</a>
-    </span>
     
 </h3>
 <p>Quantization, in the machine learning context, means mapping a continuous range of values (usually 32-bit floating points) to a discrete set (such as 8-bit integers). This conversion is similar to reducing the bit depth of an image or audio file: fewer bits mean less data to store and process, which is essential when working with LLMs that can contain billions of parameters.</p>
@@ -952,11 +932,6 @@
 
 <h3 class="relative group">Understanding Quantization
     <div id="understanding-quantization" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#understanding-quantization" aria-label="Anchor">#</a>
-    </span>
     
 </h3>
 <p>Quantization relies on two fundamental operations:</p>
@@ -983,11 +958,6 @@ w \approx s \times q
 <h3 class="relative group">Post-Training Quantization
     <div id="post-training-quantization" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#post-training-quantization" aria-label="Anchor">#</a>
-    </span>
-    
 </h3>
 <p>Post-training quantization (PTQ) is the process of converting a fully trained model&rsquo;s weights to a lower precision after training is complete. PTQ is attractive for its simplicity and speed. However, since the weights are not optimized for low precision during training, a slight degradation in model performance may occur.</p>
 <hr>
@@ -995,22 +965,12 @@ w \approx s \times q
 <h3 class="relative group">Quantization-Aware Training
     <div id="quantization-aware-training" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#quantization-aware-training" aria-label="Anchor">#</a>
-    </span>
-    
 </h3>
 <p>Quantization-aware training (QAT) integrates the quantization process into the training phase. By simulating low-precision arithmetic during training, the model learns to adjust its weights to mitigate precision loss. This approach generally yields better performance than PTQ, especially when using very low bit-widths.</p>
 <hr>
 
 <h3 class="relative group">Optimization Techniques in Quantization
     <div id="optimization-techniques-in-quantization" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#optimization-techniques-in-quantization" aria-label="Anchor">#</a>
-    </span>
     
 </h3>
 <p>Once a model is quantized, further optimizations become possible. Choosing the appropriate bit-width is crucial—too few bits and you risk significant accuracy loss; too many and the efficiency gains are marginal. Techniques such as dynamic scaling, careful calibration, and even layer-wise mixed precision are employed to fine-tune performance.</p>
@@ -1025,20 +985,10 @@ q = \text{clip}\left(\text{round}\left(\frac{w}{s}\right) + z,, q_{\text{min}},,
 <h2 class="relative group">A Technical Examination
     <div id="a-technical-examination" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#a-technical-examination" aria-label="Anchor">#</a>
-    </span>
-    
 </h2>
 
 <h3 class="relative group">Diving Deeper into llama.cpp
     <div id="diving-deeper-into-llamacpp" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#diving-deeper-into-llamacpp" aria-label="Anchor">#</a>
-    </span>
     
 </h3>
 <p>llama.cpp is a C++ library designed for running quantized LLaMA models efficiently on CPUs. Its primary goal is to facilitate inference with low-precision models by taking advantage of integer arithmetic. The library’s lightweight design makes it particularly useful for deploying large models on less powerful hardware.</p>
@@ -1046,11 +996,6 @@ q = \text{clip}\left(\text{round}\left(\frac{w}{s}\right) + z,, q_{\text{min}},,
 
 <h3 class="relative group">Quantization in llama.cpp
     <div id="quantization-in-llamacpp" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#quantization-in-llamacpp" aria-label="Anchor">#</a>
-    </span>
     
 </h3>
 <p>Using llama.cpp involves several key steps:</p>
@@ -1068,11 +1013,6 @@ Load the quantized model and perform inference efficiently using the optimized C
 <h3 class="relative group">Storing Quantized Models: GGML &amp; GGUF
     <div id="storing-quantized-models-ggml--gguf" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#storing-quantized-models-ggml--gguf" aria-label="Anchor">#</a>
-    </span>
-    
 </h3>
 <p>Quantized models are typically stored in binary formats such as GGML or its successor, GGUF.</p>
 <ul>
@@ -1084,11 +1024,6 @@ Load the quantized model and perform inference efficiently using the optimized C
 <h3 class="relative group">Where to Find Models
     <div id="where-to-find-models" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#where-to-find-models" aria-label="Anchor">#</a>
-    </span>
-    
 </h3>
 <p>For those looking to experiment with quantized LLMs, the Hugging Face Hub offers a range of pre-quantized models. These models are available in various configurations, allowing users to select a balance between efficiency and accuracy based on their specific use case.</p>
 <hr>
@@ -1096,20 +1031,10 @@ Load the quantized model and perform inference efficiently using the optimized C
 <h2 class="relative group">Conclusion
     <div id="conclusion" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#conclusion" aria-label="Anchor">#</a>
-    </span>
-    
 </h2>
 
 <h3 class="relative group">Advantages of Quantization
     <div id="advantages-of-quantization" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#advantages-of-quantization" aria-label="Anchor">#</a>
-    </span>
     
 </h3>
 <p>Quantization reduces the memory footprint and computational requirements of LLMs. This is especially beneficial when deploying models on edge devices or in environments with limited resources. Additional benefits include:</p>
@@ -1122,11 +1047,6 @@ Load the quantized model and perform inference efficiently using the optimized C
 <h3 class="relative group">Challenges and Considerations
     <div id="challenges-and-considerations" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#challenges-and-considerations" aria-label="Anchor">#</a>
-    </span>
-    
 </h3>
 <p>While quantization offers compelling benefits, it is not without challenges:</p>
 <ul>
@@ -1137,11 +1057,6 @@ Load the quantized model and perform inference efficiently using the optimized C
 
 <h3 class="relative group">Practical Expertise in Quantized LLMs
     <div id="practical-expertise-in-quantized-llms" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#practical-expertise-in-quantized-llms" aria-label="Anchor">#</a>
-    </span>
     
 </h3>
 <p>Mastering quantization involves balancing theory and practice. As techniques evolve, tools like llama.cpp continue to push the boundaries of what is possible, making it easier to deploy efficient LLMs in production environments.</p>

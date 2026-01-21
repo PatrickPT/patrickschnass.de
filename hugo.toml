@@ -142,9 +142,18 @@ theme = "blowfish"
     background = "graph"
     enableVisualTests = true
 
+  [params.article]
+    showHeadingAnchors = false
+
   [params.footer]
     showScrollToTop = true
     showThemeAttribution = false
 
 [markup.goldmark.renderer]
   unsafe = true
+
+[markup.highlight]
+  style = "catppuccin-macchiato"
+  lineNos = true
+  lineNumbersInTable = true
+  noClasses = false

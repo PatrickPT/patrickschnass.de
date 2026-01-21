@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="light"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=53753&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="en">
@@ -28,7 +28,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:53753/posts/generalvsspecializedmodels/">
+  <link rel="canonical" href="http://localhost:1313/posts/generalvsspecializedmodels/">
   
 
   
@@ -52,7 +52,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:53753/posts/generalvsspecializedmodels/">
+  <meta property="og:url" content="http://localhost:1313/posts/generalvsspecializedmodels/">
   <meta property="og:site_name" content="Patrick Schnaß | AI Advisory">
   <meta property="og:title" content="Generalized Models vs Specialized Models">
   <meta property="og:description" content="Intuition and hints for deciding between one generalized and multiple specialized models.">
@@ -115,8 +115,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.d79152e057e50292de8f0371f157437579e0f14606a88d665ef27376278151108e638fc2c2b5687fa70cc7ec9f616cfe46422a7dface5955ad0b9c4fcd6589be.css"
-    integrity="sha512-15FS4FflApLejwNx8VdDdXng8UYGqI1mXvJzdieBURCOY4/CwrVof6cMx&#43;yfYWz&#43;RkIqffrOWVWtC5xPzWWJvg==">
+    href="/css/main.bundle.min.1d7dca134831dc4beaa82f2c9fce60e7eba554311f371b5447b195606c5d8b9a47d8a3e38b813e12d89d7025741fcfec0ef7567f3d6735e1914b4def4ec14d04.css"
+    integrity="sha512-HX3KE0gx3EvqqC8sn85g5&#43;ulVDEfNxtUR7GVYGxdi5pH2KPji4E&#43;EtidcCV0H8/sDvdWfz1nNeGRS03vTsFNBA==">
 
   
   
@@ -222,7 +222,7 @@
     "headline": "Generalized Models vs Specialized Models",
     
     "inLanguage": "en",
-    "url" : "http://localhost:53753/posts/generalvsspecializedmodels/",
+    "url" : "http://localhost:1313/posts/generalvsspecializedmodels/",
     "author" : {
       "@type": "Person",
       "name": "Patrick Schnaß"
@@ -236,7 +236,7 @@
     "keywords": ["Model Architecture","ML Design","Intuition"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1431"
+    "wordCount": "1421"
   }]
   </script>
 
@@ -768,7 +768,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2023-09-05T11:50:57&#43;00:00">5 September 2023</time><span class="px-2 text-primary-500">&middot;</span><span>1431 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
+      <time datetime="2023-09-05T11:50:57&#43;00:00">5 September 2023</time><span class="px-2 text-primary-500">&middot;</span><span>1421 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
     
 
     
@@ -898,22 +898,12 @@
 <h1 class="relative group">TL;DR
     <div id="tldr" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#tldr" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>This blogpost focusses on ML Design and Architecture and tries to give some intuition and hints for deciding between one generalized and multiple specialized models for the same business requriement and dataset.</p>
 <p><em>Consider it a nudge to dive deeper into the topic</em></p>
 
 <h1 class="relative group">Why should i care?
     <div id="why-should-i-care" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#why-should-i-care" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>Transparency in machine learning is crucial for business stakeholders because it fosters trust and informed decision-making. Business Stakeholders need to understand not only the potential benefits but also the limitations and risks associated with machine learning models.</p>
@@ -924,11 +914,6 @@
 <h1 class="relative group">UseCase
     <div id="usecase" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#usecase" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>We are focussing on a &ldquo;Bread and Butter&rdquo; Binary Classification Model for Churn in the Telecommunications sector and try to make a comparison between the two approaches.</p>
 <p>&ldquo;Churn&rdquo; refers to the phenomenon where customers switch from one telecommunications service provider to another or discontinue their subscription altogether. It is a significant metric and concern for telecommunications companies because retaining existing customers is often more cost-effective than acquiring new ones.</p>
@@ -936,11 +921,6 @@
 
 <h1 class="relative group">General Models vs Specialized Models
     <div id="general-models-vs-specialized-models" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#general-models-vs-specialized-models" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>Suppose we have a dataset which consist of a matrix of predictors (called <em>X</em>) and a target variable (called <em>y</em>). <em>X</em> contains <em>n</em> columns(features) that could be used to segment the dataset. E.g. a dataset can be segmented by age, product, sales channel, network experience&hellip;</p>
@@ -952,11 +932,6 @@
 </blockquote>
 <h1 class="relative group">Intuition
     <div id="intuition" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#intuition" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>Using specialized models has obviously some practical disadvantages as you need to do some tasks <em>k</em> times which leads to</p>
@@ -971,11 +946,6 @@
 
 <h1 class="relative group">The type of model counts
     <div id="the-type-of-model-counts" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-type-of-model-counts" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>Linear regression assumes that there is a linear relationship between the independent variable(s) <em>X</em> and the dependent variable <em>y</em>. This means that the relationship can be approximated by a straight line. While it assumes linearity, it can be extended to capture more complex relationships by introducing higher-order terms or using more advanced regression techniques like polynomial regression or multiple linear regression when dealing with multiple independent variables.
@@ -1013,11 +983,6 @@ Other adavantages are:</p>
 <h1 class="relative group">And what about the data
     <div id="and-what-about-the-data" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#and-what-about-the-data" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>When looking at the data and keeping in mind the capabilities of non-linear models we should always prefer general model over specialized models when there is some similarity across the segments composing the dataset.</p>
 <p>As the segments diverge further from one another, the benefits of employing a universal model diminish progressively.
@@ -1028,11 +993,6 @@ If the segments are entirely dissimilar, the disparity between the two approache
 <h1 class="relative group">I want proof
     <div id="i-want-proof" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#i-want-proof" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>The former thoughts are based on two very nice blogposts by Samuele Mazzanti which are also referenced below.</p>
 <p>He did the math and calculated based on two experiments whether a general model outperforms specialized models.</p>
@@ -1040,11 +1000,6 @@ If the segments are entirely dissimilar, the disparity between the two approache
 
 <h1 class="relative group">Conclusion
     <div id="conclusion" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#conclusion" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>Whether a generalized model or specialized models are better for the same dataset depends on various factors, including the nature of the data, the used algorithm, the specific problem you&rsquo;re trying to solve, and your objectives.</p>
@@ -1091,11 +1046,6 @@ If the segments are entirely dissimilar, the disparity between the two approache
 
 <h1 class="relative group">Ressources
     <div id="ressources" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ressources" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p><a href="https://towardsdatascience.com/what-is-better-one-general-model-or-many-specialized-models-9500d9f8751d"  target="_blank">Samuele Mazzanti: What Is Better: One General Model or Many Specialized Models?</a></p>

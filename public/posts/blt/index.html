@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="light"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=53753&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="en">
@@ -28,7 +28,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:53753/posts/blt/">
+  <link rel="canonical" href="http://localhost:1313/posts/blt/">
   
 
   
@@ -52,7 +52,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:53753/posts/blt/">
+  <meta property="og:url" content="http://localhost:1313/posts/blt/">
   <meta property="og:site_name" content="Patrick Schnaß | AI Advisory">
   <meta property="og:title" content="A view on BLT">
   <meta property="og:description" content="Byte Latent Transformer (BLT), a tokenizer-free architecture for NLP.">
@@ -115,8 +115,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.d79152e057e50292de8f0371f157437579e0f14606a88d665ef27376278151108e638fc2c2b5687fa70cc7ec9f616cfe46422a7dface5955ad0b9c4fcd6589be.css"
-    integrity="sha512-15FS4FflApLejwNx8VdDdXng8UYGqI1mXvJzdieBURCOY4/CwrVof6cMx&#43;yfYWz&#43;RkIqffrOWVWtC5xPzWWJvg==">
+    href="/css/main.bundle.min.1d7dca134831dc4beaa82f2c9fce60e7eba554311f371b5447b195606c5d8b9a47d8a3e38b813e12d89d7025741fcfec0ef7567f3d6735e1914b4def4ec14d04.css"
+    integrity="sha512-HX3KE0gx3EvqqC8sn85g5&#43;ulVDEfNxtUR7GVYGxdi5pH2KPji4E&#43;EtidcCV0H8/sDvdWfz1nNeGRS03vTsFNBA==">
 
   
   
@@ -222,7 +222,7 @@
     "headline": "A view on BLT",
     
     "inLanguage": "en",
-    "url" : "http://localhost:53753/posts/blt/",
+    "url" : "http://localhost:1313/posts/blt/",
     "author" : {
       "@type": "Person",
       "name": "Patrick Schnaß"
@@ -236,7 +236,7 @@
     "keywords": ["LLM","GenAI","Architecture"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "944"
+    "wordCount": "927"
   }]
   </script>
 
@@ -768,7 +768,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2025-01-02T09:30:57&#43;00:00">2 January 2025</time><span class="px-2 text-primary-500">&middot;</span><span>944 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+      <time datetime="2025-01-02T09:30:57&#43;00:00">2 January 2025</time><span class="px-2 text-primary-500">&middot;</span><span>927 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
     
 
     
@@ -898,22 +898,12 @@
 <h1 class="relative group">TL;DR
     <div id="tldr" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#tldr" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>This blog post explains the Byte Latent Transformer (BLT), a tokenizer-free architecture for NLP tasks. BLT processes raw byte data dynamically, making it a scalable, efficient, and robust alternative to traditional token-based models.</p>
 <hr>
 
 <h1 class="relative group">Why Should I Care?
     <div id="why-should-i-care" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#why-should-i-care" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>Traditional LLMs rely on tokenization—a preprocessing step that compresses text into a fixed vocabulary. While effective, tokenization introduces several challenges:</p>
@@ -933,31 +923,16 @@
 <h1 class="relative group">Understanding the Byte Latent Transformer
     <div id="understanding-the-byte-latent-transformer" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#understanding-the-byte-latent-transformer" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 
 <h2 class="relative group">What is BLT?
     <div id="what-is-blt" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#what-is-blt" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>BLT is a novel architecture that replaces tokenization with <strong>dynamic patching</strong>. Instead of relying on a predefined vocabulary, BLT processes raw bytes directly, grouping them into variable-sized patches based on data complexity. This approach allows the model to allocate computational resources where they are most needed.</p>
 
 <h2 class="relative group">Key Features
     <div id="key-features" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#key-features" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <ol>
@@ -987,31 +962,16 @@
 <h1 class="relative group">Efficiency Gains: Compute vs. Performance
     <div id="efficiency-gains-compute-vs-performance" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#efficiency-gains-compute-vs-performance" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 
 <h2 class="relative group">The Problem with Tokenization
     <div id="the-problem-with-tokenization" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-problem-with-tokenization" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>Tokenization imposes equal computational effort on all tokens, regardless of their complexity. For example, simple words or repetitive phrases consume the same resources as complex or ambiguous structures. This inefficiency results in wasted computational power and slower processing.</p>
 
 <h2 class="relative group">The BLT Advantage
     <div id="the-blt-advantage" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-blt-advantage" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <ul>
@@ -1024,20 +984,10 @@
 <h1 class="relative group">How Does BLT Work?
     <div id="how-does-blt-work" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#how-does-blt-work" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 
 <h2 class="relative group">1. Patching Module
     <div id="1-patching-module" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#1-patching-module" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <ul>
@@ -1047,11 +997,6 @@
 
 <h2 class="relative group">2. Processing Module
     <div id="2-processing-module" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#2-processing-module" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <ul>
@@ -1063,11 +1008,6 @@
 <h2 class="relative group">3. Scaling and Flexibility
     <div id="3-scaling-and-flexibility" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#3-scaling-and-flexibility" aria-label="Anchor">#</a>
-    </span>
-    
 </h2>
 <ul>
 <li>BLT’s architecture supports simultaneous scaling of model and patch size. Larger patches save compute during inference, allowing resources to be reallocated to increase model capacity or process longer contexts.</li>
@@ -1076,11 +1016,6 @@
 
 <h1 class="relative group">Practical Implications
     <div id="practical-implications" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#practical-implications" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <ol>
@@ -1092,11 +1027,6 @@
 
 <h1 class="relative group">Benefits of Using BLT
     <div id="benefits-of-using-blt" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#benefits-of-using-blt" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <ul>
@@ -1110,11 +1040,6 @@
 <h1 class="relative group">Pitfalls
     <div id="pitfalls" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#pitfalls" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>Like all architectures, BLT has trade-offs:</p>
 <ul>
@@ -1126,21 +1051,11 @@
 <h1 class="relative group">Conclusion
     <div id="conclusion" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#conclusion" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>The Byte Latent Transformer changes the way we look at tokenization for NLP modeling. The paper by Meta introduces the way to a robust alternative to traditional architectures.</p>
 
 <h1 class="relative group">Ressources
     <div id="ressources" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ressources" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p><a href="https://arxiv.org/pdf/2412.09871"  target="_blank">13.12.2024 - Byte Latent Transformer: Patches Scale Better Than Tokens</a></p>

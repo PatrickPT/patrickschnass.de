@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Patrick Schnaß on Patrick Schnaß | KI Beratung</title>
-    <link>http://localhost:53753/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content in Patrick Schnaß on Patrick Schnaß | KI Beratung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
-    <atom:link href="http://localhost:53753/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Über mich</title>
-      <link>http://localhost:53753/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:53753/about/</guid>
-      <description>&lt;h2 class=&#34;relative group&#34;&gt;Hallo, ich bin Patrick&#xA;    &lt;div id=&#34;hallo-ich-bin-patrick&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#hallo-ich-bin-patrick&#34; aria-label=&#34;Anker&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Ich bin ein Technologe aus Leidenschaft mit einer Begeisterung für Künstliche Intelligenz, Data Science und lebenslanges Lernen.&lt;/p&gt;&#xA;&lt;p&gt;Derzeit leite ich die &lt;strong&gt;Data Science Abteilung bei Vodafone&lt;/strong&gt;, wo mein Team und ich maschinelles Lernen und KI anwenden, um Lösungen zu entwickeln, die Geschäftswert schaffen und Kundenerlebnisse verbessern. Meine Rolle ermöglicht es mir, die Brücke zwischen KI-Forschung und realen Anwendungen zu schlagen und sicherzustellen, dass unsere Modelle nicht nur in Jupyter Notebooks existieren, sondern aktiv zu Entscheidungsfindung, Automatisierung und Optimierung beitragen.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;h2 class=&#34;relative group&#34;&gt;Hallo, ich bin Patrick&#xA;    &lt;div id=&#34;hallo-ich-bin-patrick&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Technologe aus Leidenschaft mit großer Begeisterung für Künstliche Intelligenz und Data Science.&lt;/p&gt;&#xA;&lt;p&gt;Derzeit leite ich die &lt;strong&gt;Data Science Abteilung bei Vodafone&lt;/strong&gt;, wo mein Team und ich maschinelles Lernen und KI anwenden, um Lösungen zu entwickeln, die Impact schaffen und Kundenerlebnisse verbessern. Meine Rolle ermöglicht es mir, die Brücke zwischen KI-Forschung und realen Anwendungen zu schlagen und sicherzustellen, dass unsere Modelle nicht nur lokal existieren, sondern aktiv zu Entscheidungsfindung, Automatisierung und Optimierung beitragen.&lt;/p&gt;</description>
       
     </item>
     

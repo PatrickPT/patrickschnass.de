@@ -3,110 +3,110 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>http://localhost:53753/posts/deepseek/</loc>
+    <loc>http://localhost:1313/posts/deepseek/</loc>
     <lastmod>2025-02-09T18:30:57+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/en/</loc>
+    <loc>http://localhost:1313/en/</loc>
     <lastmod>2025-02-09T18:30:57+00:00</lastmod>
     <xhtml:link
       rel="alternate"
       hreflang="de"
-      href="http://localhost:53753/"
+      href="http://localhost:1313/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:53753/en/"
+      href="http://localhost:1313/en/"
     />
   </url>
   <url>
-    <loc>http://localhost:53753/posts/blt/</loc>
+    <loc>http://localhost:1313/posts/blt/</loc>
     <lastmod>2025-01-02T09:30:57+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/quantllm/</loc>
+    <loc>http://localhost:1313/posts/quantllm/</loc>
     <lastmod>2024-01-28T09:30:57+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/en/posts/archive/legacy-test/</loc>
+    <loc>http://localhost:1313/en/posts/archive/legacy-test/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/peft/</loc>
+    <loc>http://localhost:1313/posts/peft/</loc>
     <lastmod>2023-11-01T18:30:57+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/hands-on-rag/</loc>
+    <loc>http://localhost:1313/posts/hands-on-rag/</loc>
     <lastmod>2023-10-07T10:30:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/rag_intro/</loc>
+    <loc>http://localhost:1313/posts/rag_intro/</loc>
     <lastmod>2023-09-29T18:30:57+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/generalvsspecializedmodels/</loc>
+    <loc>http://localhost:1313/posts/generalvsspecializedmodels/</loc>
     <lastmod>2023-09-05T11:50:57+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/transformers/</loc>
+    <loc>http://localhost:1313/posts/transformers/</loc>
     <lastmod>2023-08-30T11:50:57+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/PDE/</loc>
+    <loc>http://localhost:1313/posts/PDE/</loc>
     <lastmod>2023-07-02T15:01:23+01:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/language_models/</loc>
+    <loc>http://localhost:1313/posts/language_models/</loc>
     <lastmod>2023-05-02T13:42:28+02:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/super_mario/</loc>
+    <loc>http://localhost:1313/posts/super_mario/</loc>
     <lastmod>2023-03-31T11:58:22+02:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/GCPMLE/</loc>
+    <loc>http://localhost:1313/posts/GCPMLE/</loc>
     <lastmod>2023-02-24T21:01:23+01:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/marp/</loc>
+    <loc>http://localhost:1313/posts/marp/</loc>
     <lastmod>2023-01-31T09:06:20+01:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/latent-diffusion-models/</loc>
+    <loc>http://localhost:1313/posts/latent-diffusion-models/</loc>
     <lastmod>2023-01-20T14:50:18+01:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/hands-on-latent-diffusion-models/</loc>
+    <loc>http://localhost:1313/posts/hands-on-latent-diffusion-models/</loc>
     <lastmod>2023-01-13T09:28:09+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/summary-chatgpt/</loc>
+    <loc>http://localhost:1313/posts/summary-chatgpt/</loc>
     <lastmod>2023-01-12T22:34:01+01:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/chatgpt-on-chatgpt/</loc>
+    <loc>http://localhost:1313/posts/chatgpt-on-chatgpt/</loc>
     <lastmod>2023-01-07T00:55:07+01:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/posts/how-to-blog/</loc>
+    <loc>http://localhost:1313/posts/how-to-blog/</loc>
     <lastmod>2023-01-01T09:00:00+01:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/en/posts/</loc>
+    <loc>http://localhost:1313/en/posts/</loc>
     <lastmod>2022-06-21T15:06:45-05:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:53753/en/about/</loc>
+    <loc>http://localhost:1313/en/about/</loc>
     <xhtml:link
       rel="alternate"
       hreflang="de"
-      href="http://localhost:53753/about/"
+      href="http://localhost:1313/about/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:53753/en/about/"
+      href="http://localhost:1313/en/about/"
     />
   </url>
 </urlset>

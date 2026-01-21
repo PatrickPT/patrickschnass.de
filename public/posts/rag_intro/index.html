@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="light"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=53753&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="en">
@@ -28,7 +28,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:53753/posts/rag_intro/">
+  <link rel="canonical" href="http://localhost:1313/posts/rag_intro/">
   
 
   
@@ -52,7 +52,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:53753/posts/rag_intro/">
+  <meta property="og:url" content="http://localhost:1313/posts/rag_intro/">
   <meta property="og:site_name" content="Patrick Schnaß | AI Advisory">
   <meta property="og:title" content="What is RAG?">
   <meta property="og:description" content="Retrieval Augmented Generation is an Architecture used for NLP tasks.">
@@ -65,11 +65,11 @@
     <meta property="article:tag" content="AI Design">
     <meta property="article:tag" content="LLM">
     <meta property="article:tag" content="GenAI">
-    <meta property="og:image" content="http://localhost:53753/posts/2023_09_29_Retrieval_Augmented_Generation/images/rag_high_level.jpg">
+    <meta property="og:image" content="http://localhost:1313/posts/2023_09_29_Retrieval_Augmented_Generation/images/rag_high_level.jpg">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:53753/posts/2023_09_29_Retrieval_Augmented_Generation/images/rag_high_level.jpg">
+  <meta name="twitter:image" content="http://localhost:1313/posts/2023_09_29_Retrieval_Augmented_Generation/images/rag_high_level.jpg">
   <meta name="twitter:title" content="What is RAG?">
   <meta name="twitter:description" content="Retrieval Augmented Generation is an Architecture used for NLP tasks.">
 
@@ -118,8 +118,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.d79152e057e50292de8f0371f157437579e0f14606a88d665ef27376278151108e638fc2c2b5687fa70cc7ec9f616cfe46422a7dface5955ad0b9c4fcd6589be.css"
-    integrity="sha512-15FS4FflApLejwNx8VdDdXng8UYGqI1mXvJzdieBURCOY4/CwrVof6cMx&#43;yfYWz&#43;RkIqffrOWVWtC5xPzWWJvg==">
+    href="/css/main.bundle.min.1d7dca134831dc4beaa82f2c9fce60e7eba554311f371b5447b195606c5d8b9a47d8a3e38b813e12d89d7025741fcfec0ef7567f3d6735e1914b4def4ec14d04.css"
+    integrity="sha512-HX3KE0gx3EvqqC8sn85g5&#43;ulVDEfNxtUR7GVYGxdi5pH2KPji4E&#43;EtidcCV0H8/sDvdWfz1nNeGRS03vTsFNBA==">
 
   
   
@@ -225,7 +225,7 @@
     "headline": "What is RAG?",
     
     "inLanguage": "en",
-    "url" : "http://localhost:53753/posts/rag_intro/",
+    "url" : "http://localhost:1313/posts/rag_intro/",
     "author" : {
       "@type": "Person",
       "name": "Patrick Schnaß"
@@ -239,7 +239,7 @@
     "keywords": ["Model Architecture","AI Design","LLM","GenAI"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1609"
+    "wordCount": "1596"
   }]
   </script>
 
@@ -771,7 +771,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2023-09-29T18:30:57&#43;00:00">29 September 2023</time><span class="px-2 text-primary-500">&middot;</span><span>1609 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
+      <time datetime="2023-09-29T18:30:57&#43;00:00">29 September 2023</time><span class="px-2 text-primary-500">&middot;</span><span>1596 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
     
 
     
@@ -901,21 +901,11 @@
 <h1 class="relative group">TL;DR
     <div id="tldr" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#tldr" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>This blogpost tries to explain Retrieval Augmented Generation. Retrieval Augmented Generation is an Architecture used for NLP tasks which can be used to productionize LLM models for enterprise architecture easily.</p>
 
 <h1 class="relative group">Why should i care?
     <div id="why-should-i-care" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#why-should-i-care" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>Intuitive would be to train a Large Language Model with domain specific data, in other words, to fine-tune the model-weights with custom data.</p>
@@ -943,11 +933,6 @@
 
 <h1 class="relative group">Use Retrieval Augmented Generation
     <div id="use-retrieval-augmented-generation" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#use-retrieval-augmented-generation" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>Research on NLP was there before the hype around GPT&rsquo;s and specifically on OpenAIs service ChatGPT(based on GPT3.5) started in 2022.
@@ -986,21 +971,11 @@ In 2020 Lewis et al. from Meta AI published a paper on <a href="https://arxiv.or
 <h1 class="relative group">Retrieval Module
     <div id="retrieval-module" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#retrieval-module" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>The retrieval module is the heart of the architecture and responsible for searching and retrieving relevant information from a large knowledge base. This knowledge base can be a collection of texts, documents, or even web pages. Retrieval can be broken down into two stages:</p>
 
 <h2 class="relative group">Indexing
     <div id="indexing" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#indexing" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>You will index the knowledge base which you want to give as context to the model. To index your data you can simply use libraries like LangChain llama_index or transformers which do the work for you. The data is loaded, chunked and tokenized. Data will be fetched from your various sources, segmented into bite-sized chunks to optimize them for embedding and search and afterwards tokenized to create embeddings.
@@ -1022,11 +997,6 @@ The embeddings are stored as high dimensional vectors in vector databases and bu
 </blockquote>
 <h2 class="relative group">Querying
     <div id="querying" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#querying" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>The data from the vector databases can be used for Semantic Search. Meaning that when a query is processed(into an embedding) the retriever can search for the most appropriate matching data in the vector database and give it to the generator as context. The retrieved data is combined with the original prompt, creating an enhanced or augmented prompt. This augmented prompt provides additional context. This is even more relevant for domain specific data which may not be part of the corpus used for training the model.</p>
@@ -1050,21 +1020,11 @@ We start by searching for relevant documents or excerpts within an extensive dat
 <h1 class="relative group">Generation Module
     <div id="generation-module" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#generation-module" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>The generation module is based on a generative language model like GPT-3.5. It takes as input the retrieved information and the user&rsquo;s query or context and generates a coherent response.</p>
 
 <h1 class="relative group">Example
     <div id="example" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#example" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p>An example architecture using llama_index would look like the following:</p>
@@ -1084,11 +1044,6 @@ Also you can find a dedicated blogpost on my blog <a href="/posts/hands-on-rag" 
 <h1 class="relative group">Benefits of using RAG
     <div id="benefits-of-using-rag" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#benefits-of-using-rag" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p><strong>Improved Precision:</strong>
 Through the utilization of external data sources, the RAG LLM can produce responses that are not solely derived from its training dataset but are also enriched by the most pertinent and current information accessible within the retrieval corpus.</p>
@@ -1104,11 +1059,6 @@ An advantage of RAG LLMs lies in its scalability. Through the separation of the 
 <h1 class="relative group">Pitfalls
     <div id="pitfalls" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#pitfalls" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>Of course there is a downside with retrieval systems. They rely on semantic search.
 Semantic Search has a simple assumption which leads to problems:</p>
@@ -1118,11 +1068,6 @@ Semantic Search only looks for explicit matches not for negation or implicit mat
 
 <h2 class="relative group">A simple example
     <div id="a-simple-example" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#a-simple-example" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>Think of following example:</p>
@@ -1138,11 +1083,6 @@ Semantic Search only looks for explicit matches not for negation or implicit mat
 <h1 class="relative group">Conclusion
     <div id="conclusion" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#conclusion" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>Retrieval augmented generation is a versatile hack.</p>
 <p>In the early days of LLM adoption - where we are still at - it is a good technique to <strong>rapidly deliver production grade systems</strong> which are <strong>more efficient</strong> and <strong>less prone for hallucinations</strong>.</p>
@@ -1151,11 +1091,6 @@ But <strong>for now it is highly relevant to consider Retrieval Augmented Genera
 
 <h1 class="relative group">Resources
     <div id="resources" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#resources" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p><a href="https://arxiv.org/abs/2005.11401"  target="_blank">Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</a></p>

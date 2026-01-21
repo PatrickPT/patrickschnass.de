@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="light"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=53753&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="en">
@@ -28,7 +28,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:53753/posts/super_mario/">
+  <link rel="canonical" href="http://localhost:1313/posts/super_mario/">
   
 
   
@@ -52,7 +52,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:53753/posts/super_mario/">
+  <meta property="og:url" content="http://localhost:1313/posts/super_mario/">
   <meta property="og:site_name" content="Patrick Schnaß | AI Advisory">
   <meta property="og:title" content="Play Super Mario with RL">
   <meta property="og:description" content="Learn how to train a Reinforcement Learning Agent to play GameBoy games in a Python written Emulator. With PyBoy, Q-Learning and Super Mario.">
@@ -115,8 +115,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.d79152e057e50292de8f0371f157437579e0f14606a88d665ef27376278151108e638fc2c2b5687fa70cc7ec9f616cfe46422a7dface5955ad0b9c4fcd6589be.css"
-    integrity="sha512-15FS4FflApLejwNx8VdDdXng8UYGqI1mXvJzdieBURCOY4/CwrVof6cMx&#43;yfYWz&#43;RkIqffrOWVWtC5xPzWWJvg==">
+    href="/css/main.bundle.min.1d7dca134831dc4beaa82f2c9fce60e7eba554311f371b5447b195606c5d8b9a47d8a3e38b813e12d89d7025741fcfec0ef7567f3d6735e1914b4def4ec14d04.css"
+    integrity="sha512-HX3KE0gx3EvqqC8sn85g5&#43;ulVDEfNxtUR7GVYGxdi5pH2KPji4E&#43;EtidcCV0H8/sDvdWfz1nNeGRS03vTsFNBA==">
 
   
   
@@ -222,7 +222,7 @@
     "headline": "Play Super Mario with RL",
     
     "inLanguage": "en",
-    "url" : "http://localhost:53753/posts/super_mario/",
+    "url" : "http://localhost:1313/posts/super_mario/",
     "author" : {
       "@type": "Person",
       "name": "Patrick Schnaß"
@@ -236,7 +236,7 @@
     "keywords": ["Fun","Q-Learning","Reinforcement Learning"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1250"
+    "wordCount": "1238"
   }]
   </script>
 
@@ -768,7 +768,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2023-03-31T11:58:22&#43;02:00">31 March 2023</time><span class="px-2 text-primary-500">&middot;</span><span>1250 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span>
+      <time datetime="2023-03-31T11:58:22&#43;02:00">31 March 2023</time><span class="px-2 text-primary-500">&middot;</span><span>1238 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span>
     
 
     
@@ -898,21 +898,11 @@
 <h1 class="relative group">TL;DR
     <div id="tldr" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#tldr" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>Learn how to train a Reinforcement Learning Agent to play GameBoy games in a Python written Emulator. With PyBoy, Q-Learning and Super Mario.</p>
 
 <h1 class="relative group">Train your own RL Agent to play Super Mario
     <div id="train-your-own-rl-agent-to-play-super-mario" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#train-your-own-rl-agent-to-play-super-mario" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p><figure><img
@@ -940,20 +930,10 @@ A GameBoy Emulator written in Python which can be fully controlled from a Python
 <h1 class="relative group">The capabilities of PyBoy
     <div id="the-capabilities-of-pyboy" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-capabilities-of-pyboy" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 
 <h2 class="relative group">Installation
     <div id="installation" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#installation" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>Assuming that you already have a working Python environment the instalation is super easy.
@@ -961,11 +941,6 @@ Just <code>pip install pyboy</code> and you are ready to go.</p>
 
 <h2 class="relative group">Start
     <div id="start" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#start" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>Now if you are just interested in playing a game it is also super easy as you can just start pyboy from your terminal:
@@ -980,11 +955,6 @@ pyboy.stop()
 
 <h2 class="relative group">API
     <div id="api" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#api" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>When the emulator is running you can access <a href="https://docs.pyboy.dk/index.html"  target="_blank">PyBoy&rsquo;s API</a>.</p>
@@ -1002,20 +972,10 @@ pil_image.save('screenshot.png')
 <h1 class="relative group">The Setup for your Reinforcement Learning Algorithm
     <div id="the-setup-for-your-reinforcement-learning-algorithm" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-setup-for-your-reinforcement-learning-algorithm" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 
 <h2 class="relative group">Concepts of RL
     <div id="concepts-of-rl" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#concepts-of-rl" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>Reinforcement Learning (RL) is a type of machine learning where an agent learns to make decisions by interacting with an environment. The goal of RL is to find an optimal policy that maximizes a long-term reward signal. The agent takes actions in the environment and receives feedback in the form of rewards or penalties. The agent then updates its policy based on the feedback received, in order to maximize the total reward it receives over time.</p>
@@ -1039,11 +999,6 @@ the action in a state. We try to approximate this function.</p>
 <h2 class="relative group">Specification of Q Learning
     <div id="specification-of-q-learning" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#specification-of-q-learning" aria-label="Anchor">#</a>
-    </span>
-    
 </h2>
 <p>Q-Learning is a popular reinforcement learning algorithm that learns the optimal action-value function, also known as the Q-function, for a given environment. The Q-function represents the expected long-term reward for taking a particular action in a given state. The Q-learning algorithm updates the Q-function based on the rewards received and the estimated Q-values for the next state. The agent then uses the updated Q-function to select the next action.</p>
 <p>The Q-learning algorithm is based on the Bellman equation, which is a recursive equation that expresses the optimal Q-value in terms of the expected reward for the current action and the expected Q-value for the next state. The Q-learning algorithm uses a greedy approach to select actions, meaning that it always chooses the action with the highest estimated Q-value.</p>
@@ -1062,11 +1017,6 @@ After the Q-value update, the agent moves to the next state and repeats the proc
 
 <h2 class="relative group">It&rsquo;s a me Mario
     <div id="its-a-me-mario" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#its-a-me-mario" aria-label="Anchor">#</a>
-    </span>
     
 </h2>
 <p>PyBoy is giving an <a href="https://github.com/Baekalfen/PyBoy/wiki/Scripts,-AI-and-Bots"  target="_blank">inspiration</a> on how to set up the Agent for Super Mario.</p>
@@ -1088,21 +1038,11 @@ reward = clock + death + movement + levelReward
 <h1 class="relative group">Let the games begin
     <div id="let-the-games-begin" class="anchor"></div>
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#let-the-games-begin" aria-label="Anchor">#</a>
-    </span>
-    
 </h1>
 <p>I built my own simplified agent on following example and had a ton of fun <a href="https://github.com/lixado/PyBoy-RL"  target="_blank">here</a></p>
 
 <h1 class="relative group">Ressources
     <div id="ressources" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ressources" aria-label="Anchor">#</a>
-    </span>
     
 </h1>
 <p><a href="https://github.com/Baekalfen/PyBoy"  target="_blank">PyBoy Repo</a></p>
