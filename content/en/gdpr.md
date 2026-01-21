@@ -61,10 +61,10 @@ The operators of these pages take the protection of your personal data very seri
 The responsible body for data processing on this website is:
 
 Patrick Schnaß  
-[Insert Address]  
-[Insert City/Zip]  
+Ferdinand-Braun-Platz 1  
+40549 Düsseldorf  
 
-E-Mail: [Insert Email]
+E-Mail: patrickatpatrickschnass.de
 
 ### Revocation of Your Consent to Data Processing
 Many data processing operations are only possible with your express consent. You can revoke consent you have already given at any time. The legality of the data processing carried out until the revocation remains unaffected by the revocation.
