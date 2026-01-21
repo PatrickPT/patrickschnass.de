@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Github on Patrick Schnaß | KI Beratung</title>
+    <title>Github on Patrick Schnaß</title>
     <link>http://localhost:1313/tags/github/</link>
-    <description>Recent content in Github on Patrick Schnaß | KI Beratung</description>
+    <description>Recent content in Github on Patrick Schnaß</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>de</language>
+    <language>en</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
     <lastBuildDate>Sun, 01 Jan 2023 09:00:00 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/github/index.xml" rel="self" type="application/rss+xml" />
     

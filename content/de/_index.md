@@ -24,7 +24,7 @@ def execute_strategy():
     engine = scale.build_robust()
     return Impact.drive(engine)
 ```
-## Lassen Sie uns an Ihrer KI-Strategie arbeiten.
+### Lassen Sie uns an Ihrer KI-Strategie arbeiten.
 
 <div class="action-buttons">
 <!-- Google Calendar Appointment Scheduling -->
@@ -52,9 +52,9 @@ def execute_strategy():
 <div class="services-carousel">
 
 <div class="carousel-tabs">
-    <button class="carousel-tab is-active" data-index="0">Reality Check</button>
-    <button class="carousel-tab" data-index="1">Data Org</button>
-    <button class="carousel-tab" data-index="2">AI Sparring</button>
+    <button class="carousel-tab is-active" data-index="0">AI Hype vs Realität</button>
+    <button class="carousel-tab" data-index="1">Effiziente Data Organisation</button>
+    <button class="carousel-tab" data-index="2">AI Consulting</button>
 </div>
 
 <div class="carousel-panels">
@@ -103,7 +103,8 @@ class DataTeam:
 
 ```python
 """
-AI Use Cases identifizieren.
+AI Use Cases und Technologien 
+für Ihre Business Model identifizieren
 """
 
 def sparring_session(executive):

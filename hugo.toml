@@ -1,5 +1,5 @@
 baseURL = "https://www.patrickschnass.de/"
-defaultContentLanguage = "de"
+defaultContentLanguage = "en"
 theme = "blowfish"
 
 [languages]
@@ -7,7 +7,7 @@ theme = "blowfish"
     languageCode = "de"
     languageName = "Deutsch"
     title = "Patrick Schnaß"
-    weight = 1
+    weight = 2
     contentDir = "content/de"
 
     [languages.de.params]
@@ -68,7 +68,7 @@ theme = "blowfish"
     languageCode = "en"
     languageName = "English"
     title = "Patrick Schnaß"
-    weight = 2
+    weight = 1
     contentDir = "content/en"
 
     [languages.en.params]

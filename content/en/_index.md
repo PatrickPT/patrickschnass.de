@@ -24,7 +24,7 @@ def execute_strategy():
     engine = scale.build_robust()
     return Impact.drive(engine)
 ```
-## Let's start working on your AI strategy
+### Let's start working on your AI strategy
 
 <div class="action-buttons">
 <!-- Google Calendar Appointment Scheduling -->
@@ -52,9 +52,9 @@ def execute_strategy():
 <div class="services-carousel">
 
 <div class="carousel-tabs">
-    <button class="carousel-tab is-active" data-index="0">Reality Check</button>
-    <button class="carousel-tab" data-index="1">Data Org </button>
-    <button class="carousel-tab" data-index="2">AI Sparring</button>
+    <button class="carousel-tab is-active" data-index="0">AI Hype vs Reality</button>
+    <button class="carousel-tab" data-index="1">Efficient Data Org </button>
+    <button class="carousel-tab" data-index="2">AI Consulting</button>
 </div>
 
 <div class="carousel-panels">
@@ -103,7 +103,8 @@ class DataTeam:
 
 ```python
 """
-Identify high-impact AI use cases for your business model
+Identify high-impact AI use cases and 
+technologies for your business model
 """
 
 def sparring_session(executive):

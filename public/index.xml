@@ -5,17 +5,207 @@
     <link>http://localhost:1313/</link>
     <description>Recent content on Patrick Schnaß</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>de</language>
+    <language>en</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
-    <lastBuildDate>Sun, 21 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Feb 2025 18:30:57 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Impressum &amp; Datenschutz</title>
+      <title>DeepSeek-R1 explored</title>
+      <link>http://localhost:1313/posts/deepseek/</link>
+      <pubDate>Sun, 09 Feb 2025 18:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/deepseek/</guid>
+      <description>Why DeepSeek-R1 was a significant step for Open Source AI.</description>
+      
+    </item>
+    
+    <item>
+      <title>A view on BLT</title>
+      <link>http://localhost:1313/posts/blt/</link>
+      <pubDate>Thu, 02 Jan 2025 09:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/blt/</guid>
+      <description>Byte Latent Transformer (BLT), a tokenizer-free architecture for NLP.</description>
+      
+    </item>
+    
+    <item>
+      <title>LLM Quantization in a nutshell</title>
+      <link>http://localhost:1313/posts/quantllm/</link>
+      <pubDate>Sun, 28 Jan 2024 09:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/quantllm/</guid>
+      <description>An exploration of LLM quantization methods.</description>
+      
+    </item>
+    
+    <item>
+      <title>Legal Notice &amp; Privacy</title>
       <link>http://localhost:1313/gdpr/</link>
       <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/gdpr/</guid>
-      <description>&lt;h1 class=&#34;relative group&#34;&gt;Impressum&#xA;    &lt;div id=&#34;impressum&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Angaben gemäß § 5 TMG&#xA;    &lt;div id=&#34;angaben-gemäß--5-tmg&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Kontakt&#xA;    &lt;div id=&#34;kontakt&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;E-Mail: patrickatpatrickschnass.de&lt;br&gt;&#xA;LinkedIn: &lt;a href=&#34;https://www.linkedin.com/in/patrickschnass/&#34;  target=&#34;_blank&#34;&gt;https://www.linkedin.com/in/patrickschnass/&lt;/a&gt;&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV&#xA;    &lt;div id=&#34;verantwortlich-für-den-inhalt-nach--55-abs-2-rstv&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&#xA;&lt;h1 class=&#34;relative group&#34;&gt;Datenschutzerklärung&#xA;    &lt;div id=&#34;datenschutzerklärung&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;1. Datenschutz auf einen Blick&#xA;    &lt;div id=&#34;1-datenschutz-auf-einen-blick&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&#xA;&lt;h3 class=&#34;relative group&#34;&gt;Allgemeine Hinweise&#xA;    &lt;div id=&#34;allgemeine-hinweise&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.&lt;/p&gt;</description>
+      <description>&lt;h1 class=&#34;relative group&#34;&gt;Legal Notice (Impressum)&#xA;    &lt;div id=&#34;legal-notice-impressum&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Information according to § 5 TMG&#xA;    &lt;div id=&#34;information-according-to--5-tmg&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&lt;br&gt;&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Contact&#xA;    &lt;div id=&#34;contact&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;E-Mail: patrickatpatrickschnass.de&lt;br&gt;&#xA;LinkedIn: &lt;a href=&#34;https://www.linkedin.com/in/patrickschnass/&#34;  target=&#34;_blank&#34;&gt;https://www.linkedin.com/in/patrickschnass/&lt;/a&gt;&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Responsible for Content according to § 55 Abs. 2 RStV&#xA;    &lt;div id=&#34;responsible-for-content-according-to--55-abs-2-rstv&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&lt;br&gt;&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&#xA;&lt;h1 class=&#34;relative group&#34;&gt;Privacy Policy&#xA;    &lt;div id=&#34;privacy-policy&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;1. Data Protection at a Glance&#xA;    &lt;div id=&#34;1-data-protection-at-a-glance&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&#xA;&lt;h3 class=&#34;relative group&#34;&gt;General Information&#xA;    &lt;div id=&#34;general-information&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h3&gt;&#xA;&lt;p&gt;The following notes provide a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you can be personally identified.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Legacy Post</title>
+      <link>http://localhost:1313/posts/archive/legacy-test/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/archive/legacy-test/</guid>
+      <description>&lt;p&gt;This is a placeholder for legacy content.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>What is PEFT?</title>
+      <link>http://localhost:1313/posts/peft/</link>
+      <pubDate>Wed, 01 Nov 2023 18:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/peft/</guid>
+      <description>Fine-tuning of Large Language Models with Parameter Efficient.</description>
+      
+    </item>
+    
+    <item>
+      <title>Hands on with Retrieval Augmented Generation</title>
+      <link>http://localhost:1313/posts/hands-on-rag/</link>
+      <pubDate>Sat, 07 Oct 2023 10:30:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/hands-on-rag/</guid>
+      <description>Build a Chatbot that uses Retrieval Augmented Generation to retrieve domain specific knowledge.</description>
+      
+    </item>
+    
+    <item>
+      <title>What is RAG?</title>
+      <link>http://localhost:1313/posts/rag_intro/</link>
+      <pubDate>Fri, 29 Sep 2023 18:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/rag_intro/</guid>
+      <description>Retrieval Augmented Generation is an Architecture used for NLP tasks.</description>
+      
+    </item>
+    
+    <item>
+      <title>Generalized Models vs Specialized Models</title>
+      <link>http://localhost:1313/posts/generalvsspecializedmodels/</link>
+      <pubDate>Tue, 05 Sep 2023 11:50:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/generalvsspecializedmodels/</guid>
+      <description>Intuition and hints for deciding between one generalized and multiple specialized models.</description>
+      
+    </item>
+    
+    <item>
+      <title>Attention is all you need?</title>
+      <link>http://localhost:1313/posts/transformers/</link>
+      <pubDate>Wed, 30 Aug 2023 11:50:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/transformers/</guid>
+      <description>Explore the Transformer Architecture.</description>
+      
+    </item>
+    
+    <item>
+      <title>Road to GCP Professional Data Engineer</title>
+      <link>http://localhost:1313/posts/PDE/</link>
+      <pubDate>Sun, 02 Jul 2023 15:01:23 +0100</pubDate>
+      
+      <guid>http://localhost:1313/posts/PDE/</guid>
+      <description>My learning journey to get certified</description>
+      
+    </item>
+    
+    <item>
+      <title>What are Large Language Models?</title>
+      <link>http://localhost:1313/posts/language_models/</link>
+      <pubDate>Tue, 02 May 2023 13:42:28 +0200</pubDate>
+      
+      <guid>http://localhost:1313/posts/language_models/</guid>
+      <description>What are the ideas and concepts behind GPT Language Models?</description>
+      
+    </item>
+    
+    <item>
+      <title>Play Super Mario with RL</title>
+      <link>http://localhost:1313/posts/super_mario/</link>
+      <pubDate>Fri, 31 Mar 2023 11:58:22 +0200</pubDate>
+      
+      <guid>http://localhost:1313/posts/super_mario/</guid>
+      <description>Learn how to train a Reinforcement Learning Agent to play GameBoy games in a Python written Emulator. With PyBoy, Q-Learning and Super Mario.</description>
+      
+    </item>
+    
+    <item>
+      <title>Road to GCP Professional Machine Learning Engineer</title>
+      <link>http://localhost:1313/posts/GCPMLE/</link>
+      <pubDate>Fri, 24 Feb 2023 21:01:23 +0100</pubDate>
+      
+      <guid>http://localhost:1313/posts/GCPMLE/</guid>
+      <description>My learning journey to get certified</description>
+      
+    </item>
+    
+    <item>
+      <title>Creating slides with MARP</title>
+      <link>http://localhost:1313/posts/marp/</link>
+      <pubDate>Tue, 31 Jan 2023 09:06:20 +0100</pubDate>
+      
+      <guid>http://localhost:1313/posts/marp/</guid>
+      <description>Why i love MARP and you should too</description>
+      
+    </item>
+    
+    <item>
+      <title>Latent Diffusion Models: What is all the fuzz about?</title>
+      <link>http://localhost:1313/posts/latent-diffusion-models/</link>
+      <pubDate>Fri, 20 Jan 2023 14:50:18 +0100</pubDate>
+      
+      <guid>http://localhost:1313/posts/latent-diffusion-models/</guid>
+      <description>Learn how Latent Diffusion Models work and the mathematical intuition behind them.</description>
+      
+    </item>
+    
+    <item>
+      <title>Hands on with Latent Diffusion Models</title>
+      <link>http://localhost:1313/posts/hands-on-latent-diffusion-models/</link>
+      <pubDate>Fri, 13 Jan 2023 09:28:09 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/hands-on-latent-diffusion-models/</guid>
+      <description>Learn how to use Latent Diffusion Models to generate images.</description>
+      
+    </item>
+    
+    <item>
+      <title>A short summary on ChatGPT</title>
+      <link>http://localhost:1313/posts/summary-chatgpt/</link>
+      <pubDate>Thu, 12 Jan 2023 22:34:01 +0100</pubDate>
+      
+      <guid>http://localhost:1313/posts/summary-chatgpt/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>What is ChatGPT?</title>
+      <link>http://localhost:1313/posts/chatgpt-on-chatgpt/</link>
+      <pubDate>Sat, 07 Jan 2023 00:55:07 +0100</pubDate>
+      
+      <guid>http://localhost:1313/posts/chatgpt-on-chatgpt/</guid>
+      <description>An introduction to ChatGPT written by ChatGPT</description>
+      
+    </item>
+    
+    <item>
+      <title>Why and how do you create your own AI blog?</title>
+      <link>http://localhost:1313/posts/how-to-blog/</link>
+      <pubDate>Sun, 01 Jan 2023 09:00:00 +0100</pubDate>
+      
+      <guid>http://localhost:1313/posts/how-to-blog/</guid>
+      <description>Where it all began</description>
       
     </item>
     

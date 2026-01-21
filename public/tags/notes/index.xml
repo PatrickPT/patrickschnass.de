@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Notes on Patrick Schnaß | KI Beratung</title>
+    <title>Notes on Patrick Schnaß</title>
     <link>http://localhost:1313/tags/notes/</link>
-    <description>Recent content in Notes on Patrick Schnaß | KI Beratung</description>
+    <description>Recent content in Notes on Patrick Schnaß</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>de</language>
+    <language>en</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
     <lastBuildDate>Fri, 20 Jan 2023 14:50:18 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/notes/index.xml" rel="self" type="application/rss+xml" />
     

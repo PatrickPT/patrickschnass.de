@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hands On on Patrick Schnaß | KI Beratung</title>
+    <title>Hands On on Patrick Schnaß</title>
     <link>http://localhost:1313/tags/hands-on/</link>
-    <description>Recent content in Hands On on Patrick Schnaß | KI Beratung</description>
+    <description>Recent content in Hands On on Patrick Schnaß</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>de</language>
+    <language>en</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
     <lastBuildDate>Sat, 07 Oct 2023 10:30:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/hands-on/index.xml" rel="self" type="application/rss+xml" />
     
