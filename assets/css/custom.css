@@ -226,6 +226,23 @@ html:not(.dark) .carousel-tab.is-active {
     width: auto;
 }
 
+/* Make docstrings larger in landing page code blocks */
+/* Make docstrings larger in landing page code blocks */
+.snap-section .chroma .sd,
+.snap-section .highlight .sd,
+.snap-section .sd,
+.snap-section .s2,
+.snap-section .dl {
+    font-size: 1.1rem !important;
+    line-height: 1.5 !important;
+    display: inline-block;
+    padding-bottom: 0.8rem;
+    font-weight: 500;
+    color: #3b82f6 !important;
+    /* Even Darker Blue */
+    width: 100%;
+}
+
 /* Remove ALL underlines from code blocks */
 .highlight,
 .highlight *,

@@ -1,1 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Fun on Patrick Schnaß</title><link>https://www.patrickschnass.de/en/tags/fun/</link><description>Recent content in Fun on Patrick Schnaß</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>© 2026 Patrick Schnaß</copyright><lastBuildDate>Fri, 31 Mar 2023 11:58:22 +0200</lastBuildDate><atom:link href="https://www.patrickschnass.de/en/tags/fun/index.xml" rel="self" type="application/rss+xml"/><item><title>Play Super Mario with RL</title><link>https://www.patrickschnass.de/posts/super_mario/</link><pubDate>Fri, 31 Mar 2023 11:58:22 +0200</pubDate><guid>https://www.patrickschnass.de/posts/super_mario/</guid><description>Learn how to train a Reinforcement Learning Agent to play GameBoy games in a Python written Emulator. With PyBoy, Q-Learning and Super Mario.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fun on Patrick Schnaß</title>
+    <link>http://localhost:1313/en/tags/fun/</link>
+    <description>Recent content in Fun on Patrick Schnaß</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2026 Patrick Schnaß</copyright>
+    <lastBuildDate>Fri, 31 Mar 2023 11:58:22 +0200</lastBuildDate><atom:link href="http://localhost:1313/en/tags/fun/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Play Super Mario with RL</title>
+      <link>http://localhost:1313/posts/super_mario/</link>
+      <pubDate>Fri, 31 Mar 2023 11:58:22 +0200</pubDate>
+      
+      <guid>http://localhost:1313/posts/super_mario/</guid>
+      <description>Learn how to train a Reinforcement Learning Agent to play GameBoy games in a Python written Emulator. With PyBoy, Q-Learning and Super Mario.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

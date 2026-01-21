@@ -136,7 +136,8 @@ theme = "blowfish"
   [params.homepage]
     layout = "profile"
     showDescription = true
-    showRecent = false 
+    showRecent = false
+    showProfile = false 
 
   [params.main]
     background = "graph"

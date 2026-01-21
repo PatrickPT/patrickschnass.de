@@ -1,1 +1,103 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LLM on Patrick Schnaß</title><link>https://www.patrickschnass.de/en/tags/llm/</link><description>Recent content in LLM on Patrick Schnaß</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>© 2026 Patrick Schnaß</copyright><lastBuildDate>Sun, 09 Feb 2025 18:30:57 +0000</lastBuildDate><atom:link href="https://www.patrickschnass.de/en/tags/llm/index.xml" rel="self" type="application/rss+xml"/><item><title>DeepSeek-R1 explored</title><link>https://www.patrickschnass.de/posts/deepseek/</link><pubDate>Sun, 09 Feb 2025 18:30:57 +0000</pubDate><guid>https://www.patrickschnass.de/posts/deepseek/</guid><description>Why DeepSeek-R1 was a significant step for Open Source AI.</description></item><item><title>A view on BLT</title><link>https://www.patrickschnass.de/posts/blt/</link><pubDate>Thu, 02 Jan 2025 09:30:57 +0000</pubDate><guid>https://www.patrickschnass.de/posts/blt/</guid><description>Byte Latent Transformer (BLT), a tokenizer-free architecture for NLP.</description></item><item><title>LLM Quantization in a nutshell</title><link>https://www.patrickschnass.de/posts/quantllm/</link><pubDate>Sun, 28 Jan 2024 09:30:57 +0000</pubDate><guid>https://www.patrickschnass.de/posts/quantllm/</guid><description>An exploration of LLM quantization methods.</description></item><item><title>What is PEFT?</title><link>https://www.patrickschnass.de/posts/peft/</link><pubDate>Wed, 01 Nov 2023 18:30:57 +0000</pubDate><guid>https://www.patrickschnass.de/posts/peft/</guid><description>Fine-tuning of Large Language Models with Parameter Efficient.</description></item><item><title>Hands on with Retrieval Augmented Generation</title><link>https://www.patrickschnass.de/posts/hands-on-rag/</link><pubDate>Sat, 07 Oct 2023 10:30:00 +0000</pubDate><guid>https://www.patrickschnass.de/posts/hands-on-rag/</guid><description>Build a Chatbot that uses Retrieval Augmented Generation to retrieve domain specific knowledge.</description></item><item><title>What is RAG?</title><link>https://www.patrickschnass.de/posts/rag_intro/</link><pubDate>Fri, 29 Sep 2023 18:30:57 +0000</pubDate><guid>https://www.patrickschnass.de/posts/rag_intro/</guid><description>Retrieval Augmented Generation is an Architecture used for NLP tasks.</description></item><item><title>What are Large Language Models?</title><link>https://www.patrickschnass.de/posts/language_models/</link><pubDate>Tue, 02 May 2023 13:42:28 +0200</pubDate><guid>https://www.patrickschnass.de/posts/language_models/</guid><description>What are the ideas and concepts behind GPT Language Models?</description></item><item><title>A short summary on ChatGPT</title><link>https://www.patrickschnass.de/posts/summary-chatgpt/</link><pubDate>Thu, 12 Jan 2023 22:34:01 +0100</pubDate><guid>https://www.patrickschnass.de/posts/summary-chatgpt/</guid><description/></item><item><title>What is ChatGPT?</title><link>https://www.patrickschnass.de/posts/chatgpt-on-chatgpt/</link><pubDate>Sat, 07 Jan 2023 00:55:07 +0100</pubDate><guid>https://www.patrickschnass.de/posts/chatgpt-on-chatgpt/</guid><description>An introduction to ChatGPT written by ChatGPT</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LLM on Patrick Schnaß</title>
+    <link>http://localhost:1313/en/tags/llm/</link>
+    <description>Recent content in LLM on Patrick Schnaß</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2026 Patrick Schnaß</copyright>
+    <lastBuildDate>Sun, 09 Feb 2025 18:30:57 +0000</lastBuildDate><atom:link href="http://localhost:1313/en/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>DeepSeek-R1 explored</title>
+      <link>http://localhost:1313/posts/deepseek/</link>
+      <pubDate>Sun, 09 Feb 2025 18:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/deepseek/</guid>
+      <description>Why DeepSeek-R1 was a significant step for Open Source AI.</description>
+      
+    </item>
+    
+    <item>
+      <title>A view on BLT</title>
+      <link>http://localhost:1313/posts/blt/</link>
+      <pubDate>Thu, 02 Jan 2025 09:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/blt/</guid>
+      <description>Byte Latent Transformer (BLT), a tokenizer-free architecture for NLP.</description>
+      
+    </item>
+    
+    <item>
+      <title>LLM Quantization in a nutshell</title>
+      <link>http://localhost:1313/posts/quantllm/</link>
+      <pubDate>Sun, 28 Jan 2024 09:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/quantllm/</guid>
+      <description>An exploration of LLM quantization methods.</description>
+      
+    </item>
+    
+    <item>
+      <title>What is PEFT?</title>
+      <link>http://localhost:1313/posts/peft/</link>
+      <pubDate>Wed, 01 Nov 2023 18:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/peft/</guid>
+      <description>Fine-tuning of Large Language Models with Parameter Efficient.</description>
+      
+    </item>
+    
+    <item>
+      <title>Hands on with Retrieval Augmented Generation</title>
+      <link>http://localhost:1313/posts/hands-on-rag/</link>
+      <pubDate>Sat, 07 Oct 2023 10:30:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/hands-on-rag/</guid>
+      <description>Build a Chatbot that uses Retrieval Augmented Generation to retrieve domain specific knowledge.</description>
+      
+    </item>
+    
+    <item>
+      <title>What is RAG?</title>
+      <link>http://localhost:1313/posts/rag_intro/</link>
+      <pubDate>Fri, 29 Sep 2023 18:30:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/rag_intro/</guid>
+      <description>Retrieval Augmented Generation is an Architecture used for NLP tasks.</description>
+      
+    </item>
+    
+    <item>
+      <title>What are Large Language Models?</title>
+      <link>http://localhost:1313/posts/language_models/</link>
+      <pubDate>Tue, 02 May 2023 13:42:28 +0200</pubDate>
+      
+      <guid>http://localhost:1313/posts/language_models/</guid>
+      <description>What are the ideas and concepts behind GPT Language Models?</description>
+      
+    </item>
+    
+    <item>
+      <title>A short summary on ChatGPT</title>
+      <link>http://localhost:1313/posts/summary-chatgpt/</link>
+      <pubDate>Thu, 12 Jan 2023 22:34:01 +0100</pubDate>
+      
+      <guid>http://localhost:1313/posts/summary-chatgpt/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>What is ChatGPT?</title>
+      <link>http://localhost:1313/posts/chatgpt-on-chatgpt/</link>
+      <pubDate>Sat, 07 Jan 2023 00:55:07 +0100</pubDate>
+      
+      <guid>http://localhost:1313/posts/chatgpt-on-chatgpt/</guid>
+      <description>An introduction to ChatGPT written by ChatGPT</description>
+      
+    </item>
+    
+  </channel>
+</rss>

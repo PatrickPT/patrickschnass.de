@@ -9,10 +9,11 @@ showAuthor: false
 
 ```python
 """
-Stop Experimenting and Start Transforming
+Stop Experimenting
+Start Transforming
 """
 
-if current_status == "experimenting":
+if current_status == experiment:
     stop()  # Break the loop
 
 import scale
@@ -59,8 +60,7 @@ def execute_strategy():
 
 ```python
 """
-Independent validation of your AI roadmap 
-and vendor selection
+Validation of your AI roadmap 
 """
 
 def reality_check(roadmap):
@@ -80,7 +80,7 @@ def reality_check(roadmap):
 
 ```python
 """
-Build a high-performance Data Team that sticks
+Build a high-performance Data Team
 """
 
 class DataTeam:
@@ -100,8 +100,7 @@ class DataTeam:
 
 ```python
 """
-Filter signal from noise and identify high-impact
-use cases for your specific business model.
+Identify high-impact AI use cases for your business model
 """
 
 def sparring_session(executive):
@@ -187,7 +186,7 @@ def sparring_session(executive):
 
 ## Hi, I'm Patrick
 
-I'm a technologist at heart with a passion for artificial intelligence, data science, and lifelong learning.
+I'm a technologist at heart with a passion for artificial intelligence and data science.
 
 Currently, I lead the **Data Science department at Vodafone**, where my team and I apply machine learning and AI to create solutions that drive business value and enhance customer experiences.
 

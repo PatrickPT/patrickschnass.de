@@ -9,10 +9,11 @@ showAuthor: false
 
 ```python
 """
-Stop Experimenting and Start Transforming
+Stop Experimenting
+Start Transforming
 """
 
-if current_status == "experimenting":
+if current_status == experiment:
     stop()  # Break the loop
 
 import scale
@@ -59,8 +60,7 @@ def execute_strategy():
 
 ```python
 """
-Unabhängige Validierung Ihrer KI-Roadmap 
-und Anbieterauswahl
+Validierung Ihrer KI-Roadmap 
 """
 
 def reality_check(roadmap):
@@ -80,7 +80,7 @@ def reality_check(roadmap):
 
 ```python
 """
-Ein Hochleistungs-Data-Team aufbauen, das bleibt
+Hochleistungs-Data-Team aufbauen
 """
 
 class DataTeam:
@@ -100,8 +100,7 @@ class DataTeam:
 
 ```python
 """
-Signal von Rauschen filtern und wirkungsstarke
-Use Cases für Ihr Geschäftsmodell identifizieren.
+AI Use Cases identifizieren.
 """
 
 def sparring_session(executive):
@@ -187,9 +186,9 @@ def sparring_session(executive):
 
 ## Hallo, ich bin Patrick
 
-Ich bin ein Technologe aus Leidenschaft mit Begeisterung für Künstliche Intelligenz, Data Science und lebenslanges Lernen.
+Techie aus Leidenschaft mit Begeisterung für Künstliche Intelligenz und Data Science.
 
-Derzeit leite ich die **Data Science Abteilung bei Vodafone**, wo mein Team und ich maschinelles Lernen und KI anwenden, um Lösungen zu entwickeln, die Geschäftswert schaffen und Kundenerlebnisse verbessern.
+Derzeit leite ich die **Data Science Abteilung bei Vodafone**, wo mein Team und ich maschinelles Lernen und KI implementieren, um Lösungen zu entwickeln, die Impact schaffen und Kundenerlebnisse verbessern.
 
 <div class="about-links">
 
