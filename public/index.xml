@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Impressum &amp; Datenschutz</title>
+      <link>http://localhost:1313/gdpr/</link>
+      <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/gdpr/</guid>
+      <description>&lt;h1 class=&#34;relative group&#34;&gt;Impressum&#xA;    &lt;div id=&#34;impressum&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Angaben gemäß § 5 TMG&#xA;    &lt;div id=&#34;angaben-gemäß--5-tmg&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Kontakt&#xA;    &lt;div id=&#34;kontakt&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;E-Mail: patrickatpatrickschnass.de&lt;br&gt;&#xA;LinkedIn: &lt;a href=&#34;https://www.linkedin.com/in/patrickschnass/&#34;  target=&#34;_blank&#34;&gt;https://www.linkedin.com/in/patrickschnass/&lt;/a&gt;&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV&#xA;    &lt;div id=&#34;verantwortlich-für-den-inhalt-nach--55-abs-2-rstv&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&#xA;&lt;h1 class=&#34;relative group&#34;&gt;Datenschutzerklärung&#xA;    &lt;div id=&#34;datenschutzerklärung&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;1. Datenschutz auf einen Blick&#xA;    &lt;div id=&#34;1-datenschutz-auf-einen-blick&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&#xA;&lt;h3 class=&#34;relative group&#34;&gt;Allgemeine Hinweise&#xA;    &lt;div id=&#34;allgemeine-hinweise&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.&lt;/p&gt;</description>
+      
+    </item>
     
   </channel>
 </rss>

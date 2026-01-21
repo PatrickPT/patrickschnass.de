@@ -59,6 +59,11 @@ theme = "blowfish"
       url = "https://github.com/PatrickPT"
       weight = 70
 
+    [[languages.de.menu.footer]]
+      name = "Impressum & Datenschutz"
+      url = "/gdpr"
+      weight = 10
+
   [languages.en]
     languageCode = "en"
     languageName = "English"
@@ -114,6 +119,11 @@ theme = "blowfish"
       pre = "github"
       url = "https://github.com/PatrickPT"
       weight = 70
+
+    [[languages.en.menu.footer]]
+      name = "Legal & Privacy"
+      url = "/en/gdpr"
+      weight = 10
 
 [params]
   colorScheme = "blowfish"

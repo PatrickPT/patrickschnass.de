@@ -40,6 +40,16 @@
     </item>
     
     <item>
+      <title>Legal Notice &amp; Privacy</title>
+      <link>http://localhost:1313/gdpr/</link>
+      <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/gdpr/</guid>
+      <description>&lt;h1 class=&#34;relative group&#34;&gt;Legal Notice (Impressum)&#xA;    &lt;div id=&#34;legal-notice-impressum&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Information according to § 5 TMG&#xA;    &lt;div id=&#34;information-according-to--5-tmg&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&lt;br&gt;&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Contact&#xA;    &lt;div id=&#34;contact&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;E-Mail: patrickatpatrickschnass.de&lt;br&gt;&#xA;LinkedIn: &lt;a href=&#34;https://www.linkedin.com/in/patrickschnass/&#34;  target=&#34;_blank&#34;&gt;https://www.linkedin.com/in/patrickschnass/&lt;/a&gt;&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Responsible for Content according to § 55 Abs. 2 RStV&#xA;    &lt;div id=&#34;responsible-for-content-according-to--55-abs-2-rstv&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&lt;br&gt;&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&#xA;&lt;h1 class=&#34;relative group&#34;&gt;Privacy Policy&#xA;    &lt;div id=&#34;privacy-policy&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;1. Data Protection at a Glance&#xA;    &lt;div id=&#34;1-data-protection-at-a-glance&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&#xA;&lt;h3 class=&#34;relative group&#34;&gt;General Information&#xA;    &lt;div id=&#34;general-information&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h3&gt;&#xA;&lt;p&gt;The following notes provide a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you can be personally identified.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>Legacy Post</title>
       <link>http://localhost:1313/en/posts/archive/legacy-test/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
