@@ -20,25 +20,25 @@ theme = "blowfish"
     [[languages.de.menu.main]]
       identifier = "home"
       name = "Startseite"
-      url = "/"
+      url = "/de/"
       weight = 10
 
     [[languages.de.menu.main]]
       identifier = "contact"
       name = "Kontakt"
-      url = "/#contact"
+      url = "/de/#contact"
       weight = 20
 
     [[languages.de.menu.main]]
       identifier = "services"
       name = "Leistungen"
-      url = "/#services"
+      url = "/de/#services"
       weight = 30
 
     [[languages.de.menu.main]]
       identifier = "about"
       name = "Über mich"
-      url = "/#about"
+      url = "/de/#about"
       weight = 40
 
     [[languages.de.menu.main]]
@@ -61,7 +61,7 @@ theme = "blowfish"
 
     [[languages.de.menu.footer]]
       name = "Impressum & Datenschutz"
-      url = "/gdpr"
+      url = "/de/gdpr"
       weight = 10
 
   [languages.en]
