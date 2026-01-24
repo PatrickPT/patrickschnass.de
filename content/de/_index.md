@@ -63,8 +63,8 @@ def execute_strategy():
 
 ```python
 """
-Filtern des AI Marketings und
-Validierung Ihrer KI-Roadmap 
+Filtern des Lärms 
+und Validierung Ihrer Roadmap
 """
 
 def reality_check(roadmap):
@@ -84,8 +84,8 @@ def reality_check(roadmap):
 
 ```python
 """
-Hochleistungs-Data-Team aufbauen
-und die Zukunft Ihres Unternehmens gestalten
+Auf/Umbau Ihrer Organisation
+um Ihren Erfolg zu steigern
 """
 
 class DataTeam:
@@ -105,8 +105,8 @@ class DataTeam:
 
 ```python
 """
-AI Use Cases und Technologien 
-für Ihr Business Model identifizieren
+Die richtige Technologie
+für Ihre Situation wählen
 """
 
 def sparring_session(executive):
@@ -194,7 +194,7 @@ def sparring_session(executive):
 
 Techie aus Leidenschaft mit Begeisterung für Künstliche Intelligenz und Data Science.
 
-Derzeit leite ich die **Data Science Abteilung bei Vodafone**, wo mein Team und ich maschinelles Lernen und KI implementieren, um Lösungen zu entwickeln, die Impact schaffen und Kundenerlebnisse verbessern.
+Derzeit leite ich die **Data Science Abteilung bei Vodafone**, und implementiere ML und KI um Lösungen zu entwickeln, die Impact schaffen und Kundenerlebnisse verbessern.
 
 <div class="about-links">
 

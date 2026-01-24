@@ -63,8 +63,8 @@ def execute_strategy():
 
 ```python
 """
-Cut throught the marketing noise
-and validate your AI roadmap
+Cut throught the noise
+and validate your roadmap
 """
 
 def reality_check(roadmap):
@@ -84,8 +84,8 @@ def reality_check(roadmap):
 
 ```python
 """
-Build a high-performance Data Team
-to shape your companies future
+Reshape your Data Team
+and boost your business
 """
 
 class DataTeam:
@@ -105,12 +105,12 @@ class DataTeam:
 
 ```python
 """
-Identify high-impact AI use cases and 
-technologies for your business model
+Pick the right technology
+to create relevant impact
 """
 
 def sparring_session(executive):
-    # Confidential 1:1 advisory
+    # AI advisory
     signal = filter_noise(market)
     cases = find_high_impact(
         business=executive.model
@@ -194,7 +194,7 @@ def sparring_session(executive):
 
 I'm a technologist at heart with a passion for artificial intelligence and data science.
 
-Currently, I lead the **Data Science department at Vodafone**, where my team and I apply machine learning and AI to create solutions that drive business value and enhance customer experiences.
+Currently, I lead the **Data Science department at Vodafone**, applying machine learning and AI to create solutions that drive business value and enhance customer experiences.
 
 <div class="about-links">
 
