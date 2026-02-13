@@ -235,9 +235,7 @@ html:not(.dark) .carousel-tab.is-active {
     font-weight: 600;
     line-height: 1.3;
     margin-bottom: 1rem;
-    color: white
-        /*#039BE5*/
-    ;
+    color: #039BE5;
 }
 
 html:not(.dark) .code-headline {

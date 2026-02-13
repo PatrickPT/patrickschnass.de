@@ -2,339 +2,339 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Patrick Schnaß</title>
-    <link>https://www.patrickschnass.de/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Patrick Schnaß</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
-    <lastBuildDate>Sun, 09 Feb 2025 18:30:57 +0000</lastBuildDate><atom:link href="https://www.patrickschnass.de/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Feb 2025 18:30:57 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Architecture</title>
-      <link>https://www.patrickschnass.de/tags/architecture/</link>
+      <link>http://localhost:1313/tags/architecture/</link>
       <pubDate>Sun, 09 Feb 2025 18:30:57 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/architecture/</guid>
+      <guid>http://localhost:1313/tags/architecture/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>GenAI</title>
-      <link>https://www.patrickschnass.de/tags/genai/</link>
+      <link>http://localhost:1313/tags/genai/</link>
       <pubDate>Sun, 09 Feb 2025 18:30:57 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/genai/</guid>
+      <guid>http://localhost:1313/tags/genai/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>LLM</title>
-      <link>https://www.patrickschnass.de/tags/llm/</link>
+      <link>http://localhost:1313/tags/llm/</link>
       <pubDate>Sun, 09 Feb 2025 18:30:57 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/llm/</guid>
+      <guid>http://localhost:1313/tags/llm/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>AI Design</title>
-      <link>https://www.patrickschnass.de/tags/ai-design/</link>
+      <link>http://localhost:1313/tags/ai-design/</link>
       <pubDate>Sat, 07 Oct 2023 10:30:00 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/ai-design/</guid>
+      <guid>http://localhost:1313/tags/ai-design/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Hands On</title>
-      <link>https://www.patrickschnass.de/tags/hands-on/</link>
+      <link>http://localhost:1313/tags/hands-on/</link>
       <pubDate>Sat, 07 Oct 2023 10:30:00 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/hands-on/</guid>
+      <guid>http://localhost:1313/tags/hands-on/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Model Architecture</title>
-      <link>https://www.patrickschnass.de/tags/model-architecture/</link>
+      <link>http://localhost:1313/tags/model-architecture/</link>
       <pubDate>Fri, 29 Sep 2023 18:30:57 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/model-architecture/</guid>
+      <guid>http://localhost:1313/tags/model-architecture/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Intuition</title>
-      <link>https://www.patrickschnass.de/tags/intuition/</link>
+      <link>http://localhost:1313/tags/intuition/</link>
       <pubDate>Tue, 05 Sep 2023 11:50:57 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/intuition/</guid>
+      <guid>http://localhost:1313/tags/intuition/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>ML Design</title>
-      <link>https://www.patrickschnass.de/tags/ml-design/</link>
+      <link>http://localhost:1313/tags/ml-design/</link>
       <pubDate>Tue, 05 Sep 2023 11:50:57 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/ml-design/</guid>
+      <guid>http://localhost:1313/tags/ml-design/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Foundations</title>
-      <link>https://www.patrickschnass.de/tags/foundations/</link>
+      <link>http://localhost:1313/tags/foundations/</link>
       <pubDate>Wed, 30 Aug 2023 11:50:57 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/foundations/</guid>
+      <guid>http://localhost:1313/tags/foundations/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Transformers</title>
-      <link>https://www.patrickschnass.de/tags/transformers/</link>
+      <link>http://localhost:1313/tags/transformers/</link>
       <pubDate>Wed, 30 Aug 2023 11:50:57 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/transformers/</guid>
+      <guid>http://localhost:1313/tags/transformers/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Data Engineer</title>
-      <link>https://www.patrickschnass.de/tags/data-engineer/</link>
+      <link>http://localhost:1313/tags/data-engineer/</link>
       <pubDate>Sun, 02 Jul 2023 15:01:23 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/data-engineer/</guid>
+      <guid>http://localhost:1313/tags/data-engineer/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>GCP</title>
-      <link>https://www.patrickschnass.de/tags/gcp/</link>
+      <link>http://localhost:1313/tags/gcp/</link>
       <pubDate>Sun, 02 Jul 2023 15:01:23 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/gcp/</guid>
+      <guid>http://localhost:1313/tags/gcp/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Fun</title>
-      <link>https://www.patrickschnass.de/tags/fun/</link>
+      <link>http://localhost:1313/tags/fun/</link>
       <pubDate>Fri, 31 Mar 2023 11:58:22 +0200</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/fun/</guid>
+      <guid>http://localhost:1313/tags/fun/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Q-Learning</title>
-      <link>https://www.patrickschnass.de/tags/q-learning/</link>
+      <link>http://localhost:1313/tags/q-learning/</link>
       <pubDate>Fri, 31 Mar 2023 11:58:22 +0200</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/q-learning/</guid>
+      <guid>http://localhost:1313/tags/q-learning/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Reinforcement Learning</title>
-      <link>https://www.patrickschnass.de/tags/reinforcement-learning/</link>
+      <link>http://localhost:1313/tags/reinforcement-learning/</link>
       <pubDate>Fri, 31 Mar 2023 11:58:22 +0200</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/reinforcement-learning/</guid>
+      <guid>http://localhost:1313/tags/reinforcement-learning/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>ML Engineer</title>
-      <link>https://www.patrickschnass.de/tags/ml-engineer/</link>
+      <link>http://localhost:1313/tags/ml-engineer/</link>
       <pubDate>Fri, 24 Feb 2023 21:01:23 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/ml-engineer/</guid>
+      <guid>http://localhost:1313/tags/ml-engineer/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>MLOPS</title>
-      <link>https://www.patrickschnass.de/tags/mlops/</link>
+      <link>http://localhost:1313/tags/mlops/</link>
       <pubDate>Fri, 24 Feb 2023 21:01:23 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/mlops/</guid>
+      <guid>http://localhost:1313/tags/mlops/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>MARP</title>
-      <link>https://www.patrickschnass.de/tags/marp/</link>
+      <link>http://localhost:1313/tags/marp/</link>
       <pubDate>Tue, 31 Jan 2023 09:06:20 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/marp/</guid>
+      <guid>http://localhost:1313/tags/marp/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Presentation</title>
-      <link>https://www.patrickschnass.de/tags/presentation/</link>
+      <link>http://localhost:1313/tags/presentation/</link>
       <pubDate>Tue, 31 Jan 2023 09:06:20 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/presentation/</guid>
+      <guid>http://localhost:1313/tags/presentation/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Latent-Diffusion-Models</title>
-      <link>https://www.patrickschnass.de/tags/latent-diffusion-models/</link>
+      <link>http://localhost:1313/tags/latent-diffusion-models/</link>
       <pubDate>Fri, 20 Jan 2023 14:50:18 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/latent-diffusion-models/</guid>
+      <guid>http://localhost:1313/tags/latent-diffusion-models/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Math</title>
-      <link>https://www.patrickschnass.de/tags/math/</link>
+      <link>http://localhost:1313/tags/math/</link>
       <pubDate>Fri, 20 Jan 2023 14:50:18 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/math/</guid>
+      <guid>http://localhost:1313/tags/math/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Notes</title>
-      <link>https://www.patrickschnass.de/tags/notes/</link>
+      <link>http://localhost:1313/tags/notes/</link>
       <pubDate>Fri, 20 Jan 2023 14:50:18 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/notes/</guid>
+      <guid>http://localhost:1313/tags/notes/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Stable-Diffusion</title>
-      <link>https://www.patrickschnass.de/tags/stable-diffusion/</link>
+      <link>http://localhost:1313/tags/stable-diffusion/</link>
       <pubDate>Fri, 20 Jan 2023 14:50:18 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/stable-diffusion/</guid>
+      <guid>http://localhost:1313/tags/stable-diffusion/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>DallE</title>
-      <link>https://www.patrickschnass.de/tags/dalle/</link>
+      <link>http://localhost:1313/tags/dalle/</link>
       <pubDate>Fri, 13 Jan 2023 09:28:09 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/dalle/</guid>
+      <guid>http://localhost:1313/tags/dalle/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>HandsOn</title>
-      <link>https://www.patrickschnass.de/tags/handson/</link>
+      <link>http://localhost:1313/tags/handson/</link>
       <pubDate>Fri, 13 Jan 2023 09:28:09 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/handson/</guid>
+      <guid>http://localhost:1313/tags/handson/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>HuggingFace</title>
-      <link>https://www.patrickschnass.de/tags/huggingface/</link>
+      <link>http://localhost:1313/tags/huggingface/</link>
       <pubDate>Fri, 13 Jan 2023 09:28:09 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/huggingface/</guid>
+      <guid>http://localhost:1313/tags/huggingface/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>NoCode</title>
-      <link>https://www.patrickschnass.de/tags/nocode/</link>
+      <link>http://localhost:1313/tags/nocode/</link>
       <pubDate>Fri, 13 Jan 2023 09:28:09 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/nocode/</guid>
+      <guid>http://localhost:1313/tags/nocode/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>ChatGPT</title>
-      <link>https://www.patrickschnass.de/tags/chatgpt/</link>
+      <link>http://localhost:1313/tags/chatgpt/</link>
       <pubDate>Thu, 12 Jan 2023 22:34:01 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/chatgpt/</guid>
+      <guid>http://localhost:1313/tags/chatgpt/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Summary</title>
-      <link>https://www.patrickschnass.de/tags/summary/</link>
+      <link>http://localhost:1313/tags/summary/</link>
       <pubDate>Thu, 12 Jan 2023 22:34:01 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/summary/</guid>
+      <guid>http://localhost:1313/tags/summary/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Blog</title>
-      <link>https://www.patrickschnass.de/tags/blog/</link>
+      <link>http://localhost:1313/tags/blog/</link>
       <pubDate>Sun, 01 Jan 2023 09:00:00 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/blog/</guid>
+      <guid>http://localhost:1313/tags/blog/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Github</title>
-      <link>https://www.patrickschnass.de/tags/github/</link>
+      <link>http://localhost:1313/tags/github/</link>
       <pubDate>Sun, 01 Jan 2023 09:00:00 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/github/</guid>
+      <guid>http://localhost:1313/tags/github/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>https://www.patrickschnass.de/tags/hugo/</link>
+      <link>http://localhost:1313/tags/hugo/</link>
       <pubDate>Sun, 01 Jan 2023 09:00:00 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/hugo/</guid>
+      <guid>http://localhost:1313/tags/hugo/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Medium</title>
-      <link>https://www.patrickschnass.de/tags/medium/</link>
+      <link>http://localhost:1313/tags/medium/</link>
       <pubDate>Sun, 01 Jan 2023 09:00:00 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/tags/medium/</guid>
+      <guid>http://localhost:1313/tags/medium/</guid>
       <description></description>
       
     </item>
