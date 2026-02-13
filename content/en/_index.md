@@ -7,12 +7,9 @@ showAuthor: false
 
 <section id="contact" class="snap-section">
 
-```python
-"""
-Stop Experimenting
-Start Transforming
-"""
+<div class="code-headline">Stop Experimenting<br>Start Transforming</div>
 
+```python
 if current_status == experiment:
     stop()  # Break the loop
 
@@ -61,12 +58,9 @@ def execute_strategy():
 
 <div class="carousel-panel is-active" data-index="0">
 
-```python
-"""
-Cut throught the noise
-and validate your roadmap
-"""
+<div class="code-headline">Cut through the noise<br>and validate your roadmap</div>
 
+```python
 def reality_check(roadmap):
     # Cut through the hype
     feasibility = assess(roadmap)
@@ -82,12 +76,9 @@ def reality_check(roadmap):
 
 <div class="carousel-panel" data-index="1">
 
-```python
-"""
-Reshape your Data Team
-and boost your business
-"""
+<div class="code-headline">Reshape your Data Team<br>and boost your business</div>
 
+```python
 class DataTeam:
     def __init__(self):
         self.roles = define_roles()
@@ -103,12 +94,9 @@ class DataTeam:
 
 <div class="carousel-panel" data-index="2">
 
-```python
-"""
-Pick the right technology
-to create relevant impact
-"""
+<div class="code-headline">Pick the right technology<br>to create relevant impact</div>
 
+```python
 def sparring_session(executive):
     # AI advisory
     signal = filter_noise(market)

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+
 :root {
     --color-neutral-50: 255 255 255;
     --color-neutral-100: 249 250 251;
@@ -29,7 +31,7 @@ a[href^="#"]:has(> span:only-child) {
 
 /* Typography */
 body {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Inter', -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     letter-spacing: -0.01em;
 }
 
@@ -160,12 +162,12 @@ html:not(.dark) .carousel-tab:hover {
 }
 
 .carousel-tab.is-active {
-    background: rgba(59, 130, 246, 0.8);
+    background: #039BE5;
     color: white;
 }
 
 html:not(.dark) .carousel-tab.is-active {
-    background: rgba(59, 130, 246, 0.9);
+    background: #039BE5;
     color: white;
 }
 
@@ -226,21 +228,20 @@ html:not(.dark) .carousel-tab.is-active {
     width: auto;
 }
 
-/* Make docstrings larger in landing page code blocks */
-/* Make docstrings larger in landing page code blocks */
-.snap-section .chroma .sd,
-.snap-section .highlight .sd,
-.snap-section .sd,
-.snap-section .s2,
-.snap-section .dl {
-    font-size: 1.1rem !important;
-    line-height: 1.5 !important;
-    display: inline-block;
-    padding-bottom: 0.8rem;
-    font-weight: 500;
-    color: #3b82f6 !important;
-    /* Even Darker Blue */
-    width: 100%;
+/* Headlines above code blocks on landing page */
+.code-headline {
+    font-family: 'Inter', -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: white
+        /*#039BE5*/
+    ;
+}
+
+html:not(.dark) .code-headline {
+    color: #039BE5;
 }
 
 /* Remove ALL underlines from code blocks */
@@ -389,16 +390,6 @@ html:not(.dark) .progress-dot {
         padding: 0.6rem 0.45rem !important;
     }
 
-    /* Smaller docstrings on mobile */
-    .snap-section .chroma .sd,
-    .snap-section .highlight .sd,
-    .snap-section .sd,
-    .snap-section .s2,
-    .snap-section .dl {
-        font-size: 0.9rem !important;
-        line-height: 1.4 !important;
-        padding-bottom: 0.5rem;
-    }
 
     /* Reduce spacing for line numbers */
     .snap-section .lntd:first-child {

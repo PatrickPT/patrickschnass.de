@@ -7,12 +7,9 @@ showAuthor: false
 
 <section id="contact" class="snap-section">
 
-```python
-"""
-Stop Experimenting
-Start Transforming
-"""
+<div class="code-headline">Stop Experimenting<br>Start Transforming</div>
 
+```python
 if current_status == experiment:
     stop()  # Break the loop
 
@@ -61,12 +58,9 @@ def execute_strategy():
 
 <div class="carousel-panel is-active" data-index="0">
 
-```python
-"""
-Filtern des Lärms 
-und Validierung Ihrer Roadmap
-"""
+<div class="code-headline">Filtern des Lärms<br>und Validierung Ihrer Roadmap</div>
 
+```python
 def reality_check(roadmap):
     # Schluss mit dem Hype
     feasibility = assess(roadmap)
@@ -82,12 +76,9 @@ def reality_check(roadmap):
 
 <div class="carousel-panel" data-index="1">
 
-```python
-"""
-Auf/Umbau Ihrer Organisation
-um Ihren Erfolg zu steigern
-"""
+<div class="code-headline">Auf/Umbau Ihrer Organisation<br>um Ihren Erfolg zu steigern</div>
 
+```python
 class DataTeam:
     def __init__(self):
         self.roles = define_roles()
@@ -103,12 +94,9 @@ class DataTeam:
 
 <div class="carousel-panel" data-index="2">
 
-```python
-"""
-Die richtige Technologie
-für Ihre Situation wählen
-"""
+<div class="code-headline">Die richtige Technologie<br>für Ihre Situation wählen</div>
 
+```python
 def sparring_session(executive):
     # Vertrauliches 1:1
     signal = filter_noise(market)
