@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="{{ .Site.Language.Lang }}">
 <head>
-	<meta name="generator" content="Hugo 0.153.0">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  {{ if eq .Site.Language.Lang "de" }}
   <title>Patrick Schnaß — KI Beratung</title>
   <meta name="description" content="Ich helfe Unternehmen, KI-Initiativen in profitable Geschäftsprozesse zu verwandeln.">
-  
+  {{ else }}
+  <title>Patrick Schnaß — AI Advisory</title>
+  <meta name="description" content="Helping enterprises turn AI initiatives into profitable business processes.">
+  {{ end }}
   <meta name="author" content="Patrick Schnaß">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Patrick Schnaß">
@@ -54,7 +56,7 @@
 
     a { color: inherit; text-decoration: none; }
 
-     
+    /* ── Canvas ────────────────────────────────── */
     #bg-canvas {
       position: fixed;
       inset: 0;
@@ -64,7 +66,7 @@
       pointer-events: none;
     }
 
-     
+    /* ── Nav ───────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -185,7 +187,7 @@
       .hamburger { display: block; }
     }
 
-     
+    /* ── Sections shared ───────────────────────── */
     section {
       position: relative;
       z-index: 1;
@@ -218,7 +220,7 @@
       max-width: 38rem;
     }
 
-     
+    /* Fade-in animation */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -229,7 +231,7 @@
       transform: translateY(0);
     }
 
-     
+    /* ── Hero ──────────────────────────────────── */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -275,7 +277,7 @@
       line-height: 1.75;
     }
 
-     
+    /* Code block */
     .code-card {
       background: var(--bg-code);
       border: 1px solid rgba(255,255,255,0.08);
@@ -299,7 +301,7 @@
     .cl  { color: #eed49f; }
     .op  { color: #91d7e3; }
 
-     
+    /* CTA buttons */
     .btn-row {
       display: flex;
       gap: 0.875rem;
@@ -344,7 +346,7 @@
       background: rgba(255,255,255,0.04);
     }
 
-     
+    /* ── Stats ─────────────────────────────────── */
     #stats {
       background: var(--bg-tint);
       border-top: 1px solid var(--border);
@@ -371,7 +373,7 @@
       font-weight: 500;
     }
 
-     
+    /* ── Services ──────────────────────────────── */
     #services { padding: 6rem 2rem; }
     .services-header { margin-bottom: 3rem; }
     .services-grid {
@@ -430,7 +432,7 @@
       white-space: pre;
     }
 
-     
+    /* ── About ─────────────────────────────────── */
     #about {
       background: var(--bg-tint);
       border-top: 1px solid var(--border);
@@ -495,7 +497,7 @@
       .about-links { justify-content: center; }
     }
 
-     
+    /* ── Contact ───────────────────────────────── */
     #contact { padding: 6rem 2rem; }
     .contact-card {
       max-width: 44rem;
@@ -529,7 +531,7 @@
       align-items: center;
     }
 
-     
+    /* ── Footer ────────────────────────────────── */
     footer {
       position: relative;
       z-index: 1;
@@ -555,7 +557,7 @@
     }
     .footer-links a:hover { color: var(--text-sub); }
 
-     
+    /* ── Light mode ────────────────────────────── */
     html.light {
       --bg:      #f1f5f9;
       --bg-nav:  rgba(241, 245, 249, 0.92);
@@ -577,7 +579,7 @@
     html.light .footer-links a:hover { color: #475569; }
     html.light #bg-canvas { opacity: 0.45; }
 
-     
+    /* ── Responsive ────────────────────────────── */
     @media (max-width: 640px) {
       .contact-card { padding: 2.5rem 1.5rem; }
       #hero { padding: 6rem 1.25rem 4rem; }
@@ -589,20 +591,26 @@
 
 <canvas id="bg-canvas"></canvas>
 
-
+<!-- ── Navigation ─────────────────────────────── -->
 <nav>
-  <a href="/de/" class="nav-logo">
+  <a href="{{ if eq .Site.Language.Lang "de" }}/de/{{ else }}/{{ end }}" class="nav-logo">
     <img src="/favicon/android-chrome-64x64.png" alt="" class="nav-logo-img">
     Patrick Schnaß
   </a>
   <ul class="nav-links">
-    
+    {{ if eq .Site.Language.Lang "de" }}
     <li><a href="#services">Leistungen</a></li>
     <li><a href="#about">Über mich</a></li>
     <li><a href="/en/posts/">Blog</a></li>
     <li><a href="#contact" class="nav-cta">Termin buchen</a></li>
     <li><a href="/" class="nav-lang">EN</a></li>
-    
+    {{ else }}
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="/en/posts/">Blog</a></li>
+    <li><a href="#contact" class="nav-cta">Book a call</a></li>
+    <li><a href="/de/" class="nav-lang">DE</a></li>
+    {{ end }}
   </ul>
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
     <svg id="icon-moon" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -621,32 +629,42 @@
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
-  
+  {{ if eq .Site.Language.Lang "de" }}
   <a href="#services" onclick="closeMobile()">Leistungen</a>
   <a href="#about"    onclick="closeMobile()">Über mich</a>
   <a href="/en/posts/">Blog</a>
   <a href="#contact"  onclick="closeMobile()" style="color:var(--accent);font-weight:700;">Termin buchen</a>
   <a href="/" style="color:var(--text-sub);">Switch to English</a>
-  
+  {{ else }}
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#about"    onclick="closeMobile()">About</a>
+  <a href="/en/posts/">Blog</a>
+  <a href="#contact"  onclick="closeMobile()" style="color:var(--accent);font-weight:700;">Book a call</a>
+  <a href="/de/" style="color:var(--text-sub);">Auf Deutsch</a>
+  {{ end }}
 </div>
 
-
+<!-- ── Hero ───────────────────────────────────── -->
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow reveal">
-      Daten & KI Beratung
+      {{ if eq .Site.Language.Lang "de" }}Daten & KI Beratung{{ else }}Data & AI Advisory{{ end }}
     </div>
 
     <h1 class="hero-headline reveal">
-      
+      {{ if eq .Site.Language.Lang "de" }}
         KI ist nur so gut wie das <span>Fundament darunter</span>
-      
+      {{ else }}
+        AI is only as good as the <span>foundation beneath it</span>
+      {{ end }}
     </h1>
 
     <p class="hero-sub reveal">
-      
+      {{ if eq .Site.Language.Lang "de" }}
         Die meisten KI-Projekte scheitern nicht, weil das Modell falsch ist. Sie scheitern, weil das Fundament fehlt - eigene Daten sind nicht verfügbar, Prozesse nicht vorhanden, und niemand hat geplant, was nach dem Demo passiert. Ich helfe dabei, das zu lösen, bevor es teuer wird.
-      
+      {{ else }}
+        Most AI projects don't fail because the model is wrong. They fail because the foundation isn't there - data isn't owned, processes aren't in place, and nobody planned what happens after the demo. I help fix that before it gets expensive.
+      {{ end }}
     </p>
 
     <div class="code-card reveal">
@@ -664,64 +682,68 @@
     <div class="btn-row reveal">
       <a href="#contact" class="btn-primary">
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-        Termin buchen
+        {{ if eq .Site.Language.Lang "de" }}Termin buchen{{ else }}Book a free call{{ end }}
       </a>
       <a href="mailto:p.schnass@gmail.com" class="btn-ghost">
-        E-Mail schreiben
+        {{ if eq .Site.Language.Lang "de" }}E-Mail schreiben{{ else }}Email me{{ end }}
       </a>
     </div>
   </div>
 </section>
 
-
+<!-- ── Stats ──────────────────────────────────── -->
 <section id="stats">
   <div class="container">
     <div class="stats-grid">
       <div class="reveal">
         <div class="stat-number">11+</div>
-        <div class="stat-label">Jahre in der Technologie</div>
+        <div class="stat-label">{{ if eq .Site.Language.Lang "de" }}Jahre in der Technologie{{ else }}Years in technology{{ end }}</div>
       </div>
       <div class="reveal">
         <div class="stat-number">20+</div>
-        <div class="stat-label">Data Scientists im Team</div>
+        <div class="stat-label">{{ if eq .Site.Language.Lang "de" }}Data Scientists im Team{{ else }}Data scientists led{{ end }}</div>
       </div>
       <div class="reveal">
         <div class="stat-number">3</div>
-        <div class="stat-label">Beratungsfelder</div>
+        <div class="stat-label">{{ if eq .Site.Language.Lang "de" }}Beratungsfelder{{ else }}Advisory services{{ end }}</div>
       </div>
     </div>
   </div>
 </section>
 
-
+<!-- ── Services ───────────────────────────────── -->
 <section id="services">
   <div class="container">
     <div class="services-header reveal">
-      <span class="section-tag">Wie ich helfen kann</span>
+      <span class="section-tag">{{ if eq .Site.Language.Lang "de" }}Wie ich helfen kann{{ else }}How I can help{{ end }}</span>
       <h2 class="section-title">
-        Drei Dinge, die ich gut kann
+        {{ if eq .Site.Language.Lang "de" }}Drei Dinge, die ich gut kann{{ else }}Three things I've learned to do well{{ end }}
       </h2>
       <p class="section-sub">
-        
+        {{ if eq .Site.Language.Lang "de" }}
           Ich arbeite mit Unternehmen an den Teilen der KI-Umsetzung, die leicht schiefgehen und schwer zu korrigieren sind.
-        
+        {{ else }}
+          I work with companies on the parts of AI adoption that are easy to get wrong and hard to fix later.
+        {{ end }}
       </p>
     </div>
 
     <div class="services-grid">
 
-      
+      <!-- Card 1: AI Reality Check -->
       <div class="svc-card reveal">
         <div class="svc-icon">
           <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
         </div>
-        <h3 class="svc-title">KI Reality Check</h3>
+        <h3 class="svc-title">{{ if eq .Site.Language.Lang "de" }}KI Reality Check{{ else }}AI Reality Check{{ end }}</h3>
         <p class="svc-desc">
-          
+          {{ if eq .Site.Language.Lang "de" }}
             Viele KI-Roadmaps klingen auf dem Papier gut und scheitern in der Praxis - weil das Fundament fehlt. Eigene Daten nicht verfügbar, Integrationspfade nicht geplant, niemand hat überlegt, was nach dem Demo kommt. Ich sage Ihnen ehrlich, was wirklich umsetzbar ist und wo Sie nur Zeit verlieren.
-          
+          {{ else }}
+            Most AI roadmaps sound good on paper and break down in practice - because the foundation isn't there. Data isn't owned, integration paths aren't planned, nobody thought about what happens after the demo. I'll give you an honest read on what's actually buildable and where you're setting yourself up to waste time.
+          {{ end }}
         </p>
         <div class="svc-code"><span class="kw">def</span> <span class="fn">reality_check</span>(roadmap):
     feasibility = <span class="fn">assess</span>(roadmap)
@@ -731,18 +753,20 @@
     <span class="kw">return</span> <span class="fn">pivot_strategy</span>()</div>
       </div>
 
-      
+      <!-- Card 2: Scale your Data Org -->
       <div class="svc-card reveal">
         <div class="svc-icon">
           <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
         </div>
-        <h3 class="svc-title">Data Organisation skalieren</h3>
+        <h3 class="svc-title">{{ if eq .Site.Language.Lang "de" }}Data Organisation skalieren{{ else }}Scale your Data Org{{ end }}</h3>
         <p class="svc-desc">
-          
+          {{ if eq .Site.Language.Lang "de" }}
             Ein Data Team ist Teil des Fundaments - es sollte Datenprodukte besitzen, nicht Dashboards bauen. Wenn Rollen unklar sind, der Abstand zum Business zu groß ist oder das Team nie wirklich in der Lage war, Features zu liefern, hilft eine neue Struktur nicht. Ich helfe dabei, die Grundlage so aufzubauen, dass das Team tatsächlich nützlich ist.
-          
+          {{ else }}
+            A data team is part of the foundation - it should own data products, not build dashboards. When roles are unclear, the business distance is too wide, or the team was never set up to actually ship things, restructuring alone won't help. I help you build the base so the team can be genuinely useful - not just visibly busy.
+          {{ end }}
         </p>
         <div class="svc-code"><span class="kw">class</span> <span class="cl">DataTeam</span>:
     <span class="kw">def</span> <span class="fn">__init__</span>(self):
@@ -752,18 +776,20 @@
         <span class="kw">return</span> Team.<span class="fn">that_sticks</span>()</div>
       </div>
 
-      
+      <!-- Card 3: AI Guidance -->
       <div class="svc-card reveal">
         <div class="svc-icon">
           <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
           </svg>
         </div>
-        <h3 class="svc-title">KI-Guidance für Entscheider</h3>
+        <h3 class="svc-title">{{ if eq .Site.Language.Lang "de" }}KI-Guidance für Entscheider{{ else }}AI Guidance{{ end }}</h3>
         <p class="svc-desc">
-          
+          {{ if eq .Site.Language.Lang "de" }}
             Bevor Sie in KI investieren, lohnt sich eine ehrliche Frage: Ist Ihr Unternehmen überhaupt bereit? Gehören Ihnen die Daten? Können Sie nach Version 1 weiter ausliefern? Ich helfe dabei, diese Fragen zu beantworten - ohne Vendor-Agenda, ohne Hype.
-          
+          {{ else }}
+            Before investing in AI, it's worth asking honestly: is your organisation actually ready? Do you own the data? Can you keep shipping after version 1? I'll help you think through whether the foundation is in place - no vendor agenda, no hype, just a straight conversation about what it actually takes.
+          {{ end }}
         </p>
         <div class="svc-code"><span class="kw">def</span> <span class="fn">sparring_session</span>(executive):
     signal = <span class="fn">filter_noise</span>(market)
@@ -777,7 +803,7 @@
   </div>
 </section>
 
-
+<!-- ── About ───────────────────────────────────── -->
 <section id="about">
   <div class="container">
     <div class="about-inner">
@@ -785,13 +811,17 @@
         <img src="/patrick.png" alt="Patrick Schnaß" class="about-photo">
       </div>
       <div class="reveal">
-        <div class="about-role">Über mich</div>
-        <h2 class="about-name">Hallo, ich bin Patrick</h2>
-        
+        <div class="about-role">{{ if eq .Site.Language.Lang "de" }}Über mich{{ else }}About me{{ end }}</div>
+        <h2 class="about-name">{{ if eq .Site.Language.Lang "de" }}Hallo, ich bin Patrick{{ else }}Hi, I'm Patrick{{ end }}</h2>
+        {{ if eq .Site.Language.Lang "de" }}
         <p class="about-text">Ich komme aus dem Business-Intelligence-Umfeld und bin durch echte Problemlösungen ins Machine-Learning-Umfeld gewachsen. Mein wirtschaftswissenschaftlicher Hintergrund hilft dabei - ich denke über Daten und Modelle immer in dem Sinne, welche Entscheidung sie eigentlich verbessern sollen.</p>
         <p class="about-text">Aktuell leite ich das Data Science Team bei Vodafone, wo wir ML-, GenAI- und Agentic-AI-Produkte bauen, die produktiv laufen. Was ich dabei gelernt habe: Das Modell ist selten das eigentliche Problem. Das Fundament ist es - Datenpipelines, Integration in bestehende Systeme und die organisatorische Fähigkeit, auch nach der ersten Version weiter auszuliefern.</p>
         <p class="about-text">Gelegentlich berate ich andere Unternehmen bei genau diesen Themen.</p>
-        
+        {{ else }}
+        <p class="about-text">I started in business intelligence and moved into machine learning by solving actual business problems. My background in economics has been useful - I tend to think about data and models in terms of what decision they're supposed to improve, not as technology for its own sake.</p>
+        <p class="about-text">I lead the Data Science team at Vodafone, where we build ML, GenAI, and Agentic AI products in production. What that work has taught me is that the model is rarely the hard part. The foundation is - data pipelines, integration into existing systems, and the organisational capability to keep shipping after the first version.</p>
+        <p class="about-text">Occasionally I work with other companies on exactly those problems.</p>
+        {{ end }}
         <div class="about-links">
           <a href="https://www.linkedin.com/in/patrickschnass/" class="about-link" target="_blank" rel="noopener">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -811,48 +841,55 @@
   </div>
 </section>
 
-
+<!-- ── Contact ────────────────────────────────── -->
 <section id="contact">
   <div class="container">
     <div class="contact-card reveal">
-      <span class="section-tag">Kontakt</span>
+      <span class="section-tag">{{ if eq .Site.Language.Lang "de" }}Kontakt{{ else }}Get in touch{{ end }}</span>
       <h2 class="contact-title">
-        Klingt nach einem Gespräch?
+        {{ if eq .Site.Language.Lang "de" }}Klingt nach einem Gespräch?{{ else }}Worth a conversation?{{ end }}
       </h2>
       <p class="contact-sub">
-        
+        {{ if eq .Site.Language.Lang "de" }}
           Wenn Sie an einem Daten- oder KI-Thema arbeiten und eine ehrliche zweite Meinung suchen, melden Sie sich gerne.
-        
+        {{ else }}
+          If you're working through a data or AI problem and want a second opinion from someone who's been in the weeds on it - feel free to reach out.
+        {{ end }}
       </p>
       <div class="contact-buttons">
         <div id="gcal-btn"></div>
         <a href="mailto:p.schnass@gmail.com" class="btn-ghost">
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          E-Mail schreiben
+          {{ if eq .Site.Language.Lang "de" }}E-Mail schreiben{{ else }}Email me{{ end }}
         </a>
       </div>
     </div>
   </div>
 </section>
 
-
+<!-- ── Footer ─────────────────────────────────── -->
 <footer>
-  <p class="footer-copy">© 2026 Patrick Schnaß</p>
+  <p class="footer-copy">© {{ now.Year }} Patrick Schnaß</p>
   <div class="footer-links">
-    
+    {{ if eq .Site.Language.Lang "de" }}
     <a href="/de/gdpr">Impressum & Datenschutz</a>
     <a href="https://www.linkedin.com/in/patrickschnass/" target="_blank" rel="noopener">LinkedIn</a>
     <a href="https://github.com/PatrickPT" target="_blank" rel="noopener">GitHub</a>
     <a href="/en/posts/">Blog</a>
-    
+    {{ else }}
+    <a href="/en/gdpr">Legal & Privacy</a>
+    <a href="https://www.linkedin.com/in/patrickschnass/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/PatrickPT" target="_blank" rel="noopener">GitHub</a>
+    <a href="/en/posts/">Blog</a>
+    {{ end }}
   </div>
 </footer>
 
-
+<!-- ── Scripts ────────────────────────────────── -->
 <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 <script>
 (function() {
-   
+  /* ── Theme toggle ───────────────────────── */
   var html      = document.documentElement;
   var iconMoon  = document.getElementById('icon-moon');
   var iconSun   = document.getElementById('icon-sun');
@@ -879,7 +916,7 @@
     setTheme(!html.classList.contains('light'));
   });
 
-   
+  /* ── Mobile nav ─────────────────────────── */
   var btn  = document.getElementById('hamburger');
   var menu = document.getElementById('mobile-menu');
   var open = document.getElementById('ham-open');
@@ -897,7 +934,7 @@
     close.style.display = 'none';
   };
 
-   
+  /* ── Scroll reveal ──────────────────────── */
   var io = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) {
@@ -909,20 +946,20 @@
 
   document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 
-   
+  /* ── Google Calendar button ─────────────── */
   window.addEventListener('load', function() {
     var target = document.getElementById('gcal-btn');
     if (target && typeof calendar !== 'undefined') {
       calendar.schedulingButton.load({
         url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LuEwDn8POT8P603ixQSg5XmHAFvXPy4lvjPSZ1mwUSfg-E7cnqU8Mv5m7IaAQT6YS42O7Fq9U?gv=true',
         color: '#039BE5',
-        label: 'Termin buchen',
+        label: '{{ if eq .Site.Language.Lang "de" }}Termin buchen{{ else }}Book a free call{{ end }}',
         target: target,
       });
     }
   });
 
-   
+  /* ── Particle canvas ────────────────────── */
   var canvas = document.getElementById('bg-canvas');
   var ctx    = canvas.getContext('2d');
   var W, H, particles = [];
@@ -970,7 +1007,7 @@
       particles[i].update();
     }
 
-     
+    /* Draw filled triangles first (behind lines and dots) */
     for (var i = 0; i < len; i++) {
       var p = particles[i];
       for (var j = i + 1; j < len; j++) {
@@ -996,7 +1033,7 @@
       }
     }
 
-     
+    /* Draw edges and dots on top */
     for (var i = 0; i < len; i++) {
       var p = particles[i];
       for (var j = i + 1; j < len; j++) {

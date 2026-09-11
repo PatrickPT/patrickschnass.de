@@ -3,31 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>http://localhost:1313/de/gdpr/</loc>
+    <loc>https://www.patrickschnass.de/de/gdpr/</loc>
     <lastmod>2024-01-21T00:00:00+00:00</lastmod>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:1313/gdpr/"
+      href="https://www.patrickschnass.de/gdpr/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="de"
-      href="http://localhost:1313/de/gdpr/"
+      href="https://www.patrickschnass.de/de/gdpr/"
     />
   </url>
   <url>
-    <loc>http://localhost:1313/de/</loc>
+    <loc>https://www.patrickschnass.de/de/</loc>
     <lastmod>2024-01-21T00:00:00+00:00</lastmod>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:1313/"
+      href="https://www.patrickschnass.de/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="de"
-      href="http://localhost:1313/de/"
+      href="https://www.patrickschnass.de/de/"
     />
   </url>
 </urlset>
