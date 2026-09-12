@@ -38,7 +38,7 @@ theme = "blowfish"
     [[languages.de.menu.main]]
       identifier = "blog"
       name = "Blog"
-      url = "/en/posts"
+      url = "/posts"
       weight = 40
 
     [[languages.de.menu.footer]]
@@ -81,7 +81,7 @@ theme = "blowfish"
     [[languages.en.menu.main]]
       identifier = "blog"
       name = "Blog"
-      url = "/en/posts"
+      url = "/posts"
       weight = 40
 
     [[languages.en.menu.footer]]
