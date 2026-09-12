@@ -377,7 +377,7 @@
     .services-header { margin-bottom: 3rem; }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.25rem;
     }
     .svc-card {
@@ -736,11 +736,11 @@
     <div class="services-header reveal">
       <span class="section-tag">Wie ich helfen kann</span>
       <h2 class="section-title">
-        Strategie. Readiness. Bauen.
+        Strategie. Readiness. Bauen. Agenten.
       </h2>
       <p class="section-sub">
         
-          Ob Sie noch an der Richtung arbeiten, prüfen ob Sie es wirklich umsetzen können, oder bereit sind, etwas zu bauen - ich unterstütze Sie dabei.
+          Von der strategischen Orientierung über die Bewertung der Umsetzbarkeit bis hin zum tatsächlichen Bauen und dem Aufbau einer skalierbaren Arbeitsweise mit KI-Agenten.
         
       </p>
     </div>
@@ -795,13 +795,32 @@
         <h3 class="svc-title">Bauen & Ausliefern</h3>
         <p class="svc-desc">
           
-            Manchmal reicht Beratung nicht - es muss etwas gebaut werden. Ich nutze KI-gestützte Entwicklungswerkzeuge um Datenpipelines, interne Tools und KI-Features zu bauen, die in der Produktion laufen - nicht nur in Demo-Umgebungen.
+            Manchmal braucht es jemanden, der es baut. Ich nutze KI-gestützte Tools wie Claude Code, um Datenpipelines, interne Software und KI-Features zu entwickeln. Spezifikationsgetrieben, nicht wahllos. Wiederverwendbar und in Ihre Architektur integriert - kein Einmal-Demo.
           
         </p>
-        <div class="svc-code"><span class="cm"># not slides. actual code.</span>
-agent = <span class="fn">ClaudeCode</span>(codebase)
-agent.<span class="fn">implement</span>(spec)
-agent.<span class="fn">ship</span>(<span class="st">"production"</span>)</div>
+        <div class="svc-code"><span class="cm"># spec first. then code.</span>
+spec = <span class="fn">Spec</span>.<span class="fn">from</span>(brief)
+code = agent.<span class="fn">implement</span>(spec)
+code.<span class="fn">ship</span>(reusable=<span class="kw">True</span>)</div>
+      </div>
+
+      
+      <div class="svc-card reveal">
+        <div class="svc-icon">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+          </svg>
+        </div>
+        <h3 class="svc-title">Agentische Entwicklung</h3>
+        <p class="svc-desc">
+          
+            Die meisten Unternehmen häufen mit KI-Agenten-Experimenten isolierte Prototypen an, die niemand pflegen kann. Ich helfe beim Aufbau eines echten Betriebsmodells: eine wiederverwendbare Agent-Factory, spezifikationsgetriebene Workflows und Integrationsmuster, die zu Ihrer bestehenden Architektur passen.
+          
+        </p>
+        <div class="svc-code"><span class="cm"># not vibe code. a factory.</span>
+spec  = <span class="fn">Spec</span>.<span class="fn">from</span>(brief)
+agent = <span class="fn">factory</span>.<span class="fn">build</span>(spec)
+agent.<span class="fn">integrate</span>(your_stack)</div>
       </div>
 
     </div>
@@ -945,7 +964,7 @@ agent.<span class="fn">ship</span>(<span class="st">"production"</span>)</div>
     var target = document.getElementById('gcal-btn');
     if (target && typeof calendar !== 'undefined') {
       calendar.schedulingButton.load({
-        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LuEwDn8POT8P603ixQSg5XmHAFvXPy4lvjPSZ1mwUSfg-E7cnqU8Mv5m7IaAQT6YS42O7Fq9U?gv=true',
+        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Tu_t7zHJhBQ0eZZWjj4bmS5ls6jNCP8gsU25eIOwKL2pT9dbZbpyXyrYJEsqIH2DKNXuHS6wB?gv=true',
         color: '#039BE5',
         label: 'Termin buchen',
         target: target,
