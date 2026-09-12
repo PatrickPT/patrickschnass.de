@@ -91,10 +91,11 @@
       gap: 0.5rem;
     }
     .nav-logo-img {
-      width: 28px;
-      height: 28px;
-      border-radius: 4px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
       flex-shrink: 0;
+      object-fit: cover;
       filter: invert(1);
     }
     html.light .nav-logo-img { filter: invert(0); }
@@ -634,7 +635,7 @@
 <!-- ── Navigation ─────────────────────────────── -->
 <nav>
   <a href="{{ if eq .Site.Language.Lang "de" }}/de/{{ else }}/{{ end }}" class="nav-logo">
-    <img src="/favicon/android-chrome-64x64.png" alt="" class="nav-logo-img">
+    <img src="/favicon/nav-logo.png" alt="" class="nav-logo-img">
     Patrick Schnaß
   </a>
   <ul class="nav-links">
@@ -693,15 +694,15 @@
 
     <h1 class="hero-headline reveal">
       {{ if eq .Site.Language.Lang "de" }}
-        KI ist nur so gut wie das <span>Fundament darunter</span>
+        KI ist nur so gut wie das <span>Fundament</span> darunter
       {{ else }}
-        AI is only as good as the <span>foundation beneath it</span>
+        AI is only as good as the <span>foundation</span> beneath it
       {{ end }}
     </h1>
 
     <p class="hero-sub reveal">
       {{ if eq .Site.Language.Lang "de" }}
-        Die meisten KI-Projekte scheitern nicht, weil das Modell falsch ist. Sie scheitern, weil das Fundament fehlt - eigene Daten sind nicht verfügbar, Prozesse nicht vorhanden, und niemand hat geplant, was nach dem Demo passiert. Ich helfe dabei, das zu lösen, bevor es teuer wird.
+        Die meisten KI-Projekte scheitern nicht, weil die Technologie Modell falsch ist. Sie scheitern, weil das Fundament fehlt - Daten sind nicht verfügbar, Prozesse nicht etabliert, und niemand hat geplant, was nach der Demo passiert. Ich helfe dabei, Lösungen zu designen, bevor es teuer wird.
       {{ else }}
         Most AI projects don't fail because the model is wrong. They fail because the foundation isn't there - data isn't owned, processes aren't in place, and nobody planned what happens after the demo. I help fix that before it gets expensive.
       {{ end }}
@@ -757,7 +758,7 @@
       </h2>
       <p class="section-sub">
         {{ if eq .Site.Language.Lang "de" }}
-          Ob Sie noch an der Richtung arbeiten, prüfen ob Sie es wirklich umsetzen können, oder bereit sind, etwas zu bauen - ich arbeite über alles hinweg.
+          Ob Sie noch an der Richtung arbeiten, prüfen ob Sie es wirklich umsetzen können, oder bereit sind, etwas zu bauen - ich unterstütze Sie dabei.
         {{ else }}
           Whether you're still working out the direction, checking if you can actually execute, or ready to ship something - I work across all of it.
         {{ end }}
@@ -773,10 +774,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
           </svg>
         </div>
-        <h3 class="svc-title">{{ if eq .Site.Language.Lang "de" }}KI-Guidance für Entscheider{{ else }}AI Guidance{{ end }}</h3>
+        <h3 class="svc-title">{{ if eq .Site.Language.Lang "de" }}KI-Guidance{{ else }}AI Guidance{{ end }}</h3>
         <p class="svc-desc">
           {{ if eq .Site.Language.Lang "de" }}
-            Manchmal hilft es, jemanden von außen zu haben, der ehrlich sagt, wo KI für Ihr Unternehmen Sinn ergibt - und wo nicht. Ich arbeite mit Entscheidern zusammen, die ein ehrliches Sparring suchen, keine Verkaufspräsentation.
+            Manchmal hilft es, jemanden von außen zu haben, der ehrlich sagt, wo KI für Ihr Unternehmen Sinn ergibt - und wo nicht. Ich arbeite mit Entscheidern zusammen, die ein ehrliches Gespräch suchen, keine Verkaufspräsentation.
           {{ else }}
             Sometimes the most valuable thing is someone outside your organisation who can give you a straight view of where AI makes sense for your business - and where it doesn't. I work with executives who want an honest sounding board, not a pitch.
           {{ end }}
@@ -818,7 +819,7 @@
         <h3 class="svc-title">{{ if eq .Site.Language.Lang "de" }}Bauen & Ausliefern{{ else }}Build & Ship{{ end }}</h3>
         <p class="svc-desc">
           {{ if eq .Site.Language.Lang "de" }}
-            Manchmal reicht Beratung nicht - es muss etwas gebaut werden. Ich nutze KI-gestützte Entwicklungswerkzeuge wie Claude Code, um Datenpipelines, interne Tools und KI-Features zu bauen, die in der Produktion laufen - nicht nur in Demo-Umgebungen.
+            Manchmal reicht Beratung nicht - es muss etwas gebaut werden. Ich nutze KI-gestützte Entwicklungswerkzeuge um Datenpipelines, interne Tools und KI-Features zu bauen, die in der Produktion laufen - nicht nur in Demo-Umgebungen.
           {{ else }}
             Advisory is one thing. Sometimes the work is to actually build something. I use AI-native development tools - including Claude Code - to create data pipelines, internal tooling, and AI-powered features. Things that run in production, not just demo environments.
           {{ end }}
@@ -844,12 +845,12 @@ agent.<span class="fn">ship</span>(<span class="st">"production"</span>)</div>
         <div class="about-role">{{ if eq .Site.Language.Lang "de" }}Über mich{{ else }}About me{{ end }}</div>
         <h2 class="about-name">{{ if eq .Site.Language.Lang "de" }}Hallo, ich bin Patrick{{ else }}Hi, I'm Patrick{{ end }}</h2>
         {{ if eq .Site.Language.Lang "de" }}
-        <p class="about-text">Ich komme aus dem Business-Intelligence-Umfeld und bin durch echte Problemlösungen ins Machine-Learning-Umfeld gewachsen. Mein wirtschaftswissenschaftlicher Hintergrund hilft dabei - ich denke über Daten und Modelle immer in dem Sinne, welche Entscheidung sie eigentlich verbessern sollen.</p>
-        <p class="about-text">Aktuell leite ich das Data Science Team bei Vodafone, wo wir ML-, GenAI- und Agentic-AI-Produkte bauen, die produktiv laufen. Was ich dabei gelernt habe: Das Modell ist selten das eigentliche Problem. Das Fundament ist es - Datenpipelines, Integration in bestehende Systeme und die organisatorische Fähigkeit, auch nach der ersten Version weiter auszuliefern.</p>
+        <p class="about-text">Ich komme aus der IT-Beratung und bin ins Machine-Learning-Umfeld gewachsen. Mein wirtschaftswissenschaftlicher Hintergrund hilft dabei - ich denke über Daten und Modelle immer in dem Sinne, welche Entscheidung sie eigentlich verbessern sollen.</p>
+        <p class="about-text">Aktuell leite ich das Data Science & AI Team bei Vodafone, wo wir ML-, GenAI- und Agentic-AI-Produkte bauen, die produktiv laufen. Was ich dabei gelernt habe: Das Modell ist selten das eigentliche Problem. Das Fundament ist es - Datenpipelines, Integration in bestehende Systeme und die organisatorische Fähigkeit, auch nach der ersten Version weiter auszuliefern.</p>
         <p class="about-text">Gelegentlich berate ich andere Unternehmen bei genau diesen Themen.</p>
         {{ else }}
-        <p class="about-text">I started in business intelligence and moved into machine learning by solving actual business problems. My background in economics has been useful - I tend to think about data and models in terms of what decision they're supposed to improve, not as technology for its own sake.</p>
-        <p class="about-text">I lead the Data Science team at Vodafone, where we build ML, GenAI, and Agentic AI products in production. What that work has taught me is that the model is rarely the hard part. The foundation is - data pipelines, integration into existing systems, and the organisational capability to keep shipping after the first version.</p>
+        <p class="about-text">I started in consulting and moved into machine learning by solving actual business problems with algorithms. My background in economics has been useful - I tend to think about data and models in terms of what decision they're supposed to improve, not as technology for its own sake.</p>
+        <p class="about-text">I lead the Data Science & AI  team at Vodafone, where we build ML, GenAI, and Agentic AI products in production. What that work has taught me is that the model is rarely the hard part. The foundation is - data pipelines, integration into existing systems, and the organisational capability to keep shipping after the first version.</p>
         <p class="about-text">Occasionally I work with other companies on exactly those problems.</p>
         {{ end }}
         <div class="about-links">
