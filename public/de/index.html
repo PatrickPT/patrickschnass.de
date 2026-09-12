@@ -215,6 +215,8 @@
       font-size: 1rem;
       color: var(--text-sub);
       max-width: 38rem;
+      margin-left: auto;
+      margin-right: auto;
     }
 
      
@@ -375,7 +377,7 @@
 
      
     #services { padding: 6rem 2rem; }
-    .services-header { margin-bottom: 3rem; }
+    .services-header { margin-bottom: 3rem; text-align: center; }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
@@ -406,7 +408,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.25rem;
+      margin: 0 auto 1.25rem;
       color: var(--accent);
       flex-shrink: 0;
     }
@@ -416,6 +418,7 @@
       color: #f1f5f9;
       margin-bottom: 0.65rem;
       letter-spacing: -0.01em;
+      text-align: center;
     }
     .svc-desc {
       font-size: 0.875rem;
@@ -424,7 +427,9 @@
       flex: 1;
     }
     .svc-code {
-      margin-top: 1.25rem;
+      width: fit-content;
+      max-width: 100%;
+      margin: 1.25rem auto 0;
       background: rgba(30,32,48,0.9);
       border-radius: 0.5rem;
       padding: 0.9rem 1rem;
@@ -434,8 +439,7 @@
       color: #cad3f5;
       overflow: hidden;
       white-space: pre;
-      min-width: 0;
-      max-width: 100%;
+      text-align: left;
     }
 
      
@@ -809,7 +813,7 @@
 
     <p class="hero-sub reveal">
       
-        Die meisten KI-Projekte scheitern nicht, weil die Technologie Modell falsch ist. Sie scheitern, weil das Fundament fehlt - Daten sind nicht verfügbar, Prozesse nicht etabliert, und niemand hat geplant, was nach der Demo passiert. Ich helfe dabei, Lösungen zu designen, bevor es teuer wird.
+        Die meisten KI-Projekte scheitern nicht, weil die Technologie falsch ist. Sie scheitern, weil das Fundament fehlt - Daten sind nicht verfügbar, Prozesse nicht etabliert, und niemand hat geplant, was nach der Demo passiert. Ich helfe dabei, Lösungen zu designen, bevor es teuer wird.
       
     </p>
 
