@@ -4,67 +4,102 @@ This document summarizes all customizations made to the [Blowfish Hugo theme](ht
 
 ---
 
+## Standalone Homepage (`/layouts/index.html`)
+
+The homepage is a fully custom standalone template that **bypasses Blowfish entirely** — it has its own `<head>`, nav, CSS, and JavaScript. Nothing in this file inherits from the theme.
+
+### Sections
+- **Hero** — animated headline, subline, CTA buttons, Google Calendar booking integration
+- **Services** — tabbed carousel with three service cards (AI Advisory, Data & AI Strategy, Workshops)
+- **About** — profile photo, bio text (bilingual EN/DE), career timeline, GCP credentials, links
+
+### Career Timeline (`.exp-timeline`)
+Horizontal CSS flexbox timeline with four nodes:
+
+| Node | Class | Style |
+|---|---|---|
+| Data Scientist | `.exp-node` | Muted dot |
+| Head of Deep Insights | `.exp-node` | Muted dot |
+| Head of Data Science & AI | `.exp-node .exp-current` | Larger accent dot with glow |
+| AI Advisor | `.exp-node .exp-offer` | Hollow outlined dot, boxed card |
+
+- The connecting line is a `::before` pseudo-element; its `top` is calculated precisely to align with all dots: `calc(1.4rem + 0.45rem + 4.5px)`
+- `.exp-current` uses `flex: 1.5` to give the current role more horizontal space
+- `.exp-offer` has a border + faint accent background to distinguish it as an offering vs. past experience
+- On mobile (`≤640px`) the timeline switches to a vertical left-border layout; dots are hidden
+
+### GCP Credentials (`.credentials`)
+Badge + text block below the about links:
+- Badge image: `/static/gcp-professional-badge.png`
+- Certifications listed: Professional ML Engineer, Professional Data Engineer, Cloud Digital Leader
+
+### Firefox / Mobile Fixes
+- `html { overflow-x: hidden }` — prevents horizontal scroll on Firefox
+- `.hero-inner { width: 100% }` at `≤640px` — fixes hero centering on mobile
+- `.stats-grid { grid-template-columns: 1fr }` at `≤640px` — stacks stats vertically
+
+---
+
 ## Custom Layout Partials
 
-### `/layouts/partials/home/profile.html`
-- **Purpose**: Rearranged landing page layout
-- **Change**: Moved the profile header (image, name, bio) to appear **after** the main content instead of before
-- Added `mt-8` margin-top to the header for spacing
+### `/layouts/partials/favicons.html`
+- Points to favicon files in the `/favicon/` subdirectory
+- All `href` strings must not have a leading space — Hugo's `relURL` encodes spaces as `%20`, breaking paths
 
 ### `/layouts/partials/vendor.html`
-- **Purpose**: Enable KaTeX math rendering on pages with `math: true` frontmatter
-- **Change**: Modified KaTeX loading condition from only `katex` shortcode to:
+- Enables KaTeX math rendering on pages with `math: true` frontmatter
+- Modified condition from `katex` shortcode only to:
   ```go
   {{ if or (.Page.HasShortcode "katex") (.Page.Params.math) }}
   ```
 
-### `/layouts/partials/favicons.html`
-- **Purpose**: Custom favicon paths
-- **Change**: Points to favicon files in the `/favicon/` subdirectory
+### `/layouts/partials/home/profile.html`
+- Moves the profile header (image, name, bio) to appear after the main content
+- Adds `mt-8` margin-top to the header for spacing
 
 ---
 
 ## Custom CSS (`/assets/css/custom.css`)
 
-### Heading Anchors
-- Hidden the `#` anchor links that appear next to headlines (via CSS targeting `.heading-anchor`)
+### Blog Nav Logo
+```css
+.logo { filter: none; width: 32px !important; height: 32px !important; border-radius: 50%; }
+.dark .logo { filter: none; }
+```
+Prevents Blowfish's dark-mode `filter: invert(1)` from turning the blue logo orange.
 
-### Full-Page Snap Sections
-- `.snap-section`: Full-viewport sections with centered content for landing page segments
+### Heading Anchors
+Hidden the `#` anchor links next to headlines via CSS targeting `.heading-anchor`.
 
 ### Services Carousel
-- `.services-carousel`: Tabbed carousel container
-- `.carousel-tabs` / `.carousel-tab`: Tab button styling with active state (`.is-active`)
-- `.carousel-panels` / `.carousel-panel`: Content panels with fade-in animation
-- `.carousel-progress` / `.progress-dot`: Progress indicator dots
+- `.services-carousel` / `.carousel-tabs` / `.carousel-tab` / `.carousel-panel`
+- Uses `.is-active` (not `.active`) to avoid conflict with Blowfish's menu active-link underline styling
 
-### Code Blocks on Landing Page
-- `.snap-section pre`: Custom padding, border-radius, font-size
-- `.snap-section .highlight`: Inline-block display for flexible width
-- `.snap-section .lntd:first-child`: Line number styling with opacity
-
-### Underline Fix
-- Comprehensive rules to remove all underlines from code blocks (avoiding conflict with theme's `.active` class)
-
-### About Section
-- `.about-section`: Centered layout with max-width
-- `.about-photo`: Circular profile image with blue border
-- `.about-links`: Styled links for LinkedIn, GitHub, etc.
+### Code Block Underline Fix
+Comprehensive rules (`text-decoration: none !important`) across all Chroma/highlight selectors to prevent theme styles from adding underlines inside code blocks.
 
 ---
 
-## Custom JavaScript (`/assets/js/katex-render.js`)
+## Favicon (`/static/favicon/` + `/assets/favicon/`)
 
-- **Purpose**: Configure KaTeX with multiple delimiter types
-- **Supports**:
-  - `$$...$$` for display math
-  - `$...$` for inline math
-  - `\[...\]` for display math (LaTeX style)
-  - `\(...\)` for inline math (LaTeX style)
+All favicons are generated by `main.py` using Pillow:
+- Blue circle (`#039BE5`) with white outlined "P" (stroke width 4% of size, +3% rightward optical offset)
+- Sizes: 16, 32, 64, 104, 180, 192, 512px + `.ico`
+
+Both locations are required:
+- `static/favicon/` — served directly, referenced by the homepage and `favicons.html`
+- `assets/favicon/nav-logo.png` — consumed by Blowfish's `resources.Get .Site.Params.Logo`
+
+`/static/favicon/site.webmanifest` icon paths must include the `/favicon/` prefix (not root).
 
 ---
 
-## Configuration Changes (`hugo.toml`)
+## Configuration (`hugo.toml`)
+
+### Menu
+- Trimmed to 4 items per language: Home, Services, About, Blog
+- Blog URL: `/posts` (English is default language, no `/en/` prefix needed)
+- Logo: `favicon/nav-logo.png`
 
 ### Article Settings
 ```toml
@@ -81,36 +116,29 @@ This document summarizes all customizations made to the [Blowfish Hugo theme](ht
   noClasses = false
 ```
 
-### Menu Links
-- Both DE and EN "About" menu items link to `/#about` (landing page section) instead of separate page
-
 ---
 
 ## Static Files
 
-### `/static/patrick.png`
-- Profile photo copied from assets for direct URL access
-
-### `/static/favicon/`
-- All favicon files (originally in assets)
+| File | Purpose |
+|---|---|
+| `/static/patrick.png` | Profile photo for direct URL access |
+| `/static/favicon/*` | All favicon files |
+| `/static/gcp-professional-badge.png` | GCP certification badge (Generic Professional Cloud) |
 
 ---
 
-## Content Structure
+## Custom JavaScript (`/assets/js/katex-render.js`)
 
-### Landing Pages (`/content/[lang]/_index.md`)
-
-Three snap-sections:
-1. **#contact**: Hero code block + Google Calendar booking button
-2. **#services**: Tabbed carousel with 3 service offerings (code-styled)
-3. **#about**: Profile photo, intro text, and links
-
-Each includes inline JavaScript for the carousel auto-rotation (10-second intervals).
+Configures KaTeX with multiple delimiter types:
+- `$$...$$` and `\[...\]` for display math
+- `$...$` and `\(...\)` for inline math
 
 ---
 
 ## Notes
 
-- The `.active` class was renamed to `.is-active` in the carousel to avoid conflict with Blowfish's menu `.active` styling (which adds underlines)
-- Blog posts should use `math: true` in frontmatter for LaTeX/KaTeX rendering
-- The theme uses KaTeX (not MathJax) for math rendering
+- Build command is `uv run hugo --gc` — plain `hugo` does not work in this repo's Python/uv setup
+- `partialCached "favicons.html"` in Blowfish's head caches per server run — restart the server after changing `favicons.html` to see changes
+- The homepage (`layouts/index.html`) does not use content from `content/[lang]/_index.md` — all copy is inline in the template
+- Blog posts use `math: true` in frontmatter to enable KaTeX rendering
