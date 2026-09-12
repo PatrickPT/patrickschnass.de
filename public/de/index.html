@@ -811,17 +811,11 @@
       
     </p>
 
-    <div class="code-card reveal">
-<span class="cm"># the model is the easy part</span>
-<span class="fn">assert</span> foundation.<span class="fn">is_solid</span>(), <span class="st">"most projects skip this"</span>
-
-<span class="kw">from</span> enterprise <span class="kw">import</span> data_pipelines, integrations
-
-<span class="kw">def</span> <span class="fn">ship_to_production</span>(org):
-    base    = data_pipelines.<span class="fn">get_right</span>(org)
-    product = Model.<span class="fn">train_on</span>(base)
-    <span class="kw">return</span> integrations.<span class="fn">deploy_and_maintain</span>(product)
-    </div>
+    <div class="code-card reveal"><span class="cm"># strategy → agents → production</span>
+strategy = <span class="fn">advise</span>(exec, org)
+spec     = <span class="fn">Spec</span>.<span class="fn">from</span>(strategy.brief)
+agent    = <span class="fn">factory</span>.<span class="fn">build</span>(spec)
+agent.<span class="fn">ship</span>(reusable=<span class="kw">True</span>)</div>
 
     <div class="btn-row reveal">
       <a href="#contact" class="btn-primary">
@@ -886,9 +880,8 @@
           
         </p>
         <div class="svc-code"><span class="kw">def</span> <span class="fn">advise</span>(exec, org):
-    fit  = <span class="fn">find_impact</span>(exec)
-    base = <span class="fn">assess</span>(org)
-    <span class="kw">return</span> <span class="fn">clarity</span>(fit, base)</div>
+    base = <span class="fn">assess_value_chain</span>(org)
+    <span class="kw">return</span> <span class="fn">brief</span>(exec, base)</div>
       </div>
 
       
