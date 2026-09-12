@@ -377,7 +377,7 @@
     .services-header { margin-bottom: 3rem; }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
       gap: 1.25rem;
     }
     .svc-card {
@@ -736,11 +736,11 @@
     <div class="services-header reveal">
       <span class="section-tag">How I can help</span>
       <h2 class="section-title">
-        Strategy. Readiness. Build. Agents.
+        Advisory. Agents. Build.
       </h2>
       <p class="section-sub">
         
-          From working out the direction and checking if you can execute, to building things and setting up how your team works with agents - I cover the full range.
+          From strategic advisory and agentic operating models to actually shipping things.
         
       </p>
     </div>
@@ -754,54 +754,16 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
           </svg>
         </div>
-        <h3 class="svc-title">AI Guidance</h3>
+        <h3 class="svc-title">AI Advisory</h3>
         <p class="svc-desc">
           
-            Sometimes the most valuable thing is someone outside your organisation who can give you a straight view of where AI makes sense for your business - and where it doesn't. I work with executives who want an honest sounding board, not a pitch.
+            I work with executives who want a straight view of where AI makes sense for their business - and with teams who need to know if they're actually set up to execute on it. Direction, foundation, team structure: I look at all of it, no vendor agenda.
           
         </p>
-        <div class="svc-code"><span class="kw">def</span> <span class="fn">guidance</span>(exec):
-    bets = <span class="fn">find_impact</span>(
-        exec.business)
-    <span class="kw">return</span> <span class="fn">clarity</span>(bets)</div>
-      </div>
-
-      
-      <div class="svc-card reveal">
-        <div class="svc-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-          </svg>
-        </div>
-        <h3 class="svc-title">AI Readiness</h3>
-        <p class="svc-desc">
-          
-            Most AI projects have two problems: the roadmap isn't grounded in what's actually feasible, and the organisation isn't set up to execute it anyway. I'll look at both - whether what you're planning is actually buildable, and whether your data infrastructure and team structure can support it.
-          
-        </p>
-        <div class="svc-code"><span class="kw">def</span> <span class="fn">assess</span>(org):
-    plan = <span class="fn">feasible</span>(org.plan)
-    team = <span class="fn">ready</span>(org.team)
-    <span class="kw">return</span> <span class="cl">Report</span>(plan, team)</div>
-      </div>
-
-      
-      <div class="svc-card reveal">
-        <div class="svc-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-          </svg>
-        </div>
-        <h3 class="svc-title">Build & Ship</h3>
-        <p class="svc-desc">
-          
-            Sometimes you need someone to actually build it. I use AI-native tools including Claude Code to ship data pipelines, internal tooling, and AI-powered features. Spec-driven, not vibe coded. Reusable and integrated into your architecture - not a one-off nobody can maintain.
-          
-        </p>
-        <div class="svc-code"><span class="cm"># spec first. then code.</span>
-spec = <span class="fn">Spec</span>.<span class="fn">from</span>(brief)
-code = agent.<span class="fn">implement</span>(spec)
-code.<span class="fn">ship</span>(reusable=<span class="kw">True</span>)</div>
+        <div class="svc-code"><span class="kw">def</span> <span class="fn">advise</span>(exec, org):
+    fit  = <span class="fn">find_impact</span>(exec)
+    base = <span class="fn">assess</span>(org)
+    <span class="kw">return</span> <span class="fn">clarity</span>(fit, base)</div>
       </div>
 
       
@@ -821,6 +783,25 @@ code.<span class="fn">ship</span>(reusable=<span class="kw">True</span>)</div>
 spec  = <span class="fn">Spec</span>.<span class="fn">from</span>(brief)
 agent = <span class="fn">factory</span>.<span class="fn">build</span>(spec)
 agent.<span class="fn">integrate</span>(your_stack)</div>
+      </div>
+
+      
+      <div class="svc-card reveal">
+        <div class="svc-icon">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3 class="svc-title">Build & Ship</h3>
+        <p class="svc-desc">
+          
+            Sometimes you need someone to actually build it. I use AI-native tools including Claude Code to ship data pipelines, internal tooling, and AI-powered features. Spec-driven, not vibe coded. Reusable and integrated into your architecture - not a one-off nobody can maintain.
+          
+        </p>
+        <div class="svc-code"><span class="cm"># spec first. then code.</span>
+spec = <span class="fn">Spec</span>.<span class="fn">from</span>(brief)
+code = agent.<span class="fn">implement</span>(spec)
+code.<span class="fn">ship</span>(reusable=<span class="kw">True</span>)</div>
       </div>
 
     </div>
