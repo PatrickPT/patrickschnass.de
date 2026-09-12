@@ -430,7 +430,7 @@
       font-size: 0.75rem;
       line-height: 1.6;
       color: #cad3f5;
-      overflow-x: auto;
+      overflow: hidden;
       white-space: pre;
       min-width: 0;
       max-width: 100%;
@@ -759,12 +759,10 @@
             Manchmal hilft es, jemanden von außen zu haben, der ehrlich sagt, wo KI für Ihr Unternehmen Sinn ergibt - und wo nicht. Ich arbeite mit Entscheidern zusammen, die ein ehrliches Sparring suchen, keine Verkaufspräsentation.
           
         </p>
-        <div class="svc-code"><span class="kw">def</span> <span class="fn">sparring_session</span>(executive):
-    signal = <span class="fn">filter_noise</span>(market)
-    cases = <span class="fn">find_high_impact</span>(
-        business=executive.model
-    )
-    <span class="kw">return</span> <span class="fn">strategic_clarity</span>()</div>
+        <div class="svc-code"><span class="kw">def</span> <span class="fn">guidance</span>(exec):
+    bets = <span class="fn">find_impact</span>(
+        exec.business)
+    <span class="kw">return</span> <span class="fn">clarity</span>(bets)</div>
       </div>
 
       
@@ -780,11 +778,10 @@
             Die meisten KI-Projekte haben zwei Probleme: Die Roadmap ist unrealistisch, und das Unternehmen ist ohnehin nicht aufgestellt, sie umzusetzen. Ich schaue mir beides an - ob das, was Sie planen, wirklich baubar ist, und ob Dateninfrastruktur und Teamstruktur das tragen können.
           
         </p>
-        <div class="svc-code"><span class="kw">def</span> <span class="fn">assess_readiness</span>(org):
-    roadmap = <span class="fn">evaluate_feasibility</span>(org.plan)
-    team    = <span class="fn">evaluate_structure</span>(org.team)
-    <span class="kw">return</span> <span class="cl">Report</span>(roadmap, team,
-               action=<span class="st">"here's what to fix"</span>)</div>
+        <div class="svc-code"><span class="kw">def</span> <span class="fn">assess</span>(org):
+    plan = <span class="fn">feasible</span>(org.plan)
+    team = <span class="fn">ready</span>(org.team)
+    <span class="kw">return</span> <span class="cl">Report</span>(plan, team)</div>
       </div>
 
       
@@ -800,12 +797,10 @@
             Manchmal reicht Beratung nicht - es muss etwas gebaut werden. Ich nutze KI-gestützte Entwicklungswerkzeuge wie Claude Code, um Datenpipelines, interne Tools und KI-Features zu bauen, die in der Produktion laufen - nicht nur in Demo-Umgebungen.
           
         </p>
-        <div class="svc-code"><span class="cm"># not a slide. actual code.</span>
-agent = <span class="fn">ClaudeCode</span>.<span class="fn">init</span>(repo=codebase)
-feature = agent.<span class="fn">implement</span>(
-    spec, tests=<span class="kw">True</span>
-)
-feature.<span class="fn">ship</span>(env=<span class="st">"production"</span>)</div>
+        <div class="svc-code"><span class="cm"># not slides. actual code.</span>
+agent = <span class="fn">ClaudeCode</span>(codebase)
+agent.<span class="fn">implement</span>(spec)
+agent.<span class="fn">ship</span>(<span class="st">"production"</span>)</div>
       </div>
 
     </div>

@@ -430,7 +430,7 @@
       font-size: 0.75rem;
       line-height: 1.6;
       color: #cad3f5;
-      overflow-x: auto;
+      overflow: hidden;
       white-space: pre;
       min-width: 0;
       max-width: 100%;
@@ -759,12 +759,10 @@
             Sometimes the most valuable thing is someone outside your organisation who can give you a straight view of where AI makes sense for your business - and where it doesn't. I work with executives who want an honest sounding board, not a pitch.
           
         </p>
-        <div class="svc-code"><span class="kw">def</span> <span class="fn">sparring_session</span>(executive):
-    signal = <span class="fn">filter_noise</span>(market)
-    cases = <span class="fn">find_high_impact</span>(
-        business=executive.model
-    )
-    <span class="kw">return</span> <span class="fn">strategic_clarity</span>()</div>
+        <div class="svc-code"><span class="kw">def</span> <span class="fn">guidance</span>(exec):
+    bets = <span class="fn">find_impact</span>(
+        exec.business)
+    <span class="kw">return</span> <span class="fn">clarity</span>(bets)</div>
       </div>
 
       
@@ -780,11 +778,10 @@
             Most AI projects have two problems: the roadmap isn't grounded in what's actually feasible, and the organisation isn't set up to execute it anyway. I'll look at both - whether what you're planning is actually buildable, and whether your data infrastructure and team structure can support it.
           
         </p>
-        <div class="svc-code"><span class="kw">def</span> <span class="fn">assess_readiness</span>(org):
-    roadmap = <span class="fn">evaluate_feasibility</span>(org.plan)
-    team    = <span class="fn">evaluate_structure</span>(org.team)
-    <span class="kw">return</span> <span class="cl">Report</span>(roadmap, team,
-               action=<span class="st">"here's what to fix"</span>)</div>
+        <div class="svc-code"><span class="kw">def</span> <span class="fn">assess</span>(org):
+    plan = <span class="fn">feasible</span>(org.plan)
+    team = <span class="fn">ready</span>(org.team)
+    <span class="kw">return</span> <span class="cl">Report</span>(plan, team)</div>
       </div>
 
       
@@ -800,12 +797,10 @@
             Advisory is one thing. Sometimes the work is to actually build something. I use AI-native development tools - including Claude Code - to create data pipelines, internal tooling, and AI-powered features. Things that run in production, not just demo environments.
           
         </p>
-        <div class="svc-code"><span class="cm"># not a slide. actual code.</span>
-agent = <span class="fn">ClaudeCode</span>.<span class="fn">init</span>(repo=codebase)
-feature = agent.<span class="fn">implement</span>(
-    spec, tests=<span class="kw">True</span>
-)
-feature.<span class="fn">ship</span>(env=<span class="st">"production"</span>)</div>
+        <div class="svc-code"><span class="cm"># not slides. actual code.</span>
+agent = <span class="fn">ClaudeCode</span>(codebase)
+agent.<span class="fn">implement</span>(spec)
+agent.<span class="fn">ship</span>(<span class="st">"production"</span>)</div>
       </div>
 
     </div>
