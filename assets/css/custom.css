@@ -14,13 +14,16 @@ a[href^="#"]:has(> span:only-child) {
     display: none !important;
 }
 
-/* Logo color inversion for dark mode */
+/* Blog nav logo — blue mark works on both light and dark, no inversion needed */
 .logo {
-    filter: invert(0);
+    filter: none;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50%;
 }
 
 .dark .logo {
-    filter: invert(1);
+    filter: none;
 }
 
 /* Subtle interactive canvas */
