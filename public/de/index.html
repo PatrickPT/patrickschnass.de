@@ -879,7 +879,8 @@ agent.<span class="fn">ship</span>(reusable=<span class="kw">True</span>)</div>
             Ich arbeite mit Entscheidern, die einen ehrlichen Blick wollen - wo KI Sinn ergibt und wo nicht, und ob das Unternehmen überhaupt in der Lage ist, es umzusetzen. Roadmap, Fundament, Teamstruktur: ich schaue mir alles an, ohne Vendor-Agenda.
           
         </p>
-        <div class="svc-code"><span class="kw">def</span> <span class="fn">advise</span>(exec, org):
+        <div class="svc-code"><span class="cm"># create concrete actions</span>
+<span class="kw">def</span> <span class="fn">advise</span>(exec, org):
     base = <span class="fn">assess_value_chain</span>(org)
     <span class="kw">return</span> <span class="fn">brief</span>(exec, base)</div>
       </div>
