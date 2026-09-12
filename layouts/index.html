@@ -521,14 +521,23 @@
       z-index: 1;
     }
     .exp-current { flex: 1.5; }
-    .exp-offer { flex: 1; }
+    .exp-offer {
+      flex: 1;
+      border: 1px solid rgba(3,155,229,0.4);
+      border-radius: 8px;
+      background: rgba(3,155,229,0.05);
+      padding: 0.5rem 0.4rem 0.6rem;
+      margin: -0.5rem -0.4rem -0.6rem;
+    }
+    html.light .exp-offer { background: rgba(3,155,229,0.06); }
     .exp-offer .exp-dot {
       background: transparent;
       border: 2px solid var(--accent);
       width: 11px; height: 11px;
     }
-    .exp-offer .exp-title { color: var(--accent); font-weight: 800; }
-    .exp-offer .exp-bullet { color: var(--text-sub); }
+    .exp-offer .exp-title { color: var(--accent); font-weight: 800; font-size: 0.84rem; }
+    .exp-offer .exp-bullet { color: var(--text-sub); font-style: italic; }
+    .exp-offer .exp-bullet::before { content: ""; }
     .exp-top {
       height: 1.4rem;
       display: flex;
@@ -1005,7 +1014,6 @@ code.<span class="fn">ship</span>(reusable=<span class="kw">True</span>)</div>
             <div class="exp-dot"></div>
             <div class="exp-bottom">
               <div class="exp-bullet">{{ if eq .Site.Language.Lang "de" }}Enterprise-KI-Strategie für Ihr Unternehmen{{ else }}Bringing enterprise AI strategy to your company{{ end }}</div>
-              <div class="exp-bullet">{{ if eq .Site.Language.Lang "de" }}Das Fundament richtig bauen — bevor es teuer wird{{ else }}Getting the foundation right — before it gets expensive{{ end }}</div>
             </div>
           </div>
 
