@@ -24,40 +24,22 @@ theme = "blowfish"
       weight = 10
 
     [[languages.de.menu.main]]
-      identifier = "contact"
-      name = "Kontakt"
-      url = "/de/#contact"
-      weight = 20
-
-    [[languages.de.menu.main]]
       identifier = "services"
       name = "Leistungen"
       url = "/de/#services"
-      weight = 30
+      weight = 20
 
     [[languages.de.menu.main]]
       identifier = "about"
       name = "Über mich"
       url = "/de/#about"
-      weight = 40
+      weight = 30
 
     [[languages.de.menu.main]]
       identifier = "blog"
       name = "Blog"
       url = "/en/posts"
-      weight = 50
-
-    [[languages.de.menu.main]]
-      identifier = "linkedin"
-      pre = "linkedin"
-      url = "https://www.linkedin.com/in/patrickschnass/"
-      weight = 60
-
-    [[languages.de.menu.main]]
-      identifier = "github"
-      pre = "github"
-      url = "https://github.com/PatrickPT"
-      weight = 70
+      weight = 40
 
     [[languages.de.menu.footer]]
       name = "Impressum & Datenschutz"
@@ -85,40 +67,22 @@ theme = "blowfish"
       weight = 10
 
     [[languages.en.menu.main]]
-      identifier = "contact"
-      name = "Contact"
-      url = "/#contact"
-      weight = 20
-
-    [[languages.en.menu.main]]
       identifier = "services"
       name = "Services"
       url = "/#services"
-      weight = 30
+      weight = 20
 
     [[languages.en.menu.main]]
       identifier = "about"
       name = "About"
       url = "/#about"
-      weight = 40
+      weight = 30
 
     [[languages.en.menu.main]]
       identifier = "blog"
       name = "Blog"
       url = "/en/posts"
-      weight = 50
-
-    [[languages.en.menu.main]]
-      identifier = "linkedin"
-      pre = "linkedin"
-      url = "https://www.linkedin.com/in/patrickschnass/"
-      weight = 60
-
-    [[languages.en.menu.main]]
-      identifier = "github"
-      pre = "github"
-      url = "https://github.com/PatrickPT"
-      weight = 70
+      weight = 40
 
     [[languages.en.menu.footer]]
       name = "Legal & Privacy"
@@ -130,7 +94,7 @@ theme = "blowfish"
   defaultAppearance = "light"
   autoSwitchAppearance = true
   enableSearch = false
-  logo = "favicon/android-chrome-64x64.png"
+  logo = "favicon/nav-logo.png"
 
   [params.header]
     layout = "fixed"
