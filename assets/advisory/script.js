@@ -28,9 +28,10 @@ const i18n = {
   en: {
     "hero.prefix": "AI",
     "hero.typed": [
-      "AI is only as good as its foundation",
+      "AI won't fix a broken process",
       "AI without data is just a demo",
-      "AI that doesn't scale gets expensive",
+      "AI only works if people use it",
+      "AI without a business case is a hobby",
       "AI pilots are cheap. Production isn't.",
       "AI needs orchestration, not hype",
     ],
@@ -72,9 +73,10 @@ const i18n = {
   de: {
     "hero.prefix": "KI",
     "hero.typed": [
-      "KI ist bedeutungslos ohne Fundament",
+      "KI repariert keine kaputten Prozesse",
       "KI ohne Daten ist nur eine Demo",
-      "KI, die nicht skaliert, ist teuer",
+      "KI wirkt nur, wenn Menschen sie nutzen",
+      "KI ohne Business Case ist ein Hobby",
       "KI-Piloten sind günstig. Produktion nicht.",
       "KI braucht Orchestrierung, keinen Hype",
     ],
