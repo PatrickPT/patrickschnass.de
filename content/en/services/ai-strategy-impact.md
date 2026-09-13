@@ -2,7 +2,7 @@
 title: "AI Strategy & Impact"
 weight: 1
 icon: "compass"
-art: "hero-wave"
+art: "hero-ribbon"
 lead: "Where does AI actually pay off? I assess your processes, sharpen the strategy and put a number on the impact - including where agents can take over real workflows."
 formats: ["workshop", "fieldwork"]
 packages:

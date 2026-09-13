@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MARP on Patrick Schnaß</title>
-    <link>https://www.patrickschnass.de/tags/marp/</link>
+    <link>http://localhost:1313/tags/marp/</link>
     <description>Recent content in MARP on Patrick Schnaß</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
-    <lastBuildDate>Tue, 31 Jan 2023 09:06:20 +0100</lastBuildDate><atom:link href="https://www.patrickschnass.de/tags/marp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 Jan 2023 09:06:20 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/marp/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Creating slides with MARP</title>
-      <link>https://www.patrickschnass.de/posts/marp/</link>
+      <link>http://localhost:1313/posts/marp/</link>
       <pubDate>Tue, 31 Jan 2023 09:06:20 +0100</pubDate>
       
-      <guid>https://www.patrickschnass.de/posts/marp/</guid>
+      <guid>http://localhost:1313/posts/marp/</guid>
       <description>Why i love MARP and you should too</description>
       
     </item>

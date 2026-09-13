@@ -2,19 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Patrick Schnaß</title>
-    <link>https://www.patrickschnass.de/de/</link>
+    <link>http://localhost:1313/de/</link>
     <description>Recent content on Patrick Schnaß</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
-    <lastBuildDate>Sun, 21 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.patrickschnass.de/de/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/de/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>KI-Strategie &amp; Impact</title>
+      <link>http://localhost:1313/de/services/ai-strategy-impact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/de/services/ai-strategy-impact/</guid>
+      <description>&lt;p&gt;Den meisten Unternehmen fehlen keine KI-Ideen - ihnen fehlt ein Weg zu entscheiden, welche davon Budget, Menschen und Aufmerksamkeit verdienen. Budgets sind begrenzt, Modelle ändern sich jedes Quartal, und jeder Anbieter verspricht Transformation. Ohne eine klare Linie vom Use Case zum Geschäftswert wird KI zu einem Portfolio von Piloten, die nie in der GuV ankommen.&lt;/p&gt;&#xA;&lt;p&gt;Diese Leistung zieht genau diese Linie. Wir starten dabei, wie Ihr Geschäft tatsächlich funktioniert, entscheiden, wo KI die Wirtschaftlichkeit verändert, und machen den Impact messbar, bevor etwas gebaut wird. Das Ergebnis ist eine Strategie, die Ihre Führung vertreten und Ihre Teams umsetzen können - und die auch dann trägt, wenn sich die Technologie erneut verschiebt.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Organisation &amp; Governance</title>
+      <link>http://localhost:1313/de/services/organisation-governance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/de/services/organisation-governance/</guid>
+      <description>&lt;p&gt;Selten ist es die Technologie, die KI ausbremst - meist ist es die Organisation. Unklare Verantwortlichkeiten, Teams, die den Ergebnissen nicht trauen, Know-how, das in einem isolierten Lab steckt, und Compliance-Fragen, die erst kurz vor dem Go-live auftauchen: Das stoppt mehr Initiativen als jede Grenze eines Modells.&lt;/p&gt;&#xA;&lt;p&gt;Diese Leistung baut die organisatorische Seite von KI auf: wer wofür verantwortlich ist, wie Teams im Alltag mit KI arbeiten und wie Sie compliant bleiben, während die Regulierung strenger wird. Richtig umgesetzt bremst Governance Innovation nicht - sie ermöglicht es, schnell zu sein, ohne das Vertrauen von Kunden, Mitarbeitenden und Aufsichtsbehörden zu verspielen.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Software-Engineering</title>
+      <link>http://localhost:1313/de/services/software-engineering/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/de/services/software-engineering/</guid>
+      <description>&lt;p&gt;Eine Strategie schafft erst dann Wert, wenn etwas produktiv läuft. Genau diese letzte Strecke - vom vielversprechenden Prototyp zum zuverlässigen System, das integriert, überwacht und gewartet wird - ist die, auf der die meisten KI-Initiativen stecken bleiben. Demos sind schnell gebaut, Produktivsysteme nicht.&lt;/p&gt;&#xA;&lt;p&gt;Diese Leistung schließt die Lücke. Ich baue KI-Agenten, Machine-Learning-Modelle und Automatisierungen mit derselben Disziplin wie jede andere geschäftskritische Software: klare Spezifikationen, wiederverwendbare Komponenten, Tests, Monitoring und eine Übergabe, die Ihre Teams übernehmen können. Das Ziel ist kein Showcase, sondern eine Fähigkeit, die auch nach der ersten Version Wert liefert - und sich weiterentwickeln lässt, wenn sich Modelle und Anforderungen ändern.&lt;/p&gt;</description>
+      
+    </item>
     
     <item>
       <title>Impressum &amp; Datenschutz</title>
-      <link>https://www.patrickschnass.de/de/gdpr/</link>
+      <link>http://localhost:1313/de/gdpr/</link>
       <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://www.patrickschnass.de/de/gdpr/</guid>
+      <guid>http://localhost:1313/de/gdpr/</guid>
       <description>&lt;h1 class=&#34;relative group&#34;&gt;Impressum&#xA;    &lt;div id=&#34;impressum&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Angaben gemäß § 5 TMG&#xA;    &lt;div id=&#34;angaben-gemäß--5-tmg&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Kontakt&#xA;    &lt;div id=&#34;kontakt&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;E-Mail: patrickatpatrickschnass.de&lt;br&gt;&#xA;LinkedIn: &lt;a href=&#34;https://www.linkedin.com/in/patrickschnass/&#34;  target=&#34;_blank&#34;&gt;https://www.linkedin.com/in/patrickschnass/&lt;/a&gt;&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV&#xA;    &lt;div id=&#34;verantwortlich-für-den-inhalt-nach--55-abs-2-rstv&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&#xA;&lt;h1 class=&#34;relative group&#34;&gt;Datenschutzerklärung&#xA;    &lt;div id=&#34;datenschutzerklärung&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;1. Datenschutz auf einen Blick&#xA;    &lt;div id=&#34;1-datenschutz-auf-einen-blick&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&#xA;&lt;h3 class=&#34;relative group&#34;&gt;Allgemeine Hinweise&#xA;    &lt;div id=&#34;allgemeine-hinweise&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.&lt;/p&gt;</description>
       
     </item>
