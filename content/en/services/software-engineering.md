@@ -2,7 +2,7 @@
 title: "Software Engineering"
 weight: 3
 icon: "cube"
-art: "hero-wave"
+art: "hero-ribbon"
 lead: "Sometimes you need someone to actually build it. Agents, ML models and automation - spec-driven, reusable and integrated into your architecture, not a one-off nobody can maintain."
 formats: ["build"]
 packages:

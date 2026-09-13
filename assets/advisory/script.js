@@ -331,32 +331,49 @@ window.addEventListener("pointerup", () => {
   }
 });
 
-/* ---------- Closing morph ---------- */
+/* ---------- Closing: "Stop experimenting" decodes into the name ---------- */
 const closing = document.getElementById("closing");
-const box = document.getElementById("morph-box");
-const strip = document.getElementById("morph-strip");
-const mtext = document.getElementById("morph-text");
-const mark = document.getElementById("morph-mark");
+const decodeEl = document.getElementById("decode-text");
 const ccta = document.getElementById("closing-cta");
+const DECODE_FROM = "STOP EXPERIMENTING";
+const DECODE_TO = "PATRICK SCHNASS";
+const LAST_NAME_AT = DECODE_TO.indexOf("SCHNASS");
+const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*";
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const seg = (p, a, b) => clamp((p - a) / (b - a));
+let lastDecodeHtml = "";
+
+// q 0→1: each character flips from the statement, through random glyphs, to the name, left to right.
+function decodeHtml(q) {
+  const len = Math.max(DECODE_FROM.length, DECODE_TO.length);
+  const tick = Math.floor(q * 90);
+  let before = "", lastName = "", rest = "";
+  for (let i = 0; i < len; i++) {
+    const start = (i / len) * 0.6;
+    const resolved = q >= start + 0.4;
+    let ch;
+    if (q <= start) ch = DECODE_FROM[i] ?? "";
+    else if (resolved) ch = DECODE_TO[i] ?? "";
+    else ch = GLYPHS[(tick * 7 + i * 13) % GLYPHS.length];
+    // Resolved letters of the last name form a contiguous run, so they can share one gradient <em>.
+    if (i >= LAST_NAME_AT && resolved && i < DECODE_TO.length && !rest) lastName += ch;
+    else if (i >= LAST_NAME_AT) rest += ch;
+    else before += ch;
+  }
+  return escapeHtml(before) + (lastName ? `<em>${escapeHtml(lastName)}</em>` : "") + escapeHtml(rest);
+}
 
 function updateClosing() {
   const rect = closing.getBoundingClientRect();
-  const p = clamp(-rect.top / (rect.height - innerHeight));
-  const a = seg(p, 0.18, 0.45);
-  const b = seg(p, 0.45, 0.7);
-  const c = seg(p, 0.7, 0.85);
+  const p = reduceMotion ? 1 : clamp(-rect.top / (rect.height - innerHeight));
+  const sweep = seg(p, 0.62, 0.8);
+  const c = seg(p, 0.72, 0.86);
 
-  box.style.background = a > 0 ? "transparent" : "#fff";
-  strip.style.width = `${100 - a * 88 - b * 12}%`;
-  mtext.style.opacity = String(1 - seg(p, 0.15, 0.28));
-  box.style.outlineColor = `rgba(255,255,255,${1 - b})`;
-  box.style.boxShadow = `0 0 120px rgba(255,255,255,${0.06 * (1 - b)})`;
-  mark.style.opacity = String(a);
-  const stripPx = box.clientWidth * 0.12;
-  mark.style.transform = `translate(calc(-50% + ${(stripPx / 2) * (1 - b)}px), -50%) scale(${1 + b * 0.12})`;
+  const html = decodeHtml(seg(p, 0.12, 0.62));
+  if (html !== lastDecodeHtml) { decodeEl.innerHTML = html; lastDecodeHtml = html; }
+  decodeEl.style.setProperty("--sweep", sweep.toFixed(3));
+  decodeEl.style.transform = `scale(${1 + sweep * 0.04})`;
   ccta.style.opacity = String(c);
   ccta.style.transform = `translate(-50%, ${20 * (1 - c)}px)`;
   ccta.classList.toggle("is-visible", c > 0.5);

@@ -2,7 +2,7 @@
 title: "KI-Strategie & Impact"
 weight: 1
 icon: "compass"
-art: "hero-wave"
+art: "hero-ribbon"
 lead: "Wo zahlt sich KI wirklich aus? Ich analysiere Ihre Prozesse, schärfe die Strategie und beziffere den Impact - inklusive der Frage, wo Agenten echte Workflows übernehmen können."
 formats: ["workshop", "fieldwork"]
 packages:
