@@ -3,70 +3,70 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>http://localhost:1313/de/services/ai-strategy-impact/</loc>
+    <loc>https://www.patrickschnass.de/de/services/ai-strategy-impact/</loc>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:1313/services/ai-strategy-impact/"
+      href="https://www.patrickschnass.de/services/ai-strategy-impact/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="de"
-      href="http://localhost:1313/de/services/ai-strategy-impact/"
+      href="https://www.patrickschnass.de/de/services/ai-strategy-impact/"
     />
   </url>
   <url>
-    <loc>http://localhost:1313/de/services/organisation-governance/</loc>
+    <loc>https://www.patrickschnass.de/de/services/organisation-governance/</loc>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:1313/services/organisation-governance/"
+      href="https://www.patrickschnass.de/services/organisation-governance/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="de"
-      href="http://localhost:1313/de/services/organisation-governance/"
+      href="https://www.patrickschnass.de/de/services/organisation-governance/"
     />
   </url>
   <url>
-    <loc>http://localhost:1313/de/services/software-engineering/</loc>
+    <loc>https://www.patrickschnass.de/de/services/software-engineering/</loc>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:1313/services/software-engineering/"
+      href="https://www.patrickschnass.de/services/software-engineering/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="de"
-      href="http://localhost:1313/de/services/software-engineering/"
+      href="https://www.patrickschnass.de/de/services/software-engineering/"
     />
   </url>
   <url>
-    <loc>http://localhost:1313/de/gdpr/</loc>
+    <loc>https://www.patrickschnass.de/de/gdpr/</loc>
     <lastmod>2024-01-21T00:00:00+00:00</lastmod>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:1313/gdpr/"
+      href="https://www.patrickschnass.de/gdpr/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="de"
-      href="http://localhost:1313/de/gdpr/"
+      href="https://www.patrickschnass.de/de/gdpr/"
     />
   </url>
   <url>
-    <loc>http://localhost:1313/de/</loc>
+    <loc>https://www.patrickschnass.de/de/</loc>
     <lastmod>2024-01-21T00:00:00+00:00</lastmod>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:1313/"
+      href="https://www.patrickschnass.de/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="de"
-      href="http://localhost:1313/de/"
+      href="https://www.patrickschnass.de/de/"
     />
   </url>
 </urlset>
