@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Patrick Schnaß</title>
-    <link>http://localhost:1313/</link>
+    <link>https://www.patrickschnass.de/</link>
     <description>Recent content on Patrick Schnaß</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 Patrick Schnaß</copyright>
-    <lastBuildDate>Sun, 21 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.patrickschnass.de/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>AI Strategy &amp; Impact</title>
-      <link>http://localhost:1313/services/ai-strategy-impact/</link>
+      <link>https://www.patrickschnass.de/services/ai-strategy-impact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/services/ai-strategy-impact/</guid>
+      <guid>https://www.patrickschnass.de/services/ai-strategy-impact/</guid>
       <description>&lt;p&gt;Most companies don&amp;rsquo;t lack AI ideas - they lack a way to decide which ones deserve money, people and attention. Budgets are finite, models change every quarter and every vendor promises transformation. Without a clear line from use case to business value, AI turns into a portfolio of pilots that never reach the P&amp;amp;L.&lt;/p&gt;&#xA;&lt;p&gt;This service draws that line. We start with how your business actually works, decide where AI changes the economics, and make the impact measurable before anything gets built. The result is a strategy your leadership can defend and your teams can execute - and one that holds up when the technology shifts again.&lt;/p&gt;</description>
       
     </item>
     
     <item>
       <title>Organisation &amp; Governance</title>
-      <link>http://localhost:1313/services/organisation-governance/</link>
+      <link>https://www.patrickschnass.de/services/organisation-governance/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/services/organisation-governance/</guid>
+      <guid>https://www.patrickschnass.de/services/organisation-governance/</guid>
       <description>&lt;p&gt;Technology is rarely what holds AI back - organisations are. Unclear ownership, teams that don&amp;rsquo;t trust the output, skills locked away in one isolated lab and compliance questions that surface only at go-live stop more initiatives than any model limitation.&lt;/p&gt;&#xA;&lt;p&gt;This service builds the organisational side of AI: who owns what, how teams work with AI every day, and how you stay compliant as regulation tightens. Done well, governance doesn&amp;rsquo;t slow innovation down - it is what lets you move fast without losing the trust of customers, employees and regulators.&lt;/p&gt;</description>
       
     </item>
     
     <item>
       <title>Software Engineering</title>
-      <link>http://localhost:1313/services/software-engineering/</link>
+      <link>https://www.patrickschnass.de/services/software-engineering/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/services/software-engineering/</guid>
+      <guid>https://www.patrickschnass.de/services/software-engineering/</guid>
       <description>&lt;p&gt;Strategy only creates value once something runs in production. That last stretch - from a promising prototype to a reliable system that is integrated, monitored and maintained - is where most AI initiatives stall. Demos are quick to build; production systems are not.&lt;/p&gt;&#xA;&lt;p&gt;This service closes that gap. I build AI agents, machine learning models and automation with the same discipline as any other business-critical software: clear specifications, reusable components, tests, monitoring and a handover your teams can own. The goal is not a showcase but a capability that keeps delivering after the first version - and can evolve as models and requirements change.&lt;/p&gt;</description>
       
     </item>
     
     <item>
       <title>Legal Notice &amp; Privacy</title>
-      <link>http://localhost:1313/gdpr/</link>
+      <link>https://www.patrickschnass.de/gdpr/</link>
       <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/gdpr/</guid>
+      <guid>https://www.patrickschnass.de/gdpr/</guid>
       <description>&lt;h1 class=&#34;relative group&#34;&gt;Legal Notice (Impressum)&#xA;    &lt;div id=&#34;legal-notice-impressum&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Information according to § 5 TMG&#xA;    &lt;div id=&#34;information-according-to--5-tmg&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&lt;br&gt;&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Contact&#xA;    &lt;div id=&#34;contact&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;E-Mail: patrickatpatrickschnass.de&lt;br&gt;&#xA;LinkedIn: &lt;a href=&#34;https://www.linkedin.com/in/patrickschnass/&#34;  target=&#34;_blank&#34;&gt;https://www.linkedin.com/in/patrickschnass/&lt;/a&gt;&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Responsible for Content according to § 55 Abs. 2 RStV&#xA;    &lt;div id=&#34;responsible-for-content-according-to--55-abs-2-rstv&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Patrick Schnaß&lt;br&gt;&#xA;Ferdinand-Braun-Platz 1&lt;br&gt;&#xA;40549 Düsseldorf&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&#xA;&lt;h1 class=&#34;relative group&#34;&gt;Privacy Policy&#xA;    &lt;div id=&#34;privacy-policy&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;1. Data Protection at a Glance&#xA;    &lt;div id=&#34;1-data-protection-at-a-glance&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&#xA;&lt;h3 class=&#34;relative group&#34;&gt;General Information&#xA;    &lt;div id=&#34;general-information&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;&lt;/h3&gt;&#xA;&lt;p&gt;The following notes provide a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you can be personally identified.&lt;/p&gt;</description>
       
     </item>

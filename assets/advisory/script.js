@@ -32,7 +32,7 @@ const i18n = {
       "AI without data is just a demo",
       "AI that doesn't scale gets expensive",
       "AI pilots are cheap. Production isn't.",
-      "AI needs owners, not hype",
+      "AI needs orchestration, not hype",
     ],
     "hero.lead": "Most AI projects don't fail because the model is wrong. They fail because the foundation isn't there - data isn't owned, processes aren't in place, and nobody planned what happens after the demo. I help fix that before it gets expensive.",
     "cta.book": "Book a free call",
@@ -72,11 +72,11 @@ const i18n = {
   de: {
     "hero.prefix": "KI",
     "hero.typed": [
-      "KI ist nur so gut wie ihr Fundament",
+      "KI ist bedeutungslos ohne Fundament",
       "KI ohne Daten ist nur eine Demo",
       "KI, die nicht skaliert, ist teuer",
       "KI-Piloten sind günstig. Produktion nicht.",
-      "KI braucht Ownership, keinen Hype",
+      "KI braucht Orchestrierung, keinen Hype",
     ],
     "hero.lead": "Die meisten KI-Projekte scheitern nicht, weil die Technologie falsch ist. Sie scheitern, weil das Fundament fehlt - Daten sind nicht verfügbar, Prozesse nicht etabliert, und niemand hat geplant, was nach der Demo passiert. Ich helfe dabei, Lösungen zu designen, bevor es teuer wird.",
     "cta.book": "Termin buchen",
