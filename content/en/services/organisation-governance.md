@@ -2,7 +2,7 @@
 title: "Organisation & Governance"
 weight: 2
 icon: "shield"
-art: "contact-wave"
+art: "org-wave"
 lead: "AI only sticks if the organisation carries it. Team structure, culture and adoption - and conformity with the EU AI Act from day one."
 formats: ["workshop", "fieldwork"]
 packages:

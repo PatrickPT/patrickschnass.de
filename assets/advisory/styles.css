@@ -205,8 +205,8 @@ img { max-width: 100%; }
 .wcard__img::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(8, 8, 8, .55) 0%, rgba(8, 8, 8, .2) 55%, transparent 100%); }
 .wcard__img svg { position: relative; width: 68px; height: 68px; filter: drop-shadow(0 2px 12px rgba(0, 0, 0, .55)); }
 .wcard__img--0 { background-image: url("/images/hero-ribbon.jpg"); background-size: auto 180%; background-position: 88% 28%; }
-.wcard__img--1 { background-image: url("/images/contact-wave.jpg"); background-size: auto 170%; background-position: 48% 42%; }
-.wcard__img--2 { background-image: url("/images/hero-ribbon.jpg"); background-size: auto 170%; background-position: 40% 80%; }
+.wcard__img--1 { background-image: url("/images/org-wave.jpg"); background-size: auto 170%; background-position: 72% 40%; }
+.wcard__img--2 { background-image: url("/images/eng-wave.jpg"); background-size: auto 170%; background-position: 80% 30%; }
 .wcard__body { display: flex; flex-direction: column; gap: 16px; padding: 32px 0; flex: 1; min-width: 0; }
 .wcard__name { font-size: 40px; line-height: 40px; font-weight: 600; letter-spacing: -1.2px; }
 .wcard__desc { max-width: 440px; }
@@ -397,7 +397,8 @@ img { max-width: 100%; }
 }
 .svc-hero__bg { position: absolute; inset: 0; background-size: cover; background-repeat: no-repeat; background-position: center; }
 .svc-hero__bg--hero-ribbon { background-image: url("/images/hero-ribbon.jpg"); background-position: 70% 40%; }
-.svc-hero__bg--contact-wave { background-image: url("/images/contact-wave.jpg"); }
+.svc-hero__bg--eng-wave { background-image: url("/images/eng-wave.jpg"); background-position: 75% 40%; }
+.svc-hero__bg--org-wave { background-image: url("/images/org-wave.jpg"); background-position: 80% 45%; }
 .svc-hero::after {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(90deg, rgba(8, 8, 8, .88) 0%, rgba(8, 8, 8, .55) 55%, rgba(8, 8, 8, .15) 100%), linear-gradient(0deg, rgba(8, 8, 8, .7), transparent 50%);

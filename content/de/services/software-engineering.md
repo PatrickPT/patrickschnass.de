@@ -2,7 +2,7 @@
 title: "Software-Engineering"
 weight: 3
 icon: "cube"
-art: "hero-ribbon"
+art: "eng-wave"
 lead: "Manchmal braucht es jemanden, der es baut. Agenten, ML-Modelle und Automatisierung - spezifikationsgetrieben, wiederverwendbar und in Ihre Architektur integriert, keine Einmal-Demo."
 formats: ["build"]
 packages:
