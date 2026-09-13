@@ -26,7 +26,6 @@ const serviceIcons = [
 
 const i18n = {
   en: {
-    "hero.kicker": "Data & AI Advisory",
     "hero.prefix": "AI",
     "hero.typed": [
       "AI is only as good as its foundation",
@@ -71,7 +70,6 @@ const i18n = {
     ],
   },
   de: {
-    "hero.kicker": "Daten & KI Beratung",
     "hero.prefix": "KI",
     "hero.typed": [
       "KI ist nur so gut wie ihr Fundament",
