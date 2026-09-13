@@ -37,7 +37,7 @@ const i18n = {
     ],
     "hero.lead": "Most AI projects don't fail because the model is wrong. They fail because the foundation isn't there - data isn't owned, processes aren't in place, and nobody planned what happens after the demo. I help fix that before it gets expensive.",
     "cta.book": "Book a free call",
-    proof: ["Foundation first", "No vendor lock-in", "Production, not demos", "ML · GenAI · Agentic AI", "MLOps · LLMOps · AgentOps"],
+    proof: ["Foundation first", "No vendor lock-in", "Production, not demos"],
     "svc.tag": "What I offer",
     "svc.title": "Strategy. Organisation. Engineering.",
     "svc.sub": "Delivered as workshops or hands-on field work - from the first assessment to systems running in production.",
@@ -82,7 +82,7 @@ const i18n = {
     ],
     "hero.lead": "Die meisten KI-Projekte scheitern nicht, weil die Technologie falsch ist. Sie scheitern, weil das Fundament fehlt - Daten sind nicht verfügbar, Prozesse nicht etabliert, und niemand hat geplant, was nach der Demo passiert. Ich helfe dabei, Lösungen zu designen, bevor es teuer wird.",
     "cta.book": "Termin buchen",
-    proof: ["Fundament zuerst", "Kein Vendor Lock-In", "Produktion, keine Demos", "ML · GenAI · Agentic AI", "MLOps · LLMOps · AgentOps"],
+    proof: ["Fundament zuerst", "Kein Vendor Lock-In", "Produktion, keine Demos"],
     "svc.tag": "Was ich anbiete",
     "svc.title": "Strategie. Organisation. Engineering.",
     "svc.sub": "Als Workshop oder Feldarbeit - von der ersten Bestandsaufnahme bis zu Systemen, die produktiv laufen.",
@@ -129,7 +129,9 @@ const serviceUrls = JSON.parse(document.getElementById("slider-track").dataset.p
 
 /* ---------- Language-dependent blocks ---------- */
 function renderProof() {
-  const seq = t("proof").map((p) => `<span class="proof">${escapeHtml(p)}</span>`).join(proofIcon);
+  // Three short items are narrower than wide screens; repeat them so the loop never shows a gap.
+  const items = [...t("proof"), ...t("proof"), ...t("proof")];
+  const seq = items.map((p) => `<span class="proof">${escapeHtml(p)}</span>`).join(proofIcon);
   document.getElementById("proof-track").innerHTML =
     `<div class="logo-bar__seq">${seq}${proofIcon}</div><div class="logo-bar__seq" aria-hidden="true">${seq}${proofIcon}</div>`;
 }
