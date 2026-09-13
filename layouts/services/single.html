@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  {{ partial "advisory/head.html" (dict "page" . "title" (printf "%s — Patrick Schnaß" .Title) "description" .Params.lead) }}
+</head>
+<body class="svc-page">
+{{ partial "advisory/nav.html" . }}
+{{- $home := "/" | relLangURL }}
+
+<main id="main">
+  <section class="svc-hero">
+    <div class="svc-hero__bg svc-hero__bg--{{ .Params.art }}" aria-hidden="true"></div>
+    <div class="svc-hero__content">
+      <a class="svc-hero__back" href="{{ $home }}#services">← {{ i18n "adv_svc_all" }}</a>
+      <p class="eyebrow">{{ i18n "adv_svc_eyebrow" }} {{ printf "%02d" .Weight }}</p>
+      <div class="svc-hero__title">
+        <span class="svc-hero__icon">{{ partial "advisory/icon.html" .Params.icon }}</span>
+        <h1>{{ .Title }}</h1>
+      </div>
+      <p class="svc-hero__lead">{{ .Params.lead }}</p>
+      <div class="cta-row">
+        <a class="cta cta--gradient" data-book>{{ i18n "adv_cta_book" }}</a>
+        <a class="cta cta--ghost" data-email>{{ i18n "adv_cta_email" }}</a>
+      </div>
+    </div>
+  </section>
+
+  <nav class="pkg-nav" aria-label="{{ i18n "adv_svc_packages" }}">
+    <span class="pkg-nav__label">{{ i18n "adv_svc_packages" }}</span>
+    {{- range $i, $p := .Params.packages }}
+    <a href="#{{ $p.id }}"><span>{{ printf "%02d" (add $i 1) }}</span>{{ $p.title }}</a>
+    {{- end }}
+  </nav>
+
+  <section class="svc-intro">
+    <p class="eyebrow">{{ i18n "adv_svc_intro" }}</p>
+    <div class="svc-prose svc-prose--lead">{{ .Content }}</div>
+  </section>
+
+  {{- range $i, $p := .Params.packages }}
+  <section class="pkg" id="{{ $p.id }}">
+    <header class="pkg__head">
+      <span class="pkg__num">{{ printf "%02d" (add $i 1) }}</span>
+      <div>
+        <h2 class="pkg__title">{{ $p.title }}</h2>
+        <p class="pkg__summary">{{ $p.summary }}</p>
+      </div>
+    </header>
+    <div class="pkg__grid">
+      <div class="svc-prose">
+        <h3>{{ i18n "adv_svc_why" }}</h3>
+        {{ $.RenderString (dict "display" "block") $p.why }}
+      </div>
+      <aside class="pkg__side">
+        <div class="pkg__box pkg__box--value">
+          <h3>{{ i18n "adv_svc_value" }}</h3>
+          <ul>{{ range $p.value }}<li>{{ . }}</li>{{ end }}</ul>
+        </div>
+        <div class="pkg__box">
+          <h3>{{ i18n "adv_svc_deliverables" }}</h3>
+          <ul>{{ range $p.deliverables }}<li>{{ . }}</li>{{ end }}</ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+  {{- end }}
+
+  <section class="svc-formats">
+    <p class="eyebrow">{{ i18n "adv_svc_formats_tag" }}</p>
+    <h2 class="t-section">{{ i18n "adv_svc_formats_title" }}</h2>
+    <div class="svc-formats__grid">
+      {{- range .Params.formats }}
+      <div class="svc-format">
+        <span class="svc-format__name">{{ i18n (printf "adv_format_%s" .) }}</span>
+        <p>{{ i18n (printf "adv_format_%s_desc" .) }}</p>
+      </div>
+      {{- end }}
+    </div>
+  </section>
+
+  <section class="prompter">
+    <div class="prompter__bg" aria-hidden="true"></div>
+    <div class="prompter__content">
+      <h2 class="t-section">{{ i18n "adv_svc_cta_title" }}</h2>
+      <p class="prompter__text">{{ i18n "adv_svc_cta_text" }}</p>
+      <div class="cta-row cta-row--center">
+        <a class="cta cta--gradient" data-book>{{ i18n "adv_cta_book" }}</a>
+        <a class="cta cta--ghost" data-email>{{ i18n "adv_cta_email" }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="svc-next">
+    <p class="eyebrow">{{ i18n "adv_svc_more" }}</p>
+    <div class="svc-next__grid">
+      {{- range (where site.RegularPages "Section" "services").ByWeight }}
+      {{- if ne .RelPermalink $.RelPermalink }}
+      <a class="svc-next__card" href="{{ .RelPermalink }}">
+        <span class="svc-next__icon">{{ partial "advisory/icon.html" .Params.icon }}</span>
+        <span class="svc-next__title">{{ .Title }}</span>
+        <span class="svc-next__lead">{{ .Params.lead }}</span>
+        <span class="svc-next__arrow" aria-hidden="true">→</span>
+      </a>
+      {{- end }}
+      {{- end }}
+    </div>
+  </section>
+</main>
+
+{{ partial "advisory/footer.html" . }}
+
+{{ $js := resources.Get "advisory/common.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+</body>
+</html>

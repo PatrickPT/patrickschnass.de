@@ -1,0 +1,38 @@
+{{- $home := "/" | relLangURL }}
+{{- $services := (where site.RegularPages "Section" "services").ByWeight }}
+<a class="skip-link" href="#main">{{ i18n "adv_skip" }}</a>
+
+<header class="nav" id="nav">
+  <a href="{{ $home }}#top" class="nav__brand wordmark" aria-label="Patrick Schnaß">Patrick <em>Schnaß</em></a>
+
+  <nav class="nav__links" aria-label="{{ i18n "adv_nav_main" }}">
+    <div class="nav__item has-sub">
+      <button class="nav__link" aria-expanded="false" aria-haspopup="true">{{ i18n "adv_nav_services" }}</button>
+      <div class="sub">
+        {{- range $services }}
+        <a href="{{ .RelPermalink }}"{{ if eq .RelPermalink $.RelPermalink }} aria-current="page"{{ end }}>{{ .Title }}</a>
+        {{- end }}
+      </div>
+    </div>
+    <a class="nav__link" href="{{ $home }}#about">{{ i18n "adv_nav_about" }}</a>
+    <a class="nav__link" href="{{ $home }}#contact">{{ i18n "adv_nav_contact" }}</a>
+  </nav>
+
+  {{ partial "advisory/lang.html" . }}
+
+  <button class="nav__burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+    <span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <a href="{{ $home }}#services">{{ i18n "adv_nav_services" }}</a>
+  <div class="mobile-menu__sub">
+    {{- range $services }}
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{- end }}
+  </div>
+  <a href="{{ $home }}#about">{{ i18n "adv_nav_about" }}</a>
+  <a href="{{ $home }}#contact">{{ i18n "adv_nav_contact" }}</a>
+  {{ partial "advisory/lang.html" . }}
+</div>

@@ -1,70 +1,10 @@
 <!DOCTYPE html>
-{{- $de := eq .Site.Language.Lang "de" }}
 <html lang="{{ .Site.Language.Lang }}">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{- if $de }}
-  <title>Patrick Schnaß — KI Beratung</title>
-  <meta name="description" content="Ich helfe Unternehmen, KI-Initiativen in profitable Geschäftsprozesse zu verwandeln.">
-  {{- else }}
-  <title>Patrick Schnaß — AI Advisory</title>
-  <meta name="description" content="Helping enterprises turn AI initiatives into profitable business processes.">
-  {{- end }}
-  <meta name="author" content="Patrick Schnaß">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Patrick Schnaß">
-  <meta property="og:image" content="{{ "patrick.png" | absURL }}">
-  {{- range .AllTranslations }}
-  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
-  {{- end }}
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/favicon/site.webmanifest">
-  <link rel="shortcut icon" href="/favicon/favicon.ico">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  {{- $css := resources.Get "advisory/styles.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ partial "advisory/head.html" (dict "page" . "title" (i18n "adv_home_title") "description" (i18n "adv_home_description")) }}
 </head>
 <body>
-<a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
-
-<header class="nav" id="nav">
-  <a href="#top" class="nav__brand wordmark" aria-label="Patrick Schnaß">Patrick <em>Schnaß</em></a>
-
-  <nav class="nav__links" aria-label="Main">
-    <div class="nav__item has-sub">
-      <button class="nav__link" aria-expanded="false" aria-haspopup="true" data-i18n="nav.services">Services</button>
-      <div class="sub" id="sub-services"></div>
-    </div>
-    <a class="nav__link" href="#about" data-i18n="nav.about">About</a>
-    <a class="nav__link" href="#contact" data-i18n="nav.contact">Contact</a>
-  </nav>
-
-  <div class="lang" role="group" aria-label="Language">
-    <a href="/de/" hreflang="de"{{ if $de }} class="is-active" aria-current="page"{{ end }}>DE</a>
-    <a href="/" hreflang="en"{{ if not $de }} class="is-active" aria-current="page"{{ end }}>EN</a>
-  </div>
-
-  <button class="nav__burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
-    <span></span><span></span>
-  </button>
-</header>
-
-<div class="mobile-menu" id="mobile-menu" hidden>
-  <a href="#services" data-i18n="nav.services">Services</a>
-  <a href="#about" data-i18n="nav.about">About</a>
-  <a href="#contact" data-i18n="nav.contact">Contact</a>
-  <div class="lang" role="group" aria-label="Language">
-    <a href="/de/" hreflang="de"{{ if $de }} class="is-active" aria-current="page"{{ end }}>DE</a>
-    <a href="/" hreflang="en"{{ if not $de }} class="is-active" aria-current="page"{{ end }}>EN</a>
-  </div>
-</div>
+{{ partial "advisory/nav.html" . }}
 
 <main id="main">
   <!-- Stage / hero -->
@@ -78,8 +18,8 @@
       </h1>
       <p class="stage__lead" data-i18n="hero.lead"></p>
       <div class="cta-row">
-        <a class="cta cta--glass" data-book data-i18n="cta.book">Book a free call</a>
-        <a class="cta cta--ghost" data-email data-i18n="cta.email">Email me</a>
+        <a class="cta cta--glass" data-book>{{ i18n "adv_cta_book" }}</a>
+        <a class="cta cta--ghost" data-email>{{ i18n "adv_cta_email" }}</a>
       </div>
     </div>
   </section>
@@ -90,6 +30,8 @@
   </aside>
 
   <!-- Services slider -->
+  {{- $serviceUrls := slice }}
+  {{- range (where site.RegularPages "Section" "services").ByWeight }}{{ $serviceUrls = $serviceUrls | append .RelPermalink }}{{ end }}
   <section class="slider-sec" id="services">
     <div class="slider-sec__head">
       <p class="eyebrow" data-i18n="svc.tag">What I offer</p>
@@ -97,7 +39,7 @@
       <p class="slider-sec__sub" data-i18n="svc.sub">Delivered as workshops or hands-on field work - from the first assessment to systems running in production.</p>
     </div>
     <div class="slider" id="slider" tabindex="0" aria-label="Services">
-      <div class="slider__track" id="slider-track"></div>
+      <div class="slider__track" id="slider-track" data-pages="{{ jsonify $serviceUrls }}"></div>
     </div>
     <div class="slider-bar" aria-hidden="true"><span class="slider-bar__thumb" id="slider-thumb"></span></div>
   </section>
@@ -119,8 +61,8 @@
       <h2 class="t-section" data-i18n-html="prompter.title">Worth a<br>conversation?</h2>
       <p class="prompter__text" data-i18n="prompter.text"></p>
       <div class="cta-row cta-row--center">
-        <a class="cta cta--glass" data-book data-i18n="cta.book">Book a free call</a>
-        <a class="cta cta--ghost" data-email data-i18n="cta.email">Email me</a>
+        <a class="cta cta--glass" data-book>{{ i18n "adv_cta_book" }}</a>
+        <a class="cta cta--ghost" data-email>{{ i18n "adv_cta_email" }}</a>
       </div>
     </div>
   </section>
@@ -170,51 +112,9 @@
   </div>
 </main>
 
-<footer class="footer">
-  <div class="footer__grid">
-    <div>
-      <p class="footer__name">Patrick Schnaß</p>
-      <p class="footer__claim" data-i18n="footer.claim"></p>
-    </div>
-    <div>
-      <h3 class="footer__head" data-i18n="nav.services">Services</h3>
-      <ul class="footer__list" id="footer-services"></ul>
-    </div>
-    <div>
-      <h3 class="footer__head">Links</h3>
-      <ul class="footer__list">
-        <li><a href="#about" data-i18n="nav.about">About</a></li>
-        <li><a href="https://www.linkedin.com/in/patrickschnass/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://github.com/PatrickPT" target="_blank" rel="noopener">GitHub</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="footer__head" data-i18n="nav.contact">Contact</h3>
-      <ul class="footer__list">
-        <li><a data-book data-i18n="cta.book">Book a free call</a></li>
-        <li><a data-email data-i18n="cta.email">Email me</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer__bottom">
-    <span>© <span id="year">{{ now.Year }}</span> Patrick Schnaß</span>
-    <nav class="footer__legal" aria-label="Legal">
-      {{- if $de }}
-      <a href="/de/gdpr/">Impressum &amp; Datenschutz</a>
-      {{- else }}
-      <a href="/gdpr/">Legal &amp; Privacy</a>
-      {{- end }}
-      <a href="https://www.linkedin.com/in/patrickschnass/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/PatrickPT" target="_blank" rel="noopener">GitHub</a>
-    </nav>
-  </div>
-</footer>
+{{ partial "advisory/footer.html" . }}
 
-<button class="totop" id="totop" aria-label="Back to top">
-  <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-
-{{ $js := resources.Get "advisory/script.js" | minify | fingerprint }}
+{{ $js := slice (resources.Get "advisory/common.js") (resources.Get "advisory/script.js") | resources.Concat "advisory/home.js" | minify | fingerprint }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
 </body>
 </html>

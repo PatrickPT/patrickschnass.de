@@ -1,0 +1,27 @@
+{{- /* Shared <head> for the advisory homepage and service pages. Context: dict "page" "title" "description". */ -}}
+{{- $page := .page }}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ .title }}</title>
+<meta name="description" content="{{ .description }}">
+<meta name="author" content="Patrick Schnaß">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ .title }}">
+<meta property="og:description" content="{{ .description }}">
+<meta property="og:image" content="{{ "patrick.png" | absURL }}">
+<link rel="canonical" href="{{ $page.Permalink }}">
+{{- range $page.AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+{{- end }}
+
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="shortcut icon" href="/favicon/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+{{- $css := resources.Get "advisory/styles.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">

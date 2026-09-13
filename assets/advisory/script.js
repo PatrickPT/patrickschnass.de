@@ -1,4 +1,4 @@
-const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Tu_t7zHJhBQ0eZZWjj4bmS5ls6jNCP8gsU25eIOwKL2pT9dbZbpyXyrYJEsqIH2DKNXuHS6wB?gv=true";
+/* Homepage only. Loaded after common.js (booking/email links, nav, menus, to-top). */
 
 const waysCode = [
   `<span class="cm"># 01 workshop</span>
@@ -20,16 +20,12 @@ const serviceIcons = [
   lineIcon(`<circle cx="24" cy="24" r="20"/><path d="M31 17l-4.5 9.5L17 31l4.5-9.5z"/><circle cx="24" cy="24" r="1.2" fill="currentColor"/>`),
   // Organisation & Governance: shield with check
   lineIcon(`<path d="M24 5l15 6v11c0 10-6.5 17-15 21C15.5 39 9 32 9 22V11z"/><path d="M17 24l5 5 9-10"/>`),
-  // Build: cube
+  // Software Engineering: cube
   lineIcon(`<path d="M24 5l17 9.5v19L24 43 7 33.5v-19z"/><path d="M7 14.5L24 24l17-9.5M24 24v19"/>`),
 ];
 
 const i18n = {
   en: {
-    docTitle: "Patrick Schnaß — AI Advisory",
-    docDesc: "Helping enterprises turn AI initiatives into profitable business processes.",
-    skip: "Skip to content",
-    "nav.services": "Services", "nav.about": "About", "nav.contact": "Contact",
     "hero.kicker": "Data & AI Advisory",
     "hero.prefix": "AI",
     "hero.typed": [
@@ -40,12 +36,12 @@ const i18n = {
       "AI needs owners, not hype",
     ],
     "hero.lead": "Most AI projects don't fail because the model is wrong. They fail because the foundation isn't there - data isn't owned, processes aren't in place, and nobody planned what happens after the demo. I help fix that before it gets expensive.",
-    "cta.book": "Book a free call", "cta.email": "Email me",
-    proof: ["Foundation first", "No vendor lock-in", "Production, not demos", "ML · GenAI · Agentic AI", "MLOps · LLMOps · AgenticOps"],
+    "cta.book": "Book a free call",
+    proof: ["Foundation first", "No vendor lock-in", "Production, not demos", "ML · GenAI · Agentic AI", "MLOps · LLMOps · AgentOps"],
     "svc.tag": "What I offer",
     "svc.title": "Strategy. Organisation. Engineering.",
     "svc.sub": "Delivered as workshops or hands-on field work - from the first assessment to systems running in production.",
-    "svc.cta": "Talk about it",
+    "svc.cta": "Learn more",
     services: [
       ["AI Strategy & Impact", "Where does AI actually pay off? I assess your processes, sharpen the strategy and put a number on the impact - including where agents can take over real workflows.", ["Process assessment", "AI strategy", "AI impact advisory", "Agentic automation strategy"]],
       ["Organisation & Governance", "AI only sticks if the organisation carries it. Team structure, culture and adoption - and conformity with the EU AI Act from day one.", ["AI org strategy", "AI culture advisory", "EU AI Act conformity"]],
@@ -73,29 +69,24 @@ const i18n = {
       ["Head of Data Science & AI", ["Led 20+ person unit: ML, GenAI & Agentic AI", "ML platform, MLOps & LLMOps architecture", "Agentic AI shipped to production in the cloud"]],
       ["AI Advisor", ["Bringing scalable AI strategy to your company"], "offer"],
     ],
-    "footer.claim": "Helping enterprises turn AI initiatives into profitable business processes.",
   },
   de: {
-    docTitle: "Patrick Schnaß — KI Beratung",
-    docDesc: "Ich helfe Unternehmen, KI-Initiativen in profitable Geschäftsprozesse zu verwandeln.",
-    skip: "Zum Inhalt springen",
-    "nav.services": "Leistungen", "nav.about": "Über mich", "nav.contact": "Kontakt",
     "hero.kicker": "Daten & KI Beratung",
     "hero.prefix": "KI",
     "hero.typed": [
       "KI ist nur so gut wie ihr Fundament",
       "KI ohne Daten ist nur eine Demo",
-      "KI, die nicht skaliert, wird teuer",
+      "KI, die nicht skaliert, ist teuer",
       "KI-Piloten sind günstig. Produktion nicht.",
       "KI braucht Ownership, keinen Hype",
     ],
     "hero.lead": "Die meisten KI-Projekte scheitern nicht, weil die Technologie falsch ist. Sie scheitern, weil das Fundament fehlt - Daten sind nicht verfügbar, Prozesse nicht etabliert, und niemand hat geplant, was nach der Demo passiert. Ich helfe dabei, Lösungen zu designen, bevor es teuer wird.",
-    "cta.book": "Termin buchen", "cta.email": "E-Mail schreiben",
-    proof: ["Fundament zuerst", "Ohne Vendor Lock-In", "Produktion, keine Demos", "ML · GenAI · Agentic AI", "MLOps · LLMOps · AgenticOps"],
+    "cta.book": "Termin buchen",
+    proof: ["Fundament zuerst", "Kein Vendor Lock-In", "Produktion, keine Demos", "ML · GenAI · Agentic AI", "MLOps · LLMOps · AgentOps"],
     "svc.tag": "Was ich anbiete",
     "svc.title": "Strategie. Organisation. Engineering.",
     "svc.sub": "Als Workshop oder Feldarbeit - von der ersten Bestandsaufnahme bis zu Systemen, die produktiv laufen.",
-    "svc.cta": "Darüber sprechen",
+    "svc.cta": "Mehr erfahren",
     services: [
       ["KI-Strategie & Impact", "Wo zahlt sich KI wirklich aus? Ich analysiere Ihre Prozesse, schärfe die Strategie und beziffere den Impact - inklusive der Frage, wo Agenten echte Workflows übernehmen können.", ["Prozessanalyse", "KI-Strategie", "KI-Impact-Beratung", "Strategie für agentische Automatisierung"]],
       ["Organisation & Governance", "KI wirkt nur, wenn die Organisation sie trägt. Teamstruktur, Kultur und Adoption - und Konformität mit dem EU AI Act von Anfang an.", ["KI-Organisationsstrategie", "KI-Kulturberatung", "EU-AI-Act-Konformität"]],
@@ -123,17 +114,18 @@ const i18n = {
       ["Head of Data Science & AI", ["20+ köpfige Einheit: ML, GenAI & Agentic AI", "ML-Plattform, MLOps & LLMOps-Architektur", "Agentic AI produktiv in der Cloud"]],
       ["KI-Berater", ["Skalierbare KI-Strategie für Ihr Unternehmen"], "offer"],
     ],
-    "footer.claim": "Ich helfe Unternehmen, KI-Initiativen in profitable Geschäftsprozesse zu verwandeln.",
   },
 };
 
 // Hugo renders "/" (en) and "/de/" (de) and stamps the language on <html>.
 let lang = document.documentElement.lang === "de" ? "de" : "en";
 const t = (k) => i18n[lang][k];
-const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const escapeHtml = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const proofIcon = '<svg width="14" height="14" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1 L13 9 L21 11 L13 13 L11 21 L9 13 L1 11 L9 9 Z" fill="currentColor"/></svg>';
+// Subpage URLs come from Hugo, ordered by service weight (same order as i18n services).
+// Attribute is data-pages, not data-urls: Go templates URL-escape attributes whose name contains "url".
+const serviceUrls = JSON.parse(document.getElementById("slider-track").dataset.pages || "[]");
 
 /* ---------- Language-dependent blocks ---------- */
 function renderProof() {
@@ -150,13 +142,9 @@ function renderServices() {
         <h3 class="wcard__name">${escapeHtml(name)}</h3>
         <p class="wcard__desc">${escapeHtml(intro)}</p>
         <ul class="wcard__tags">${tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("")}</ul>
-        <a class="cta cta--light" data-book>${escapeHtml(t("svc.cta"))}</a>
+        <a class="cta cta--light" href="${serviceUrls[i]}">${escapeHtml(t("svc.cta"))}</a>
       </div>
     </article>`).join("");
-
-  const links = t("services").map(([name], i) => `<a href="#services" data-card="${i}">${escapeHtml(name)}</a>`);
-  document.getElementById("sub-services").innerHTML = links.join("");
-  document.getElementById("footer-services").innerHTML = links.map((l) => `<li>${l}</li>`).join("");
   updateSliderBar();
 }
 
@@ -219,25 +207,9 @@ const motionIO = new IntersectionObserver((entries) => {
 });
 document.querySelectorAll(".logo-bar").forEach((el) => motionIO.observe(el));
 
-function wireBookingLinks(root = document) {
-  root.querySelectorAll("[data-book]").forEach((a) => {
-    a.href = BOOKING_URL;
-    a.target = "_blank";
-    a.rel = "noopener";
-  });
-}
-
-// Assembled at runtime so the address never appears as plain text in the HTML.
-function wireEmailLinks() {
-  const address = ["p.schnass", "gmail.com"].join("@");
-  document.querySelectorAll("[data-email]").forEach((a) => { a.href = `mailto:${address}`; });
-}
-
 function applyLang(next) {
   lang = next;
   document.documentElement.lang = lang;
-  document.title = t("docTitle");
-  document.querySelector('meta[name="description"]').content = t("docDesc");
   document.querySelectorAll('[data-typing="1"]').forEach((el) => { el.dataset.typing = "0"; });
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const v = t(el.dataset.i18n);
@@ -334,10 +306,6 @@ slider.addEventListener("scroll", updateSliderBar, { passive: true });
 window.addEventListener("resize", updateSliderBar);
 
 const trackPad = () => parseFloat(getComputedStyle(slider.firstElementChild).paddingLeft);
-function scrollToCard(index) {
-  const card = slider.querySelectorAll(".wcard")[index];
-  if (card) slider.scrollTo({ left: card.offsetLeft - trackPad(), behavior: reduceMotion ? "auto" : "smooth" });
-}
 
 let drag = null;
 slider.addEventListener("pointerdown", (e) => {
@@ -363,9 +331,7 @@ window.addEventListener("pointerup", () => {
   }
 });
 
-/* ---------- Nav, menu, to-top, closing morph ---------- */
-const nav = document.getElementById("nav");
-const totop = document.getElementById("totop");
+/* ---------- Closing morph ---------- */
 const closing = document.getElementById("closing");
 const box = document.getElementById("morph-box");
 const strip = document.getElementById("morph-strip");
@@ -376,11 +342,7 @@ const ccta = document.getElementById("closing-cta");
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const seg = (p, a, b) => clamp((p - a) / (b - a));
 
-function onScroll() {
-  const y = window.scrollY;
-  nav.classList.toggle("is-solid", y > 40);
-  totop.classList.toggle("is-visible", y > 600);
-
+function updateClosing() {
   const rect = closing.getBoundingClientRect();
   const p = clamp(-rect.top / (rect.height - innerHeight));
   const a = seg(p, 0.18, 0.45);
@@ -399,41 +361,10 @@ function onScroll() {
   ccta.style.transform = `translate(-50%, ${20 * (1 - c)}px)`;
   ccta.classList.toggle("is-visible", c > 0.5);
 }
-window.addEventListener("scroll", onScroll, { passive: true });
-window.addEventListener("resize", onScroll);
-
-totop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }));
-
-const sub = document.querySelector(".has-sub");
-const subBtn = sub.querySelector("button");
-const closeSub = () => { sub.classList.remove("is-open"); subBtn.setAttribute("aria-expanded", "false"); };
-subBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  const open = sub.classList.toggle("is-open");
-  subBtn.setAttribute("aria-expanded", String(open));
-});
-
-const burger = document.querySelector(".nav__burger");
-const mobile = document.getElementById("mobile-menu");
-function setMenu(open) {
-  mobile.hidden = !open;
-  burger.setAttribute("aria-expanded", String(open));
-  document.body.style.overflow = open ? "hidden" : "";
-}
-burger.addEventListener("click", () => setMenu(mobile.hidden));
-mobile.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
-
-document.addEventListener("click", (e) => {
-  if (!sub.contains(e.target)) closeSub();
-  const cardLink = e.target.closest("[data-card]");
-  if (cardLink) {
-    closeSub();
-    setTimeout(() => scrollToCard(Number(cardLink.dataset.card)), 350);
-  }
-});
+window.addEventListener("scroll", updateClosing, { passive: true });
+window.addEventListener("resize", updateClosing);
 
 /* ---------- Init ---------- */
-document.getElementById("year").textContent = new Date().getFullYear();
 applyLang(lang);
 document.querySelectorAll(".type-on-view").forEach((el) => io.observe(el));
 document.fonts.ready.then(() => { setMarqueeSpeeds(); reserveTitleHeight(); });
@@ -442,4 +373,4 @@ window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => { reserveTitleHeight(); setMarqueeSpeeds(); }, 150);
 });
-onScroll();
+updateClosing();
