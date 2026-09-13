@@ -1,6 +1,8 @@
 baseURL = "https://www.patrickschnass.de/"
 defaultContentLanguage = "en"
 theme = "blowfish"
+# Tag/category pages only served the (hidden) blog.
+disableKinds = ["taxonomy", "term"]
 
 [languages]
   [languages.de]
@@ -34,12 +36,6 @@ theme = "blowfish"
       name = "Über mich"
       url = "/de/#about"
       weight = 30
-
-    [[languages.de.menu.main]]
-      identifier = "blog"
-      name = "Blog"
-      url = "/posts"
-      weight = 40
 
     [[languages.de.menu.footer]]
       name = "Impressum & Datenschutz"
@@ -77,12 +73,6 @@ theme = "blowfish"
       name = "About"
       url = "/#about"
       weight = 30
-
-    [[languages.en.menu.main]]
-      identifier = "blog"
-      name = "Blog"
-      url = "/posts"
-      weight = 40
 
     [[languages.en.menu.footer]]
       name = "Legal & Privacy"

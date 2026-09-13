@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
     --color-neutral-50: 255 255 255;
@@ -14,7 +14,7 @@ a[href^="#"]:has(> span:only-child) {
     display: none !important;
 }
 
-/* Blog nav logo — blue mark works on both light and dark, no inversion needed */
+/* Blog nav logo — gradient mark works on both light and dark, no inversion needed */
 .logo {
     filter: none;
     width: 32px !important;
@@ -32,10 +32,18 @@ a[href^="#"]:has(> span:only-child) {
     pointer-events: auto;
 }
 
-/* Typography */
-body {
-    font-family: 'Inter', -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    letter-spacing: -0.01em;
+/* Typography — same fonts as the homepage */
+body,
+.font-sans {
+    font-family: "Work Sans", -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+code,
+kbd,
+pre,
+samp,
+.font-mono {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
 }
 
 /* ====== FULL PAGE SCROLL SNAP (Only when snap-sections exist) ====== */

@@ -1,19 +1,23 @@
 <!DOCTYPE html>
+{{- $de := eq .Site.Language.Lang "de" }}
 <html lang="{{ .Site.Language.Lang }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{ if eq .Site.Language.Lang "de" }}
+  {{- if $de }}
   <title>Patrick Schnaß — KI Beratung</title>
   <meta name="description" content="Ich helfe Unternehmen, KI-Initiativen in profitable Geschäftsprozesse zu verwandeln.">
-  {{ else }}
+  {{- else }}
   <title>Patrick Schnaß — AI Advisory</title>
   <meta name="description" content="Helping enterprises turn AI initiatives into profitable business processes.">
-  {{ end }}
+  {{- end }}
   <meta name="author" content="Patrick Schnaß">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Patrick Schnaß">
-  <meta property="og:image" content="/patrick.png">
+  <meta property="og:image" content="{{ "patrick.png" | absURL }}">
+  {{- range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+  {{- end }}
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
@@ -23,1268 +27,194 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:         #0d1b2a;
-      --bg-nav:     rgba(13, 27, 42, 0.88);
-      --bg-card:    rgba(16, 32, 52, 0.85);
-      --bg-tint:    rgba(10, 22, 38, 0.55);
-      --bg-code:    #1e2030;
-      --accent:     #039BE5;
-      --accent-dim: rgba(3, 155, 229, 0.18);
-      --text:       #e2e8f0;
-      --text-sub:   #94a3b8;
-      --border:     rgba(255, 255, 255, 0.07);
-      --radius:     0.75rem;
-    }
-
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-
-    body {
-      font-family: 'Inter', -apple-system, system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ── Canvas ────────────────────────────────── */
-    #bg-canvas {
-      position: fixed;
-      inset: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      opacity: 0.32;
-      pointer-events: none;
-    }
-
-    /* ── Nav ───────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      padding: 0 2rem;
-      background: var(--bg-nav);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--text);
-      letter-spacing: -0.01em;
-      margin-right: auto;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .nav-logo-img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      object-fit: cover;
-    }
-    .theme-toggle {
-      background: none;
-      border: none;
-      color: var(--text-sub);
-      cursor: pointer;
-      padding: 0.4rem;
-      margin-left: 0.5rem;
-      display: flex;
-      align-items: center;
-      border-radius: 0.3rem;
-      transition: color 0.2s, background 0.2s;
-      flex-shrink: 0;
-    }
-    .theme-toggle:hover { color: var(--text); background: rgba(255,255,255,0.06); }
-    html.light .theme-toggle:hover { background: rgba(0,0,0,0.05); }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.75rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--text-sub);
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      background: var(--accent) !important;
-      color: #fff !important;
-      padding: 0.45rem 1.1rem;
-      border-radius: 0.375rem;
-      font-weight: 600 !important;
-      font-size: 0.85rem !important;
-      transition: background 0.2s, transform 0.15s !important;
-    }
-    .nav-cta:hover { background: #0288D1 !important; transform: translateY(-1px); }
-    .nav-lang {
-      margin-left: 1.25rem;
-      color: var(--text-sub) !important;
-      font-size: 0.8rem !important;
-      font-weight: 600 !important;
-      padding: 0.3rem 0.6rem;
-      border: 1px solid var(--border);
-      border-radius: 0.3rem;
-      transition: all 0.2s;
-    }
-    .nav-lang:hover {
-      color: var(--text) !important;
-      border-color: rgba(255,255,255,0.25);
-    }
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text);
-      cursor: pointer;
-      padding: 0.4rem;
-      margin-left: 1rem;
-    }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 64px; left: 0; right: 0;
-      z-index: 199;
-      background: rgba(11, 22, 38, 0.97);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      padding: 1.5rem 2rem 2rem;
-      border-bottom: 1px solid var(--border);
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      color: var(--text);
-      font-size: 1rem;
-      font-weight: 500;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid var(--border);
-      display: block;
-    }
-    .mobile-menu a:last-child { border-bottom: none; }
-    @media (max-width: 820px) {
-      .nav-links { display: none; }
-      .hamburger { display: block; }
-    }
-
-    /* ── Sections shared ───────────────────────── */
-    section {
-      position: relative;
-      z-index: 1;
-    }
-    .container {
-      max-width: 68rem;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    .section-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.85rem;
-    }
-    .section-title {
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      font-weight: 700;
-      color: #f1f5f9;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-    .section-sub {
-      font-size: 1rem;
-      color: var(--text-sub);
-      max-width: 38rem;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Fade-in animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── Hero ──────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 7rem 2rem 5rem;
-    }
-    .hero-inner { max-width: 52rem; margin: 0 auto; }
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
-    .hero-eyebrow::before, .hero-eyebrow::after {
-      content: '';
-      display: block;
-      width: 28px;
-      height: 1px;
-      background: var(--accent);
-      opacity: 0.5;
-    }
-    .hero-headline {
-      font-size: clamp(2.1rem, 5.5vw, 3.75rem);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.025em;
-      color: #f1f5f9;
-      margin-bottom: 1.5rem;
-    }
-    .hero-headline span { color: var(--accent); }
-    .hero-sub {
-      font-size: 1.1rem;
-      color: var(--text-sub);
-      max-width: 34rem;
-      margin: 0 auto 2.5rem;
-      line-height: 1.75;
-    }
-
-    /* Code block */
-    .code-card {
-      background: var(--bg-code);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius);
-      padding: 1.4rem 1.6rem;
-      text-align: left;
-      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
-      font-size: 0.82rem;
-      line-height: 1.65;
-      color: #cad3f5;
-      display: block;
-      width: fit-content;
-      max-width: 100%;
-      margin: 0 auto 2.5rem;
-      overflow-x: auto;
-      white-space: pre;
-    }
-    .code-card .ln { color: #5b6078; user-select: none; margin-right: 1.25rem; }
-    .kw  { color: #c6a0f6; }
-    .fn  { color: #8aadf4; }
-    .st  { color: #a6da95; }
-    .cm  { color: #5b6078; font-style: italic; }
-    .cl  { color: #eed49f; }
-    .op  { color: #91d7e3; }
-
-    /* CTA buttons */
-    .btn-row {
-      display: flex;
-      gap: 0.875rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--accent);
-      color: #fff;
-      padding: 0.85rem 1.75rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      font-size: 0.925rem;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 4px 14px rgba(3,155,229,0.35);
-    }
-    .btn-primary:hover {
-      background: #0288D1;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(3,155,229,0.4);
-    }
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: transparent;
-      color: var(--text);
-      padding: 0.85rem 1.75rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      font-size: 0.925rem;
-      border: 1px solid rgba(255,255,255,0.18);
-      transition: all 0.2s;
-    }
-    .btn-ghost:hover {
-      border-color: rgba(255,255,255,0.4);
-      background: rgba(255,255,255,0.04);
-    }
-
-    /* ── Stats ─────────────────────────────────── */
-    #stats {
-      background: var(--bg-tint);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 3.5rem 2rem;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 2rem;
-      text-align: center;
-    }
-    .stat-number {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: -0.01em;
-      line-height: 1.3;
-      margin-bottom: 0.4rem;
-    }
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--text-sub);
-      font-weight: 400;
-      line-height: 1.5;
-    }
-
-    /* ── Services ──────────────────────────────── */
-    #services { padding: 6rem 2rem; }
-    .services-header { margin-bottom: 3rem; text-align: center; }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
-      gap: 1.25rem;
-    }
-    .svc-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 2rem;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-    .svc-card:hover {
-      border-color: rgba(3,155,229,0.45);
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(3,155,229,0.12);
-    }
-    .svc-icon {
-      width: 46px;
-      height: 46px;
-      background: var(--accent-dim);
-      border-radius: 0.65rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.25rem;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-    .svc-title {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #f1f5f9;
-      margin-bottom: 0.65rem;
-      letter-spacing: -0.01em;
-      text-align: center;
-    }
-    .svc-desc {
-      font-size: 0.875rem;
-      color: var(--text-sub);
-      line-height: 1.7;
-      flex: 1;
-    }
-    .svc-code {
-      width: fit-content;
-      max-width: 100%;
-      margin: 1.25rem auto 0;
-      background: rgba(30,32,48,0.9);
-      border-radius: 0.5rem;
-      padding: 0.9rem 1rem;
-      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      font-size: 0.75rem;
-      line-height: 1.6;
-      color: #cad3f5;
-      overflow: hidden;
-      white-space: pre;
-      text-align: left;
-    }
-
-    /* ── About ─────────────────────────────────── */
-    #about {
-      background: var(--bg-tint);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 6rem 2rem;
-    }
-    .about-inner {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    .about-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
-    .about-photo {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(3,155,229,0.45);
-      box-shadow: 0 0 36px rgba(3,155,229,0.2);
-    }
-    .about-role {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.65rem;
-    }
-    .about-name {
-      font-size: 1.9rem;
-      font-weight: 700;
-      color: #f1f5f9;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
-    }
-    .about-text {
-      color: var(--text-sub);
-      line-height: 1.8;
-      margin-bottom: 0.85rem;
-      font-size: 0.95rem;
-    }
-    .about-text strong { color: var(--text); font-weight: 600; }
-    .about-links {
-      display: flex;
-      gap: 1.25rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .about-link {
-      color: var(--accent);
-      font-size: 0.875rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: opacity 0.2s;
-    }
-    .about-link:hover { opacity: 0.75; }
-    .exp-timeline {
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      margin-top: 1.5rem;
-    }
-    .exp-timeline::before {
-      content: '';
-      position: absolute;
-      top: calc(1.4rem + 0.45rem + 4.5px);
-      left: 0; right: 0;
-      height: 1px;
-      background: rgba(255,255,255,0.12);
-    }
-    html.light .exp-timeline::before { background: rgba(0,0,0,0.1); }
-    .exp-node {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-    .exp-current { flex: 1.5; }
-    .exp-offer {
-      flex: 1;
-      border: 1px solid rgba(3,155,229,0.4);
-      border-radius: 8px;
-      background: rgba(3,155,229,0.05);
-      padding: 0.5rem 0.4rem 0.6rem;
-      margin: -0.5rem -0.4rem -0.6rem;
-    }
-    html.light .exp-offer { background: rgba(3,155,229,0.06); }
-    .exp-offer .exp-dot {
-      background: transparent;
-      border: 2px solid var(--accent);
-      width: 11px; height: 11px;
-    }
-    .exp-offer .exp-title { color: var(--accent); font-weight: 800; font-size: 0.84rem; }
-    .exp-offer .exp-bullet { color: var(--text-sub); font-style: italic; }
-    .exp-offer .exp-bullet::before { content: ""; }
-    .exp-top {
-      height: 1.4rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      justify-content: flex-end;
-      padding: 0 0.3rem 0.45rem;
-    }
-    .exp-bottom {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 0.45rem 0.3rem 0;
-      width: 100%;
-      gap: 0.15rem;
-    }
-    .exp-dot {
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      background: var(--text-sub);
-      flex-shrink: 0;
-    }
-    .exp-current .exp-dot {
-      width: 13px; height: 13px;
-      background: var(--accent);
-      box-shadow: 0 0 0 3px rgba(3,155,229,0.2);
-    }
-    .exp-title {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.3;
-      text-align: center;
-    }
-    .exp-date {
-      font-size: 0.63rem;
-      color: var(--text-sub);
-      margin-top: 0.1rem;
-      text-align: center;
-    }
-    .exp-bullet {
-      font-size: 0.65rem;
-      color: var(--text-sub);
-      line-height: 1.4;
-      text-align: center;
-    }
-    .exp-bullet::before { content: "· "; color: var(--accent); }
-    .exp-current .exp-title { color: var(--accent); font-weight: 800; }
-    @media (max-width: 640px) {
-      .exp-timeline { flex-direction: column; gap: 1rem; }
-      .exp-timeline::before { display: none; }
-      .exp-dot { display: none; }
-      .exp-node {
-        border-left: 2px solid rgba(255,255,255,0.12);
-        padding-left: 0.75rem;
-      }
-      html.light .exp-node { border-left-color: rgba(0,0,0,0.1); }
-      .exp-current, .exp-offer { border-left-color: var(--accent) !important; flex: unset; width: 100%; }
-      .exp-top { height: auto; align-items: flex-start; text-align: left; justify-content: flex-start; padding: 0 0 0.25rem; }
-      .exp-bottom { padding-top: 0; align-items: flex-start; text-align: left; }
-      .exp-bullet { text-align: left; }
-      .exp-title { text-align: left; }
-      .exp-date { text-align: left; }
-    }
-    .credentials {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 0.75rem;
-    }
-    .credentials img { width: 64px; height: 64px; opacity: 0.85; }
-    .credentials-text { font-size: 0.75rem; color: var(--text-sub); line-height: 1.6; text-align: center; }
-    .credentials-text strong { color: var(--text); font-size: 0.78rem; display: block; margin-bottom: 0.15rem; }
-    @media (max-width: 640px) {
-      .about-inner { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
-      .about-left { gap: 1.5rem; }
-      .about-photo { margin: 0 auto; }
-      .about-links { justify-content: center; }
-      .exp-timeline[style] { border-top: none; padding-top: 0; }
-    }
-
-    /* ── Contact ───────────────────────────────── */
-    #contact { padding: 6rem 2rem; }
-    .contact-card {
-      max-width: 44rem;
-      margin: 0 auto;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 1.25rem;
-      padding: 4rem 3rem;
-      text-align: center;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-    .contact-title {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 700;
-      color: #f1f5f9;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.875rem;
-    }
-    .contact-sub {
-      color: var(--text-sub);
-      font-size: 0.975rem;
-      margin-bottom: 2.5rem;
-      line-height: 1.7;
-    }
-    .contact-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    /* ── Footer ────────────────────────────────── */
-    footer {
-      position: relative;
-      z-index: 1;
-      padding: 2rem;
-      text-align: center;
-      border-top: 1px solid var(--border);
-    }
-    .footer-copy {
-      font-size: 0.82rem;
-      color: #475569;
-      margin-bottom: 0.6rem;
-    }
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .footer-links a {
-      font-size: 0.82rem;
-      color: #475569;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--text-sub); }
-
-    /* ── Light mode ────────────────────────────── */
-    html.light {
-      --bg:      #f1f5f9;
-      --bg-nav:  rgba(241, 245, 249, 0.92);
-      --bg-card: rgba(255, 255, 255, 0.9);
-      --bg-tint: rgba(220, 228, 240, 0.6);
-      --text:    #0f172a;
-      --text-sub: #475569;
-      --border:  rgba(0, 0, 0, 0.07);
-    }
-    html.light body { background: var(--bg); color: var(--text); }
-    html.light .hero-headline,
-    html.light .section-title,
-    html.light .svc-title,
-    html.light .about-name,
-    html.light .contact-title { color: #0f172a; }
-    html.light .stat-label { color: var(--text-sub); }
-    html.light .footer-copy,
-    html.light .footer-links a { color: #94a3b8; }
-    html.light .footer-links a:hover { color: #475569; }
-    html.light #bg-canvas { opacity: 0.45; }
-    html.light .mobile-menu {
-      background: rgba(241, 245, 249, 0.97);
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-    html.light .mobile-menu a { color: #0f172a; border-bottom-color: rgba(0,0,0,0.07); }
-
-    /* ── Responsive ────────────────────────────── */
-    @media (max-width: 820px) {
-      .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    }
-
-    @media (max-width: 640px) {
-      nav { padding: 0 1rem; }
-      .container { padding: 0 1rem; }
-
-      #hero { padding: 5.5rem 1rem 3rem; }
-      .hero-inner { width: 100%; }
-      .hero-sub { font-size: 1rem; }
-      .code-card { font-size: 0.7rem; padding: 0.9rem 1rem; width: 100%; max-width: 100%; }
-
-      #stats { padding: 2.5rem 1rem; }
-      .stats-grid { grid-template-columns: 1fr; gap: 0.75rem; }
-      .stat-number { font-size: 0.95rem; }
-      .stat-label { font-size: 0.75rem; }
-
-      #services { padding: 3.5rem 1rem; }
-      .services-header { margin-bottom: 2rem; }
-      .svc-card { padding: 1.5rem; }
-      .svc-code { font-size: 0.7rem; padding: 0.75rem 0.875rem; }
-
-      #about { padding: 3.5rem 1rem; }
-      .about-inner { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
-      .about-photo { margin: 0 auto; width: 130px; height: 130px; }
-      .about-links { justify-content: center; }
-      .about-name { font-size: 1.55rem; }
-
-      #contact { padding: 3.5rem 1rem; }
-      .contact-card { padding: 2rem 1.25rem; }
-
-      .btn-primary, .btn-ghost { padding: 0.75rem 1.25rem; font-size: 0.875rem; }
-      footer { padding: 1.5rem 1rem; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  {{- $css := resources.Get "advisory/styles.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 </head>
 <body>
+<a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
-<canvas id="bg-canvas"></canvas>
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand wordmark" aria-label="Patrick Schnaß">Patrick <em>Schnaß</em></a>
 
-<!-- ── Navigation ─────────────────────────────── -->
-<nav>
-  <a href="{{ if eq .Site.Language.Lang "de" }}/de/{{ else }}/{{ end }}" class="nav-logo">
-    <img src="/favicon/nav-logo.png" alt="" class="nav-logo-img">
-    Patrick Schnaß
-  </a>
-  <ul class="nav-links">
-    {{ if eq .Site.Language.Lang "de" }}
-    <li><a href="#services">Leistungen</a></li>
-    <li><a href="#about">Über mich</a></li>
-    <li><a href="/posts/">Blog</a></li>
-    <li><a href="#contact" class="nav-cta">Termin buchen</a></li>
-    <li><a href="/" class="nav-lang">EN</a></li>
-    {{ else }}
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="/posts/">Blog</a></li>
-    <li><a href="#contact" class="nav-cta">Book a call</a></li>
-    <li><a href="/de/" class="nav-lang">DE</a></li>
-    {{ end }}
-  </ul>
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-    <svg id="icon-moon" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-    </svg>
-    <svg id="icon-sun" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display:none">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-    </svg>
+  <nav class="nav__links" aria-label="Main">
+    <div class="nav__item has-sub">
+      <button class="nav__link" aria-expanded="false" aria-haspopup="true" data-i18n="nav.services">Services</button>
+      <div class="sub" id="sub-services"></div>
+    </div>
+    <a class="nav__link" href="#about" data-i18n="nav.about">About</a>
+    <a class="nav__link" href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+
+  <div class="lang" role="group" aria-label="Language">
+    <a href="/de/" hreflang="de"{{ if $de }} class="is-active" aria-current="page"{{ end }}>DE</a>
+    <a href="/" hreflang="en"{{ if not $de }} class="is-active" aria-current="page"{{ end }}>EN</a>
+  </div>
+
+  <button class="nav__burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+    <span></span><span></span>
   </button>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-    <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path id="ham-open"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      <path id="ham-close" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" style="display:none"/>
-    </svg>
-  </button>
-</nav>
+</header>
 
-<div class="mobile-menu" id="mobile-menu">
-  {{ if eq .Site.Language.Lang "de" }}
-  <a href="#services" onclick="closeMobile()">Leistungen</a>
-  <a href="#about"    onclick="closeMobile()">Über mich</a>
-  <a href="/posts/">Blog</a>
-  <a href="#contact"  onclick="closeMobile()" style="color:var(--accent);font-weight:700;">Termin buchen</a>
-  <a href="/" style="color:var(--text-sub);">Switch to English</a>
-  {{ else }}
-  <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#about"    onclick="closeMobile()">About</a>
-  <a href="/posts/">Blog</a>
-  <a href="#contact"  onclick="closeMobile()" style="color:var(--accent);font-weight:700;">Book a call</a>
-  <a href="/de/" style="color:var(--text-sub);">Auf Deutsch</a>
-  {{ end }}
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <a href="#services" data-i18n="nav.services">Services</a>
+  <a href="#about" data-i18n="nav.about">About</a>
+  <a href="#contact" data-i18n="nav.contact">Contact</a>
+  <div class="lang" role="group" aria-label="Language">
+    <a href="/de/" hreflang="de"{{ if $de }} class="is-active" aria-current="page"{{ end }}>DE</a>
+    <a href="/" hreflang="en"{{ if not $de }} class="is-active" aria-current="page"{{ end }}>EN</a>
+  </div>
 </div>
 
-<!-- ── Hero ───────────────────────────────────── -->
-<section id="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow reveal">
-      {{ if eq .Site.Language.Lang "de" }}Daten & KI Beratung{{ else }}Data & AI Advisory{{ end }}
+<main id="main">
+  <!-- Stage / hero -->
+  <section class="stage" id="top">
+    <div class="stage__bg" aria-hidden="true"></div>
+    <div class="stage__content">
+      <p class="stage__kicker" data-i18n="hero.kicker">Data &amp; AI Advisory</p>
+      <h1 class="stage__title" id="hero-title">
+        <span class="stage__ai" data-i18n="hero.prefix" aria-hidden="true">AI</span>
+        <span class="typer" id="hero-typer" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
+      </h1>
+      <p class="stage__lead" data-i18n="hero.lead"></p>
+      <div class="cta-row">
+        <a class="cta cta--glass" data-book data-i18n="cta.book">Book a free call</a>
+        <a class="cta cta--ghost" data-email data-i18n="cta.email">Email me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles bar -->
+  <aside class="logo-bar" aria-label="Principles">
+    <div class="logo-bar__track" id="proof-track"></div>
+  </aside>
+
+  <!-- Services slider -->
+  <section class="slider-sec" id="services">
+    <div class="slider-sec__head">
+      <p class="eyebrow" data-i18n="svc.tag">What I offer</p>
+      <h2 class="t-section type-on-view" data-i18n="svc.title">Strategy. Organisation. Engineering.</h2>
+      <p class="slider-sec__sub" data-i18n="svc.sub">Delivered as workshops or hands-on field work - from the first assessment to systems running in production.</p>
+    </div>
+    <div class="slider" id="slider" tabindex="0" aria-label="Services">
+      <div class="slider__track" id="slider-track"></div>
+    </div>
+    <div class="slider-bar" aria-hidden="true"><span class="slider-bar__thumb" id="slider-thumb"></span></div>
+  </section>
+
+  <!-- Ways of working -->
+  <section class="ways" id="ways">
+    <div class="ways__head">
+      <p class="eyebrow" data-i18n="ways.tag">How we work together</p>
+      <h2 class="t-section type-on-view" data-i18n="ways.title">Workshop → Field work → Production</h2>
+      <p class="ways__sub" data-i18n="ways.sub">Three ways to work together - we start where you are.</p>
+    </div>
+    <div class="ways__rail" id="ways-rail"></div>
+  </section>
+
+  <!-- Contact prompter -->
+  <section class="prompter" id="contact">
+    <div class="prompter__bg" aria-hidden="true"></div>
+    <div class="prompter__content">
+      <h2 class="t-section" data-i18n-html="prompter.title">Worth a<br>conversation?</h2>
+      <p class="prompter__text" data-i18n="prompter.text"></p>
+      <div class="cta-row cta-row--center">
+        <a class="cta cta--glass" data-book data-i18n="cta.book">Book a free call</a>
+        <a class="cta cta--ghost" data-email data-i18n="cta.email">Email me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="about__text">
+      <div class="about__intro">
+        <img class="about__photo" src="/patrick.png" alt="Patrick Schnaß" width="132" height="132">
+        <h2 class="t-section type-on-view" data-i18n="about.title">Hi, I'm Patrick</h2>
+      </div>
+      <p data-i18n="about.p1"></p>
+      <p data-i18n="about.p2"></p>
+      <p data-i18n="about.p3"></p>
+      <div class="about__links">
+        <a class="cta cta--light" href="https://www.linkedin.com/in/patrickschnass/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="cta cta--light" href="https://github.com/PatrickPT" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="credentials">
+        <img src="/gcp-professional-badge.png" alt="Google Cloud Certified Professional" width="56" height="56">
+        <p><strong>Google Cloud Certified</strong>Professional ML Engineer &amp; Data Engineer · Cloud Digital Leader</p>
+      </div>
     </div>
 
-    <h1 class="hero-headline reveal">
-      {{ if eq .Site.Language.Lang "de" }}
-        KI ist nur so gut wie das <span>Fundament</span> darunter
-      {{ else }}
-        AI is only as good as the <span>foundation</span> beneath it
-      {{ end }}
-    </h1>
+    <div class="timeline">
+      <h3 class="timeline__head" data-i18n="timeline.head">From data science to AI advisory</h3>
+      <ol class="timeline__track" id="timeline"></ol>
+    </div>
+  </section>
 
-    <p class="hero-sub reveal">
-      {{ if eq .Site.Language.Lang "de" }}
-        Die meisten KI-Projekte scheitern nicht, weil die Technologie falsch ist. Sie scheitern, weil das Fundament fehlt - Daten sind nicht verfügbar, Prozesse nicht etabliert, und niemand hat geplant, was nach der Demo passiert. Ich helfe dabei, Lösungen zu designen, bevor es teuer wird.
-      {{ else }}
-        Most AI projects don't fail because the model is wrong. They fail because the foundation isn't there - data isn't owned, processes aren't in place, and nobody planned what happens after the demo. I help fix that before it gets expensive.
-      {{ end }}
-    </p>
+  <!-- Closing morph -->
+  <section class="closing" id="closing">
+    <div class="closing__pin">
+      <div class="morph">
+        <div class="morph__box" id="morph-box">
+          <span class="morph__strip" id="morph-strip"></span>
+          <span class="morph__text" id="morph-text">Stop experimenting</span>
+          <span class="morph__mark wordmark" id="morph-mark" aria-label="Patrick Schnaß">PATRICK <em>SCHNASS</em></span>
+        </div>
+      </div>
+      <a class="cta cta--gradient closing__cta" id="closing-cta" data-book>Start transforming</a>
+    </div>
+  </section>
 
-    <div class="code-card reveal"><span class="cm"># strategy → agents → production</span>
-strategy = <span class="fn">advise</span>(exec, org)
-spec     = <span class="fn">Spec</span>.<span class="fn">from</span>(strategy.brief)
-agent    = <span class="fn">factory</span>.<span class="fn">build</span>(spec)
-agent.<span class="fn">ship</span>(reusable=<span class="kw">True</span>)</div>
+  <div class="claim">
+    <p class="claim__text">Built on scale <span aria-hidden="true">·</span> Driven by impact</p>
+  </div>
+</main>
 
-    <div class="btn-row reveal">
-      <a href="#contact" class="btn-primary">
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-        {{ if eq .Site.Language.Lang "de" }}Termin buchen{{ else }}Book a free call{{ end }}
-      </a>
-      <a href="mailto:p.schnass@gmail.com" class="btn-ghost">
-        {{ if eq .Site.Language.Lang "de" }}E-Mail schreiben{{ else }}Email me{{ end }}
-      </a>
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <p class="footer__name">Patrick Schnaß</p>
+      <p class="footer__claim" data-i18n="footer.claim"></p>
+    </div>
+    <div>
+      <h3 class="footer__head" data-i18n="nav.services">Services</h3>
+      <ul class="footer__list" id="footer-services"></ul>
+    </div>
+    <div>
+      <h3 class="footer__head">Links</h3>
+      <ul class="footer__list">
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="https://www.linkedin.com/in/patrickschnass/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/PatrickPT" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="footer__head" data-i18n="nav.contact">Contact</h3>
+      <ul class="footer__list">
+        <li><a data-book data-i18n="cta.book">Book a free call</a></li>
+        <li><a data-email data-i18n="cta.email">Email me</a></li>
+      </ul>
     </div>
   </div>
-</section>
-
-<!-- ── Stats ──────────────────────────────────── -->
-<section id="stats">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="reveal">
-        <div class="stat-number">{{ if eq .Site.Language.Lang "de" }}Fundament zuerst{{ else }}Foundation first{{ end }}</div>
-        <div class="stat-label">{{ if eq .Site.Language.Lang "de" }}Das Modell ist selten das Problem{{ else }}The model is rarely the bottleneck{{ end }}</div>
-      </div>
-      <div class="reveal">
-        <div class="stat-number">{{ if eq .Site.Language.Lang "de" }}Ohne Vendor Lock-In{{ else }}No vendor lock-in{{ end }}</div>
-        <div class="stat-label">{{ if eq .Site.Language.Lang "de" }}Ehrliche Beratung, Vendor neutral{{ else }}Honest advice, no product to sell{{ end }}</div>
-      </div>
-      <div class="reveal">
-        <div class="stat-number">{{ if eq .Site.Language.Lang "de" }}Produktion, keine Demos{{ else }}Production, not demos{{ end }}</div>
-        <div class="stat-label">{{ if eq .Site.Language.Lang "de" }}Erfolg bedeutet Integration, nicht Applaus{{ else }}Success means integration, not applause{{ end }}</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Services ───────────────────────────────── -->
-<section id="services">
-  <div class="container">
-    <div class="services-header reveal">
-      <span class="section-tag">{{ if eq .Site.Language.Lang "de" }}Wie ich helfen kann{{ else }}How I can help{{ end }}</span>
-      <h2 class="section-title">
-        {{ if eq .Site.Language.Lang "de" }}Advisory. Agenten. Bauen.{{ else }}Advisory. Agents. Build.{{ end }}
-      </h2>
-      <p class="section-sub">
-        {{ if eq .Site.Language.Lang "de" }}
-          Vom strategischen Sparring über den Aufbau einer agentischen Arbeitsweise bis hin zum tatsächlichen Bauen.
-        {{ else }}
-          From strategic advisory and agentic operating models to actually shipping things.
-        {{ end }}
-      </p>
-    </div>
-
-    <div class="services-grid">
-
-      <!-- Card 1: AI Advisory (combines Guidance + Readiness) -->
-      <div class="svc-card reveal">
-        <div class="svc-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
-          </svg>
-        </div>
-        <h3 class="svc-title">{{ if eq .Site.Language.Lang "de" }}KI Advisory{{ else }}AI Advisory{{ end }}</h3>
-        <p class="svc-desc">
-          {{ if eq .Site.Language.Lang "de" }}
-            Ich arbeite mit Entscheidern, die einen ehrlichen Blick wollen - wo KI Sinn ergibt und wo nicht, und ob das Unternehmen überhaupt in der Lage ist, es umzusetzen. Roadmap, Fundament, Teamstruktur: ich schaue mir alles an, ohne Vendor-Agenda.
-          {{ else }}
-            I work with executives who want a straight view of where AI makes sense for their business - and with teams who need to know if they're actually set up to execute on it. Direction, foundation, team structure: I look at all of it, no vendor agenda.
-          {{ end }}
-        </p>
-        <div class="svc-code"><span class="cm"># create concrete actions</span>
-<span class="kw">def</span> <span class="fn">advise</span>(exec, org):
-    base = <span class="fn">assess_value_chain</span>(org)
-    <span class="kw">return</span> <span class="fn">brief</span>(exec, base)</div>
-      </div>
-
-      <!-- Card 2: Agentic Engineering -->
-      <div class="svc-card reveal">
-        <div class="svc-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
-          </svg>
-        </div>
-        <h3 class="svc-title">{{ if eq .Site.Language.Lang "de" }}Agentische Entwicklung{{ else }}Agentic Engineering{{ end }}</h3>
-        <p class="svc-desc">
-          {{ if eq .Site.Language.Lang "de" }}
-            Die meisten Unternehmen häufen mit KI-Agenten-Experimenten isolierte Prototypen an, die niemand pflegen kann. Ich helfe beim Aufbau eines echten Betriebsmodells: eine wiederverwendbare Agent-Factory, spezifikationsgetriebene Workflows und Integrationsmuster, die zu Ihrer bestehenden Architektur passen.
-          {{ else }}
-            Most companies experimenting with AI agents end up with a pile of disconnected prototypes nobody can maintain. I help you set up a proper operating model - a reusable agent factory, spec-driven workflows, and integration patterns that fit your existing architecture rather than working around it.
-          {{ end }}
-        </p>
-        <div class="svc-code"><span class="cm"># not vibe code. a factory.</span>
-spec  = <span class="fn">Spec</span>.<span class="fn">from</span>(brief)
-agent = <span class="fn">factory</span>.<span class="fn">build</span>(spec)
-agent.<span class="fn">integrate</span>(your_stack)</div>
-      </div>
-
-      <!-- Card 3: Build & Ship -->
-      <div class="svc-card reveal">
-        <div class="svc-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-          </svg>
-        </div>
-        <h3 class="svc-title">{{ if eq .Site.Language.Lang "de" }}Bauen & Ausliefern{{ else }}Build & Ship{{ end }}</h3>
-        <p class="svc-desc">
-          {{ if eq .Site.Language.Lang "de" }}
-            Manchmal braucht es jemanden, der es baut. Ich nutze KI-gestützte Tools, um Datenpipelines, interne Software und KI-Features zu entwickeln. Spezifikationsgetrieben, nicht wahllos. Wiederverwendbar und in Ihre Architektur integriert - keine Einmal-Demo.
-          {{ else }}
-            Sometimes you need someone to actually build it. I use AI-native tools to ship data pipelines, internal tooling, and AI-powered features. Spec-driven, not vibe coded. Reusable and integrated into your architecture - not a one-off nobody can maintain.
-          {{ end }}
-        </p>
-        <div class="svc-code"><span class="cm"># spec first. then code.</span>
-spec = <span class="fn">Spec</span>.<span class="fn">from</span>(brief)
-code = agent.<span class="fn">implement</span>(spec)
-code.<span class="fn">ship</span>(reusable=<span class="kw">True</span>)</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── About ───────────────────────────────────── -->
-<section id="about">
-  <div class="container">
-    <div class="about-inner">
-
-      <!-- Left: photo + GCP credentials -->
-      <div class="about-left reveal">
-        <img src="/patrick.png" alt="Patrick Schnaß" class="about-photo">
-        <div class="credentials">
-          <img src="/gcp-professional-badge.png" alt="Google Cloud Certified Professional">
-          <div class="credentials-text">
-            <strong>Google Cloud Certified</strong>
-            Professional ML Engineer &amp; Data Engineer
-            <span style="display:block;margin-top:0.2rem;opacity:0.7;">Cloud Digital Leader</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: bio + links -->
-      <div class="reveal">
-        <div class="about-role">{{ if eq .Site.Language.Lang "de" }}Über mich{{ else }}About me{{ end }}</div>
-        <h2 class="about-name">{{ if eq .Site.Language.Lang "de" }}Hallo, ich bin Patrick{{ else }}Hi, I'm Patrick{{ end }}</h2>
-        {{ if eq .Site.Language.Lang "de" }}
-        <p class="about-text">Ich komme aus der IT-Beratung und bin ins Machine-Learning-Umfeld gewachsen. Mein wirtschaftswissenschaftlicher Hintergrund hilft dabei - ich denke über Daten und Modelle immer in dem Sinne, welche Entscheidung sie eigentlich verbessern sollen.</p>
-        <p class="about-text">Aktuell leite ich das Data Science & AI Team bei einem globalen Technologieunternehmen, wo wir ML-, GenAI- und Agentic-AI-Produkte bauen, die produktiv laufen. Was ich dabei gelernt habe: Das Modell ist selten das eigentliche Problem. Das Fundament ist es - Datenpipelines, Integration in bestehende Systeme und die organisatorische Fähigkeit, auch nach der ersten Version weiter auszuliefern.</p>
-        <p class="about-text">Gelegentlich berate ich andere Unternehmen bei genau diesen Themen.</p>
-        {{ else }}
-        <p class="about-text">I started in consulting and moved into machine learning by solving actual business problems with algorithms. My background in economics has been useful - I tend to think about data and models in terms of what decision they're supposed to improve, not as technology for its own sake.</p>
-        <p class="about-text">I lead the Data Science & AI team at a global tech company, where we build ML, GenAI, and Agentic AI products in production. What that work has taught me is that the model is rarely the hard part. The foundation is - data pipelines, integration into existing systems, and the organisational capability to keep shipping after the first version.</p>
-        <p class="about-text">Occasionally I work with other companies on exactly those problems.</p>
-        {{ end }}
-        <div class="about-links">
-          <a href="https://www.linkedin.com/in/patrickschnass/" class="about-link" target="_blank" rel="noopener">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-          </a>
-          <a href="https://github.com/PatrickPT" class="about-link" target="_blank" rel="noopener">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            GitHub
-          </a>
-          <a href="/posts/" class="about-link">
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
-            Blog
-          </a>
-        </div>
-      </div>
-
-      <!-- Timeline: spans full width below both columns -->
-      <div class="exp-timeline reveal" style="grid-column: 1 / -1; margin-top: 1.5rem; padding-top: 2rem; border-top: 1px solid var(--border);">
-
-        <div class="exp-node">
-          <div class="exp-top"><div class="exp-title">Data Scientist</div></div>
-          <div class="exp-dot"></div>
-          <div class="exp-bottom">
-            <div class="exp-bullet">{{ if eq .Site.Language.Lang "de" }}Churn-Modell → +10 % Campaign Take Rate{{ else }}Churn model → +10% campaign take rate{{ end }}</div>
-            <div class="exp-bullet">{{ if eq .Site.Language.Lang "de" }}Handset-Prognose → +10 % Working-Capital-Effizienz{{ else }}Handset forecast → +10% working capital efficiency{{ end }}</div>
-          </div>
-        </div>
-
-        <div class="exp-node">
-          <div class="exp-top"><div class="exp-title">Head of Deep Insights</div></div>
-          <div class="exp-dot"></div>
-          <div class="exp-bottom">
-            <div class="exp-bullet">{{ if eq .Site.Language.Lang "de" }}DS-Funktion aufgebaut, Tech Lead in agilen Squads{{ else }}Grew DS function, tech lead across agile squads{{ end }}</div>
-            <div class="exp-bullet">{{ if eq .Site.Language.Lang "de" }}Analytics-Architekt für die Big-Data-Plattform{{ else }}Analytics architect for the big data platform{{ end }}</div>
-          </div>
-        </div>
-
-        <div class="exp-node exp-current">
-          <div class="exp-top"><div class="exp-title">Head of Data Science &amp; AI</div></div>
-          <div class="exp-dot"></div>
-          <div class="exp-bottom">
-            <div class="exp-bullet">{{ if eq .Site.Language.Lang "de" }}20+ köpfige Einheit: ML, GenAI &amp; Agentic AI{{ else }}Led 20+ person unit: ML, GenAI &amp; Agentic AI{{ end }}</div>
-            <div class="exp-bullet">{{ if eq .Site.Language.Lang "de" }}ML-Plattform, MLOps &amp; LLMOps-Architektur{{ else }}ML platform, MLOps &amp; LLMOps architecture{{ end }}</div>
-            <div class="exp-bullet">{{ if eq .Site.Language.Lang "de" }}Agentic AI produktiv in der Cloud{{ else }}Agentic AI shipped to production in the cloud{{ end }}</div>
-            <div class="exp-bullet">{{ if eq .Site.Language.Lang "de" }}C-Level-Strategie → technische Tiefe → Konferenzbühne{{ else }}C-level strategy → engineering depth → conference stage{{ end }}</div>
-          </div>
-        </div>
-
-        <div class="exp-node exp-offer">
-          <div class="exp-top"><div class="exp-title">{{ if eq .Site.Language.Lang "de" }}KI-Berater{{ else }}AI Advisor{{ end }}</div></div>
-          <div class="exp-dot"></div>
-          <div class="exp-bottom">
-            <div class="exp-bullet">{{ if eq .Site.Language.Lang "de" }}Skalierbare KI-Strategie für Ihr Unternehmen{{ else }}Bringing scalable AI strategy to your company{{ end }}</div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── Contact ────────────────────────────────── -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-card reveal">
-      <span class="section-tag">{{ if eq .Site.Language.Lang "de" }}Kontakt{{ else }}Get in touch{{ end }}</span>
-      <h2 class="contact-title">
-        {{ if eq .Site.Language.Lang "de" }}Klingt nach einem Gespräch?{{ else }}Worth a conversation?{{ end }}
-      </h2>
-      <p class="contact-sub">
-        {{ if eq .Site.Language.Lang "de" }}
-          Wenn Sie an einem Daten- oder KI-Thema arbeiten und eine ehrliche zweite Meinung suchen, melden Sie sich gerne.
-        {{ else }}
-          If you're working through a data or AI problem and want a second opinion from someone who's been in the weeds on it - feel free to reach out.
-        {{ end }}
-      </p>
-      <div class="contact-buttons">
-        <div id="gcal-btn"></div>
-        <a href="mailto:p.schnass@gmail.com" class="btn-ghost">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          {{ if eq .Site.Language.Lang "de" }}E-Mail schreiben{{ else }}Email me{{ end }}
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Footer ─────────────────────────────────── -->
-<footer>
-  <p class="footer-copy">© {{ now.Year }} Patrick Schnaß</p>
-  <div class="footer-links">
-    {{ if eq .Site.Language.Lang "de" }}
-    <a href="/de/gdpr">Impressum & Datenschutz</a>
-    <a href="https://www.linkedin.com/in/patrickschnass/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://github.com/PatrickPT" target="_blank" rel="noopener">GitHub</a>
-    <a href="/posts/">Blog</a>
-    {{ else }}
-    <a href="/en/gdpr">Legal & Privacy</a>
-    <a href="https://www.linkedin.com/in/patrickschnass/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://github.com/PatrickPT" target="_blank" rel="noopener">GitHub</a>
-    <a href="/posts/">Blog</a>
-    {{ end }}
+  <div class="footer__bottom">
+    <span>© <span id="year">{{ now.Year }}</span> Patrick Schnaß</span>
+    <nav class="footer__legal" aria-label="Legal">
+      {{- if $de }}
+      <a href="/de/gdpr/">Impressum &amp; Datenschutz</a>
+      {{- else }}
+      <a href="/gdpr/">Legal &amp; Privacy</a>
+      {{- end }}
+      <a href="https://www.linkedin.com/in/patrickschnass/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/PatrickPT" target="_blank" rel="noopener">GitHub</a>
+    </nav>
   </div>
 </footer>
 
-<!-- ── Scripts ────────────────────────────────── -->
-<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
-<script>
-(function() {
-  /* ── Theme toggle ───────────────────────── */
-  var html      = document.documentElement;
-  var iconMoon  = document.getElementById('icon-moon');
-  var iconSun   = document.getElementById('icon-sun');
-  var themeBtn  = document.getElementById('theme-toggle');
+<button class="totop" id="totop" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+</button>
 
-  function setTheme(light) {
-    if (light) {
-      html.classList.add('light');
-      iconMoon.style.display = 'none';
-      iconSun.style.display  = 'block';
-      localStorage.setItem('theme', 'light');
-    } else {
-      html.classList.remove('light');
-      iconMoon.style.display = 'block';
-      iconSun.style.display  = 'none';
-      localStorage.setItem('theme', 'dark');
-    }
-  }
-
-  var saved = localStorage.getItem('theme');
-  if (saved === 'light') setTheme(true);
-
-  themeBtn.addEventListener('click', function() {
-    setTheme(!html.classList.contains('light'));
-  });
-
-  /* ── Mobile nav ─────────────────────────── */
-  var btn  = document.getElementById('hamburger');
-  var menu = document.getElementById('mobile-menu');
-  var open = document.getElementById('ham-open');
-  var close = document.getElementById('ham-close');
-
-  btn.addEventListener('click', function() {
-    var isOpen = menu.classList.toggle('open');
-    open.style.display  = isOpen ? 'none'  : 'block';
-    close.style.display = isOpen ? 'block' : 'none';
-  });
-
-  window.closeMobile = function() {
-    menu.classList.remove('open');
-    open.style.display  = 'block';
-    close.style.display = 'none';
-  };
-
-  /* ── Scroll reveal ──────────────────────── */
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
-
-  /* ── Google Calendar button ─────────────── */
-  window.addEventListener('load', function() {
-    var target = document.getElementById('gcal-btn');
-    if (target && typeof calendar !== 'undefined') {
-      calendar.schedulingButton.load({
-        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Tu_t7zHJhBQ0eZZWjj4bmS5ls6jNCP8gsU25eIOwKL2pT9dbZbpyXyrYJEsqIH2DKNXuHS6wB?gv=true',
-        color: '#039BE5',
-        label: '{{ if eq .Site.Language.Lang "de" }}Termin buchen{{ else }}Book a free call{{ end }}',
-        target: target,
-      });
-    }
-  });
-
-  /* ── Particle canvas ────────────────────── */
-  var canvas = document.getElementById('bg-canvas');
-  var ctx    = canvas.getContext('2d');
-  var W, H, particles = [];
-  var isMobile = window.innerWidth < 640;
-  var COUNT    = isMobile ? 35 : 65;
-  var MAX_DIST = isMobile ? 120 : 150;
-
-  function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function Particle() {
-    this.reset();
-  }
-  Particle.prototype.reset = function() {
-    this.x  = Math.random() * W;
-    this.y  = Math.random() * H;
-    this.vx = (Math.random() - 0.5) * 0.45;
-    this.vy = (Math.random() - 0.5) * 0.45;
-    this.r  = Math.random() * 1.8 + 0.8;
-  };
-  Particle.prototype.update = function() {
-    this.x += this.vx;
-    this.y += this.vy;
-    if (this.x < 0 || this.x > W) this.vx *= -1;
-    if (this.y < 0 || this.y > H) this.vy *= -1;
-  };
-
-  function init() {
-    particles = [];
-    for (var i = 0; i < COUNT; i++) particles.push(new Particle());
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    var len = particles.length;
-    var isLight = html.classList.contains('light');
-    var dotColor  = isLight ? 'rgba(3,99,162,0.6)'  : 'rgba(3,155,229,0.65)';
-    var lineBase  = isLight ? [3,99,162]  : [3,155,229];
-    var lineMult  = isLight ? 0.22 : 0.28;
-    var triMult   = isLight ? 0.07 : 0.06;
-
-    for (var i = 0; i < len; i++) {
-      particles[i].update();
-    }
-
-    /* Draw filled triangles first (behind lines and dots) */
-    for (var i = 0; i < len; i++) {
-      var p = particles[i];
-      for (var j = i + 1; j < len; j++) {
-        var q = particles[j];
-        var dij = Math.sqrt((p.x-q.x)*(p.x-q.x) + (p.y-q.y)*(p.y-q.y));
-        if (dij >= MAX_DIST) continue;
-        for (var k = j + 1; k < len; k++) {
-          var r = particles[k];
-          var dik = Math.sqrt((p.x-r.x)*(p.x-r.x) + (p.y-r.y)*(p.y-r.y));
-          if (dik >= MAX_DIST) continue;
-          var djk = Math.sqrt((q.x-r.x)*(q.x-r.x) + (q.y-r.y)*(q.y-r.y));
-          if (djk >= MAX_DIST) continue;
-          var avgDist = (dij + dik + djk) / (3 * MAX_DIST);
-          var ta = (1 - avgDist) * triMult;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
-          ctx.lineTo(r.x, r.y);
-          ctx.closePath();
-          ctx.fillStyle = 'rgba(' + lineBase[0] + ',' + lineBase[1] + ',' + lineBase[2] + ',' + ta + ')';
-          ctx.fill();
-        }
-      }
-    }
-
-    /* Draw edges and dots on top */
-    for (var i = 0; i < len; i++) {
-      var p = particles[i];
-      for (var j = i + 1; j < len; j++) {
-        var q = particles[j];
-        var dx = p.x - q.x, dy = p.y - q.y;
-        var d  = Math.sqrt(dx*dx + dy*dy);
-        if (d < MAX_DIST) {
-          var a = (1 - d/MAX_DIST) * lineMult;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
-          ctx.strokeStyle = 'rgba(' + lineBase[0] + ',' + lineBase[1] + ',' + lineBase[2] + ',' + a + ')';
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-      }
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = dotColor;
-      ctx.fill();
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  resize();
-  init();
-  draw();
-
-  var resizeTimer;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() { resize(); init(); }, 250);
-  });
-})();
-</script>
-
+{{ $js := resources.Get "advisory/script.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
 </body>
 </html>
