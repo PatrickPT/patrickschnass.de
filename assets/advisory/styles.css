@@ -239,6 +239,11 @@ img { max-width: 100%; }
 .ways__head .t-section { min-height: 56px; }
 .ways__sub { margin-top: 16px; font-size: 20px; line-height: 29px; max-width: 620px; color: var(--white-72); }
 .ways__rail { display: flex; border-top: 1px solid rgba(255, 255, 255, .12); border-bottom: 1px solid rgba(255, 255, 255, .12); }
+/* Panels collapsed and unanimated while the script measures the rail's tallest layout. */
+.ways__rail.is-measuring { min-height: 0; }
+.ways__rail.is-measuring .way,
+.ways__rail.is-measuring .way:hover,
+.ways__rail.is-measuring .way:focus-within { flex-grow: 1; transition: none; }
 .way {
   position: relative; flex: 1 1 0; min-width: 0; overflow: hidden;
   display: flex; flex-direction: column; gap: 20px; padding: 32px 36px 36px;
@@ -260,6 +265,7 @@ img { max-width: 100%; }
 .way__code {
   margin: 0; font: 400 14px/1.7 var(--mono); color: #cad3f5; white-space: pre; overflow: hidden;
   padding: 20px 22px; border-radius: var(--radius); background: rgba(30, 32, 48, .8); border: 1px solid rgba(255, 255, 255, .08);
+  opacity: 0; visibility: hidden; transition: opacity .4s, visibility .4s;
 }
 .cm { color: #6e738d; font-style: italic; }
 .kw { color: #c6a0f6; }
@@ -275,7 +281,12 @@ img { max-width: 100%; }
 .ways__rail:not(:hover):not(:focus-within) .way.is-open::after { transform: scaleX(1); }
 .way:hover .way__detail, .way:focus-within .way__detail,
 .ways__rail:not(:hover):not(:focus-within) .way.is-open .way__detail { opacity: 1; transform: none; }
-@media (hover: none) { .way__detail { opacity: 1; transform: none; } }
+.way:hover .way__code, .way:focus-within .way__code,
+.ways__rail:not(:hover):not(:focus-within) .way.is-open .way__code { opacity: 1; visibility: visible; }
+@media (hover: none) {
+  .way__detail { opacity: 1; transform: none; }
+  .way__code { opacity: 1; visibility: visible; }
+}
 
 /* Prompter / contact */
 .prompter {
@@ -324,6 +335,7 @@ img { max-width: 100%; }
 .tnode li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 1px; background: currentColor; }
 .tnode--offer .tnode__dot { left: -3px; top: 26px; width: 17px; height: 17px; background: var(--gradient-text); box-shadow: 0 0 0 5px rgba(var(--glow), .15); }
 .tnode--offer .tnode__card {
+  width: fit-content; max-width: 100%;
   border: 1px solid transparent; border-radius: 12px; padding: 22px 24px 24px;
   background: linear-gradient(#fff, #fff) padding-box, var(--gradient-text) border-box;
   box-shadow: 0 14px 40px rgba(var(--glow), .14), 0 4px 12px rgba(0, 0, 0, .06);
@@ -546,6 +558,7 @@ img { max-width: 100%; }
   .way__inner { overflow: hidden; min-height: 0; gap: 16px; padding: 0 var(--gutter); }
   .way.is-open .way__inner { padding-bottom: 24px; }
   .way__detail, .way:hover .way__detail { opacity: 1; transform: none; min-width: 0; }
+  .way__code, .way:hover .way__code { opacity: 1; visibility: visible; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .footer__legal { padding-right: 64px; gap: 24px; }
 }

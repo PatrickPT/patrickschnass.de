@@ -150,11 +150,16 @@ function renderServices() {
   updateSliderBar();
 }
 
+// Desktop pins panel 01 open so its code and detail are discoverable without hovering.
+// The phone accordion starts fully collapsed - panels open on tap only.
+const waysDesktop = window.matchMedia("(min-width: 961px)");
+
 function renderWays() {
+  const pinned = waysDesktop.matches ? 0 : -1;
   document.getElementById("ways-rail").innerHTML = t("ways").map(([name, desc, covers], i) => `
-    <article class="way${i === 0 ? " is-open" : ""}">
+    <article class="way${i === pinned ? " is-open" : ""}">
       <h3 class="way__head">
-        <button class="way__toggle" aria-expanded="${i === 0}" aria-controls="way-body-${i}">
+        <button class="way__toggle" aria-expanded="${i === pinned}" aria-controls="way-body-${i}">
           <span class="way__num">0${i + 1}</span>
           <span class="way__name">${escapeHtml(name)}</span>
           <span class="way__chevron" aria-hidden="true"></span>
@@ -171,6 +176,21 @@ function renderWays() {
       </div>
     </article>`).join("");
 }
+
+// A panel rewraps its heading and description as it expands, so the fully collapsed
+// rail is the tallest one. Reserve that height: selecting a panel then never resizes
+// the section, and all three panels stay the same height.
+function reserveRailHeight() {
+  const rail = document.getElementById("ways-rail");
+  rail.style.minHeight = "";
+  if (!waysDesktop.matches) return;
+  rail.classList.add("is-measuring");
+  const tallest = rail.getBoundingClientRect().height;
+  rail.classList.remove("is-measuring");
+  rail.style.minHeight = `${Math.ceil(tallest)}px`;
+}
+
+waysDesktop.addEventListener("change", () => { renderWays(); reserveRailHeight(); });
 
 function setWayOpen(way, open) {
   way.classList.toggle("is-open", open);
@@ -190,7 +210,7 @@ document.getElementById("ways-rail").addEventListener("click", (e) => {
 function renderTimeline() {
   document.getElementById("timeline").innerHTML = t("timeline").map(([title, bullets, kind]) => {
     const content = `<p class="tnode__title">${escapeHtml(title)}</p><ul>${bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul>`;
-    const offer = `<div class="tnode__card">${content}<a class="cta cta--dark tnode__cta" data-book>${escapeHtml(t("cta.book"))}</a></div>`;
+    const offer = `<div class="tnode__card">${content}<a class="cta cta--gradient tnode__cta" data-book>${escapeHtml(t("cta.book"))}</a></div>`;
     return `<li class="tnode${kind ? " tnode--" + kind : ""}"><span class="tnode__dot" aria-hidden="true"></span>${kind === "offer" ? offer : content}</li>`;
   }).join("");
 }
@@ -225,6 +245,7 @@ function applyLang(next) {
   wireBookingLinks();
   wireEmailLinks();
   setMarqueeSpeeds();
+  reserveRailHeight();
   restartTyper();
 }
 
@@ -386,10 +407,10 @@ window.addEventListener("resize", updateClosing);
 /* ---------- Init ---------- */
 applyLang(lang);
 document.querySelectorAll(".type-on-view").forEach((el) => io.observe(el));
-document.fonts.ready.then(() => { setMarqueeSpeeds(); reserveTitleHeight(); });
+document.fonts.ready.then(() => { setMarqueeSpeeds(); reserveTitleHeight(); reserveRailHeight(); });
 let resizeTimer;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => { reserveTitleHeight(); setMarqueeSpeeds(); }, 150);
+  resizeTimer = setTimeout(() => { reserveTitleHeight(); setMarqueeSpeeds(); reserveRailHeight(); }, 150);
 });
 updateClosing();
