@@ -1,7 +1,7 @@
 baseURL = "https://www.patrickschnass.de/"
 defaultContentLanguage = "en"
 theme = "blowfish"
-# Tag/category pages only served the (hidden) blog.
+# Tag/category pages are not used by the blog (/posts).
 disableKinds = ["taxonomy", "term"]
 
 [languages]
