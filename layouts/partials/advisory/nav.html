@@ -15,6 +15,7 @@
       </div>
     </div>
     <a class="nav__link" href="{{ $home }}#about">{{ i18n "adv_nav_about" }}</a>
+    <a class="nav__link" href="/posts/">{{ i18n "adv_nav_blog" }}</a>
     <a class="nav__link" href="{{ $home }}#contact">{{ i18n "adv_nav_contact" }}</a>
   </nav>
 
@@ -33,6 +34,7 @@
     {{- end }}
   </div>
   <a href="{{ $home }}#about">{{ i18n "adv_nav_about" }}</a>
+  <a href="/posts/">{{ i18n "adv_nav_blog" }}</a>
   <a href="{{ $home }}#contact">{{ i18n "adv_nav_contact" }}</a>
   {{ partial "advisory/lang.html" . }}
 </div>
