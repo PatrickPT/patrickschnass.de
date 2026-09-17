@@ -37,6 +37,12 @@ disableKinds = ["taxonomy", "term"]
       url = "/de/#about"
       weight = 30
 
+    [[languages.de.menu.main]]
+      identifier = "blog"
+      name = "Blog"
+      url = "/posts/"
+      weight = 40
+
     [[languages.de.menu.footer]]
       name = "Impressum & Datenschutz"
       url = "/de/gdpr"
@@ -73,6 +79,12 @@ disableKinds = ["taxonomy", "term"]
       name = "About"
       url = "/#about"
       weight = 30
+
+    [[languages.en.menu.main]]
+      identifier = "blog"
+      name = "Blog"
+      url = "/posts/"
+      weight = 40
 
     [[languages.en.menu.footer]]
       name = "Legal & Privacy"
