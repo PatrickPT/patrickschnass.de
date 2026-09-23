@@ -1,11 +1,31 @@
 ---
-title: "Software Engineering"
+title: "Architecture & Engineering"
 weight: 3
 icon: "cube"
 art: "eng-wave"
-lead: "Sometimes you need someone to actually build it. Agents, ML models and automation - spec-driven, reusable and integrated into your architecture, not a one-off nobody can maintain."
+lead: "Sometimes you need someone to design it and actually build it. Data & AI architecture, agents, ML models and automation - spec-driven, reusable and built on a foundation that scales, not a one-off nobody can maintain."
 formats: ["build"]
 packages:
+  - id: "data-ai-architecture"
+    title: "Data & AI architecture"
+    summary: "A cloud-native target architecture for data and AI - from ingestion and streaming to warehouse, lakehouse and model serving - derived from your requirements, not from a vendor slide."
+    why: |
+      Every AI initiative eventually hits the same wall: the data isn't where it needs to be, in the shape it needs to be, when it needs to be there. Overnight batch jobs can't feed real-time decisions, on-premise systems can't keep up with demand, and a patchwork of tools makes governance close to impossible.
+
+      Architecture work starts with requirements, not technology: latency, volumes, data sensitivity, existing systems, team skills and budget. From there we design the target picture - how data is ingested, streamed, stored, governed and served to analytics, ML models and agents - and the path to get there, including the migration from legacy and on-premise systems.
+
+      Critical assumptions are tested early with a focused proof of concept instead of discovered in production. The result is a platform the next ten use cases can build on, with running costs that are transparent from the start - and one that can adopt new services and models without being redesigned every time.
+    value:
+      - "One foundation for analytics, ML and agents instead of a silo per use case"
+      - "Real-time where it creates value, batch where it is enough"
+      - "Governance and security designed in, not bolted on"
+      - "A realistic migration path instead of a big-bang rewrite"
+    deliverables:
+      - "Target architecture with documented design decisions"
+      - "Migration and modernisation roadmap"
+      - "Proof of concept for the critical path"
+      - "Cost model and operating concept"
+
   - id: "ai-agents"
     title: "AI agents"
     summary: "Agents that work with your tools, data and processes - built to be reliable, observable and maintainable."
@@ -69,4 +89,4 @@ packages:
 
 Strategy only creates value once something runs in production. That last stretch - from a promising prototype to a reliable system that is integrated, monitored and maintained - is where most AI initiatives stall. Demos are quick to build; production systems are not.
 
-This service closes that gap. I build AI agents, machine learning models and automation with the same discipline as any other business-critical software: clear specifications, reusable components, tests, monitoring and a handover your teams can own. The goal is not a showcase but a capability that keeps delivering after the first version - and can evolve as models and requirements change.
+This service closes that gap. I design the data and AI architecture these systems run on, and I build AI agents, machine learning models and automation with the same discipline as any other business-critical software: clear specifications, reusable components, tests, monitoring and a handover your teams can own. The goal is not a showcase but a capability that keeps delivering after the first version - and can evolve as models and requirements change.

@@ -1,11 +1,31 @@
 ---
-title: "Software-Engineering"
+title: "Architektur & Engineering"
 weight: 3
 icon: "cube"
 art: "eng-wave"
-lead: "Manchmal muss es einfach jemand bauen. Agenten, ML-Modelle und Automatisierung – sauber spezifiziert, wiederverwendbar und in Ihre Architektur integriert statt als Einweg-Demo."
+lead: "Manchmal muss es jemand entwerfen und dann auch bauen. Daten- und KI-Architektur, Agenten, ML-Modelle und Automatisierung – sauber spezifiziert, wiederverwendbar und auf einem Fundament, das mitwächst, statt als Einweg-Demo."
 formats: ["build"]
 packages:
+  - id: "data-ai-architecture"
+    title: "Daten- & KI-Architektur"
+    summary: "Eine Cloud-native Zielarchitektur für Daten und KI – von Ingestion und Streaming über Data Warehouse und Lakehouse bis zum Model Serving –, abgeleitet aus Ihren Anforderungen statt aus der Folie eines Anbieters."
+    why: |
+      Jede KI-Initiative stößt irgendwann an dieselbe Grenze: Die Daten sind nicht dort, wo sie gebraucht werden, nicht in der richtigen Form und nicht zur richtigen Zeit. Nächtliche Batch-Jobs können keine Echtzeit-Entscheidungen versorgen, On-Premise-Systeme halten mit dem Bedarf nicht Schritt, und ein Flickenteppich aus Tools macht Governance nahezu unmöglich.
+
+      Architekturarbeit beginnt deshalb mit den Anforderungen, nicht mit der Technologie: Latenz, Datenvolumen, Schutzbedarf, bestehende Systeme, Kompetenzen im Team und Budget. Daraus entsteht das Zielbild – wie Daten aufgenommen, gestreamt, gespeichert, gesteuert und für Analytics, ML-Modelle und Agenten bereitgestellt werden – und der Weg dorthin, einschließlich der Migration aus Alt- und On-Premise-Systemen.
+
+      Kritische Annahmen prüfen wir früh mit einem gezielten Proof of Concept, statt sie erst im Produktivbetrieb zu entdecken. Das Ergebnis ist eine Plattform, auf der die nächsten zehn Use Cases aufbauen können, mit Betriebskosten, die von Anfang an transparent sind – und die neue Services und Modelle aufnehmen kann, ohne jedes Mal neu entworfen zu werden.
+    value:
+      - "Ein Fundament für Analytics, ML und Agenten statt eines Silos pro Use Case"
+      - "Echtzeit, wo sie Wert schafft, Batch, wo er ausreicht"
+      - "Governance und Sicherheit von Anfang an mitgedacht statt nachgerüstet"
+      - "Ein realistischer Migrationspfad statt eines Big-Bang-Neubaus"
+    deliverables:
+      - "Zielarchitektur mit dokumentierten Architekturentscheidungen"
+      - "Roadmap für Migration und Modernisierung"
+      - "Proof of Concept für den kritischen Pfad"
+      - "Kostenmodell und Betriebskonzept"
+
   - id: "ai-agents"
     title: "KI-Agenten"
     summary: "Agenten, die mit Ihren Tools, Daten und Prozessen arbeiten – zuverlässig, nachvollziehbar und wartbar gebaut."
@@ -69,4 +89,4 @@ packages:
 
 Eine Strategie schafft erst dann Wert, wenn etwas produktiv läuft. Genau diese letzte Strecke – vom vielversprechenden Prototyp zum zuverlässigen System, das integriert, überwacht und gewartet wird – ist die, auf der die meisten KI-Initiativen stecken bleiben. Demos sind schnell gebaut, Produktivsysteme nicht.
 
-Diese Leistung schließt die Lücke. Ich baue KI-Agenten, Machine-Learning-Modelle und Automatisierungen mit derselben Disziplin wie jede andere geschäftskritische Software: klare Spezifikationen, wiederverwendbare Komponenten, Tests, Monitoring und eine Übergabe, die Ihre Teams übernehmen können. Das Ziel ist kein Vorzeigeprojekt, sondern eine Lösung, die auch nach der ersten Version Nutzen bringt – und sich weiterentwickeln lässt, wenn sich Modelle und Anforderungen ändern.
+Diese Leistung schließt die Lücke. Ich entwerfe die Daten- und KI-Architektur, auf der diese Systeme laufen, und baue KI-Agenten, Machine-Learning-Modelle und Automatisierungen mit derselben Disziplin wie jede andere geschäftskritische Software: klare Spezifikationen, wiederverwendbare Komponenten, Tests, Monitoring und eine Übergabe, die Ihre Teams übernehmen können. Das Ziel ist kein Vorzeigeprojekt, sondern eine Lösung, die auch nach der ersten Version Nutzen bringt – und sich weiterentwickeln lässt, wenn sich Modelle und Anforderungen ändern.
