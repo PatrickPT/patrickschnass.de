@@ -20,7 +20,7 @@ const serviceIcons = [
   lineIcon(`<circle cx="24" cy="24" r="20"/><path d="M31 17l-4.5 9.5L17 31l4.5-9.5z"/><circle cx="24" cy="24" r="1.2" fill="currentColor"/>`),
   // Organisation & Governance: shield with check
   lineIcon(`<path d="M24 5l15 6v11c0 10-6.5 17-15 21C15.5 39 9 32 9 22V11z"/><path d="M17 24l5 5 9-10"/>`),
-  // Software Engineering: cube
+  // Architecture & Engineering: cube
   lineIcon(`<path d="M24 5l17 9.5v19L24 43 7 33.5v-19z"/><path d="M7 14.5L24 24l17-9.5M24 24v19"/>`),
 ];
 
@@ -45,7 +45,7 @@ const i18n = {
     services: [
       ["AI Strategy & Impact", "Where does AI actually pay off? I assess your processes, sharpen the strategy and put a number on the impact - including where agents can take over real workflows.", ["Process assessment", "AI strategy", "AI impact advisory", "Agentic automation strategy"]],
       ["Organisation & Governance", "AI only sticks if the organisation carries it. Team structure, culture and adoption - and conformity with the EU AI Act from day one.", ["AI org strategy", "AI culture advisory", "EU AI Act conformity"]],
-      ["Software Engineering", "Sometimes you need someone to actually build it. Agents, ML models and automation - spec-driven, reusable and integrated into your architecture, not a one-off nobody can maintain.", ["AI agents", "Machine learning", "Automation"]],
+      ["Architecture & Engineering", "Sometimes you need someone to design it and actually build it. Data & AI architecture, agents, ML models and automation - spec-driven, reusable and built on a foundation that scales, not a one-off nobody can maintain.", ["Data & AI architecture", "AI agents", "Machine learning", "Automation"]],
     ],
     "ways.tag": "How we work together",
     "ways.title": "Workshop → Field work → Production",
@@ -54,19 +54,19 @@ const i18n = {
     ways: [
       ["Workshop", "Align leadership and teams, prioritise use cases and leave with a roadmap everyone backs.", "AI Strategy & Impact · Organisation & Governance"],
       ["Field work", "On site with your teams: assess processes, organisation and compliance where the work actually happens.", "AI Strategy & Impact · Organisation & Governance"],
-      ["Build & Ship", "Hands-on delivery into production - agents, ML and automation that keep running after the first version.", "Software Engineering"],
+      ["Build & Ship", "Hands-on delivery into production - architecture, agents, ML and automation that keep running after the first version.", "Architecture & Engineering"],
     ],
     "prompter.title": "Worth a<br>conversation?",
     "prompter.text": "If you're working through a data or AI problem and want a second opinion from someone who's been in the weeds on it - feel free to reach out.",
     "about.title": "Hi, I'm Patrick",
     "about.p1": "I started in consulting and moved into machine learning by solving actual business problems with algorithms. My background in economics has been useful - I tend to think about data and models in terms of what decision they're supposed to improve, not as technology for its own sake.",
-    "about.p2": "I lead the Data Science & AI team at a global tech company, where we build ML, GenAI, and Agentic AI products in production. What that work has taught me is that the model is rarely the hard part. The foundation is - data pipelines, integration into existing systems, and the organisational capability to keep shipping after the first version.",
-    "about.p3": "Occasionally I work with other companies on exactly those problems.",
+    "about.p2": "I lead the Data Science & AI team at a global tech company, where we build ML, GenAI, and Agentic AI products in production - and design the cloud data and ML platforms they run on. What that work has taught me is that the model is rarely the hard part. The foundation is - data architecture, integration into existing systems, and the organisational capability to keep shipping after the first version.",
+    "about.p3": "Occasionally I work with other companies on exactly those problems - from the first architecture sketch to the system in production.",
     "timeline.head": "From data science to AI advisory",
     timeline: [
       ["Data Scientist", ["Churn model → +10% campaign take rate", "Handset forecast → +10% working capital efficiency"]],
       ["Head of Deep Insights", ["Grew DS function, tech lead across agile squads", "Analytics architect for the big data platform"]],
-      ["Head of Data Science & AI", ["Led 20+ person unit: ML, GenAI & Agentic AI", "ML platform, MLOps & LLMOps architecture", "Agentic AI shipped to production in the cloud"]],
+      ["Head of Data Science & AI", ["Led 10+ person unit: ML, GenAI & Agentic AI", "ML platform, MLOps & LLMOps architecture", "Agentic AI shipped to production in the cloud"]],
       ["AI Advisor", ["Bringing scalable AI strategy to your company"], "offer"],
     ],
   },
@@ -90,7 +90,7 @@ const i18n = {
     services: [
       ["KI-Strategie & Wirkung", "Wo zahlt sich KI wirklich aus? Ich analysiere Ihre Prozesse, schärfe die Strategie und beziffere den Nutzen – und zeige, wo Agenten ganze Arbeitsabläufe übernehmen können.", ["Prozessanalyse", "KI-Strategie", "KI-Business-Cases", "Automatisierung mit KI-Agenten"]],
       ["Organisation & Governance", "KI wirkt nur, wenn die Organisation sie trägt: Teamstruktur, Kultur und Akzeptanz – und Konformität mit dem EU AI Act von Anfang an.", ["KI-Organisationsstrategie", "KI-Kultur & Befähigung", "EU-AI-Act-Konformität"]],
-      ["Software-Engineering", "Manchmal muss es einfach jemand bauen. Agenten, ML-Modelle und Automatisierung – sauber spezifiziert, wiederverwendbar und in Ihre Architektur integriert statt als Einweg-Demo.", ["KI-Agenten", "Machine Learning", "Automatisierung"]],
+      ["Architektur & Engineering", "Manchmal muss es jemand entwerfen und dann auch bauen. Daten- und KI-Architektur, Agenten, ML-Modelle und Automatisierung – sauber spezifiziert, wiederverwendbar und auf einem Fundament, das mitwächst, statt als Einweg-Demo.", ["Daten- & KI-Architektur", "KI-Agenten", "Machine Learning", "Automatisierung"]],
     ],
     "ways.tag": "Wie wir zusammenarbeiten",
     "ways.title": "Workshop → Vor Ort → Produktion",
@@ -99,19 +99,19 @@ const i18n = {
     ways: [
       ["Workshop", "Führung und Teams auf ein Ziel ausrichten, Use Cases priorisieren und am Ende eine Roadmap haben, hinter der alle stehen.", "KI-Strategie & Wirkung · Organisation & Governance"],
       ["Vor Ort", "Vor Ort mit Ihren Teams: Prozesse, Organisation und Compliance dort analysieren, wo die Arbeit tatsächlich erledigt wird.", "KI-Strategie & Wirkung · Organisation & Governance"],
-      ["Entwicklung & Go-live", "Praktische Umsetzung bis in den Produktivbetrieb – Agenten, ML und Automatisierung, die auch nach der ersten Version zuverlässig laufen.", "Software-Engineering"],
+      ["Entwicklung & Go-live", "Praktische Umsetzung bis in den Produktivbetrieb – Architektur, Agenten, ML und Automatisierung, die auch nach der ersten Version zuverlässig laufen.", "Architektur & Engineering"],
     ],
     "prompter.title": "Lohnt sich ein<br>Gespräch?",
     "prompter.text": "Wenn Sie an einem Daten- oder KI-Thema arbeiten und eine ehrliche zweite Meinung suchen, melden Sie sich gerne.",
     "about.title": "Hallo, ich bin Patrick",
     "about.p1": "Ich komme aus der IT-Beratung, begeistere mich aber schon immer für Algorithmen. Mein wirtschaftswissenschaftlicher Hintergrund hilft mir dabei: Bei Daten und Modellen frage ich immer zuerst, welche Entscheidung sie verbessern sollen.",
-    "about.p2": "Aktuell leite ich das Data Science & AI Team eines globalen Technologieunternehmens. Wir bauen ML-, GenAI- und Agentic-AI-Produkte, die im Produktivbetrieb laufen. Dabei habe ich gelernt: Das Problem ist selten die Technologie, sondern das Fundament – Datenpipelines, die Integration in bestehende Systeme und die Fähigkeit der Organisation, auch nach der ersten Version weiterzuentwickeln.",
-    "about.p3": "Gelegentlich berate ich andere Unternehmen bei genau diesen Themen.",
+    "about.p2": "Aktuell leite ich das Data Science & AI Team eines globalen Technologieunternehmens. Wir bauen ML-, GenAI- und Agentic-AI-Produkte für den Produktivbetrieb und entwerfen die Cloud-Daten- und ML-Plattformen, auf denen sie laufen. Dabei habe ich gelernt: Das Problem ist selten die Technologie, sondern das Fundament – Datenarchitektur, die Integration in bestehende Systeme und die Fähigkeit der Organisation, auch nach der ersten Version weiterzuentwickeln.",
+    "about.p3": "Gelegentlich berate ich andere Unternehmen bei genau diesen Themen – von der ersten Architekturskizze bis zum System im Produktivbetrieb.",
     "timeline.head": "Von Data Science zur KI-Beratung",
     timeline: [
       ["Data Scientist", ["Churn-Modell → +10 % Annahmequote bei Kampagnen", "Endgeräte-Prognose → +10 % Effizienz im Working Capital"]],
       ["Head of Deep Insights", ["Data-Science-Bereich aufgebaut, Tech Lead in agilen Teams", "Analytics-Architekt für die Big-Data-Plattform"]],
-      ["Head of Data Science & AI", ["Bereich mit über 20 Mitarbeitenden: ML, GenAI & Agentic AI", "ML-Plattform, MLOps & LLMOps-Architektur", "Agentic AI produktiv in der Cloud"]],
+      ["Head of Data Science & AI", ["Bereich mit über 10 Mitarbeitenden: ML, GenAI & Agentic AI", "ML-Plattform, MLOps & LLMOps-Architektur", "Agentic AI produktiv in der Cloud"]],
       ["KI-Berater", ["Skalierbare KI-Strategie für Ihr Unternehmen"], "offer"],
     ],
   },
