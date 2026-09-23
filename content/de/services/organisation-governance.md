@@ -1,6 +1,6 @@
 ---
 title: "Organisation & Governance"
-weight: 2
+weight: 3
 icon: "shield"
 art: "org-wave"
 lead: "KI wirkt nur, wenn die Organisation sie trägt: Teamstruktur, Kultur und Akzeptanz – und Konformität mit dem EU AI Act von Anfang an."

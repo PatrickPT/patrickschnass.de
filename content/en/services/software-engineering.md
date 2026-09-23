@@ -1,6 +1,6 @@
 ---
 title: "Architecture & Engineering"
-weight: 3
+weight: 2
 icon: "cube"
 art: "eng-wave"
 lead: "From target architecture to production. Data & AI platforms, agents, ML models and automation - spec-driven, reusable and built to last."

@@ -18,10 +18,10 @@ const lineIcon = (paths) =>
 const serviceIcons = [
   // Strategy & Impact: compass
   lineIcon(`<circle cx="24" cy="24" r="20"/><path d="M31 17l-4.5 9.5L17 31l4.5-9.5z"/><circle cx="24" cy="24" r="1.2" fill="currentColor"/>`),
-  // Organisation & Governance: shield with check
-  lineIcon(`<path d="M24 5l15 6v11c0 10-6.5 17-15 21C15.5 39 9 32 9 22V11z"/><path d="M17 24l5 5 9-10"/>`),
   // Architecture & Engineering: cube
   lineIcon(`<path d="M24 5l17 9.5v19L24 43 7 33.5v-19z"/><path d="M7 14.5L24 24l17-9.5M24 24v19"/>`),
+  // Organisation & Governance: shield with check
+  lineIcon(`<path d="M24 5l15 6v11c0 10-6.5 17-15 21C15.5 39 9 32 9 22V11z"/><path d="M17 24l5 5 9-10"/>`),
 ];
 
 const i18n = {
@@ -39,13 +39,13 @@ const i18n = {
     "cta.book": "Book a free call",
     proof: ["Vendor-neutral advice", "Data governance from day one", "Your data stays yours", "Code your team owns", "Impact measured in euros", "Built for handover", "From workshop to production"],
     "svc.tag": "What I offer",
-    "svc.title": "Strategy. Organisation. Engineering.",
+    "svc.title": "Strategy. Engineering. Organisation.",
     "svc.sub": "Delivered as workshops or hands-on field work - from the first assessment to systems running in production.",
     "svc.cta": "Learn more",
     services: [
       ["AI Strategy & Impact", "Where does AI actually pay off? I assess your processes, sharpen the strategy and put a number on the impact - including where agents can take over real workflows.", ["Process assessment", "AI strategy", "AI impact advisory", "Agentic automation strategy"]],
-      ["Organisation & Governance", "AI only sticks if the organisation carries it. Team structure, culture and adoption - and conformity with the EU AI Act from day one.", ["AI org strategy", "AI culture advisory", "EU AI Act conformity"]],
       ["Architecture & Engineering", "From target architecture to production. Data & AI platforms, agents, ML models and automation - spec-driven, reusable and built to last.", ["Data & AI architecture", "AI agents", "Machine learning", "Automation"]],
+      ["Organisation & Governance", "AI only sticks if the organisation carries it. Team structure, culture and adoption - and conformity with the EU AI Act from day one.", ["AI org strategy", "AI culture advisory", "EU AI Act conformity"]],
     ],
     "ways.tag": "How we work together",
     "ways.title": "Workshop → Field work → Production",
@@ -84,13 +84,13 @@ const i18n = {
     "cta.book": "Termin buchen",
     proof: ["Unabhängig von Anbietern", "Data Governance von Anfang an", "Ihre Daten bleiben bei Ihnen", "Code in Ihrer Hand", "Nutzen in Euro messbar", "Übergabe inklusive", "Vom Workshop bis in die Produktion"],
     "svc.tag": "Was ich anbiete",
-    "svc.title": "Strategie. Organisation. Engineering.",
+    "svc.title": "Strategie. Engineering. Organisation.",
     "svc.sub": "Als Workshop oder direkt vor Ort – von der ersten Bestandsaufnahme bis zum System im Produktivbetrieb.",
     "svc.cta": "Mehr erfahren",
     services: [
       ["KI-Strategie & Wirkung", "Wo zahlt sich KI wirklich aus? Ich analysiere Ihre Prozesse, schärfe die Strategie und beziffere den Nutzen – und zeige, wo Agenten ganze Arbeitsabläufe übernehmen können.", ["Prozessanalyse", "KI-Strategie", "KI-Business-Cases", "Automatisierung mit KI-Agenten"]],
-      ["Organisation & Governance", "KI wirkt nur, wenn die Organisation sie trägt: Teamstruktur, Kultur und Akzeptanz – und Konformität mit dem EU AI Act von Anfang an.", ["KI-Organisationsstrategie", "KI-Kultur & Befähigung", "EU-AI-Act-Konformität"]],
       ["Architektur & Engineering", "Von der Zielarchitektur bis in den Produktivbetrieb. Daten- und KI-Plattformen, Agenten, ML-Modelle und Automatisierung – sauber spezifiziert, wiederverwendbar und langlebig.", ["Daten- & KI-Architektur", "KI-Agenten", "Machine Learning", "Automatisierung"]],
+      ["Organisation & Governance", "KI wirkt nur, wenn die Organisation sie trägt: Teamstruktur, Kultur und Akzeptanz – und Konformität mit dem EU AI Act von Anfang an.", ["KI-Organisationsstrategie", "KI-Kultur & Befähigung", "EU-AI-Act-Konformität"]],
     ],
     "ways.tag": "Wie wir zusammenarbeiten",
     "ways.title": "Workshop → Vor Ort → Produktion",

@@ -1,6 +1,6 @@
 ---
 title: "Architektur & Engineering"
-weight: 3
+weight: 2
 icon: "cube"
 art: "eng-wave"
 lead: "Von der Zielarchitektur bis in den Produktivbetrieb. Daten- und KI-Plattformen, Agenten, ML-Modelle und Automatisierung – sauber spezifiziert, wiederverwendbar und langlebig."
