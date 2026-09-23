@@ -3,7 +3,7 @@ title: "Architektur & Engineering"
 weight: 3
 icon: "cube"
 art: "eng-wave"
-lead: "Manchmal muss es jemand entwerfen und dann auch bauen. Daten- und KI-Architektur, Agenten, ML-Modelle und Automatisierung – sauber spezifiziert, wiederverwendbar und auf einem Fundament, das mitwächst, statt als Einweg-Demo."
+lead: "Von der Zielarchitektur bis in den Produktivbetrieb. Daten- und KI-Plattformen, Agenten, ML-Modelle und Automatisierung – sauber spezifiziert, wiederverwendbar und langlebig."
 formats: ["build"]
 packages:
   - id: "data-ai-architecture"

@@ -3,7 +3,7 @@ title: "Architecture & Engineering"
 weight: 3
 icon: "cube"
 art: "eng-wave"
-lead: "Sometimes you need someone to design it and actually build it. Data & AI architecture, agents, ML models and automation - spec-driven, reusable and built on a foundation that scales, not a one-off nobody can maintain."
+lead: "From target architecture to production. Data & AI platforms, agents, ML models and automation - spec-driven, reusable and built to last."
 formats: ["build"]
 packages:
   - id: "data-ai-architecture"
