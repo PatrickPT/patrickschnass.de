@@ -5,6 +5,8 @@ icon: "compass"
 art: "hero-ribbon"
 lead: "Where does AI actually pay off? I assess your processes, sharpen the strategy and put a number on the impact - including where agents can take over real workflows."
 formats: ["workshop", "fieldwork"]
+# Offer the free AI potential check as a low-effort start (hero + closing CTA)
+check: true
 packages:
   - id: "process-assessment"
     title: "Process assessment"

@@ -38,3 +38,13 @@ adv_format_build_desc = "Hands-on delivery into production - agents, ML and auto
 
 adv_nav_check = "AI check"
 adv_check_noscript = "This check runs entirely in your browser, so nothing you enter ever leaves your computer. That's why it needs JavaScript. Please enable it and reload the page."
+
+adv_cta_check = "Take the 5-minute AI check"
+adv_teaser_tag = "Free · 5 minutes · runs in your browser"
+adv_teaser_title = "What is your back office <em>really</em> costing you?"
+adv_teaser_lead = "The hours you see are only the tip. Below the waterline: work done twice, constant interruptions, expensive people doing routine jobs, discounts nobody claims. In five minutes you'll know what that adds up to in your company, and where AI actually pays off."
+adv_teaser_tip = "The work itself"
+adv_teaser_l1 = "Doing it twice"
+adv_teaser_l2 = "Lost focus"
+adv_teaser_l3 = "Expensive people, routine work"
+adv_teaser_l4 = "Money left on the table"

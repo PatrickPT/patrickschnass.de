@@ -20,7 +20,11 @@
       <p class="svc-hero__lead">{{ .Params.lead }}</p>
       <div class="cta-row">
         <a class="cta cta--gradient" data-book>{{ i18n "adv_cta_book" }}</a>
+        {{- if .Params.check }}
+        <a class="cta cta--ghost" href="{{ "check/" | relLangURL }}">{{ i18n "adv_cta_check" }} →</a>
+        {{- else }}
         <a class="cta cta--ghost" data-email>{{ i18n "adv_cta_email" }}</a>
+        {{- end }}
       </div>
     </div>
   </section>
@@ -85,7 +89,11 @@
       <p class="prompter__text">{{ i18n "adv_svc_cta_text" }}</p>
       <div class="cta-row cta-row--center">
         <a class="cta cta--gradient" data-book>{{ i18n "adv_cta_book" }}</a>
+        {{- if .Params.check }}
+        <a class="cta cta--ghost" href="{{ "check/" | relLangURL }}">{{ i18n "adv_cta_check" }} →</a>
+        {{- else }}
         <a class="cta cta--ghost" data-email>{{ i18n "adv_cta_email" }}</a>
+        {{- end }}
       </div>
     </div>
   </section>

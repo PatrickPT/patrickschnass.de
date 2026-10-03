@@ -7,6 +7,7 @@
 {{ partial "advisory/nav.html" . }}
 
 <main id="main">
+  {{- $check := "check/" | relLangURL }}
   <!-- Stage / hero -->
   <section class="stage" id="top">
     <div class="stage__bg" aria-hidden="true"></div>
@@ -17,8 +18,8 @@
       </h1>
       <p class="stage__lead" data-i18n="hero.lead"></p>
       <div class="cta-row">
-        <a class="cta cta--gradient" data-book>{{ i18n "adv_cta_book" }}</a>
-        <a class="cta cta--ghost" data-email>{{ i18n "adv_cta_email" }}</a>
+        <a class="cta cta--gradient" href="{{ $check }}">{{ i18n "adv_cta_check" }} →</a>
+        <a class="cta cta--ghost" data-book>{{ i18n "adv_cta_book" }}</a>
       </div>
     </div>
   </section>
@@ -27,6 +28,24 @@
   <aside class="logo-bar" aria-label="Principles">
     <div class="logo-bar__track" id="proof-track"></div>
   </aside>
+
+  <!-- AI check teaser: the free check is the low-effort first step -->
+  <section class="teaser" id="check-teaser">
+    <div class="teaser__text">
+      <p class="eyebrow">{{ i18n "adv_teaser_tag" }}</p>
+      <h2 class="t-section">{{ i18n "adv_teaser_title" | safeHTML }}</h2>
+      <p class="teaser__lead">{{ i18n "adv_teaser_lead" }}</p>
+      <a class="cta cta--gradient" href="{{ $check }}">{{ i18n "adv_cta_check" }} →</a>
+    </div>
+    <div class="teaser__ice" aria-hidden="true">
+      <span class="teaser__tip">{{ i18n "adv_teaser_tip" }}</span>
+      <span class="teaser__line"></span>
+      <span class="teaser__layer">{{ i18n "adv_teaser_l1" }}</span>
+      <span class="teaser__layer">{{ i18n "adv_teaser_l2" }}</span>
+      <span class="teaser__layer">{{ i18n "adv_teaser_l3" }}</span>
+      <span class="teaser__layer teaser__layer--est">{{ i18n "adv_teaser_l4" }}</span>
+    </div>
+  </section>
 
   <!-- Services slider -->
   {{- $serviceUrls := slice }}

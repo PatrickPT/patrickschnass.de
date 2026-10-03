@@ -5,6 +5,8 @@ icon: "compass"
 art: "hero-ribbon"
 lead: "Wo zahlt sich KI wirklich aus? Ich analysiere Ihre Prozesse, schärfe die Strategie und beziffere den Nutzen – und zeige, wo Agenten ganze Arbeitsabläufe übernehmen können."
 formats: ["workshop", "fieldwork"]
+# Offer the free AI potential check as a low-effort start (hero + closing CTA)
+check: true
 packages:
   - id: "process-assessment"
     title: "Prozessanalyse"
