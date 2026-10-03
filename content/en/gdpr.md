@@ -94,6 +94,9 @@ Only if you actively use the form "Get the results by e-mail" do we process:
 
 **Processors:** the form is received by a Cloudflare Worker (Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA; certified under the EU-US Data Privacy Framework) and the e-mail is sent via Brevo (Sendinblue SAS, 106 boulevard Haussmann, 75008 Paris, France). Both act on our behalf under a data processing agreement.
 
+### Feedback on the result
+If you click "Send anonymous feedback" under "Do these numbers feel right?", we receive your rating, which number you found off, the processes you chose, a rough cost band and the potential score, via the same Cloudflare Worker and as an e-mail through Brevo. There is no e-mail address and no answer to individual questions in it. Legal basis: our legitimate interest in improving the check's default values (Art. 6(1)(f) GDPR).
+
 **Storage period:** the e-mail and the copy we receive are kept in our mailbox for at most 12 months after the last contact and then deleted, unless you ask us to delete them earlier.
 
 ## 5. Web Analytics {#analytics}

@@ -50,6 +50,7 @@ const fresh = () => ({ step: "intro", detail: 0, industry: null, size: null, gue
 let state = fresh();
 let shared = false;
 let arrivedVia = "flow"; // "flow" | "shared" | "reload": how the visitor reached the result page
+let feedback = { rating: null, reason: null, sent: false, error: false };
 const openDetails = new Set();
 
 const STEPS = ["context", "guess", "processes", "detail", "honest"];
@@ -246,6 +247,7 @@ function resultShell() {
         <h2 class="t-section">${esc(T.rankTitle)}</h2>
         <p class="ck-r-lead">${esc(T.rankLead)}</p>
         <div id="ck-r-list" class="ck-r-list"></div>
+        <div id="ck-feedback"></div>
         <div id="ck-assume"></div>
       </div>
     </section>
@@ -449,6 +451,71 @@ function blindHtml(r) {
     </div>`;
 }
 
+/* "Do these numbers feel right?" Only shown when there is an endpoint to send it to. */
+function feedbackHtml() {
+  if (!mailer) return "";
+  const f = feedback;
+  const F = T.fb;
+  let body;
+  if (f.sent) {
+    body = `<p class="ck-fb__thanks" role="status">${esc(F.thanks)}</p>`;
+  } else {
+    const ratings = chipGroup("fb-title", Object.entries(F.ratings).map(([id, label]) => chip("fb:rating", id, esc(label), f.rating === id)).join(""));
+    const reasons = f.rating && f.rating !== "right"
+      ? question("fb-reason", esc(F.reasonQ), chipGroup("fb-reason", Object.entries(F.reasons).map(([id, label]) => chip("fb:reason", id, esc(label), f.reason === id)).join("")))
+      : "";
+    const send = f.rating
+      ? `<div class="ck-fb__send"><button type="button" class="cta cta--dark" data-action="fb-send">${esc(F.send)}</button><small>${esc(F.what)}</small></div>`
+      : "";
+    body = ratings + reasons + send + (f.error ? `<p class="ck-fb__error" role="status">${esc(F.error)}</p>` : "");
+  }
+  return `<div class="ck-fb"><h3 id="fb-title">${esc(F.title)}</h3><p class="ck-fb__lead">${esc(F.lead)}</p>${body}</div>`;
+}
+
+function renderFeedback(focusGroup, focusValue) {
+  const el = document.getElementById("ck-feedback");
+  if (!el) return;
+  el.innerHTML = feedbackHtml();
+  if (focusGroup) el.querySelector(`[data-group="${focusGroup}"][data-value="${focusValue}"]`)?.focus();
+}
+
+function costBand(cost) {
+  if (cost < 10000) return "<10k";
+  if (cost < 50000) return "10-50k";
+  if (cost < 100000) return "50-100k";
+  if (cost < 250000) return "100-250k";
+  return ">250k";
+}
+
+/** What the feedback sends: rating, reason and a coarse summary. No e-mail address, no individual answers. */
+function feedbackPayload() {
+  return {
+    type: "feedback", lang, website: "",
+    rating: feedback.rating, reason: feedback.rating === "right" ? null : feedback.reason,
+    summary: { pack: pack.id, packVersion: pack.version, processes: [...state.processes], costBand: costBand(result.cost), score: result.score },
+  };
+}
+
+async function sendFeedback() {
+  const button = root.querySelector('[data-action="fb-send"]');
+  if (button) button.disabled = true;
+  const payload = feedbackPayload();
+  try {
+    if (mailer === "mock") {
+      await new Promise((r) => setTimeout(r, 400));
+      console.info("[check] mock feedback payload", payload);
+    } else {
+      const res = await fetch(mailer, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+      if (!res.ok) throw new Error(String(res.status));
+    }
+    track("result_feedback", { rating: payload.rating, reason: payload.reason ?? "none" });
+    feedback = { ...feedback, sent: true, error: false };
+  } catch {
+    feedback = { ...feedback, error: true };
+  }
+  renderFeedback();
+}
+
 function assumeHtml() {
   const a = pack.assumptions;
   const isPct = (d) => d.unit === "%";
@@ -610,6 +677,8 @@ function render() {
   const screens = { intro, context, guess, processes, detail, honest, calc };
   if (state.step === "result") {
     root.innerHTML = resultShell();
+    feedback = { rating: null, reason: null, sent: false, error: false };
+    renderFeedback();
     document.getElementById("ck-assume").innerHTML = assumeHtml();
     document.getElementById("ck-r-next").innerHTML = nextHtml();
     updateResult({ animate: true });
@@ -670,6 +739,11 @@ root.addEventListener("click", (e) => {
       if (i >= 0) state.processes.splice(i, 1);
       else if (state.processes.length < MAX_PROCESSES) state.processes.push(value);
       pressGroup("proc", (v) => state.processes.includes(v));
+    } else if (group === "fb:rating" || group === "fb:reason") {
+      feedback = { ...feedback, [group.slice(3)]: value, error: false };
+      if (group === "fb:rating" && value === "right") feedback.reason = null;
+      renderFeedback(group, value);
+      return;
     } else if (group.startsWith("refl:")) {
       state.reflections[group.slice(5)] = Number(value);
       pressGroup(group, (v) => Number(v) === Number(value));
@@ -700,6 +774,7 @@ root.addEventListener("click", (e) => {
     form?.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "center" });
     form?.querySelector("input[type=email]")?.focus({ preventScroll: true });
   } else if (action === "share") share();
+  else if (action === "fb-send") sendFeedback();
   else if (action === "reset") {
     state.overrides = {};
     document.getElementById("ck-assume").innerHTML = assumeHtml();

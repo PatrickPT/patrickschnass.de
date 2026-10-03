@@ -3,12 +3,13 @@
  * their result by e-mail, plus a copy to Patrick. Cloudflare Worker + Brevo transactional API.
  *
  * Gap it fills: a static site can't send a personalised e-mail, and form services can't render
- * the computed result. Contract: POST JSON { email, followUp, lang, website, resultUrl, summary }
- * (see assets/check/app.mjs → mailPayload). Any other engine (e.g. a Windmill webhook) can take
- * over by honouring the same contract.
+ * the computed result. Contract (see assets/check/app.mjs → mailPayload / feedbackPayload):
+ *   POST { email, followUp, lang, website, resultUrl, summary }        → result e-mail + copy
+ *   POST { type: "feedback", lang, rating, reason, website, summary }  → note to Patrick only
+ * Any other engine (e.g. a Windmill webhook) can take over by honouring the same contract.
  */
 import pack from "../../../assets/check/packs/back-office-mittelstand.json";
-import { validatePayload, renderVisitorEmail, renderNotification } from "./email.mjs";
+import { validatePayload, renderVisitorEmail, renderNotification, validateFeedback, renderFeedbackNotification } from "./email.mjs";
 
 const MAX_BODY = 16 * 1024;
 
@@ -34,19 +35,29 @@ export default {
     let body;
     try { body = JSON.parse(raw); } catch { return json({ error: "json" }, 400); }
 
-    const prefixes = origins.flatMap((o) => [`${o}/check/#r=`, `${o}/de/check/#r=`]);
-    const result = validatePayload(pack, body, { resultPrefixes: prefixes });
-    if (!result.ok) return json({ error: result.error }, 400);
-    if (result.spam) return json({ ok: true }, 200);
-    const { data } = result;
-    if (env.LIMITER && !(await env.LIMITER.limit({ key: `to:${data.email.toLowerCase()}` })).success) return json({ error: "rate" }, 429);
-
     const sender = { name: env.SENDER_NAME || "Patrick Schnaß", email: env.SENDER_EMAIL };
     const send = (message) => fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({ sender, tags: ["potential-check"], ...message }),
     });
+
+    // Feedback on the result ("Do these numbers feel right?"): only a note to Patrick, no visitor e-mail.
+    if (body?.type === "feedback") {
+      const fb = validateFeedback(pack, body);
+      if (!fb.ok) return json({ error: fb.error }, 400);
+      if (fb.spam || !env.NOTIFY_TO) return json({ ok: true }, 200);
+      const note = renderFeedbackNotification(pack, fb.data);
+      const res = await send({ to: [{ email: env.NOTIFY_TO }], subject: note.subject, htmlContent: note.html, textContent: note.text });
+      return res.ok ? json({ ok: true }, 200) : json({ error: "send" }, 502);
+    }
+
+    const prefixes = origins.flatMap((o) => [`${o}/check/#r=`, `${o}/de/check/#r=`]);
+    const result = validatePayload(pack, body, { resultPrefixes: prefixes });
+    if (!result.ok) return json({ error: result.error }, 400);
+    if (result.spam) return json({ ok: true }, 200);
+    const { data } = result;
+    if (env.LIMITER && !(await env.LIMITER.limit({ key: `to:${data.email.toLowerCase()}` })).success) return json({ error: "rate" }, 429);
 
     const mail = renderVisitorEmail(pack, data, { bookingUrl: env.BOOKING_URL });
     const sent = await send({
