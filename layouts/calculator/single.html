@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  {{ partial "advisory/head.html" (dict "page" . "title" (printf "%s — Patrick Schnaß" .Title) "description" .Description) }}
+  {{- $css := resources.Get "check/check.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{- with .Params.faq }}
+  {{- $items := slice }}
+  {{- range . }}{{ $items = $items | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}{{ end }}
+  <script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $items | jsonify | safeJS }}</script>
+  {{- end }}
+</head>
+<body class="ck-page">
+{{ partial "advisory/nav.html" . }}
+{{- $check := "check/" | relLangURL }}
+
+<main id="main">
+  <section class="calc" id="calc" data-calc="{{ .Params.calc }}" data-check="{{ $check }}" data-cta-label="{{ i18n "adv_cta_check" }}">
+    <div class="calc__inner">
+      {{- with .Parent }}<a class="svc-hero__back" href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}
+      <p class="eyebrow">{{ .Params.eyebrow }}</p>
+      <h1 class="calc__title">{{ .Params.headline | default .Title }}</h1>
+      <p class="calc__lead">{{ .Params.lead }}</p>
+      <div class="calc__card" id="calc-app">
+        <noscript><p>{{ i18n "adv_check_noscript" }}</p></noscript>
+      </div>
+      <p class="calc__privacy">{{ i18n "adv_calc_privacy" }}</p>
+    </div>
+  </section>
+
+  {{- with .Content }}
+  <section class="calc-text"><div class="ck-wrap svc-prose">{{ . }}</div></section>
+  {{- end }}
+
+  {{- with .Params.faq }}
+  <section class="calc-faq">
+    <div class="ck-wrap">
+      <p class="eyebrow">{{ i18n "adv_calc_faq_tag" }}</p>
+      <h2 class="t-section">{{ i18n "adv_calc_faq" }}</h2>
+      {{- range . }}
+      <details class="calc-faq__item"><summary>{{ .q }}</summary><p>{{ .a }}</p></details>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+  <section class="prompter">
+    <div class="prompter__bg" aria-hidden="true"></div>
+    <div class="prompter__content">
+      <h2 class="t-section">{{ i18n "adv_teaser_title" | safeHTML }}</h2>
+      <p class="prompter__text">{{ i18n "adv_calc_more" }}</p>
+      <div class="cta-row cta-row--center">
+        <a class="cta cta--gradient" href="{{ $check }}">{{ i18n "adv_cta_check" }} →</a>
+        <a class="cta cta--ghost" data-book>{{ i18n "adv_cta_book" }}</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{ partial "advisory/footer.html" . }}
+
+{{ $common := resources.Get "advisory/common.js" | minify | fingerprint }}
+<script src="{{ $common.RelPermalink }}" integrity="{{ $common.Data.Integrity }}"></script>
+{{ $calc := resources.Get "check/calc.mjs" | js.Build (dict "targetPath" "check/calc.js" "format" "iife" "target" "es2019" "minify" true) | fingerprint }}
+<script src="{{ $calc.RelPermalink }}" integrity="{{ $calc.Data.Integrity }}"></script>
+</body>
+</html>

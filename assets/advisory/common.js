@@ -37,7 +37,7 @@ document.addEventListener("click", (e) => {
   const where = ctaWhere(el);
   if (el.hasAttribute("data-book")) trackEvent("cta_book", { where, page: location.pathname });
   else if (el.hasAttribute("data-email")) trackEvent("cta_email", { where, page: location.pathname });
-  else if (/\/check\/$/.test(el.getAttribute("href") || "")) trackEvent("cta_check", { where, page: location.pathname });
+  else if (/\/check\/(\?|$)/.test(el.getAttribute("href") || "")) trackEvent("cta_check", { where, page: location.pathname });
 }, { capture: true });
 
 /* ---------- Nav, services menu, mobile menu, to-top (all advisory pages) ---------- */

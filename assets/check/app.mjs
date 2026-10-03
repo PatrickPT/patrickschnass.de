@@ -85,7 +85,7 @@ function go(step, detail = 0) {
 function next() {
   if (!canContinue()) return;
   const { step, detail } = state;
-  if (step === "intro") { track("check_start"); go("context"); }
+  if (step === "intro") { track("check_start", { from: startedFrom }); go("context"); }
   else if (step === "context") go("guess");
   else if (step === "guess") go("processes");
   else if (step === "processes") go("detail", 0);
@@ -145,6 +145,7 @@ function intro() {
       <h1 class="ck-intro__title">${T.introTitle}</h1>
       <p class="ck-intro__lead">${esc(T.introLead)}</p>
       <ul class="ck-badges">${T.badges.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
+      ${state.prefilled ? `<p class="ck-prefilled">${esc(T.prefilled)}</p>` : ""}
       <button type="button" class="cta cta--gradient ck-start" data-action="next">${esc(T.start)} →</button>
       <figure class="ck-note">
         <img src="/images/patrick-profile.jpg" alt="Patrick Schnaß" width="72" height="72">
@@ -902,7 +903,8 @@ root.addEventListener("click", (e) => {
     state = fresh();
     shared = false;
     openDetails.clear();
-    history.replaceState(null, "", location.pathname + location.search);
+    // Start clean: drop the result hash and any calculator pre-fill, keep only a chosen pack.
+    history.replaceState(null, "", location.pathname + (params.get("pack") ? `?pack=${encodeURIComponent(params.get("pack"))}` : ""));
     render();
     root.scrollIntoView({ block: "start" });
   } else if (action === "print") { track("result_pdf"); window.print(); }
@@ -1044,6 +1046,27 @@ async function share() {
 }
 
 /* ---------- Start ---------- */
+// Deep link from a calculator (or a post): ?p=<process>&v=<volume>&m=<minutes>&role=…&l.<question>=<option>&from=…
+// preselects the process and pre-fills what is known. Anything unknown to the pack is ignored.
+const params = new URLSearchParams(location.search);
+const startedFrom = /^[a-z0-9-]{1,40}$/.test(params.get("from") || "") ? params.get("from") : "direct";
+function prefillFromLink() {
+  const proc = procOf(params.get("p"));
+  if (!proc) return false;
+  const numParam = (key, range) => { const x = parseFloat(params.get(key)); return Number.isFinite(x) ? clamp(x, range.min, range.max) : null; };
+  const lever = {};
+  for (const q of proc.lever?.questions ?? []) {
+    const v = params.get(`l.${q.id}`);
+    if (v && byId(q.options, v)) lever[q.id] = v;
+  }
+  state.processes = [proc.id];
+  state.answers[proc.id] = {
+    volume: numParam("v", proc.volume), minutes: numParam("m", proc.minutes), rework: "sometimes",
+    role: byId(pack.roles, params.get("role")) ? params.get("role") : pack.roles[0].id, lever,
+  };
+  return true;
+}
+
 const hash = location.hash.startsWith("#r=") ? location.hash.slice(3) : "";
 const restored = hash ? decodeState(pack, hash) : null;
 if (restored) {
@@ -1052,5 +1075,7 @@ if (restored) {
   state = { ...fresh(), ...restored, step: "result" };
   shared = !own;
   arrivedVia = own ? "reload" : "shared";
+} else {
+  state.prefilled = prefillFromLink();
 }
 render();

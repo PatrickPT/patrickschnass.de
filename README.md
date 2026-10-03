@@ -56,6 +56,11 @@ tests/check/                   # node --test "tests/**/*.test.mjs"
 ```
 
 - **New niche:** add a pack JSON, register it in `PACKS` in `app.mjs`, open `/check/?pack=<id>`.
+- **Micro-calculators** (`/de/rechner/…`): `assets/check/calculators.mjs` (config + compute on top
+  of the model), `calc.mjs` (UI), `layouts/calculator/` (page with FAQ structured data). A new
+  calculator is an entry in `CALCULATORS` plus a content file with `type: "calculator"` and `calc: <id>`.
+- **Deep links into the check:** `?p=<process>&v=<volume>&m=<minutes>&role=<role>&l.<question>=<option>&from=<source>`
+  preselects the process and pre-fills what's known (used by the calculators).
 - **E-mail:** `hugo.toml` → `[params.check] mailer`. Empty = form hidden in production; the dev
   server uses a mock.
 - **Share links:** answers are encoded in the URL fragment (`#r=…`), which browsers never send to a
@@ -71,7 +76,8 @@ Events, which only carry step names and coarse labels, never answers or figures:
 |---|---|---|
 | `cta_check` | `where`, `page` | any link to the check (hero, teaser, nav, footer, service page) |
 | `cta_book` / `cta_email` | `where`, `page` | booking / e-mail buttons anywhere |
-| `check_start` | | "Let's find out" |
+| `check_start` | `from` (`direct`, `calc-skonto`, …) | "Let's find out" |
+| `calc_use` | `calc` | first interaction with a calculator |
 | `check_step` | `step` (`context`, `guess`, `processes`, `detail_1`…, `honest`) | each screen of the flow |
 | `check_complete` | `processes` (count) | result reached through the flow |
 | `shared_open` | | someone opens a result link shared with them |
