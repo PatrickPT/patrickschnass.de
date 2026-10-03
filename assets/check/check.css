@@ -395,6 +395,21 @@
 .calc-list__lead { font-size: 15px; line-height: 1.5; color: var(--white-72); }
 .calc-list__arrow { position: absolute; right: 24px; top: 24px; font-size: 22px; }
 
+/* ---------- Partner mode (?partner=) and embed mode (?embed=1) ---------- */
+.ck-partner {
+  display: inline-flex; align-items: center; gap: 12px; margin-bottom: 22px; padding: 8px 16px 8px 10px;
+  border-radius: 12px; font-size: 14px; color: var(--white-82);
+  background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .14); border-left: 3px solid var(--partner, #fff);
+}
+.ck-partner img { display: block; height: 28px; width: auto; }
+.ck-flow > .ck-partner { margin-bottom: 14px; }
+.ck-partner-cta { border-color: var(--partner, rgba(255, 255, 255, .35)); }
+.ck-partner-cta:hover { border-color: var(--partner, #fff); background: rgba(255, 255, 255, .08); }
+.ck-embed .nav, .ck-embed .mobile-menu, .ck-embed .footer, .ck-embed .totop, .ck-embed .skip-link { display: none !important; }
+.ck-embed .ck-app:not([data-step="result"]) { min-height: 0; padding-top: 40px; padding-bottom: 40px; }
+.ck-embed .ck-r-hero { padding-top: 56px; }
+.ck-embed .ck-shared { padding-top: 14px; }
+
 /* ---------- Motion ---------- */
 @keyframes ck-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @keyframes ck-rise { from { opacity: 0; transform: translateY(24px) scale(.98); } to { opacity: 1; transform: none; } }

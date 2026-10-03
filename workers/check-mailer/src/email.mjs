@@ -18,14 +18,21 @@ const ids = (list) => new Set(list.map((x) => x.id));
  * Checks a request body. Returns { ok: false, error } or { ok: true, spam, data } where `data`
  * only contains known fields with known values.
  */
-export function validatePayload(pack, body, { resultPrefixes = [] } = {}) {
+export function validatePayload(pack, body, { resultPrefixes = [], partners = {} } = {}) {
   const fail = (error) => ({ ok: false, error });
   if (!body || typeof body !== "object") return fail("body");
   if (typeof body.email !== "string" || body.email.length > 254 || !EMAIL_RE.test(body.email.trim())) return fail("email");
   if (!LANGS.includes(body.lang)) return fail("lang");
-  // The link goes into the e-mail, so it must be one of our check pages plus an encoded answer set.
-  const prefix = typeof body.resultUrl === "string" && body.resultUrl.length <= 4000 && resultPrefixes.find((p) => body.resultUrl.startsWith(p));
-  if (!prefix || !/^[A-Za-z0-9_-]+$/.test(body.resultUrl.slice(prefix.length))) return fail("resultUrl");
+  // The link goes into the e-mail, so it must be one of our check pages plus an encoded answer set
+  // (optionally with ?partner=<id> in between).
+  const url = typeof body.resultUrl === "string" ? body.resultUrl.replace(/\?partner=[a-z0-9-]{1,40}(?=#r=)/, "") : "";
+  const prefix = url.length <= 4000 && resultPrefixes.find((p) => url.startsWith(p));
+  if (!prefix || !/^[A-Za-z0-9_-]+$/.test(url.slice(prefix.length))) return fail("resultUrl");
+  // Partner mode: only known, real partners (demo partners exist for local previews only).
+  const partner = body.partner ?? null;
+  if (partner !== null && (typeof partner !== "string" || !partners[partner] || partners[partner].demo)) return fail("partner");
+  if (body.partnerCopy !== undefined && typeof body.partnerCopy !== "boolean") return fail("partnerCopy");
+  if (body.partnerCopy === true && partner === null) return fail("partnerCopy");
 
   const s = body.summary;
   if (!s || typeof s !== "object" || s.pack !== pack.id) return fail("summary");
@@ -57,6 +64,9 @@ export function validatePayload(pack, body, { resultPrefixes = [] } = {}) {
       lang: body.lang,
       followUp: body.followUp === true,
       resultUrl: body.resultUrl,
+      partner,
+      partnerName: partner ? partners[partner].name : null,
+      partnerCopy: body.partnerCopy === true,
       summary: {
         packVersion: typeof s.packVersion === "string" ? s.packVersion.slice(0, 20) : "",
         industry: s.industry ?? null, size: s.size ?? null,
@@ -293,15 +303,18 @@ ${bookingUrl ? `<p style="margin:0 0 6px;">${btn(bookingUrl, c.book, false)}</p>
   return { subject, html, text: lines.join("\n") };
 }
 
-/** The copy Patrick gets: everything needed to follow up, nothing more. */
-export function renderNotification(pack, data) {
+/** The copy Patrick gets (or, with consent, the partner): everything needed to follow up, nothing more. */
+export function renderNotification(pack, data, { audience = "owner" } = {}) {
   const { eur } = formatters("de");
   const s = data.summary;
   const name = (id) => pack.processes.find((p) => p.id === id)?.label?.de ?? id;
   const text = [
     `E-Mail: ${data.email}`,
-    `Persönliche Rückmeldung erlaubt: ${data.followUp ? "JA (die automatische Nachfass-Mail in ~14 Tagen ist diese eine Rückmeldung, also nicht zusätzlich anschreiben, außer auf Antwort)" : "nein (nur Ergebnis senden, nicht kontaktieren)"}`,
+    audience === "partner"
+      ? `Diese Kopie hat die Person ausdrücklich an ${data.partnerName} freigegeben. Eine Nachfass-Mail von Patrick Schnaß: ${data.followUp ? "ja, in ~14 Tagen" : "nein"}.`
+      : `Persönliche Rückmeldung erlaubt: ${data.followUp ? "JA (die automatische Nachfass-Mail in ~14 Tagen ist diese eine Rückmeldung, also nicht zusätzlich anschreiben, außer auf Antwort)" : "nein (nur Ergebnis senden, nicht kontaktieren)"}`,
     `Sprache: ${data.lang} · Branche: ${s.industry ?? "–"} · Größe: ${s.size ?? "–"} · Pack ${s.packVersion}`,
+    ...(data.partner ? [`Partner: ${data.partnerName} (${data.partner}) · Kopie an Partner: ${data.partnerCopy ? "ja" : "nein"}`] : []),
     "",
     `Kosten: ${eur(s.cost)} · Liegen gelassen: ${eur(s.table)} · Einsparung: ${eur(s.savingsLow)}–${eur(s.savingsHigh)}`,
     `${s.hoursPerWeek} h/Woche · ${s.fte} VZÄ · Potenzial genutzt ${s.score} %`,
@@ -312,7 +325,9 @@ export function renderNotification(pack, data) {
     `Ergebnis: ${data.resultUrl}`,
   ].join("\n");
   return {
-    subject: `[Check] ${eur(s.cost)} · ${s.industry ?? "?"} · ${s.size ?? "?"}${data.followUp ? " · Rückmeldung erwünscht" : ""}`,
+    subject: audience === "partner"
+      ? `KI-Potenzial-Check über ${data.partnerName}: ${eur(s.cost)} pro Jahr`
+      : `[Check] ${eur(s.cost)} · ${s.industry ?? "?"} · ${s.size ?? "?"}${data.partner ? ` · via ${data.partner}` : ""}${data.followUp ? " · Rückmeldung erwünscht" : ""}`,
     text,
     html: `<pre style="font:14px/1.5 ui-monospace,Menlo,monospace;white-space:pre-wrap;">${esc(text)}</pre>`,
   };

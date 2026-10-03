@@ -4,6 +4,8 @@
   {{ partial "advisory/head.html" (dict "page" . "title" (printf "%s — Patrick Schnaß" .Title) "description" .Description) }}
   {{- $css := resources.Get "check/check.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{- /* Embedded in a partner's page (?embed=1): hide the site chrome before the first paint. */}}
+  <script>if (/[?&]embed=1(&|$)/.test(location.search)) document.documentElement.classList.add("ck-embed");</script>
 </head>
 <body class="ck-page">
 {{ partial "advisory/nav.html" . }}
@@ -13,7 +15,7 @@
 {{- if and (not $mailer) hugo.IsServer }}{{ $mailer = "mock" }}{{ end }}
 
 <main id="main">
-  <div class="ck-app" id="ck-app" data-step="intro" data-mailer="{{ $mailer }}" data-permalink="{{ .Permalink }}" data-privacy="{{ "gdpr/" | relLangURL }}#potential-check">
+  <div class="ck-app" id="ck-app" data-step="intro" data-mailer="{{ $mailer }}" data-permalink="{{ .Permalink }}" data-privacy="{{ "gdpr/" | relLangURL }}#potential-check" data-dev="{{ hugo.IsServer }}">
     <noscript>
       <div class="ck-intro">
         <h1 class="ck-intro__title">{{ .Title }}</h1>

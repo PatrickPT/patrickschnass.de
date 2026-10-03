@@ -100,6 +100,8 @@ Wenn Sie unter „Fühlen sich die Zahlen richtig an?“ auf „Anonymes Feedbac
 
 **Nachfass-Mail:** Wenn Sie das Häkchen für eine Rückmeldung setzen, werden Ihre E-Mail-Adresse, der Ergebnis-Link und Ihr größter Hebel in einer Warteschlange bei Cloudflare (Workers KV) gespeichert, bis die eine Nachfass-Mail nach etwa zwei Wochen verschickt ist, und direkt danach gelöscht (spätestens nach 30 Tagen). Zusätzlich speichern wir 180 Tage lang einen Einweg-Hash Ihrer E-Mail-Adresse, damit Sie nie eine zweite Nachfass-Mail bekommen.
 
+**Kopie an Partner:** Wenn Sie den Check über einen unserer Partner aufgerufen haben (oben auf der Seite genannt) und „Eine Kopie meines Ergebnisses auch an <Partner> senden“ ankreuzen, erhält dieser Partner dieselbe Zusammenfassung wie wir, inklusive Ihrer E-Mail-Adresse, damit er sich bei Ihnen melden kann. Das geschieht nur mit diesem ausdrücklichen Häkchen (Art. 6 Abs. 1 lit. a DSGVO); Sie können Ihre Einwilligung uns oder dem Partner gegenüber jederzeit widerrufen.
+
 **Speicherdauer:** Die E-Mail und die Kopie, die wir erhalten, bleiben höchstens 12 Monate nach dem letzten Kontakt in unserem Postfach und werden dann gelöscht, sofern Sie nicht vorher die Löschung verlangen.
 
 ## 5. Webanalyse {#analytics}

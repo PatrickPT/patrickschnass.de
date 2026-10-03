@@ -3,9 +3,10 @@
  * (booking/e-mail links, nav). Everything is computed here, in the browser; the only request that
  * carries answers is the e-mail form, and only when the visitor submits it.
  */
-import { computeResult, encodeState, decodeState, clamp } from "./model.mjs";
+import { computeResult, encodeState, decodeState, clamp, partnerFor } from "./model.mjs";
 import { copy } from "./copy.mjs";
 import backOffice from "./packs/back-office-mittelstand.json";
+import partners from "./partners.json";
 
 const PACKS = { [backOffice.id]: backOffice };
 const MAX_PROCESSES = 5;
@@ -18,6 +19,10 @@ const mailer = root.dataset.mailer || ""; // "" = no e-mail form, "mock" = local
 const permalink = root.dataset.permalink || location.origin + location.pathname;
 const privacyUrl = root.dataset.privacy || "/gdpr/";
 const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+// Partner mode (?partner=<id>): co-branded check. Embed mode (?embed=1): no site chrome, height sent to the parent.
+const query = new URLSearchParams(location.search);
+const partner = partnerFor(partners, query.get("partner"), { dev: root.dataset.dev === "true" });
+const embedded = query.get("embed") === "1";
 // Cookieless analytics via common.js. Step names and counts only, never answers or figures.
 const track = (name, props) => window.trackEvent?.(name, props);
 const trackedOnce = new Set();
@@ -45,6 +50,14 @@ function paybackText(m) {
   if (m < 1) return T.paybackUnderOne;
   if (m > 36) return T.paybackLong;
   return fill(T.paybackMonths, { n: num(Math.round(m)) });
+}
+
+function partnerBar() {
+  if (!partner) return "";
+  return `<div class="ck-partner" style="--partner:${esc(partner.accent)}">
+    ${partner.logo ? `<img src="${esc(partner.logo)}" alt="" height="28">` : ""}
+    <span>${fill(T.partner.by, { name: partner.name })}</span>
+  </div>`;
 }
 
 /* ---------- State ---------- */
@@ -85,7 +98,7 @@ function go(step, detail = 0) {
 function next() {
   if (!canContinue()) return;
   const { step, detail } = state;
-  if (step === "intro") { track("check_start", { from: startedFrom }); go("context"); }
+  if (step === "intro") { track("check_start", { from: partner ? `partner-${partner.id}` : startedFrom }); go("context"); }
   else if (step === "context") go("guess");
   else if (step === "guess") go("processes");
   else if (step === "processes") go("detail", 0);
@@ -118,6 +131,7 @@ function frame({ eyebrow, title, lead, body, meter = false }) {
   const isLast = state.step === "honest";
   return `
     <div class="ck-flow">
+      ${partnerBar()}
       <div class="ck-progress">
         <div class="ck-progress__bar"><span style="width:${progress.toFixed(1)}%"></span></div>
         <p class="ck-progress__label">${esc(fill(T.stepOf, { n: phase + 1, total: STEPS.length }))} · ${esc(T.phases[phase])}</p>
@@ -141,6 +155,7 @@ function frame({ eyebrow, title, lead, body, meter = false }) {
 function intro() {
   return `
     <div class="ck-intro">
+      ${partnerBar()}
       <p class="eyebrow">${esc(T.eyebrow)}</p>
       <h1 class="ck-intro__title">${T.introTitle}</h1>
       <p class="ck-intro__lead">${esc(T.introLead)}</p>
@@ -273,6 +288,7 @@ function heroHtml(r) {
   return `
     <div class="ck-r-hero__bg" aria-hidden="true"></div>
     <div class="ck-wrap ck-r-hero__inner">
+      ${partnerBar()}
       <p class="eyebrow">${esc(T.resultEyebrow)}</p>
       <h1 class="ck-r-hero__title">${esc(T.resultTitle)}</h1>
       <p class="ck-big"><span data-count-to="${nice(r.cost)}">${eur(r.cost)}</span> <small>${esc(T.perYear)}</small></p>
@@ -573,7 +589,7 @@ function shareHtml() {
     </div>`;
 }
 
-const resultUrl = () => `${permalink}#r=${encodeState(pack, state)}`;
+const resultUrl = () => `${permalink}${partner ? `?partner=${partner.id}` : ""}#r=${encodeState(pack, state)}`;
 const shareVals = () => ({ n: result.processes.length, cost: eur(result.cost), score: result.score, url: resultUrl() });
 
 function shareVia(via) {
@@ -703,6 +719,7 @@ function nextHtml() {
       </label>
       <label class="ck-mail__hp" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
       <label class="ck-mail__check"><input type="checkbox" name="followUp"> <span>${esc(T.mailFollow)}</span></label>
+      ${partner ? `<label class="ck-mail__check"><input type="checkbox" name="partnerCopy"> <span>${fill(T.partner.copy, { name: partner.name })}</span></label>` : ""}
       <p class="ck-mail__consent">${fill(T.mailConsent, { privacy: privacyUrl })}</p>
       <button type="submit" class="cta cta--gradient">${esc(T.mailSend)}</button>
       <p class="ck-mail__status" role="status" data-mail-status></p>
@@ -719,6 +736,7 @@ function nextHtml() {
           <h3>${esc(T.bookTitle)}</h3>
           <p>${esc(T.bookText)}</p>
           <a class="cta cta--gradient" data-book>${esc(T.bookCta)}</a>
+          ${partner ? `<a class="cta cta--ghost ck-partner-cta" style="--partner:${esc(partner.accent)}" href="${esc(partner.contactUrl)}" target="_blank" rel="noopener" data-partner-cta>${esc(L(partner.contactLabel))} →</a>` : ""}
           <div class="ck-book__more">
             <button type="button" class="ck-link" data-action="print">${esc(T.ctaPdf)}</button>
           </div>
@@ -894,6 +912,7 @@ root.addEventListener("click", (e) => {
     refreshFlow();
     return;
   }
+  if (e.target.closest("[data-partner-cta]")) { track("cta_partner", { partner: partner?.id }); return; }
   const action = e.target.closest("[data-action]")?.dataset.action;
   if (!action) return;
   if (action === "next") next();
@@ -1016,7 +1035,9 @@ function mailPayload(email, form) {
     followUp: form.followUp.checked,
     website: form.website.value, // honeypot: real people leave it empty
     lang,
-    resultUrl: `${permalink}#r=${encodeState(pack, state)}`,
+    resultUrl: resultUrl(),
+    partner: partner?.id ?? null,
+    partnerCopy: Boolean(partner && form.partnerCopy?.checked),
     summary: {
       pack: pack.id, packVersion: pack.version,
       industry: state.industry, size: state.size,
@@ -1079,3 +1100,8 @@ if (restored) {
   state.prefilled = prefillFromLink();
 }
 render();
+
+// Embedded in a partner's page: tell the parent how tall we are, so the iframe never scrolls inside.
+if (embedded && window.parent !== window && "ResizeObserver" in window) {
+  new ResizeObserver(() => window.parent.postMessage({ type: "ck-height", height: document.documentElement.scrollHeight }, "*")).observe(document.body);
+}

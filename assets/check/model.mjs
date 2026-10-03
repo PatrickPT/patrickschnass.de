@@ -350,3 +350,29 @@ export function validatePack(pack) {
   });
   return errors;
 }
+
+/* ---------- Partner mode: a co-branded check for advisors and consultancies ---------- */
+
+/** Checks the partner file. Returns a list of problems naming the field; empty means valid. */
+export function validatePartners(partners) {
+  const errors = [];
+  const need = (cond, path, msg) => { if (!cond) errors.push(`${path}: ${msg}`); };
+  need(partners && typeof partners === "object" && !Array.isArray(partners), "partners", "must be an object keyed by partner id");
+  for (const [id, p] of Object.entries(partners ?? {})) {
+    need(/^[a-z0-9-]{1,40}$/.test(id), `partners.${id}`, "id must be lower-case kebab-case");
+    need(typeof p.name === "string" && p.name.length > 0 && p.name.length <= 80, `partners.${id}.name`, "needs a name (≤ 80 chars)");
+    need(/^#[0-9a-fA-F]{6}$/.test(p.accent ?? ""), `partners.${id}.accent`, "must be a hex colour like #0BB5D6");
+    need(typeof p.contactUrl === "string" && /^https:\/\//.test(p.contactUrl), `partners.${id}.contactUrl`, "must be an https URL");
+    need(isText(p.contactLabel), `partners.${id}.contactLabel`, "needs non-empty 'de' and 'en' text");
+    if (p.logo !== undefined) need(typeof p.logo === "string" && p.logo.startsWith("/images/partners/"), `partners.${id}.logo`, "must live in /images/partners/");
+  }
+  return errors;
+}
+
+/** The partner for an id from the URL, or null. Demo partners only work on the local dev server. */
+export function partnerFor(partners, id, { dev = false } = {}) {
+  if (typeof id !== "string" || !/^[a-z0-9-]{1,40}$/.test(id)) return null;
+  const p = partners?.[id];
+  if (!p || (p.demo && !dev)) return null;
+  return { id, ...p };
+}
