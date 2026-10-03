@@ -23,6 +23,7 @@
 {{- range $page.AllTranslations }}
 <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
 {{- end }}
+{{ partial "analytics.html" $page }}
 
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
@@ -33,6 +34,5 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-{{ partial "analytics.html" $page }}
 {{- $css := resources.Get "advisory/styles.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
