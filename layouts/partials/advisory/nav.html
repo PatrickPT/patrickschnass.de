@@ -1,5 +1,6 @@
 {{- $home := "/" | relLangURL }}
 {{- $services := (where site.RegularPages "Section" "services").ByWeight }}
+{{- $check := "check/" | relLangURL }}
 <a class="skip-link" href="#main">{{ i18n "adv_skip" }}</a>
 
 <header class="nav" id="nav">
@@ -14,6 +15,7 @@
         {{- end }}
       </div>
     </div>
+    <a class="nav__link nav__link--check" href="{{ $check }}"{{ if eq $check $.RelPermalink }} aria-current="page"{{ end }}>{{ i18n "adv_nav_check" }}</a>
     <a class="nav__link" href="{{ $home }}#about">{{ i18n "adv_nav_about" }}</a>
     <a class="nav__link" href="/posts/">{{ i18n "adv_nav_blog" }}</a>
     <a class="nav__link" href="{{ $home }}#contact">{{ i18n "adv_nav_contact" }}</a>
@@ -33,6 +35,7 @@
     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     {{- end }}
   </div>
+  <a href="{{ $check }}">{{ i18n "adv_nav_check" }}</a>
   <a href="{{ $home }}#about">{{ i18n "adv_nav_about" }}</a>
   <a href="/posts/">{{ i18n "adv_nav_blog" }}</a>
   <a href="{{ $home }}#contact">{{ i18n "adv_nav_contact" }}</a>

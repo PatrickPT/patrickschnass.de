@@ -122,6 +122,11 @@ disableKinds = ["taxonomy", "term"]
   [params.article]
     showHeadingAnchors = false
 
+  # AI potential check (/check/). `mailer` is the endpoint of workers/check-mailer; while it is
+  # empty the e-mail form stays hidden in production (the dev server shows a mock form).
+  [params.check]
+    mailer = ""
+
   [params.footer]
     showScrollToTop = true
     showThemeAttribution = false

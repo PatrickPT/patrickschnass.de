@@ -79,3 +79,20 @@ Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht 
 
 ---
 
+## 4. KI-Potenzial-Check {#potential-check}
+
+### Berechnung in Ihrem Browser
+Der KI-Potenzial-Check unter /de/check/ läuft vollständig in Ihrem Browser. Ihre Antworten (Branche, Unternehmensgröße, Prozesse, Mengen, Zeiten und Ihre Antworten auf die Reflexionsfragen) werden während der Nutzung weder an uns noch an Dritte übertragen. Wenn Sie einen Ergebnis-Link öffnen oder teilen, stehen die Antworten im Teil der Adresse nach dem „#“. Diesen Teil senden Browser nicht an den Webserver.
+
+### Versand Ihres Ergebnisses per E-Mail
+Nur wenn Sie das Formular „Ergebnis per E-Mail“ aktiv absenden, verarbeiten wir:
+- Ihre E-Mail-Adresse,
+- Ihre Antworten und das berechnete Ergebnis (keine Namen, kein Freitext),
+- ob Sie einer persönlichen Rückmeldung zugestimmt haben,
+- technische Verbindungsdaten (IP-Adresse) zum Schutz vor Missbrauch.
+
+**Zweck und Rechtsgrundlage:** Versand des von Ihnen angeforderten Ergebnisses (Art. 6 Abs. 1 lit. b DSGVO). Wenn Sie das Häkchen für eine persönliche Rückmeldung setzen, melden wir uns einmal zu Ihrem Ergebnis, auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Diese können Sie jederzeit widerrufen, zum Beispiel per Antwort auf die E-Mail. Einen Newsletter gibt es nicht.
+
+**Auftragsverarbeiter:** Das Formular nimmt ein Cloudflare Worker entgegen (Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA; zertifiziert nach dem EU-US Data Privacy Framework), die E-Mail wird über Brevo versendet (Sendinblue SAS, 106 boulevard Haussmann, 75008 Paris, Frankreich). Beide handeln in unserem Auftrag auf Grundlage eines Auftragsverarbeitungsvertrags.
+
+**Speicherdauer:** Die E-Mail und die Kopie, die wir erhalten, bleiben höchstens 12 Monate nach dem letzten Kontakt in unserem Postfach und werden dann gelöscht, sofern Sie nicht vorher die Löschung verlangen.

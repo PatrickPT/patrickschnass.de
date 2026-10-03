@@ -37,6 +37,32 @@ public/                 # Built output — committed and served by GitHub Pages
 
 ---
 
+## AI potential check (`/check/`, `/de/check/`)
+
+A free, 5-minute check that turns back-office processes into a € business case, including the hidden
+costs (rework, lost focus, expensive people doing routine work, Skonto, errors, slow quotes).
+Everything is computed **in the browser**; answers only leave it if the visitor asks for the result
+by e-mail.
+
+```
+layouts/check/single.html      # Page shell (advisory nav/footer), loads the bundle
+assets/check/model.mjs         # € model, share links, pack validation (pure functions)
+assets/check/packs/*.json      # Niche packs: processes, questions, defaults, copy (DE/EN)
+assets/check/copy.mjs          # Interface copy (DE/EN)
+assets/check/app.mjs           # UI: flow, live meter, result page (bundled by Hugo js.Build)
+assets/check/check.css         # Styles, including print/PDF
+workers/check-mailer/          # Cloudflare Worker that e-mails the result (see its README)
+tests/check/                   # node --test "tests/**/*.test.mjs"
+```
+
+- **New niche:** add a pack JSON, register it in `PACKS` in `app.mjs`, open `/check/?pack=<id>`.
+- **E-mail:** `hugo.toml` → `[params.check] mailer`. Empty = form hidden in production; the dev
+  server uses a mock.
+- **Share links:** answers are encoded in the URL fragment (`#r=…`), which browsers never send to a
+  server.
+
+---
+
 ## Homepage vs Blog
 
 The site has two distinct parts:

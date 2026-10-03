@@ -1,0 +1,438 @@
+{
+  "id": "back-office-mittelstand",
+  "version": "1.0.0",
+  "title": { "en": "Back office, small and mid-sized companies", "de": "Backoffice im Mittelstand" },
+
+  "assumptions": {
+    "hourlyRate": {
+      "value": 45, "min": 15, "max": 300, "step": 1, "unit": "€/h",
+      "label": { "en": "Labour cost per hour", "de": "Arbeitskosten pro Stunde" },
+      "hint": { "en": "German average 2025: €45.00 per hour worked (Destatis). Use your own if you know it.", "de": "Durchschnitt Deutschland 2025: 45,00 € je geleistete Stunde (Destatis). Nehmen Sie Ihren eigenen Wert, wenn Sie ihn kennen." }
+    },
+    "weeksPerYear": {
+      "value": 48, "min": 1, "max": 52, "step": 1, "unit": "weeks",
+      "label": { "en": "Weeks per year the work comes in", "de": "Wochen pro Jahr, in denen die Arbeit anfällt" },
+      "hint": { "en": "52 minus holidays and the quiet weeks.", "de": "52 minus Feiertage und ruhige Wochen." }
+    },
+    "hoursPerFte": {
+      "value": 1650, "min": 1000, "max": 2200, "step": 10, "unit": "h",
+      "label": { "en": "Productive hours per full-time person and year", "de": "Produktive Stunden pro Vollzeitkraft und Jahr" },
+      "hint": { "en": "After holidays, sick days and meetings.", "de": "Nach Urlaub, Krankheit und Besprechungen." }
+    },
+    "refocusMinutes": {
+      "value": 5, "min": 0, "max": 30, "step": 1, "unit": "min",
+      "label": { "en": "Minutes to get back into a task after an interruption", "de": "Minuten, um nach einer Unterbrechung wieder reinzukommen" },
+      "hint": { "en": "Deliberately low. Studies often find much more.", "de": "Bewusst niedrig angesetzt. Studien finden oft deutlich mehr." }
+    },
+    "margin": {
+      "value": 0.25, "min": 0.01, "max": 0.9, "step": 0.01, "unit": "%",
+      "label": { "en": "Contribution margin on an order", "de": "Deckungsbeitrag pro Auftrag" },
+      "hint": { "en": "Only used for the 'one more order' what-if.", "de": "Nur für das Was-wäre-wenn bei Angeboten." }
+    },
+    "skontoShare": {
+      "value": 0.4, "min": 0, "max": 1, "step": 0.05, "unit": "%",
+      "label": { "en": "Share of supplier invoices that offer Skonto", "de": "Anteil der Lieferantenrechnungen mit Skonto" },
+      "hint": { "en": "Varies a lot by industry.", "de": "Schwankt stark je nach Branche." }
+    },
+    "skontoRate": {
+      "value": 0.02, "min": 0, "max": 0.05, "step": 0.005, "unit": "%",
+      "label": { "en": "Typical Skonto rate", "de": "Üblicher Skontosatz" },
+      "hint": { "en": "2% within 10 days is the classic.", "de": "2 % bei Zahlung in 10 Tagen ist der Klassiker." }
+    },
+    "errorCost": {
+      "value": 150, "min": 0, "max": 5000, "step": 10, "unit": "€",
+      "label": { "en": "Cost of one error that reaches a customer", "de": "Kosten eines Fehlers, der beim Kunden ankommt" },
+      "hint": { "en": "Re-delivery, credit note, phone calls, goodwill.", "de": "Nachlieferung, Gutschrift, Telefonate, Kulanz." }
+    },
+    "growth": {
+      "value": 0.3, "min": 0, "max": 2, "step": 0.05, "unit": "%",
+      "label": { "en": "Growth scenario", "de": "Wachstumsszenario" },
+      "hint": { "en": "Used for the 'paperwork ceiling' estimate.", "de": "Für die Schätzung der Papierkram-Grenze." }
+    }
+  },
+
+  "roles": [
+    { "id": "team", "factor": 1.0, "label": { "en": "Office team", "de": "Team im Büro" } },
+    { "id": "specialists", "factor": 1.5, "label": { "en": "Specialists (sales, technical, projects)", "de": "Fachkräfte (Vertrieb, Technik, Projekte)" } },
+    {
+      "id": "owner", "factor": 2.5, "label": { "en": "Management, often me", "de": "Geschäftsführung, oft ich selbst" },
+      "takeNote": { "en": "One more thing: you handle <strong>{proc}</strong> yourself. Your hour is the most expensive one in the company, and the one nobody ever invoices.", "de": "Noch etwas: <strong>{proc}</strong> machen Sie selbst. Ihre Stunde ist die teuerste im ganzen Unternehmen, und die, die nie jemand in Rechnung stellt." }
+    }
+  ],
+
+  "rework": [
+    { "id": "rarely", "value": 0.05, "label": { "en": "Rarely", "de": "Selten" } },
+    { "id": "sometimes", "value": 0.15, "label": { "en": "Sometimes", "de": "Manchmal" } },
+    { "id": "often", "value": 0.3, "label": { "en": "Often", "de": "Oft" } }
+  ],
+
+  "approaches": {
+    "rules": {
+      "label": { "en": "Rules & integrations", "de": "Regeln & Schnittstellen" },
+      "desc": { "en": "No AI needed: clear rules and connected systems. The cheapest and most reliable option, and I always check it first.", "de": "Ganz ohne KI: klare Regeln und verbundene Systeme. Die günstigste und robusteste Lösung, die ich immer zuerst prüfe." }
+    },
+    "extraction": {
+      "label": { "en": "AI document reading", "de": "KI-Dokumentenerfassung" },
+      "desc": { "en": "AI reads e-mails and PDFs and fills in your systems. Your team only checks what's unclear.", "de": "KI liest E-Mails und PDFs und füllt Ihre Systeme. Ihr Team prüft nur, was unklar ist." }
+    },
+    "agent": {
+      "label": { "en": "AI agent with your approval", "de": "KI-Agent mit Freigabe" },
+      "desc": { "en": "The agent prepares, your team approves. Nothing leaves the building without a human OK.", "de": "Der Agent bereitet vor, Ihr Team gibt frei. Nichts verlässt das Haus ohne menschliches OK." }
+    }
+  },
+
+  "efforts": {
+    "S": { "en": "Small: days", "de": "Klein: Tage" },
+    "M": { "en": "Medium: a few weeks", "de": "Mittel: einige Wochen" },
+    "L": { "en": "Large: months", "de": "Groß: Monate" }
+  },
+
+  "industries": [
+    { "id": "manufacturing", "label": { "en": "Manufacturing", "de": "Produktion & Industrie" } },
+    { "id": "trade", "label": { "en": "Trade & wholesale", "de": "Handel & Großhandel" } },
+    { "id": "trades", "label": { "en": "Trades & construction", "de": "Handwerk & Bau" } },
+    { "id": "services", "label": { "en": "Professional services", "de": "Beratung & Dienstleistung" } },
+    { "id": "logistics", "label": { "en": "Logistics", "de": "Logistik" } },
+    { "id": "health", "label": { "en": "Health & care", "de": "Gesundheit & Pflege" } },
+    { "id": "other", "label": { "en": "Something else", "de": "Etwas anderes" } }
+  ],
+
+  "sizes": [
+    { "id": "1-9", "label": { "en": "1–9", "de": "1–9" } },
+    { "id": "10-49", "label": { "en": "10–49", "de": "10–49" } },
+    { "id": "50-249", "label": { "en": "50–249", "de": "50–249" } },
+    { "id": "250-499", "label": { "en": "250–499", "de": "250–499" } },
+    { "id": "500+", "label": { "en": "500+", "de": "500+" } }
+  ],
+
+  "guess": [
+    { "id": "lt10", "min": 0, "max": 10, "label": { "en": "Under 10 h", "de": "Unter 10 h" } },
+    { "id": "10-25", "min": 10, "max": 25, "label": { "en": "10–25 h", "de": "10–25 h" } },
+    { "id": "25-50", "min": 25, "max": 50, "label": { "en": "25–50 h", "de": "25–50 h" } },
+    { "id": "50-100", "min": 50, "max": 100, "label": { "en": "50–100 h", "de": "50–100 h" } },
+    { "id": "gt100", "min": 100, "max": 100000, "label": { "en": "Over 100 h", "de": "Über 100 h" } },
+    { "id": "unknown", "label": { "en": "No idea, honestly", "de": "Ehrlich gesagt: keine Ahnung" } }
+  ],
+
+  "reflections": [
+    {
+      "id": "keyPerson",
+      "statement": { "en": "If our key back-office person is out for two weeks, everything keeps running.", "de": "Wenn unsere wichtigste Person im Backoffice zwei Wochen ausfällt, läuft trotzdem alles weiter." },
+      "title": { "en": "Your processes live in people's heads", "de": "Ihre Prozesse wohnen in Köpfen" },
+      "body": { "en": "That's not a criticism. It's how most companies grow. But it's a risk nobody budgets for. Good news: writing a process down is also step one of automating it.", "de": "Das ist keine Kritik, so wachsen die meisten Unternehmen. Aber es ist ein Risiko, das in keinem Budget steht. Die gute Nachricht: Einen Prozess aufzuschreiben ist auch der erste Schritt, ihn zu automatisieren." }
+    },
+    {
+      "id": "growth",
+      "statement": { "en": "We could handle 30% more business without hiring more office staff.", "de": "Wir könnten 30 % mehr Geschäft stemmen, ohne fürs Büro neu einzustellen." },
+      "title": { "en": "Your growth hits a paperwork ceiling", "de": "Ihr Wachstum stößt an eine Papierkram-Decke" },
+      "body": { "en": "At today's routine load, {growth} more business means about {fte} extra full-time people just for paperwork. In this job market, good luck finding them. Automation is how you grow without that hire.", "de": "Bei der heutigen Routinelast bedeuten {growth} mehr Geschäft rund {fte} zusätzliche Vollzeitkräfte nur für Papierkram. Bei diesem Arbeitsmarkt: viel Glück bei der Suche. Automatisierung heißt, ohne diese Stellen zu wachsen." }
+    },
+    {
+      "id": "visibility",
+      "statement": { "en": "I know how long it takes from a customer request to our answer.", "de": "Ich weiß, wie lange es von einer Kundenanfrage bis zu unserer Antwort dauert." },
+      "title": { "en": "You're flying without instruments", "de": "Sie fliegen ohne Instrumente" },
+      "body": { "en": "What isn't measured doesn't get better. Response times are usually the first thing that improves the moment someone looks at them.", "de": "Was nicht gemessen wird, wird nicht besser. Antwortzeiten sind meist das Erste, was sich verbessert, sobald jemand hinschaut." }
+    },
+    {
+      "id": "data",
+      "statement": { "en": "Our important data lives in proper systems, not in inboxes, Excel lists and people's heads.", "de": "Unsere wichtigen Daten liegen in richtigen Systemen, nicht in Postfächern, Excel-Listen und Köpfen." },
+      "title": { "en": "Your data is scattered", "de": "Ihre Daten sind verstreut" },
+      "body": { "en": "In my experience, that's the most common reason AI projects stall right after the demo. Fix the foundation first, and everything after it gets cheaper.", "de": "Nach meiner Erfahrung der häufigste Grund, warum KI-Projekte direkt nach der Demo stecken bleiben. Erst das Fundament, dann wird alles danach günstiger." },
+      "takeNote": { "en": "But before any AI: your data lives in too many places. AI on top of that stays a demo. The good news: sorting that out is usually less work than people fear, and it pays off for everything that comes after.", "de": "Aber vor jeder KI: Ihre Daten liegen an zu vielen Orten. KI obendrauf bleibt eine Demo. Die gute Nachricht: Das aufzuräumen ist meist weniger Arbeit als befürchtet, und es zahlt sich für alles aus, was danach kommt." }
+    },
+    {
+      "id": "ownerTime",
+      "statement": { "en": "I rarely do admin work in the evenings or at weekends.", "de": "Ich mache selten abends oder am Wochenende Verwaltungskram." },
+      "title": { "en": "Your evenings are paying for it", "de": "Ihre Abende bezahlen dafür" },
+      "body": { "en": "The most expensive hour in the company is yours, and it never shows up in any calculation. Including this one.", "de": "Die teuerste Stunde im Unternehmen ist Ihre, und sie taucht in keiner Rechnung auf. Auch nicht in dieser." }
+    }
+  ],
+
+  "processes": [
+    {
+      "id": "quotes",
+      "label": { "en": "Quotes", "de": "Angebote erstellen" },
+      "desc": { "en": "Request comes in, someone digs up prices, builds the quote, sends it, follows up.", "de": "Anfrage kommt rein, Preise zusammensuchen, Angebot bauen, verschicken, nachfassen." },
+      "unit": { "en": "quotes per week", "de": "Angebote pro Woche" },
+      "volume": { "options": [5, 10, 25, 50, 100], "min": 0, "max": 10000 },
+      "minutes": { "options": [10, 20, 45, 90, 180], "min": 0, "max": 960 },
+      "approach": "agent", "effort": "M",
+      "automation": { "conservative": 0.35, "expected": 0.55 },
+      "setupEur": 9000, "runEurPerYear": 1200,
+      "lever": {
+        "type": "whatif_orders",
+        "label": { "en": "Orders lost to slow quotes", "de": "Aufträge, die an langsame Angebote verloren gehen" },
+        "questions": [
+          {
+            "id": "speed",
+            "label": { "en": "How long until a customer has your quote in hand?", "de": "Wie lange dauert es, bis ein Kunde Ihr Angebot in der Hand hat?" },
+            "options": [
+              { "id": "sameday", "value": 0, "label": { "en": "Same day", "de": "Am selben Tag" }, "note": { "en": "Same day? Respect. That's rarer than you'd think. Keep it that way.", "de": "Am selben Tag? Respekt. Das ist seltener, als man denkt. Bloß so lassen." } },
+              { "id": "days", "value": 0.01, "label": { "en": "1–2 days", "de": "1–2 Tage" }, "note": { "en": "1–2 days is normal. But normal also means: whoever is faster sometimes gets the order.", "de": "1–2 Tage sind normal. Normal heißt aber auch: Wer schneller ist, bekommt manchmal den Auftrag." } },
+              { "id": "week", "value": 0.03, "label": { "en": "3–5 days", "de": "3–5 Tage" }, "note": { "en": "3–5 days is long enough for a customer to ask someone else as well.", "de": "3–5 Tage sind lang genug, dass der Kunde parallel woanders fragt." } },
+              { "id": "longer", "value": 0.05, "label": { "en": "Longer", "de": "Länger" }, "note": { "en": "After a week, many customers have already decided, often without you.", "de": "Nach einer Woche haben viele Kunden schon entschieden, oft ohne Sie." } }
+            ]
+          },
+          {
+            "id": "orderValue",
+            "label": { "en": "And a typical order is worth about…", "de": "Und ein typischer Auftrag ist ungefähr wert …" },
+            "options": [
+              { "id": "v1", "value": 500, "label": { "en": "Under €1k", "de": "Unter 1.000 €" } },
+              { "id": "v2", "value": 2500, "label": { "en": "€1–5k", "de": "1.000–5.000 €" } },
+              { "id": "v3", "value": 10000, "label": { "en": "€5–20k", "de": "5.000–20.000 €" } },
+              { "id": "v4", "value": 30000, "label": { "en": "Over €20k", "de": "Über 20.000 €" } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "orders",
+      "label": { "en": "Order entry", "de": "Auftragserfassung" },
+      "desc": { "en": "Orders arrive by e-mail, PDF or phone and get typed into the system by hand.", "de": "Bestellungen kommen per E-Mail, PDF oder Telefon und werden von Hand ins System getippt." },
+      "unit": { "en": "orders per week", "de": "Aufträge pro Woche" },
+      "volume": { "options": [10, 25, 50, 100, 250], "min": 0, "max": 10000 },
+      "minutes": { "options": [3, 5, 10, 15, 30], "min": 0, "max": 480 },
+      "approach": "extraction", "effort": "M",
+      "automation": { "conservative": 0.5, "expected": 0.75 },
+      "setupEur": 8000, "runEurPerYear": 1200,
+      "lever": {
+        "type": "errors",
+        "label": { "en": "Errors that reach the customer", "de": "Fehler, die beim Kunden ankommen" },
+        "questions": [
+          {
+            "id": "errors",
+            "label": { "en": "How often does a typing error reach the customer: wrong item, wrong quantity, wrong address?", "de": "Wie oft kommt ein Tippfehler beim Kunden an: falscher Artikel, falsche Menge, falsche Adresse?" },
+            "options": [
+              { "id": "never", "value": 0, "label": { "en": "Practically never", "de": "Praktisch nie" }, "note": { "en": "Impressive. Then your team is checking a lot by hand, and that's hidden time too.", "de": "Beeindruckend. Dann prüft Ihr Team viel von Hand, und auch das ist versteckte Zeit." } },
+              { "id": "few", "value": 4, "label": { "en": "A few times a year", "de": "Ein paar Mal im Jahr" } },
+              { "id": "monthly", "value": 12, "label": { "en": "About monthly", "de": "Etwa monatlich" }, "note": { "en": "Once a month means re-delivery, a credit note and an apology call. Every time.", "de": "Einmal im Monat heißt: Nachlieferung, Gutschrift, Entschuldigungsanruf. Jedes Mal." } },
+              { "id": "weekly", "value": 48, "label": { "en": "Weekly", "de": "Wöchentlich" }, "note": { "en": "Weekly errors aren't a people problem. They're a process problem.", "de": "Wöchentliche Fehler sind kein Problem der Leute, sondern des Prozesses." } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "invoices",
+      "label": { "en": "Incoming invoices", "de": "Eingangsrechnungen" },
+      "desc": { "en": "Open the PDF, check it, type it into accounting, get approval, file it. Repeat.", "de": "PDF öffnen, prüfen, in die Buchhaltung tippen, Freigabe holen, ablegen. Wiederholen." },
+      "unit": { "en": "invoices per week", "de": "Rechnungen pro Woche" },
+      "volume": { "options": [10, 25, 50, 100, 250], "min": 0, "max": 10000 },
+      "minutes": { "options": [2, 5, 8, 12, 20], "min": 0, "max": 240 },
+      "approach": "extraction", "effort": "S",
+      "automation": { "conservative": 0.55, "expected": 0.8 },
+      "setupEur": 5000, "runEurPerYear": 1500,
+      "lever": {
+        "type": "skonto",
+        "label": { "en": "Missed Skonto", "de": "Verschenktes Skonto" },
+        "questions": [
+          {
+            "id": "missed",
+            "label": { "en": "Do you sometimes miss early-payment discounts (Skonto) because invoices sit around?", "de": "Verpassen Sie manchmal Skonto, weil Rechnungen liegen bleiben?" },
+            "options": [
+              { "id": "never", "value": 0, "label": { "en": "Never", "de": "Nie" }, "note": { "en": "Never? Then you've got a tight process. Nice.", "de": "Nie? Dann haben Sie einen sauberen Prozess. Stark." } },
+              { "id": "sometimes", "value": 0.25, "label": { "en": "Sometimes", "de": "Manchmal" } },
+              { "id": "often", "value": 0.6, "label": { "en": "Often", "de": "Oft" }, "note": { "en": "Skonto is about the easiest money there is. Missing it often hurts.", "de": "Skonto ist so ziemlich das leichteste Geld, das es gibt. Es oft zu verpassen, tut weh." } },
+              { "id": "unknown", "value": 0.35, "label": { "en": "No idea", "de": "Keine Ahnung" }, "note": { "en": "Not knowing is an answer too. Companies that don't track it usually miss it.", "de": "Nicht zu wissen ist auch eine Antwort. Wer es nicht verfolgt, verpasst es meistens." } }
+            ]
+          },
+          {
+            "id": "spend",
+            "label": { "en": "Roughly how much do you pay suppliers per month?", "de": "Wie viel zahlen Sie ungefähr pro Monat an Lieferanten?" },
+            "options": [
+              { "id": "s1", "value": 10000, "label": { "en": "Under €20k", "de": "Unter 20.000 €" } },
+              { "id": "s2", "value": 60000, "label": { "en": "€20–100k", "de": "20.000–100.000 €" } },
+              { "id": "s3", "value": 250000, "label": { "en": "€100–500k", "de": "100.000–500.000 €" } },
+              { "id": "s4", "value": 750000, "label": { "en": "Over €500k", "de": "Über 500.000 €" } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "emails",
+      "label": { "en": "Customer e-mails", "de": "Kundenanfragen per E-Mail" },
+      "desc": { "en": "Where's my order? Do you have…? Could you send…? The same questions, every day.", "de": "Wo ist meine Bestellung? Haben Sie …? Können Sie mal …? Jeden Tag dieselben Fragen." },
+      "unit": { "en": "e-mails per week", "de": "E-Mails pro Woche" },
+      "volume": { "options": [25, 50, 100, 250, 500], "min": 0, "max": 20000 },
+      "minutes": { "options": [2, 4, 6, 10, 15], "min": 0, "max": 120 },
+      "approach": "agent", "effort": "M",
+      "automation": { "conservative": 0.35, "expected": 0.55 },
+      "setupEur": 9000, "runEurPerYear": 1800,
+      "lever": {
+        "type": "interruptions",
+        "label": { "en": "Lost focus", "de": "Verlorene Konzentration" },
+        "questions": [
+          {
+            "id": "interrupts",
+            "label": { "en": "Do these e-mails interrupt other work?", "de": "Unterbrechen diese E-Mails andere Arbeit?" },
+            "options": [
+              { "id": "constantly", "value": 0.6, "label": { "en": "Constantly", "de": "Ständig" }, "note": { "en": "Every interruption costs more than the reply itself. Getting back into the real task takes time too.", "de": "Jede Unterbrechung kostet mehr als die Antwort selbst. Wieder in die eigentliche Aufgabe zu finden, dauert auch." } },
+              { "id": "sometimes", "value": 0.25, "label": { "en": "Now and then", "de": "Ab und zu" } },
+              { "id": "batched", "value": 0, "label": { "en": "No, we handle them in fixed slots", "de": "Nein, wir arbeiten sie in festen Blöcken ab" }, "note": { "en": "Fixed slots. Very disciplined. Most teams don't manage that.", "de": "Feste Blöcke. Sehr diszipliniert. Das schaffen die wenigsten Teams." } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "complaints",
+      "label": { "en": "Complaints & returns", "de": "Reklamationen & Retouren" },
+      "desc": { "en": "Collect photos, check delivery notes, ask three colleagues, write back, book the credit note.", "de": "Fotos sammeln, Lieferschein prüfen, drei Kollegen fragen, zurückschreiben, Gutschrift buchen." },
+      "unit": { "en": "cases per week", "de": "Fälle pro Woche" },
+      "volume": { "options": [2, 5, 10, 25, 50], "min": 0, "max": 5000 },
+      "minutes": { "options": [15, 30, 45, 60, 120], "min": 0, "max": 960 },
+      "approach": "agent", "effort": "M",
+      "automation": { "conservative": 0.3, "expected": 0.5 },
+      "setupEur": 9000, "runEurPerYear": 1200,
+      "lever": {
+        "type": "insight",
+        "questions": [
+          {
+            "id": "response",
+            "label": { "en": "How long until a complaining customer hears back?", "de": "Wie lange dauert es, bis ein reklamierender Kunde eine Antwort bekommt?" },
+            "options": [
+              { "id": "sameday", "label": { "en": "Same day", "de": "Am selben Tag" }, "note": { "en": "Fast answers turn complaints into loyalty. You're already doing that.", "de": "Schnelle Antworten machen aus Reklamationen Treue. Das machen Sie schon." } },
+              { "id": "days", "label": { "en": "Within a few days", "de": "Innerhalb weniger Tage" }, "note": { "en": "A few days feels long to an annoyed customer.", "de": "Ein paar Tage fühlen sich für einen verärgerten Kunden lang an." } },
+              { "id": "week", "label": { "en": "A week or more", "de": "Eine Woche oder länger" }, "note": { "en": "A week of silence is when customers start looking around.", "de": "Eine Woche Funkstille: Da fangen Kunden an, sich umzusehen." } },
+              { "id": "depends", "label": { "en": "Depends who picks it up", "de": "Kommt drauf an, wer es aufnimmt" }, "note": { "en": "'Depends who picks it up' is the honest answer in many companies, and the reason complaints slip through.", "de": "„Kommt drauf an, wer es aufnimmt“ ist in vielen Firmen die ehrliche Antwort, und der Grund, warum Reklamationen durchrutschen." } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "scheduling",
+      "label": { "en": "Scheduling", "de": "Terminkoordination" },
+      "desc": { "en": "Does Tuesday work? No? Thursday? Five e-mails for one appointment.", "de": "Passt Dienstag? Nein? Donnerstag? Fünf E-Mails für einen Termin." },
+      "unit": { "en": "appointments per week", "de": "Termine pro Woche" },
+      "volume": { "options": [5, 10, 25, 50, 100], "min": 0, "max": 5000 },
+      "minutes": { "options": [3, 5, 10, 15, 20], "min": 0, "max": 120 },
+      "approach": "rules", "effort": "S",
+      "automation": { "conservative": 0.6, "expected": 0.8 },
+      "setupEur": 2500, "runEurPerYear": 300,
+      "lever": {
+        "type": "interruptions",
+        "label": { "en": "Lost focus", "de": "Verlorene Konzentration" },
+        "questions": [
+          {
+            "id": "pingpong",
+            "label": { "en": "How many back-and-forth messages does one appointment take?", "de": "Wie viele Nachrichten hin und her braucht ein Termin?" },
+            "options": [
+              { "id": "few", "value": 0.2, "label": { "en": "1–2", "de": "1–2" } },
+              { "id": "some", "value": 0.6, "label": { "en": "3–5", "de": "3–5" }, "note": { "en": "Five messages for one appointment, and each one is a small interruption.", "de": "Fünf Nachrichten für einen Termin, und jede ist eine kleine Unterbrechung." } },
+              { "id": "many", "value": 1, "label": { "en": "More", "de": "Mehr" }, "note": { "en": "At that point, the calendar is running you.", "de": "Spätestens dann führt der Kalender Sie, nicht umgekehrt." } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "reporting",
+      "label": { "en": "Reporting", "de": "Reporting & Auswertungen" },
+      "desc": { "en": "Export from three systems, paste into Excel, fix the formulas, send it around. Every month.", "de": "Export aus drei Systemen, rein ins Excel, Formeln reparieren, rumschicken. Jeden Monat." },
+      "unit": { "en": "reports per week", "de": "Berichte pro Woche" },
+      "volume": { "options": [1, 2, 5, 10, 20], "min": 0, "max": 500 },
+      "minutes": { "options": [30, 60, 120, 240, 480], "min": 0, "max": 2400 },
+      "approach": "rules", "effort": "M",
+      "automation": { "conservative": 0.6, "expected": 0.85 },
+      "setupEur": 7000, "runEurPerYear": 600,
+      "lever": {
+        "type": "insight",
+        "questions": [
+          {
+            "id": "freshness",
+            "label": { "en": "When you look at your key numbers, how old are they?", "de": "Wenn Sie auf Ihre wichtigsten Zahlen schauen: Wie alt sind die?" },
+            "options": [
+              { "id": "today", "label": { "en": "From today or yesterday", "de": "Von heute oder gestern" }, "note": { "en": "Up-to-date numbers. You're ahead of most.", "de": "Aktuelle Zahlen. Damit sind Sie weiter als die meisten." } },
+              { "id": "week", "label": { "en": "From last week", "de": "Von letzter Woche" } },
+              { "id": "month", "label": { "en": "From last month", "de": "Vom letzten Monat" }, "note": { "en": "Month-old numbers mean steering by the rear-view mirror.", "de": "Monatsalte Zahlen heißt: Steuern mit dem Rückspiegel." } },
+              { "id": "unknown", "label": { "en": "Depends, nobody really knows", "de": "Kommt drauf an, weiß keiner so genau" }, "note": { "en": "If nobody knows how old the numbers are, nobody really trusts them either.", "de": "Wenn keiner weiß, wie alt die Zahlen sind, vertraut ihnen auch keiner so richtig." } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "filing",
+      "label": { "en": "Filing & finding documents", "de": "Ablage & Dokumentensuche" },
+      "desc": { "en": "Rename, file, and later: 'Does anyone know where the contract with … is?'", "de": "Umbenennen, ablegen, und später: „Weiß jemand, wo der Vertrag mit … liegt?“" },
+      "unit": { "en": "documents per week", "de": "Dokumente pro Woche" },
+      "volume": { "options": [25, 50, 100, 250, 500], "min": 0, "max": 20000 },
+      "minutes": { "options": [1, 2, 3, 5, 8], "min": 0, "max": 60 },
+      "approach": "extraction", "effort": "S",
+      "automation": { "conservative": 0.6, "expected": 0.8 },
+      "setupEur": 4000, "runEurPerYear": 600,
+      "lever": {
+        "type": "insight",
+        "questions": [
+          {
+            "id": "search",
+            "label": { "en": "How long does it take to find an old contract or delivery note?", "de": "Wie lange dauert es, einen alten Vertrag oder Lieferschein zu finden?" },
+            "options": [
+              { "id": "fast", "label": { "en": "Under a minute", "de": "Unter einer Minute" }, "note": { "en": "Under a minute? Your filing actually works. Rare.", "de": "Unter einer Minute? Ihre Ablage funktioniert wirklich. Selten." } },
+              { "id": "minutes", "label": { "en": "A few minutes", "de": "Ein paar Minuten" } },
+              { "id": "long", "label": { "en": "15 minutes or more", "de": "15 Minuten oder mehr" }, "note": { "en": "15 minutes, several times a week, for several people: that adds up quietly.", "de": "15 Minuten, mehrmals pro Woche, für mehrere Leute: Das summiert sich still und leise." } },
+              { "id": "person", "label": { "en": "Depends who you ask", "de": "Kommt drauf an, wen man fragt" }, "note": { "en": "'Depends who you ask' means your filing system is a person.", "de": "„Kommt drauf an, wen man fragt“ heißt: Ihr Ablagesystem ist ein Mensch." } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "masterdata",
+      "label": { "en": "Master data upkeep", "de": "Stammdatenpflege" },
+      "desc": { "en": "New customer, changed address, duplicate supplier, kept up by hand in two systems.", "de": "Neuer Kunde, neue Adresse, doppelter Lieferant, von Hand in zwei Systemen gepflegt." },
+      "unit": { "en": "changes per week", "de": "Änderungen pro Woche" },
+      "volume": { "options": [5, 10, 25, 50, 100], "min": 0, "max": 5000 },
+      "minutes": { "options": [3, 5, 8, 15, 20], "min": 0, "max": 120 },
+      "approach": "rules", "effort": "M",
+      "automation": { "conservative": 0.5, "expected": 0.7 },
+      "setupEur": 6000, "runEurPerYear": 600,
+      "lever": {
+        "type": "errors",
+        "label": { "en": "Trouble from wrong master data", "de": "Ärger durch falsche Stammdaten" },
+        "questions": [
+          {
+            "id": "errors",
+            "label": { "en": "How often does wrong master data cause trouble: wrong address, duplicates, old prices?", "de": "Wie oft machen falsche Stammdaten Ärger: falsche Adresse, Dubletten, alte Preise?" },
+            "options": [
+              { "id": "never", "value": 0, "label": { "en": "Practically never", "de": "Praktisch nie" } },
+              { "id": "few", "value": 4, "label": { "en": "A few times a year", "de": "Ein paar Mal im Jahr" } },
+              { "id": "monthly", "value": 12, "label": { "en": "About monthly", "de": "Etwa monatlich" }, "note": { "en": "Bad master data is sneaky. It doesn't fail once, it fails in every process that uses it.", "de": "Schlechte Stammdaten sind tückisch. Sie fallen nicht einmal auf, sondern in jedem Prozess, der sie nutzt." } },
+              { "id": "weekly", "value": 48, "label": { "en": "Weekly", "de": "Wöchentlich" }, "note": { "en": "Weekly? Then every AI on top would learn the wrong things. This one comes first.", "de": "Wöchentlich? Dann würde jede KI darauf das Falsche lernen. Das hier kommt zuerst." } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "applicants",
+      "label": { "en": "Applicant handling", "de": "Bewerbermanagement" },
+      "desc": { "en": "Confirm receipt, forward CVs, coordinate interviews, send updates, or forget to.", "de": "Eingang bestätigen, Unterlagen weiterleiten, Gespräche koordinieren, Zwischenstand schicken, oder vergessen." },
+      "unit": { "en": "applications per week", "de": "Bewerbungen pro Woche" },
+      "volume": { "options": [2, 5, 10, 25, 50], "min": 0, "max": 2000 },
+      "minutes": { "options": [10, 15, 20, 30, 45], "min": 0, "max": 240 },
+      "approach": "rules", "effort": "S",
+      "automation": { "conservative": 0.4, "expected": 0.6 },
+      "setupEur": 3500, "runEurPerYear": 600,
+      "takeNote": { "en": "About applicants: automate the admin, not the judgment. AI that ranks candidates counts as high-risk under the EU AI Act. Confirmations, scheduling and status updates don't.", "de": "Zu Bewerbungen: Automatisieren Sie die Verwaltung, nicht das Urteil. KI, die Bewerber bewertet, gilt nach dem EU AI Act als Hochrisiko. Eingangsbestätigungen, Terminabstimmung und Zwischenstände nicht." },
+      "lever": {
+        "type": "insight",
+        "questions": [
+          {
+            "id": "reply",
+            "label": { "en": "How long until an applicant hears back from you?", "de": "Wie lange dauert es, bis Bewerber von Ihnen hören?" },
+            "options": [
+              { "id": "fast", "label": { "en": "Within 2 days", "de": "Innerhalb von 2 Tagen" }, "note": { "en": "Fast. In this job market, that's a real advantage.", "de": "Schnell. Bei diesem Arbeitsmarkt ein echter Vorteil." } },
+              { "id": "week", "label": { "en": "Within a week", "de": "Innerhalb einer Woche" } },
+              { "id": "slow", "label": { "en": "Two weeks or more", "de": "Zwei Wochen oder mehr" }, "note": { "en": "Good candidates have other offers. Two weeks is often one week too many.", "de": "Gute Leute haben andere Angebote. Zwei Wochen sind oft eine Woche zu viel." } },
+              { "id": "never", "label": { "en": "Sometimes never", "de": "Manchmal gar nicht" }, "note": { "en": "Applicants talk. Silence is the most expensive employer branding there is.", "de": "Bewerber reden. Schweigen ist das teuerste Employer Branding, das es gibt." } }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

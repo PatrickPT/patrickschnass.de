@@ -35,3 +35,6 @@ adv_format_fieldwork = "Vor Ort"
 adv_format_fieldwork_desc = "Vor Ort mit Ihren Teams: Prozesse, Organisation und Compliance dort analysieren, wo die Arbeit tatsächlich erledigt wird."
 adv_format_build = "Entwicklung & Go-live"
 adv_format_build_desc = "Praktische Umsetzung bis in den Produktivbetrieb – Agenten, ML und Automatisierung, die auch nach der ersten Version zuverlässig laufen."
+
+adv_nav_check = "KI-Check"
+adv_check_noscript = "Dieser Check läuft komplett in Ihrem Browser, damit nichts von Ihren Eingaben Ihren Rechner verlässt. Dafür braucht er JavaScript. Bitte aktivieren Sie es und laden Sie die Seite neu."

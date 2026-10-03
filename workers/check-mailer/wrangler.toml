@@ -1,0 +1,24 @@
+# Cloudflare Worker that sends the KI-Potenzial-Check result by e-mail. See README.md.
+name = "check-mailer"
+main = "src/index.mjs"
+compatibility_date = "2026-09-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://www.patrickschnass.de,https://patrickschnass.de"
+SENDER_NAME = "Patrick Schnaß"
+# Must be an address on a domain verified in Brevo (SPF + DKIM).
+SENDER_EMAIL = "check@patrickschnass.de"
+BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Tu_t7zHJhBQ0eZZWjj4bmS5ls6jNCP8gsU25eIOwKL2pT9dbZbpyXyrYJEsqIH2DKNXuHS6wB?gv=true"
+# Secrets, set with `wrangler secret put <NAME>` (never committed):
+#   BREVO_API_KEY  Brevo transactional API key
+#   NOTIFY_TO      where Patrick's copy of each result goes
+#   REPLY_TO       (optional) where replies from visitors go; defaults to SENDER_EMAIL
+
+# 3 requests per minute per key. Keys are the client IP and the recipient address.
+[[ratelimits]]
+name = "LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 3
+  period = 60
