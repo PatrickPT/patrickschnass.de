@@ -23,6 +23,11 @@ browser ──POST JSON──▶ Worker ──▶ validate (ids + bounded number
 - **Contract:** `{ email, followUp, lang, website, resultUrl, summary }`, built in
   `assets/check/app.mjs` → `mailPayload`. Validation lives in `src/email.mjs` and is unit-tested
   in `tests/check/mailer.test.mjs`.
+- **Follow-up:** if the visitor ticks the follow-up box, a record goes into the `FOLLOWUPS` KV
+  namespace (`fu:<due date>:<id>`). A daily cron (`scheduled()`) sends the due ones, with the top
+  lever and the three `startSteps` from the pack, and deletes them. A hash marker makes sure one
+  address never gets a second follow-up. Brevo's own `scheduledAt` only reaches 72 h ahead, which
+  is why the queue exists.
 - **Feedback** ("Do these numbers feel right?"): `{ type: "feedback", lang, rating, reason, summary }`
   with ids, a cost band and the score only. It sends a one-line note to `NOTIFY_TO` and never
   e-mails the visitor. Built in `app.mjs` → `feedbackPayload`.
@@ -37,6 +42,7 @@ browser ──POST JSON──▶ Worker ──▶ validate (ids + bounded number
    npx wrangler@latest login
    npx wrangler@latest secret put BREVO_API_KEY
    npx wrangler@latest secret put NOTIFY_TO
+   npx wrangler@latest kv namespace create FOLLOWUPS   # paste the id into wrangler.toml
    npx wrangler@latest deploy
    ```
    Wrangler prints the URL, e.g. `https://check-mailer.<account>.workers.dev`.

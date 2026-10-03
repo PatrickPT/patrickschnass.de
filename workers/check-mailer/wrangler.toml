@@ -8,6 +8,8 @@ ALLOWED_ORIGINS = "https://www.patrickschnass.de,https://patrickschnass.de"
 SENDER_NAME = "Patrick Schnaß"
 # Must be an address on a domain verified in Brevo (SPF + DKIM).
 SENDER_EMAIL = "check@patrickschnass.de"
+# Days until the one consented follow-up e-mail goes out.
+FOLLOWUP_DAYS = "14"
 BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Tu_t7zHJhBQ0eZZWjj4bmS5ls6jNCP8gsU25eIOwKL2pT9dbZbpyXyrYJEsqIH2DKNXuHS6wB?gv=true"
 # Secrets, set with `wrangler secret put <NAME>` (never committed):
 #   BREVO_API_KEY  Brevo transactional API key
@@ -22,3 +24,14 @@ namespace_id = "1001"
   [ratelimits.simple]
   limit = 3
   period = 60
+
+# Queue for the one consented follow-up e-mail. Create it once with
+#   npx wrangler@latest kv namespace create FOLLOWUPS
+# and paste the printed id here (deploy fails until then, on purpose).
+[[kv_namespaces]]
+binding = "FOLLOWUPS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# Daily at 07:00 UTC (09:00 in German summer time): send the follow-ups that are due.
+[triggers]
+crons = ["0 7 * * *"]

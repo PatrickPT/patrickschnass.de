@@ -2,7 +2,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { validatePayload, renderVisitorEmail, renderNotification, validateFeedback, renderFeedbackNotification } from "../../workers/check-mailer/src/email.mjs";
+import {
+  validatePayload, renderVisitorEmail, renderNotification, validateFeedback, renderFeedbackNotification,
+  followUpRecord, isDue, renderFollowUpEmail,
+} from "../../workers/check-mailer/src/email.mjs";
 
 const pack = JSON.parse(readFileSync(new URL("../../assets/check/packs/back-office-mittelstand.json", import.meta.url)));
 const prefixes = ["https://www.patrickschnass.de/check/#r=", "https://www.patrickschnass.de/de/check/#r="];
@@ -113,4 +116,33 @@ test("feedback: the note to Patrick is readable and escaped", () => {
   assert.match(note.subject, /ZU HOCH · Einrichtungskosten · 50-100k/);
   assert.match(note.text, /Angebote erstellen, Kundenanfragen per E-Mail/);
   assert.doesNotMatch(note.html, /<script/);
+});
+
+test("follow-up: the queue record carries only what the e-mail needs", () => {
+  const data = check(valid()).data;
+  const rec = followUpRecord(data, new Date("2026-10-03T10:00:00Z"), 14, "abc");
+  assert.equal(rec.key, "fu:2026-10-17:abc");
+  assert.deepEqual(Object.keys(rec.value).sort(), ["email", "lang", "packVersion", "resultUrl", "savingsHigh", "top"]);
+  assert.equal(rec.value.top, "emails");
+  assert.equal(rec.value.savingsHigh, 20300);
+  assert.ok(rec.ttl >= 30 * 86400);
+});
+
+test("follow-up: due today or earlier, not before", () => {
+  assert.equal(isDue("fu:2026-10-17:abc", new Date("2026-10-16T23:00:00Z")), false);
+  assert.equal(isDue("fu:2026-10-17:abc", new Date("2026-10-17T07:00:00Z")), true);
+  assert.equal(isDue("fu:2026-10-17:abc", new Date("2026-11-01T07:00:00Z")), true);
+});
+
+test("follow-up: the e-mail names the lever and its three first steps", () => {
+  const rec = followUpRecord(check(valid()).data, new Date(), 14, "x").value;
+  const de = renderFollowUpEmail(pack, rec, { bookingUrl: "https://calendar.example/book" });
+  assert.match(de.subject, /Kundenanfragen per E-Mail/);
+  assert.match(de.text, /1\. Markieren Sie eine Woche lang/);
+  assert.match(de.text, /3\. Entscheiden Sie/);
+  assert.match(de.html, /calendar\.example\/book/);
+  assert.match(de.text, /keine weitere/);
+  const noTop = renderFollowUpEmail(pack, { ...rec, top: null, lang: "en" });
+  assert.match(noTop.subject, /your AI potential check/);
+  assert.doesNotMatch(noTop.html, /<ol/);
 });

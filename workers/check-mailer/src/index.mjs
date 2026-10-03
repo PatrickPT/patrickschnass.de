@@ -8,8 +8,11 @@
  *   POST { type: "feedback", lang, rating, reason, website, summary }  → note to Patrick only
  * Any other engine (e.g. a Windmill webhook) can take over by honouring the same contract.
  */
-import pack from "../../../assets/check/packs/back-office-mittelstand.json";
-import { validatePayload, renderVisitorEmail, renderNotification, validateFeedback, renderFeedbackNotification } from "./email.mjs";
+import pack from "../../../assets/check/packs/back-office-mittelstand.json" with { type: "json" };
+import {
+  validatePayload, renderVisitorEmail, renderNotification, validateFeedback, renderFeedbackNotification,
+  followUpRecord, isDue, renderFollowUpEmail,
+} from "./email.mjs";
 
 const MAX_BODY = 16 * 1024;
 
@@ -36,11 +39,7 @@ export default {
     try { body = JSON.parse(raw); } catch { return json({ error: "json" }, 400); }
 
     const sender = { name: env.SENDER_NAME || "Patrick Schnaß", email: env.SENDER_EMAIL };
-    const send = (message) => fetch("https://api.brevo.com/v3/smtp/email", {
-      method: "POST",
-      headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ sender, tags: ["potential-check"], ...message }),
-    });
+    const send = (message) => brevo(env, message);
 
     // Feedback on the result ("Do these numbers feel right?"): only a note to Patrick, no visitor e-mail.
     if (body?.type === "feedback") {
@@ -70,6 +69,9 @@ export default {
       return json({ error: "send" }, 502);
     }
 
+    // The one consented follow-up: queued in KV, sent by the daily cron (scheduled() below).
+    if (data.followUp && env.FOLLOWUPS) ctx.waitUntil(queueFollowUp(env, data));
+
     if (env.NOTIFY_TO) {
       const notice = renderNotification(pack, data);
       ctx.waitUntil(send({
@@ -80,4 +82,46 @@ export default {
     }
     return json({ ok: true }, 200);
   },
+
+  // Daily cron: send the follow-ups that are due, then delete them.
+  async scheduled(controller, env, ctx) {
+    if (!env.FOLLOWUPS) return;
+    const now = new Date();
+    let cursor;
+    do {
+      const page = await env.FOLLOWUPS.list({ prefix: "fu:", cursor });
+      for (const { name } of page.keys.filter((k) => isDue(k.name, now))) {
+        const rec = await env.FOLLOWUPS.get(name, "json");
+        if (!rec) continue;
+        const mail = renderFollowUpEmail(pack, rec, { bookingUrl: env.BOOKING_URL });
+        const res = await brevo(env, {
+          to: [{ email: rec.email }], replyTo: { email: env.REPLY_TO || env.SENDER_EMAIL, name: env.SENDER_NAME || "Patrick Schnaß" },
+          subject: mail.subject, htmlContent: mail.html, textContent: mail.text,
+        });
+        if (res.ok) await env.FOLLOWUPS.delete(name);
+        else console.error("follow-up", res.status, await res.text()); // retried tomorrow; the TTL is the safety net
+      }
+      cursor = page.list_complete ? undefined : page.cursor;
+    } while (cursor);
+  },
 };
+
+function brevo(env, message) {
+  return fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ sender: { name: env.SENDER_NAME || "Patrick Schnaß", email: env.SENDER_EMAIL }, tags: ["potential-check"], ...message }),
+  });
+}
+
+/** Queues one follow-up per e-mail address (a hash marks addresses already queued). */
+async function queueFollowUp(env, data) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(data.email.toLowerCase()));
+  const marker = `seen:${[...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("")}`;
+  if (await env.FOLLOWUPS.get(marker)) return;
+  const configured = Number.parseFloat(env.FOLLOWUP_DAYS);
+  const days = Number.isFinite(configured) && configured >= 0 ? configured : 14;
+  const rec = followUpRecord(data, new Date(), days);
+  await env.FOLLOWUPS.put(rec.key, JSON.stringify(rec.value), { expirationTtl: rec.ttl });
+  await env.FOLLOWUPS.put(marker, "1", { expirationTtl: 180 * 86400 });
+}
