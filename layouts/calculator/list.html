@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  {{ partial "advisory/head.html" (dict "page" . "title" (printf "%s — Patrick Schnaß" .Title) "description" .Description) }}
+  {{- $css := resources.Get "check/check.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+</head>
+<body class="ck-page">
+{{ partial "advisory/nav.html" . }}
+{{- $check := "check/" | relLangURL }}
+<main id="main">
+  <section class="calc">
+    <div class="calc__inner">
+      <p class="eyebrow">{{ .Params.eyebrow }}</p>
+      <h1 class="calc__title">{{ .Title }}</h1>
+      <p class="calc__lead">{{ .Params.lead }}</p>
+      <div class="calc-list">
+        {{- range .Pages.ByWeight }}
+        <a class="calc-list__card" href="{{ .RelPermalink }}">
+          <span class="calc-list__title">{{ .Params.headline | default .Title }}</span>
+          <span class="calc-list__lead">{{ .Params.lead }}</span>
+          <span class="calc-list__arrow" aria-hidden="true">→</span>
+        </a>
+        {{- end }}
+        <a class="calc-list__card calc-list__card--check" href="{{ $check }}">
+          <span class="calc-list__title">{{ i18n "adv_teaser_title" | safeHTML }}</span>
+          <span class="calc-list__lead">{{ i18n "adv_calc_more" }}</span>
+          <span class="calc-list__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+{{ partial "advisory/footer.html" . }}
+{{ $common := resources.Get "advisory/common.js" | minify | fingerprint }}
+<script src="{{ $common.RelPermalink }}" integrity="{{ $common.Data.Integrity }}"></script>
+</body>
+</html>

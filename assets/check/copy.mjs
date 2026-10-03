@@ -11,6 +11,7 @@ export const copy = {
     introNote: "Hi, I'm Patrick. By day I lead a data science & AI team at a global tech company, and one thing I've learned: the expensive problems are rarely where everyone is looking. This check is how I'd start if we sat down together. Just without the coffee.",
     badges: ["About 5 minutes", "No sign-up", "Runs only in your browser", "Every number explained"],
     start: "Let's find out",
+    prefilled: "Your numbers from the calculator are already filled in. Just add the rest.",
     resumeShared: "Someone shared this result with you.",
     startOwn: "Start your own check",
 
@@ -205,6 +206,7 @@ export const copy = {
     introNote: "Hallo, ich bin Patrick. Hauptberuflich leite ich ein Data-Science- und KI-Team in einem globalen Technologieunternehmen. Dabei habe ich gelernt: Die teuren Probleme liegen selten dort, wo alle hinschauen. Mit diesem Check würde ich anfangen, wenn wir zusammensitzen. Nur ohne Kaffee.",
     badges: ["Rund 5 Minuten", "Ohne Anmeldung", "Läuft nur in Ihrem Browser", "Jede Zahl erklärt"],
     start: "Los geht's",
+    prefilled: "Ihre Zahlen aus dem Rechner sind schon eingetragen. Ergänzen Sie nur den Rest.",
     resumeShared: "Jemand hat dieses Ergebnis mit Ihnen geteilt.",
     startOwn: "Eigenen Check starten",
 
