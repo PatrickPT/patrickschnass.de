@@ -115,6 +115,82 @@ export function renderFeedbackNotification(pack, data) {
   };
 }
 
+/* ---------- The one consented follow-up, about two weeks later ---------- */
+
+/** The queue entry for a follow-up: due date in the key, only what the e-mail needs in the value. */
+export function followUpRecord(data, now = new Date(), days = 14, id = crypto.randomUUID()) {
+  const due = new Date(now.getTime() + days * 86400000).toISOString().slice(0, 10);
+  const top = data.summary.top ? data.summary.processes.find((p) => p.id === data.summary.top) : null;
+  return {
+    key: `fu:${due}:${id}`,
+    value: { email: data.email, lang: data.lang, resultUrl: data.resultUrl, top: top?.id ?? null, savingsHigh: top?.savingsHigh ?? null, packVersion: data.summary.packVersion },
+    // Deleted after sending; the TTL is the safety net if sending keeps failing.
+    ttl: (days + 16) * 86400,
+  };
+}
+
+/** True when a queue key's due date (fu:YYYY-MM-DD:id) is today or earlier. */
+export const isDue = (key, now = new Date()) => key.split(":")[1] <= now.toISOString().slice(0, 10);
+
+const FOLLOW = {
+  de: {
+    subject: "Zwei Wochen später: Haben Sie mit „{top}“ angefangen?",
+    subjectNoTop: "Zwei Wochen später: Ihr KI-Potenzial-Check",
+    hello: "Hallo,",
+    intro: "vor zwei Wochen haben Sie den KI-Potenzial-Check gemacht. Ihr größter Hebel war „{top}“, mit rund {eur} pro Jahr.",
+    introNoTop: "vor zwei Wochen haben Sie den KI-Potenzial-Check gemacht.",
+    steps: "Falls es noch auf der Liste steht: So würde ich anfangen, ganz ohne mich.",
+    result: "Ihr Ergebnis, mit allen Annahmen",
+    book: "Wenn Sie eine zweite Meinung möchten: 30 Minuten mit mir",
+    sign: "Viele Grüße\nPatrick Schnaß",
+    footer: "Das ist die eine Nachfass-Mail, der Sie zugestimmt haben. Es kommt keine weitere. Antworten Sie einfach, wenn Sie Fragen haben oder Ihre Daten gelöscht werden sollen.",
+  },
+  en: {
+    subject: "Two weeks later: did you start with “{top}”?",
+    subjectNoTop: "Two weeks later: your AI potential check",
+    hello: "Hi,",
+    intro: "two weeks ago you did the AI potential check. Your biggest lever was “{top}”, at about {eur} a year.",
+    introNoTop: "two weeks ago you did the AI potential check.",
+    steps: "In case it's still on the list, here's how I'd start, without me.",
+    result: "Your result, with every assumption",
+    book: "If you'd like a second opinion: 30 minutes with me",
+    sign: "Best,\nPatrick Schnaß",
+    footer: "This is the one follow-up you agreed to. There won't be another. Just reply if you have questions or want your data deleted.",
+  },
+};
+
+/** The follow-up e-mail: their top lever, three concrete first steps from the pack, links. */
+export function renderFollowUpEmail(pack, rec, { bookingUrl = "" } = {}) {
+  const c = FOLLOW[rec.lang] ?? FOLLOW.de;
+  const { eur } = formatters(rec.lang);
+  const proc = rec.top ? pack.processes.find((p) => p.id === rec.top) : null;
+  const top = proc?.label?.[rec.lang];
+  const steps = (proc?.startSteps ?? []).map((st) => st[rec.lang]);
+  const intro = top ? fill(c.intro, { top, eur: eur(Math.max(0, rec.savingsHigh ?? 0)) }) : c.introNoTop;
+  const subject = top ? fill(c.subject, { top }) : c.subjectNoTop;
+  const text = [
+    c.hello, "", intro, "",
+    ...(steps.length ? [c.steps, ...steps.map((st, i) => `${i + 1}. ${st}`), ""] : []),
+    `${c.result}: ${rec.resultUrl}`,
+    ...(bookingUrl ? [`${c.book}: ${bookingUrl}`] : []),
+    "", c.sign, "", "--", c.footer,
+  ].join("\n");
+  const a = (href, label) => `<a href="${esc(href)}" style="color:#6E29DC;font-weight:600;">${esc(label)}</a>`;
+  const html = `<!doctype html><html lang="${rec.lang}"><body style="margin:0;background:#f5f5f7;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#16161c;">
+<div style="max-width:600px;margin:0 auto;padding:24px 16px;">
+<div style="background:#ffffff;border-radius:16px;padding:28px;line-height:1.55;">
+<p style="margin:0 0 12px;">${esc(c.hello)}</p>
+<p style="margin:0 0 16px;">${esc(intro)}</p>
+${steps.length ? `<p style="margin:0 0 8px;font-weight:600;">${esc(c.steps)}</p><ol style="margin:0 0 20px;padding-left:22px;">${steps.map((st) => `<li style="margin-bottom:8px;">${esc(st)}</li>`).join("")}</ol>` : ""}
+<p style="margin:0 0 8px;">${a(rec.resultUrl, c.result)}</p>
+${bookingUrl ? `<p style="margin:0 0 20px;">${a(bookingUrl, c.book)}</p>` : ""}
+<p style="margin:0;white-space:pre-line;">${esc(c.sign)}</p>
+</div>
+<p style="font-size:12px;color:#888;line-height:1.5;padding:16px 8px;">${esc(c.footer)}</p>
+</div></body></html>`;
+  return { subject, text, html };
+}
+
 const COPY = {
   de: {
     subject: "Ihr KI-Potenzial-Check: rund {cost} pro Jahr",
@@ -224,7 +300,7 @@ export function renderNotification(pack, data) {
   const name = (id) => pack.processes.find((p) => p.id === id)?.label?.de ?? id;
   const text = [
     `E-Mail: ${data.email}`,
-    `Persönliche Rückmeldung erlaubt: ${data.followUp ? "JA" : "nein (nur Ergebnis senden, nicht kontaktieren)"}`,
+    `Persönliche Rückmeldung erlaubt: ${data.followUp ? "JA (die automatische Nachfass-Mail in ~14 Tagen ist diese eine Rückmeldung, also nicht zusätzlich anschreiben, außer auf Antwort)" : "nein (nur Ergebnis senden, nicht kontaktieren)"}`,
     `Sprache: ${data.lang} · Branche: ${s.industry ?? "–"} · Größe: ${s.size ?? "–"} · Pack ${s.packVersion}`,
     "",
     `Kosten: ${eur(s.cost)} · Liegen gelassen: ${eur(s.table)} · Einsparung: ${eur(s.savingsLow)}–${eur(s.savingsHigh)}`,

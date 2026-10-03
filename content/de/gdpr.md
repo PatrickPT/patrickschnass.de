@@ -98,6 +98,8 @@ Nur wenn Sie das Formular „Ergebnis per E-Mail“ aktiv absenden, verarbeiten 
 ### Feedback zum Ergebnis
 Wenn Sie unter „Fühlen sich die Zahlen richtig an?“ auf „Anonymes Feedback senden“ klicken, erhalten wir Ihre Bewertung, welche Zahl Ihnen daneben vorkam, die gewählten Prozesse, ein grobes Kostenband und den Potenzial-Score, über denselben Cloudflare Worker und als E-Mail über Brevo. Darin stehen keine E-Mail-Adresse und keine Antworten auf einzelne Fragen. Rechtsgrundlage: unser berechtigtes Interesse, die Standardwerte des Checks zu verbessern (Art. 6 Abs. 1 lit. f DSGVO).
 
+**Nachfass-Mail:** Wenn Sie das Häkchen für eine Rückmeldung setzen, werden Ihre E-Mail-Adresse, der Ergebnis-Link und Ihr größter Hebel in einer Warteschlange bei Cloudflare (Workers KV) gespeichert, bis die eine Nachfass-Mail nach etwa zwei Wochen verschickt ist, und direkt danach gelöscht (spätestens nach 30 Tagen). Zusätzlich speichern wir 180 Tage lang einen Einweg-Hash Ihrer E-Mail-Adresse, damit Sie nie eine zweite Nachfass-Mail bekommen.
+
 **Speicherdauer:** Die E-Mail und die Kopie, die wir erhalten, bleiben höchstens 12 Monate nach dem letzten Kontakt in unserem Postfach und werden dann gelöscht, sofern Sie nicht vorher die Löschung verlangen.
 
 ## 5. Webanalyse {#analytics}

@@ -1,6 +1,6 @@
 {
   "id": "back-office-mittelstand",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": { "en": "Back office, small and mid-sized companies", "de": "Backoffice im Mittelstand" },
 
   "assumptions": {
@@ -159,6 +159,11 @@
       "approach": "agent", "effort": "M",
       "automation": { "conservative": 0.35, "expected": 0.55 },
       "setupEur": 9000, "runEurPerYear": 1200,
+      "startSteps": [
+        { "en": "Collect your last 20 quotes and mark what was copy-paste. That part can be automated.", "de": "Nehmen Sie Ihre letzten 20 Angebote und markieren Sie, was Copy-paste war. Genau das lässt sich automatisieren." },
+        { "en": "Put prices and standard items in one list, not in old quotes or people's heads.", "de": "Bringen Sie Preise und Standardpositionen in eine Liste, statt in alte Angebote und Köpfe." },
+        { "en": "Measure for two weeks how long it takes from request to sent quote. That number alone often changes things.", "de": "Messen Sie zwei Wochen lang die Zeit von der Anfrage bis zum verschickten Angebot. Schon diese Zahl verändert oft etwas." }
+      ],
       "lever": {
         "type": "whatif_orders",
         "label": { "en": "Orders lost to slow quotes", "de": "Aufträge, die an langsame Angebote verloren gehen" },
@@ -196,6 +201,11 @@
       "approach": "extraction", "effort": "M",
       "automation": { "conservative": 0.5, "expected": 0.75 },
       "setupEur": 8000, "runEurPerYear": 1200,
+      "startSteps": [
+        { "en": "Count for one week how orders arrive: e-mail, PDF, phone, portal. Start with the biggest channel.", "de": "Zählen Sie eine Woche lang, wie Bestellungen reinkommen: E-Mail, PDF, Telefon, Portal. Fangen Sie beim größten Kanal an." },
+        { "en": "Collect 20 typical order documents, including the messy ones. They're the test set for any tool.", "de": "Sammeln Sie 20 typische Bestellungen, auch die chaotischen. Das ist der Testsatz für jedes Tool." },
+        { "en": "Define what makes an order complete, so missing details are caught before anything is typed in.", "de": "Legen Sie fest, wann eine Bestellung vollständig ist, damit Lücken auffallen, bevor etwas abgetippt wird." }
+      ],
       "lever": {
         "type": "errors",
         "label": { "en": "Errors that reach the customer", "de": "Fehler, die beim Kunden ankommen" },
@@ -223,6 +233,11 @@
       "approach": "extraction", "effort": "S",
       "automation": { "conservative": 0.55, "expected": 0.8 },
       "setupEur": 5000, "runEurPerYear": 1500,
+      "startSteps": [
+        { "en": "Route all supplier invoices to one inbox address. One entry point is the basis for everything else.", "de": "Lassen Sie alle Lieferantenrechnungen an eine Adresse gehen. Ein Eingang ist die Grundlage für alles andere." },
+        { "en": "Check whether your accounting software already has document capture. Many do, unused.", "de": "Prüfen Sie, ob Ihre Buchhaltungssoftware schon eine Belegerfassung hat. Viele haben sie, ungenutzt." },
+        { "en": "Tie approvals to the Skonto deadline: who approves what, by when.", "de": "Koppeln Sie die Freigabe an die Skontofrist: Wer gibt was bis wann frei." }
+      ],
       "lever": {
         "type": "skonto",
         "label": { "en": "Missed Skonto", "de": "Verschenktes Skonto" },
@@ -260,6 +275,11 @@
       "approach": "agent", "effort": "M",
       "automation": { "conservative": 0.35, "expected": 0.55 },
       "setupEur": 9000, "runEurPerYear": 1800,
+      "startSteps": [
+        { "en": "Tag your inbox for one week by type of request. Usually 3–5 types make up most of the volume.", "de": "Markieren Sie eine Woche lang jede Anfrage nach Typ. Meist machen 3–5 Typen den Großteil aus." },
+        { "en": "Write answer templates for the top three types. That's half the automation, without any AI.", "de": "Schreiben Sie Antwortvorlagen für die drei häufigsten Typen. Das ist die halbe Automatisierung, ganz ohne KI." },
+        { "en": "Decide which answers need a person and which only need a check. That's where an agent with approval fits.", "de": "Entscheiden Sie, welche Antworten einen Menschen brauchen und welche nur eine Prüfung. Genau dort passt ein Agent mit Freigabe." }
+      ],
       "lever": {
         "type": "interruptions",
         "label": { "en": "Lost focus", "de": "Verlorene Konzentration" },
@@ -286,6 +306,11 @@
       "approach": "agent", "effort": "M",
       "automation": { "conservative": 0.3, "expected": 0.5 },
       "setupEur": 9000, "runEurPerYear": 1200,
+      "startSteps": [
+        { "en": "Use one form or one address for complaints, with the order number as a required field.", "de": "Nutzen Sie ein Formular oder eine Adresse für Reklamationen, mit der Auftragsnummer als Pflichtfeld." },
+        { "en": "Write down who decides what, up to which amount. Most delays are people waiting for a decision.", "de": "Schreiben Sie auf, wer was bis zu welchem Betrag entscheidet. Die meisten Verzögerungen sind Warten auf eine Entscheidung." },
+        { "en": "Promise a first answer within 24 hours, even if it's only “we're on it”.", "de": "Versprechen Sie eine erste Antwort binnen 24 Stunden, auch wenn sie nur „wir kümmern uns“ lautet." }
+      ],
       "lever": {
         "type": "insight",
         "questions": [
@@ -312,6 +337,11 @@
       "approach": "rules", "effort": "S",
       "automation": { "conservative": 0.6, "expected": 0.8 },
       "setupEur": 2500, "runEurPerYear": 300,
+      "startSteps": [
+        { "en": "Use a booking link for every type of appointment that doesn't need negotiating.", "de": "Nutzen Sie einen Buchungslink für jede Terminart, die keine Verhandlung braucht." },
+        { "en": "Connect the calendars of everyone involved, so nobody asks for availability by e-mail.", "de": "Verbinden Sie die Kalender aller Beteiligten, damit niemand per E-Mail nach freien Zeiten fragt." },
+        { "en": "Send automatic reminders the day before. Fewer no-shows, fewer phone calls.", "de": "Verschicken Sie am Vortag automatische Erinnerungen. Weniger Ausfälle, weniger Telefonate." }
+      ],
       "lever": {
         "type": "interruptions",
         "label": { "en": "Lost focus", "de": "Verlorene Konzentration" },
@@ -338,6 +368,11 @@
       "approach": "rules", "effort": "M",
       "automation": { "conservative": 0.6, "expected": 0.85 },
       "setupEur": 7000, "runEurPerYear": 600,
+      "startSteps": [
+        { "en": "Write down the five numbers you actually steer by. Everything else can wait.", "de": "Schreiben Sie die fünf Zahlen auf, nach denen Sie wirklich steuern. Alles andere kann warten." },
+        { "en": "Find out where each of them comes from, and who exports it by hand.", "de": "Finden Sie heraus, woher jede davon kommt und wer sie von Hand exportiert." },
+        { "en": "Automate the export of the most frequent one first, even if the dashboard comes later.", "de": "Automatisieren Sie zuerst den Export der häufigsten, auch wenn das Dashboard erst später kommt." }
+      ],
       "lever": {
         "type": "insight",
         "questions": [
@@ -364,6 +399,11 @@
       "approach": "extraction", "effort": "S",
       "automation": { "conservative": 0.6, "expected": 0.8 },
       "setupEur": 4000, "runEurPerYear": 600,
+      "startSteps": [
+        { "en": "Agree on one naming scheme (date_customer_type) and one folder structure. Without it, no tool helps.", "de": "Einigen Sie sich auf ein Benennungsschema (Datum_Kunde_Typ) und eine Ordnerstruktur. Ohne das hilft kein Tool." },
+        { "en": "Let incoming documents land in one place first, and be filed from there.", "de": "Lassen Sie eingehende Dokumente zuerst an einem Ort landen und von dort ablegen." },
+        { "en": "Test the search: can someone new find last year's contract in under a minute?", "de": "Testen Sie die Suche: Findet jemand Neues den Vertrag vom letzten Jahr in unter einer Minute?" }
+      ],
       "lever": {
         "type": "insight",
         "questions": [
@@ -390,6 +430,11 @@
       "approach": "rules", "effort": "M",
       "automation": { "conservative": 0.5, "expected": 0.7 },
       "setupEur": 6000, "runEurPerYear": 600,
+      "startSteps": [
+        { "en": "Name one owner per kind of data: customers, suppliers, prices.", "de": "Benennen Sie eine verantwortliche Person pro Datenart: Kunden, Lieferanten, Preise." },
+        { "en": "Decide which system is the source of truth, and stop keeping the same data in two places.", "de": "Legen Sie fest, welches System führend ist, und pflegen Sie dieselben Daten nicht mehr doppelt." },
+        { "en": "Run a duplicate check once a quarter. It's boring, and it pays off in every process.", "de": "Machen Sie einmal im Quartal einen Dublettencheck. Langweilig, aber es zahlt sich in jedem Prozess aus." }
+      ],
       "lever": {
         "type": "errors",
         "label": { "en": "Trouble from wrong master data", "de": "Ärger durch falsche Stammdaten" },
@@ -418,6 +463,11 @@
       "automation": { "conservative": 0.4, "expected": 0.6 },
       "setupEur": 3500, "runEurPerYear": 600,
       "takeNote": { "en": "About applicants: automate the admin, not the judgment. AI that ranks candidates counts as high-risk under the EU AI Act. Confirmations, scheduling and status updates don't.", "de": "Zu Bewerbungen: Automatisieren Sie die Verwaltung, nicht das Urteil. KI, die Bewerber bewertet, gilt nach dem EU AI Act als Hochrisiko. Eingangsbestätigungen, Terminabstimmung und Zwischenstände nicht." },
+      "startSteps": [
+        { "en": "Send an automatic confirmation of receipt with a realistic timeline.", "de": "Schicken Sie eine automatische Eingangsbestätigung mit einem realistischen Zeitplan." },
+        { "en": "Use a booking link for interviews instead of e-mail ping-pong.", "de": "Nutzen Sie für Gespräche einen Buchungslink statt E-Mail-Pingpong." },
+        { "en": "Set a rule: every applicant hears back within ten days, including a no.", "de": "Setzen Sie eine Regel: Jede Bewerbung bekommt binnen zehn Tagen eine Antwort, auch eine Absage." }
+      ],
       "lever": {
         "type": "insight",
         "questions": [

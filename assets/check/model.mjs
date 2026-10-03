@@ -314,6 +314,10 @@ export function validatePack(pack) {
     const path = `processes[${i}]`;
     ["label", "desc", "unit"].forEach((f) => text(p[f], `${path}.${f}`));
     if (p.takeNote) text(p.takeNote, `${path}.takeNote`);
+    if (p.startSteps !== undefined) {
+      need(Array.isArray(p.startSteps) && p.startSteps.length > 0, `${path}.startSteps`, "must be a non-empty list");
+      (p.startSteps ?? []).forEach((st, k) => text(st, `${path}.startSteps[${k}]`));
+    }
     for (const f of ["volume", "minutes"]) {
       const d = p[f];
       need(d && Array.isArray(d.options) && d.options.length > 0 && d.options.every(Number.isFinite), `${path}.${f}.options`, "needs a list of numbers");

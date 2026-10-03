@@ -97,6 +97,8 @@ Only if you actively use the form "Get the results by e-mail" do we process:
 ### Feedback on the result
 If you click "Send anonymous feedback" under "Do these numbers feel right?", we receive your rating, which number you found off, the processes you chose, a rough cost band and the potential score, via the same Cloudflare Worker and as an e-mail through Brevo. There is no e-mail address and no answer to individual questions in it. Legal basis: our legitimate interest in improving the check's default values (Art. 6(1)(f) GDPR).
 
+**Follow-up:** if you tick the box for a follow-up, your e-mail address, the result link and your biggest lever are stored in a queue at Cloudflare (Workers KV) until the one follow-up e-mail is sent about two weeks later, and deleted right after (at the latest after 30 days). We also keep a one-way hash of your e-mail address for 180 days so that you never get a second follow-up.
+
 **Storage period:** the e-mail and the copy we receive are kept in our mailbox for at most 12 months after the last contact and then deleted, unless you ask us to delete them earlier.
 
 ## 5. Web Analytics {#analytics}
