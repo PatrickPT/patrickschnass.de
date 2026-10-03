@@ -1,0 +1,10 @@
+{
+  "demo": {
+    "demo": true,
+    "name": "Muster & Partner Steuerberatung",
+    "accent": "#0BB5D6",
+    "logo": "/images/partners/demo.svg",
+    "contactUrl": "https://example.com/kontakt",
+    "contactLabel": { "de": "Termin bei Muster & Partner", "en": "Talk to Muster & Partner" }
+  }
+}

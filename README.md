@@ -66,6 +66,34 @@ tests/check/                   # node --test "tests/**/*.test.mjs"
 - **Share links:** answers are encoded in the URL fragment (`#r=…`), which browsers never send to a
   server.
 
+## Partner mode (`?partner=<id>`, `?embed=1`)
+
+Tax advisors, IT service providers and consultancies can offer the check to their own clients.
+
+- **Add a partner:** an entry in `assets/check/partners.json` (name, accent colour, optional logo
+  in `static/images/partners/`, contact URL and label in DE/EN). It's validated by
+  `validatePartners` in the tests. The `demo` partner only works on `hugo server`.
+- **What changes for visitors:** a "Provided by <partner> together with Patrick Schnaß" bar,
+  a "Talk to <partner>" button next to the booking button, and in the e-mail form an extra,
+  optional checkbox to send the partner the same summary Patrick gets.
+- **Partner copies** go out only with that consent, to the address in the worker secret
+  `PARTNER_EMAILS` (`{"<id>": "<address>"}`), so addresses never sit in this public repo.
+- **Embed** on the partner's site:
+
+  ```html
+  <iframe id="ki-check" src="https://www.patrickschnass.de/de/check/?partner=<id>&embed=1"
+          title="KI-Potenzial-Check" loading="lazy" style="width:100%;border:0;min-height:800px"></iframe>
+  <script>
+    addEventListener("message", (e) => {
+      if (e.origin === "https://www.patrickschnass.de" && e.data && e.data.type === "ck-height")
+        document.getElementById("ki-check").style.height = e.data.height + "px";
+    });
+  </script>
+  ```
+  `embed=1` hides the site's nav and footer; the check reports its height so the iframe never
+  scrolls inside.
+- **Before the first live partner:** clarify the data-protection roles (see `docs/partner-onepager-de.md`).
+
 ## Analytics (Plausible, cookieless)
 
 Off until `hugo.toml` → `[params.analytics] plausible` holds the script URL from Plausible's site
@@ -76,7 +104,8 @@ Events, which only carry step names and coarse labels, never answers or figures:
 |---|---|---|
 | `cta_check` | `where`, `page` | any link to the check (hero, teaser, nav, footer, service page) |
 | `cta_book` / `cta_email` | `where`, `page` | booking / e-mail buttons anywhere |
-| `check_start` | `from` (`direct`, `calc-skonto`, …) | "Let's find out" |
+| `check_start` | `from` (`direct`, `calc-skonto`, `partner-<id>`, …) | "Let's find out" |
+| `cta_partner` | `partner` | "Talk to <partner>" on the result page |
 | `calc_use` | `calc` | first interaction with a calculator |
 | `check_step` | `step` (`context`, `guess`, `processes`, `detail_1`…, `honest`) | each screen of the flow |
 | `check_complete` | `processes` (count) | result reached through the flow |

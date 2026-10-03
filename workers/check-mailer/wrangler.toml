@@ -15,6 +15,7 @@ BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZss
 #   BREVO_API_KEY  Brevo transactional API key
 #   NOTIFY_TO      where Patrick's copy of each result goes
 #   REPLY_TO       (optional) where replies from visitors go; defaults to SENDER_EMAIL
+#   PARTNER_EMAILS (optional) partner mode: JSON {"<partner id>": "<address>"} for consented copies
 
 # 3 requests per minute per key. Keys are the client IP and the recipient address.
 [[ratelimits]]

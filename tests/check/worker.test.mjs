@@ -97,3 +97,11 @@ test("cron leaves follow-ups that aren't due yet", async () => {
   assert.equal(sent.length, 0);
   assert.equal(queued(env).length, 1);
 });
+
+test("demo partners are rejected by the live worker", async () => {
+  const env = makeEnv();
+  sent.length = 0;
+  const res = await post(env, payload({ partner: "demo", partnerCopy: true, resultUrl: `${ORIGIN}/de/check/?partner=demo#r=eyJ2IjoxfQ` }));
+  assert.equal(res.status, 400);
+  assert.equal(sent.length, 0);
+});

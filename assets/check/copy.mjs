@@ -196,6 +196,10 @@ export const copy = {
       cardEyebrow: "AI potential check", cardScore: "Potential used", cardCost: "a year in routine work",
       cardStart: "Start here:", cardFooter: "Free 5-minute check · patrickschnass.de/check", cardFile: "ai-potential-check.png",
     },
+    partner: {
+      by: "Provided by {name} together with Patrick Schnaß",
+      copy: "Also send a copy of my result to {name}. (Optional. {name} then receives the same summary as Patrick, including my e-mail address.)",
+    },
     printHead: "AI potential check · patrickschnass.de",
   },
 
@@ -390,6 +394,10 @@ export const copy = {
       waText: "Unser Backoffice: rund {cost} pro Jahr Routinearbeit, {score} % des Potenzials genutzt. Ganzes Ergebnis: {url}",
       cardEyebrow: "KI-Potenzial-Check", cardScore: "Genutztes Potenzial", cardCost: "pro Jahr Routinearbeit",
       cardStart: "Hier anfangen:", cardFooter: "Kostenloser 5-Minuten-Check · patrickschnass.de/de/check", cardFile: "ki-potenzial-check.png",
+    },
+    partner: {
+      by: "Bereitgestellt von {name} gemeinsam mit Patrick Schnaß",
+      copy: "Eine Kopie meines Ergebnisses auch an {name} senden. (Freiwillig. {name} erhält dann dieselbe Zusammenfassung wie Patrick, inklusive meiner E-Mail-Adresse.)",
     },
     printHead: "KI-Potenzial-Check · patrickschnass.de",
   },

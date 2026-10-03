@@ -99,6 +99,8 @@ If you click "Send anonymous feedback" under "Do these numbers feel right?", we 
 
 **Follow-up:** if you tick the box for a follow-up, your e-mail address, the result link and your biggest lever are stored in a queue at Cloudflare (Workers KV) until the one follow-up e-mail is sent about two weeks later, and deleted right after (at the latest after 30 days). We also keep a one-way hash of your e-mail address for 180 days so that you never get a second follow-up.
 
+**Partner copy:** if you reached the check through one of our partners (shown at the top of the page) and tick "Also send a copy of my result to <partner>", that partner receives the same summary as we do, including your e-mail address, so they can follow up with you. This only happens with that explicit tick (Art. 6(1)(a) GDPR); you can withdraw your consent towards us or the partner at any time.
+
 **Storage period:** the e-mail and the copy we receive are kept in our mailbox for at most 12 months after the last contact and then deleted, unless you ask us to delete them earlier.
 
 ## 5. Web Analytics {#analytics}

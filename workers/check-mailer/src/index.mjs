@@ -9,6 +9,7 @@
  * Any other engine (e.g. a Windmill webhook) can take over by honouring the same contract.
  */
 import pack from "../../../assets/check/packs/back-office-mittelstand.json" with { type: "json" };
+import partners from "../../../assets/check/partners.json" with { type: "json" };
 import {
   validatePayload, renderVisitorEmail, renderNotification, validateFeedback, renderFeedbackNotification,
   followUpRecord, isDue, renderFollowUpEmail,
@@ -52,7 +53,7 @@ export default {
     }
 
     const prefixes = origins.flatMap((o) => [`${o}/check/#r=`, `${o}/de/check/#r=`]);
-    const result = validatePayload(pack, body, { resultPrefixes: prefixes });
+    const result = validatePayload(pack, body, { resultPrefixes: prefixes, partners });
     if (!result.ok) return json({ error: result.error }, 400);
     if (result.spam) return json({ ok: true }, 200);
     const { data } = result;
@@ -67,6 +68,17 @@ export default {
     if (!sent.ok) {
       console.error("brevo", sent.status, await sent.text());
       return json({ error: "send" }, 502);
+    }
+
+    // Partner mode: a copy to the partner, only with the visitor's explicit consent. Partner addresses
+    // live in the PARTNER_EMAILS secret ({"<id>": "<address>"}), never in the public repo.
+    if (data.partnerCopy) {
+      let to = null;
+      try { to = JSON.parse(env.PARTNER_EMAILS || "{}")[data.partner] ?? null; } catch { /* misconfigured secret: skip */ }
+      if (to) {
+        const copy = renderNotification(pack, data, { audience: "partner" });
+        ctx.waitUntil(send({ to: [{ email: to }], replyTo: { email: data.email }, subject: copy.subject, htmlContent: copy.html, textContent: copy.text }));
+      }
     }
 
     // The one consented follow-up: queued in KV, sent by the daily cron (scheduled() below).
