@@ -33,5 +33,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+{{ partial "analytics.html" $page }}
 {{- $css := resources.Get "advisory/styles.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">

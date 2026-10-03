@@ -96,6 +96,13 @@ Only if you actively use the form "Get the results by e-mail" do we process:
 
 **Storage period:** the e-mail and the copy we receive are kept in our mailbox for at most 12 months after the last contact and then deleted, unless you ask us to delete them earlier.
 
+## 5. Web Analytics {#analytics}
+This website uses Plausible Analytics (Plausible Insights OÜ, Estonia) to count page views and a few interactions, such as "check started", "check completed" or "booking button clicked". Plausible sets no cookies, stores nothing in your browser and creates no persistent identifier. To count unique visitors within a single day, Plausible computes a hash from your IP address, your browser's user agent, our domain and a salt that is deleted every 24 hours; the IP address itself is not stored. Data is processed on servers in the EU and only evaluated in aggregate.
+
+The answers you enter in the AI potential check are never part of this: events only contain the step name or the kind of button, and the part of the address after "#" (which holds the answers on result links) is removed before anything is sent.
+
+**Legal basis:** our legitimate interest in understanding how the website is used and improving it (Art. 6(1)(f) GDPR). Plausible processes the data on our behalf under a data processing agreement.
+
 ---
 
 *(Note: This is a template. Please fill in your personal details like address and email.)*

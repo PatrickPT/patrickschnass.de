@@ -96,3 +96,10 @@ Nur wenn Sie das Formular „Ergebnis per E-Mail“ aktiv absenden, verarbeiten 
 **Auftragsverarbeiter:** Das Formular nimmt ein Cloudflare Worker entgegen (Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA; zertifiziert nach dem EU-US Data Privacy Framework), die E-Mail wird über Brevo versendet (Sendinblue SAS, 106 boulevard Haussmann, 75008 Paris, Frankreich). Beide handeln in unserem Auftrag auf Grundlage eines Auftragsverarbeitungsvertrags.
 
 **Speicherdauer:** Die E-Mail und die Kopie, die wir erhalten, bleiben höchstens 12 Monate nach dem letzten Kontakt in unserem Postfach und werden dann gelöscht, sofern Sie nicht vorher die Löschung verlangen.
+
+## 5. Webanalyse {#analytics}
+Diese Website nutzt Plausible Analytics (Plausible Insights OÜ, Estland), um Seitenaufrufe und einige Interaktionen zu zählen, etwa „Check gestartet“, „Check abgeschlossen“ oder „Termin-Button geklickt“. Plausible setzt keine Cookies, speichert nichts in Ihrem Browser und erzeugt keine dauerhafte Kennung. Um eindeutige Besucher innerhalb eines Tages zu zählen, bildet Plausible einen Hash aus Ihrer IP-Adresse, dem User-Agent Ihres Browsers, unserer Domain und einem Salt, der alle 24 Stunden gelöscht wird; die IP-Adresse selbst wird nicht gespeichert. Die Daten werden auf Servern in der EU verarbeitet und nur zusammengefasst ausgewertet.
+
+Ihre Antworten im KI-Potenzial-Check sind nie Teil davon: Ereignisse enthalten nur den Namen des Schritts oder die Art des Buttons, und der Teil der Adresse nach dem „#“ (in dem bei Ergebnis-Links die Antworten stehen) wird vor dem Senden entfernt.
+
+**Rechtsgrundlage:** unser berechtigtes Interesse, zu verstehen, wie die Website genutzt wird, und sie zu verbessern (Art. 6 Abs. 1 lit. f DSGVO). Plausible verarbeitet die Daten in unserem Auftrag auf Grundlage eines Auftragsverarbeitungsvertrags.
