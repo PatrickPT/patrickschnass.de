@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Social preview card for /check/ and /de/check/. Rendered to PNG by render.sh (1200×630). -->
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300&family=Inter:wght@500&family=Work+Sans:wght@400;500;600&display=block" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #080808; color: #fff; font-family: "Work Sans", sans-serif; }
+  .bg { position: absolute; inset: 0; background: url("../../static/images/hero-ribbon.jpg") 78% 30% / 135% auto no-repeat; opacity: .55; }
+  .shade { position: absolute; inset: 0; background: linear-gradient(90deg, #080808 0%, rgba(8,8,8,.92) 42%, rgba(8,8,8,.35) 80%, rgba(8,8,8,.2)); }
+  .card { position: absolute; inset: 0; padding: 64px 72px; display: flex; flex-direction: column; }
+  .brand { font-family: "Big Shoulders Display"; font-weight: 300; font-size: 30px; letter-spacing: .16em; text-transform: uppercase; }
+  .brand em, .grad { font-style: normal; background: linear-gradient(120deg, #03EAFD 0%, #6E29DC 22%, #F62ADE 60%, #F97725 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  h1 { margin-top: auto; font-size: 78px; line-height: 1.02; font-weight: 400; text-transform: uppercase; letter-spacing: .01em; max-width: 860px; }
+  h1 .grad { font-weight: 600; }
+  .row { display: flex; align-items: center; gap: 22px; margin-top: 38px; }
+  .meter { display: inline-flex; align-items: baseline; gap: 14px; padding: 16px 24px; border-radius: 16px; background: rgba(14,14,20,.85); border: 1px solid rgba(255,255,255,.18); }
+  .meter span { font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+  .meter strong { font-size: 38px; font-weight: 600; letter-spacing: -.5px; }
+  .meter small { font-size: 18px; color: rgba(255,255,255,.7); }
+  .facts { font-family: "Inter"; font-weight: 500; font-size: 20px; color: rgba(255,255,255,.82); }
+  .line { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: linear-gradient(90deg, #03EAFD 0%, #6E29DC 22%, #F62ADE 60%, #F97725 100%); }
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="shade"></div>
+<div class="card">
+  <p class="brand">Patrick <em>Schnaß</em></p>
+  <h1 id="title"></h1>
+  <div class="row">
+    <div class="meter"><span id="meter"></span><strong class="grad" id="value"></strong><small id="unit"></small></div>
+    <p class="facts" id="facts"></p>
+  </div>
+</div>
+<div class="line"></div>
+<script>
+  const t = {
+    en: { title: 'What is your back office <span class="grad">really</span> costing you?', meter: "Uncovered", value: "€27,900", unit: "/ year", facts: "5 min · free · runs in your browser" },
+    de: { title: 'Was kostet Ihr Backoffice <span class="grad">wirklich</span>?', meter: "Aufgedeckt", value: "27.900 €", unit: "/ Jahr", facts: "5 Min. · kostenlos · läuft nur im Browser" },
+  }[new URLSearchParams(location.search).get("lang") === "de" ? "de" : "en"];
+  document.getElementById("title").innerHTML = t.title;
+  for (const k of ["meter", "value", "unit", "facts"]) document.getElementById(k).textContent = t[k];
+</script>
+</body>
+</html>

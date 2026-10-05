@@ -38,3 +38,13 @@ adv_format_build_desc = "Praktische Umsetzung bis in den Produktivbetrieb – Ag
 
 adv_nav_check = "KI-Check"
 adv_check_noscript = "Dieser Check läuft komplett in Ihrem Browser, damit nichts von Ihren Eingaben Ihren Rechner verlässt. Dafür braucht er JavaScript. Bitte aktivieren Sie es und laden Sie die Seite neu."
+
+adv_cta_check = "5-Minuten-KI-Check starten"
+adv_teaser_tag = "Kostenlos · 5 Minuten · läuft nur im Browser"
+adv_teaser_title = "Was kostet Ihr Backoffice <em>wirklich</em>?"
+adv_teaser_lead = "Die Stunden, die man sieht, sind nur die Spitze. Darunter: doppelt gemachte Arbeit, ständige Unterbrechungen, teure Leute bei Routinejobs, Skonto, das keiner zieht. In fünf Minuten wissen Sie, was das in Ihrem Unternehmen ausmacht, und wo sich KI wirklich rechnet."
+adv_teaser_tip = "Die Arbeit selbst"
+adv_teaser_l1 = "Doppelt gemacht"
+adv_teaser_l2 = "Verlorene Konzentration"
+adv_teaser_l3 = "Teure Leute, einfache Arbeit"
+adv_teaser_l4 = "Liegen gelassenes Geld"

@@ -18,6 +18,10 @@ const mailer = root.dataset.mailer || ""; // "" = no e-mail form, "mock" = local
 const permalink = root.dataset.permalink || location.origin + location.pathname;
 const privacyUrl = root.dataset.privacy || "/gdpr/";
 const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+// Cookieless analytics via common.js. Step names and counts only, never answers or figures.
+const track = (name, props) => window.trackEvent?.(name, props);
+const trackedOnce = new Set();
+const trackOnce = (name, props) => { const key = name + JSON.stringify(props ?? {}); if (!trackedOnce.has(key)) { trackedOnce.add(key); track(name, props); } };
 
 /* ---------- Formatting ---------- */
 const locale = lang === "de" ? "de-DE" : "en-GB";
@@ -45,6 +49,7 @@ function paybackText(m) {
 const fresh = () => ({ step: "intro", detail: 0, industry: null, size: null, guess: null, processes: [], answers: {}, reflections: {}, overrides: {} });
 let state = fresh();
 let shared = false;
+let arrivedVia = "flow"; // "flow" | "shared" | "reload": how the visitor reached the result page
 const openDetails = new Set();
 
 const STEPS = ["context", "guess", "processes", "detail", "honest"];
@@ -77,7 +82,7 @@ function go(step, detail = 0) {
 function next() {
   if (!canContinue()) return;
   const { step, detail } = state;
-  if (step === "intro") go("context");
+  if (step === "intro") { track("check_start"); go("context"); }
   else if (step === "context") go("guess");
   else if (step === "guess") go("processes");
   else if (step === "processes") go("detail", 0);
@@ -613,6 +618,12 @@ function render() {
   }
   if (state.step === "detail") { meterValue = 0; updateMeter(); }
   if (state.step === "calc") setTimeout(() => go("result"), calm ? 0 : 1900);
+  if (STEPS.includes(state.step)) track("check_step", { step: state.step === "detail" ? `detail_${state.detail + 1}` : state.step });
+  if (state.step === "result") {
+    if (arrivedVia === "flow") track("check_complete", { processes: state.processes.length });
+    else if (arrivedVia === "shared") track("shared_open");
+    arrivedVia = "flow";
+  }
 
   window.wireBookingLinks?.(root);
   // Move focus to the new screen's heading so keyboard and screen-reader users land in the right place.
@@ -676,13 +687,14 @@ root.addEventListener("click", (e) => {
   if (action === "next") next();
   else if (action === "back") back();
   else if (action === "restart") {
+    track("check_restart");
     state = fresh();
     shared = false;
     openDetails.clear();
     history.replaceState(null, "", location.pathname + location.search);
     render();
     root.scrollIntoView({ block: "start" });
-  } else if (action === "print") window.print();
+  } else if (action === "print") { track("result_pdf"); window.print(); }
   else if (action === "to-mail") {
     const form = document.getElementById("ck-mail");
     form?.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "center" });
@@ -708,6 +720,7 @@ root.addEventListener("input", (e) => {
     return;
   }
   if (t.dataset.assume || t.dataset.role || t.dataset.share) {
+    trackOnce("assumptions_edit");
     const raw = parseFloat(String(t.value).replace(",", "."));
     if (!Number.isFinite(raw)) return;
     if (t.dataset.assume) {
@@ -728,7 +741,10 @@ root.addEventListener("input", (e) => {
 root.addEventListener("toggle", (e) => {
   const key = e.target.dataset?.key;
   if (!key) return;
-  if (e.target.open) openDetails.add(key); else openDetails.delete(key);
+  if (e.target.open) {
+    openDetails.add(key);
+    trackOnce("explain_open", { what: key.startsWith("p-") ? "process" : key });
+  } else openDetails.delete(key);
 }, true);
 
 root.addEventListener("keydown", (e) => {
@@ -765,6 +781,7 @@ root.addEventListener("submit", async (e) => {
       status.textContent = T.mailDone;
     }
     form.classList.add("is-sent");
+    track("result_mail", { followUp: form.followUp.checked ? "yes" : "no" });
     button.textContent = "✓";
   } catch {
     status.textContent = T.mailError;
@@ -804,6 +821,7 @@ async function share() {
   try {
     await navigator.clipboard.writeText(url);
     if (status) status.textContent = T.shareDone;
+    track("result_share", { via: "copy" });
   } catch {
     window.prompt(T.shareCta, url);
   }
@@ -817,5 +835,6 @@ if (restored) {
   try { own = sessionStorage.getItem("ck-own") === hash; } catch { /* storage may be blocked */ }
   state = { ...fresh(), ...restored, step: "result" };
   shared = !own;
+  arrivedVia = own ? "reload" : "shared";
 }
 render();

@@ -1,0 +1,10 @@
+{{- /* Cookieless analytics (Plausible). Off until [params.analytics] plausible is set, and never on the
+       local dev server. Events are sent via trackEvent() in advisory/common.js and assets/check/app.mjs. */ -}}
+{{- with site.Params.analytics.plausible }}{{ if not hugo.IsServer }}
+<script async src="{{ . }}"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  // Drop the #fragment from every request: on /check/ it holds the visitor's encoded answers, which never leave the browser.
+  plausible.init({ transformRequest: function (p) { p.u = String(p.u).split("#")[0]; return p; } });
+</script>
+{{- end }}{{ end }}
