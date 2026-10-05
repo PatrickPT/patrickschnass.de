@@ -305,8 +305,8 @@
 .ck-book p, .ck-mail p { font-size: 16px; line-height: 1.55; color: var(--white-82); }
 .ck-book .cta { font-size: 17px; padding: 18px 28px; }
 .ck-book__more { display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px; color: var(--white-72); margin-top: 6px; }
-.ck-book__status:empty, .ck-mail__status:empty { display: none; }
-.ck-book__status, .ck-mail__status { font-size: 14px !important; color: #fff !important; }
+.ck-mail__status:empty { display: none; }
+.ck-mail__status { font-size: 14px !important; color: #fff !important; }
 .ck-mail__field { display: grid; gap: 8px; width: 100%; font-size: 14px; color: var(--white-72); }
 .ck-mail__field input {
   width: 100%; padding: 15px 18px; border-radius: 12px; font: 400 16px var(--cta-font); color: #fff;
@@ -319,6 +319,27 @@
 .ck-mail__consent { font-size: 12.5px !important; line-height: 1.5 !important; color: var(--white-50) !important; }
 .ck-mail__consent a { text-decoration: underline; }
 .ck-mail.is-sent input { opacity: .6; }
+
+/* Share: show the result to a partner, advisor or colleague */
+.ck-share {
+  margin-top: 24px; padding: 28px 32px; border-radius: 20px;
+  background: rgba(14, 14, 20, .78); border: 1px solid rgba(255, 255, 255, .14); backdrop-filter: blur(10px);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px 32px; align-items: center;
+}
+.ck-share__intro h3 { font-size: 22px; font-weight: 500; margin-bottom: 6px; }
+.ck-share__intro p { font-size: 15px; line-height: 1.5; color: var(--white-72); }
+.ck-share__actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.ck-share__btn {
+  padding: 11px 16px; border-radius: 100px; font: 400 14px/1.2 var(--cta-font); color: #fff;
+  border: 1px solid rgba(255, 255, 255, .3); background: rgba(255, 255, 255, .04); transition: border-color .2s, background .2s;
+}
+.ck-share__btn:hover { border-color: rgba(255, 255, 255, .7); background: rgba(255, 255, 255, .08); }
+.ck-share__check { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--white-72); cursor: pointer; }
+.ck-share__check input { accent-color: #F62ADE; }
+.ck-share__status { grid-column: 1 / -1; font-size: 14px; }
+.ck-share__status:empty { display: none; }
+.ck-share__li { grid-column: 1 / -1; font-size: 14px; color: var(--white-72); }
+.ck-share__li small { margin-left: 6px; color: var(--white-50); }
 
 .ck-privacy { background: #000; color: var(--white-50); text-align: center; font-size: 14px; padding: 28px var(--gutter); }
 .ck-privacy .ck-link { color: var(--white-82); margin-left: 6px; }
@@ -384,6 +405,7 @@
   .ck-take { grid-template-columns: 1fr; gap: 24px; }
   .ck-take p:not(.eyebrow) { font-size: 17px; }
   .ck-book, .ck-mail { padding: 24px 20px; }
+  .ck-share { grid-template-columns: 1fr; padding: 22px 20px; }
   .ck-shared { padding-top: 84px; font-size: 14px; }
 }
 

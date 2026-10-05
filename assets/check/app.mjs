@@ -35,6 +35,8 @@ const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const L = (x) => x?.[lang] ?? "";
 // Copy templates may carry markup; the values filled into them never do.
 const fill = (tpl, vals) => tpl.replace(/\{(\w+)\}/g, (m, k) => (k in vals ? esc(vals[k]) : m));
+// Same for plain text (mailto, WhatsApp): no HTML escaping.
+const fillText = (tpl, vals) => tpl.replace(/\{(\w+)\}/g, (m, k) => (k in vals ? String(vals[k]) : m));
 const byId = (list, id) => list.find((x) => x.id === id);
 const procOf = (id) => byId(pack.processes, id);
 
@@ -554,6 +556,142 @@ function assumeHtml() {
     </details>`;
 }
 
+/* ---------- Share: get the result into the conversations where decisions are made ---------- */
+function shareHtml() {
+  const S = T.share;
+  const btn = (action, label) => `<button type="button" class="ck-share__btn" data-action="${action}">${esc(label)}</button>`;
+  return `
+    <div class="ck-share">
+      <div class="ck-share__intro"><h3>${esc(S.title)}</h3><p>${esc(S.lead)}</p></div>
+      <div class="ck-share__actions">
+        ${btn("share-mail", S.mail)}${btn("share-wa", S.whatsapp)}${btn("share", S.copy)}${btn("share-card", S.card)}
+        <label class="ck-share__check"><input type="checkbox" data-card-numbers> <span>${esc(S.cardNumbers)}</span></label>
+      </div>
+      <p class="ck-share__status" role="status" data-share-status></p>
+      <p class="ck-share__li"><button type="button" class="ck-link" data-action="share-li">${esc(S.linkedin)}</button> <small>${esc(S.linkedinNote)}</small></p>
+    </div>`;
+}
+
+const resultUrl = () => `${permalink}#r=${encodeState(pack, state)}`;
+const shareVals = () => ({ n: result.processes.length, cost: eur(result.cost), score: result.score, url: resultUrl() });
+
+function shareVia(via) {
+  const S = T.share;
+  track("result_share", { via });
+  if (via === "mail") {
+    location.href = `mailto:?subject=${encodeURIComponent(S.mailSubject)}&body=${encodeURIComponent(fillText(S.mailBody, shareVals()))}`;
+  } else if (via === "whatsapp") {
+    window.open(`https://wa.me/?text=${encodeURIComponent(fillText(S.waText, shareVals()))}`, "_blank", "noopener");
+  } else if (via === "linkedin") {
+    // The plain check page, never the result: answers stay out of public posts.
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(permalink)}`, "_blank", "noopener");
+  }
+}
+
+/** Draws a 1200×630 result card on a canvas and downloads it. Nothing is uploaded. */
+async function downloadCard() {
+  const S = T.share;
+  const withNumbers = root.querySelector("[data-card-numbers]")?.checked;
+  await Promise.all(["600 96px 'Work Sans'", "400 24px 'Work Sans'", "300 30px 'Big Shoulders Display'"].map((f) => document.fonts.load(f).catch(() => {})));
+  const W = 1200, H = 630;
+  const c = document.createElement("canvas");
+  c.width = W; c.height = H;
+  const g = c.getContext("2d");
+  const grad = (x0, x1) => {
+    const lg = g.createLinearGradient(x0, 0, x1, 0);
+    [[0, "#03EAFD"], [0.22, "#6E29DC"], [0.6, "#F62ADE"], [1, "#F97725"]].forEach(([o, col]) => lg.addColorStop(o, col));
+    return lg;
+  };
+  g.fillStyle = "#080808";
+  g.fillRect(0, 0, W, H);
+  const glow = g.createRadialGradient(930, 330, 10, 930, 330, 480);
+  glow.addColorStop(0, "rgba(110,41,220,.42)");
+  glow.addColorStop(0.55, "rgba(246,42,222,.12)");
+  glow.addColorStop(1, "rgba(8,8,8,0)");
+  g.fillStyle = glow;
+  g.fillRect(0, 0, W, H);
+
+  // Wordmark
+  g.font = "300 30px 'Big Shoulders Display'";
+  g.textBaseline = "alphabetic";
+  if ("letterSpacing" in g) g.letterSpacing = "5px";
+  g.fillStyle = "#fff";
+  g.fillText("PATRICK", 72, 96);
+  const first = g.measureText("PATRICK ").width;
+  g.fillStyle = grad(72 + first, 72 + first + 140);
+  g.fillText("SCHNASS", 72 + first, 96);
+
+  // Left column: eyebrow, headline, start here
+  g.font = "500 18px 'Work Sans'";
+  g.letterSpacing = "3px";
+  g.fillStyle = "rgba(255,255,255,.6)";
+  g.fillText(S.cardEyebrow.toUpperCase(), 72, 220);
+  if ("letterSpacing" in g) g.letterSpacing = "0px";
+  let y = 300;
+  if (withNumbers) {
+    g.font = "600 84px 'Work Sans'";
+    g.fillStyle = grad(72, 600);
+    g.fillText(eur(result.cost), 72, y);
+    g.font = "400 26px 'Work Sans'";
+    g.fillStyle = "rgba(255,255,255,.82)";
+    g.fillText(S.cardCost, 72, y + 44);
+    y += 120;
+  }
+  const top = result.top ? L(procOf(result.top.id).label) : null;
+  if (top) {
+    g.font = "400 24px 'Work Sans'";
+    g.fillStyle = "rgba(255,255,255,.6)";
+    g.fillText(S.cardStart, 72, y);
+    g.font = `500 ${withNumbers ? 40 : 56}px 'Work Sans'`;
+    g.fillStyle = "#fff";
+    // Wrap the process name to the left column.
+    let line = "", ly = y + (withNumbers ? 50 : 68);
+    for (const word of top.split(" ")) {
+      const test = line ? `${line} ${word}` : word;
+      if (g.measureText(test).width > 560 && line) { g.fillText(line, 72, ly); line = word; ly += withNumbers ? 48 : 64; }
+      else line = test;
+    }
+    g.fillText(line, 72, ly);
+  }
+
+  // Right column: the potential gauge
+  const cx = 930, cy = 400, r = 170;
+  g.lineCap = "round";
+  g.lineWidth = 26;
+  g.strokeStyle = "rgba(255,255,255,.12)";
+  g.beginPath(); g.arc(cx, cy, r, Math.PI, 2 * Math.PI); g.stroke();
+  g.strokeStyle = grad(cx - r, cx + r);
+  g.beginPath(); g.arc(cx, cy, r, Math.PI, Math.PI + Math.PI * clamp(result.score, 1, 100) / 100); g.stroke();
+  g.textAlign = "center";
+  g.font = "600 96px 'Work Sans'";
+  g.fillStyle = "#fff";
+  g.fillText(`${result.score}%`, cx, cy - 10);
+  g.font = "500 20px 'Work Sans'";
+  if ("letterSpacing" in g) g.letterSpacing = "3px";
+  g.fillStyle = "rgba(255,255,255,.65)";
+  g.fillText(S.cardScore.toUpperCase(), cx, cy + 40);
+  if ("letterSpacing" in g) g.letterSpacing = "0px";
+  g.textAlign = "left";
+
+  // Footer + gradient line
+  g.font = "400 22px 'Work Sans'";
+  g.fillStyle = "rgba(255,255,255,.75)";
+  g.fillText(S.cardFooter, 72, 574);
+  g.fillStyle = grad(0, W);
+  g.fillRect(0, H - 6, W, 6);
+
+  const blob = await new Promise((res) => c.toBlob(res, "image/png"));
+  if (!blob) return;
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = S.cardFile;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  track("result_share", { via: withNumbers ? "card_numbers" : "card" });
+}
+
 function nextHtml() {
   const mailForm = mailer ? `
     <form class="ck-mail" id="ck-mail" novalidate>
@@ -582,12 +720,11 @@ function nextHtml() {
           <a class="cta cta--gradient" data-book>${esc(T.bookCta)}</a>
           <div class="ck-book__more">
             <button type="button" class="ck-link" data-action="print">${esc(T.ctaPdf)}</button>
-            <button type="button" class="ck-link" data-action="share">${esc(T.shareCta)}</button>
           </div>
-          <p class="ck-book__status" role="status" data-share-status></p>
         </div>
         ${mailForm}
       </div>
+      ${shareHtml()}
     </div>`;
 }
 
@@ -774,6 +911,10 @@ root.addEventListener("click", (e) => {
     form?.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "center" });
     form?.querySelector("input[type=email]")?.focus({ preventScroll: true });
   } else if (action === "share") share();
+  else if (action === "share-mail") shareVia("mail");
+  else if (action === "share-wa") shareVia("whatsapp");
+  else if (action === "share-li") shareVia("linkedin");
+  else if (action === "share-card") downloadCard();
   else if (action === "fb-send") sendFeedback();
   else if (action === "reset") {
     state.overrides = {};
@@ -891,7 +1032,7 @@ function mailPayload(email, form) {
 }
 
 async function share() {
-  const url = `${permalink}#r=${encodeState(pack, state)}`;
+  const url = resultUrl();
   const status = root.querySelector("[data-share-status]");
   try {
     await navigator.clipboard.writeText(url);
