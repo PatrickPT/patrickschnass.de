@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Fonts are self-hosted and linked in layouts/partials/extend-head.html (an @import here would land mid-bundle and be ignored). */
 
 :root {
     --color-neutral-50: 255 255 255;
