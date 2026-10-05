@@ -35,3 +35,6 @@ adv_format_fieldwork = "Field work"
 adv_format_fieldwork_desc = "On site with your teams: assess processes, organisation and compliance where the work actually happens."
 adv_format_build = "Build & Ship"
 adv_format_build_desc = "Hands-on delivery into production - agents, ML and automation that keep running after the first version."
+
+adv_nav_check = "AI check"
+adv_check_noscript = "This check runs entirely in your browser, so nothing you enter ever leaves your computer. That's why it needs JavaScript. Please enable it and reload the page."

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  {{ partial "advisory/head.html" (dict "page" . "title" (printf "%s — Patrick Schnaß" .Title) "description" .Description) }}
+  {{- $css := resources.Get "check/check.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+</head>
+<body class="ck-page">
+{{ partial "advisory/nav.html" . }}
+{{- /* The e-mail form needs an endpoint (see workers/check-mailer). Without one the form is hidden;
+       the local dev server uses a mock so the flow can be reviewed end to end. */ -}}
+{{- $mailer := site.Params.check.mailer | default "" }}
+{{- if and (not $mailer) hugo.IsServer }}{{ $mailer = "mock" }}{{ end }}
+
+<main id="main">
+  <div class="ck-app" id="ck-app" data-step="intro" data-mailer="{{ $mailer }}" data-permalink="{{ .Permalink }}" data-privacy="{{ "gdpr/" | relLangURL }}#potential-check">
+    <noscript>
+      <div class="ck-intro">
+        <h1 class="ck-intro__title">{{ .Title }}</h1>
+        <p class="ck-intro__lead">{{ i18n "adv_check_noscript" }}</p>
+      </div>
+    </noscript>
+  </div>
+</main>
+
+{{ partial "advisory/footer.html" . }}
+
+{{ $common := resources.Get "advisory/common.js" | minify | fingerprint }}
+<script src="{{ $common.RelPermalink }}" integrity="{{ $common.Data.Integrity }}"></script>
+{{ $app := resources.Get "check/app.mjs" | js.Build (dict "targetPath" "check/app.js" "format" "iife" "target" "es2019" "minify" true) | fingerprint }}
+<script src="{{ $app.RelPermalink }}" integrity="{{ $app.Data.Integrity }}"></script>
+</body>
+</html>

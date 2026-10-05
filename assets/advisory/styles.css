@@ -101,6 +101,9 @@ img { max-width: 100%; }
   transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease);
 }
 .nav__link:hover::after, .has-sub.is-open > .nav__link::after { transform: scaleX(1); }
+/* The free check is the entry offer, so its link carries the brand gradient */
+.nav__link--check { font-weight: 500; background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nav__link--check::after { background: var(--gradient-line); }
 
 .has-sub { position: relative; }
 .sub {

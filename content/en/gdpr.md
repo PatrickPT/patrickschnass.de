@@ -78,6 +78,24 @@ You have the right to have data that we process automatically on the basis of yo
 ### Information, Deletion, and Correction
 Within the framework of the applicable legal provisions, you have the right to free information about your stored personal data, their origin and recipient and the purpose of the data processing and, if applicable, a right to correction or deletion of this data at any time.
 
+## 4. AI Potential Check {#potential-check}
+
+### Calculation in your browser
+The AI potential check at /check/ runs entirely in your browser. Your answers (industry, company size, processes, volumes, times and your answers to the reflection questions) are not sent to us or to anyone else while you use the check. If you open or share a result link, the answers are contained in the part of the address after the "#". Browsers do not send this part to the web server.
+
+### Sending your result by e-mail
+Only if you actively use the form "Get the results by e-mail" do we process:
+- your e-mail address,
+- your answers and the calculated result (no names, no free text),
+- whether you agreed to a personal follow-up,
+- technical connection data (IP address) for protection against abuse.
+
+**Purpose and legal basis:** sending the result you requested (Art. 6(1)(b) GDPR). If you tick the box for a personal follow-up, we contact you once about your result on the basis of your consent (Art. 6(1)(a) GDPR), which you can withdraw at any time, for example by replying to the e-mail. There is no newsletter.
+
+**Processors:** the form is received by a Cloudflare Worker (Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA; certified under the EU-US Data Privacy Framework) and the e-mail is sent via Brevo (Sendinblue SAS, 106 boulevard Haussmann, 75008 Paris, France). Both act on our behalf under a data processing agreement.
+
+**Storage period:** the e-mail and the copy we receive are kept in our mailbox for at most 12 months after the last contact and then deleted, unless you ask us to delete them earlier.
+
 ---
 
 *(Note: This is a template. Please fill in your personal details like address and email.)*
