@@ -2,7 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { validatePayload, renderVisitorEmail, renderNotification } from "../../workers/check-mailer/src/email.mjs";
+import { validatePayload, renderVisitorEmail, renderNotification, validateFeedback, renderFeedbackNotification } from "../../workers/check-mailer/src/email.mjs";
 
 const pack = JSON.parse(readFileSync(new URL("../../assets/check/packs/back-office-mittelstand.json", import.meta.url)));
 const prefixes = ["https://www.patrickschnass.de/check/#r=", "https://www.patrickschnass.de/de/check/#r="];
@@ -77,4 +77,40 @@ test("the notification tells Patrick whether a follow-up is allowed", () => {
   assert.match(renderNotification(pack, r.data).text, /Rückmeldung erlaubt: JA/);
   const no = check({ ...valid(), followUp: false });
   assert.match(renderNotification(pack, no.data).text, /nicht kontaktieren/);
+});
+
+const feedback = () => ({
+  type: "feedback", lang: "en", rating: "high", reason: "setup", website: "",
+  summary: { pack: pack.id, packVersion: pack.version, processes: ["quotes", "emails"], costBand: "50-100k", score: 31 },
+});
+
+test("feedback: valid input passes and only known fields survive", () => {
+  const r = validateFeedback(pack, { ...feedback(), email: "someone@example.com" });
+  assert.equal(r.ok, true);
+  assert.equal(r.data.email, undefined);
+  assert.deepEqual(r.data.summary.processes, ["quotes", "emails"]);
+  assert.equal(validateFeedback(pack, { ...feedback(), rating: "right", reason: null }).ok, true);
+});
+
+test("feedback: bad input is rejected with the field name", () => {
+  const cases = [
+    [(b) => { b.type = "mail"; }, "type"],
+    [(b) => { b.rating = "terrible <b>"; }, "rating"],
+    [(b) => { b.reason = "Buy pills"; }, "reason"],
+    [(b) => { b.summary.processes = ["quotes", "free text"]; }, "summary.processes"],
+    [(b) => { b.summary.costBand = "1 million"; }, "summary.costBand"],
+    [(b) => { b.summary.score = -1; }, "summary.score"],
+  ];
+  for (const [mutate, field] of cases) {
+    const b = feedback();
+    mutate(b);
+    assert.deepEqual(validateFeedback(pack, b), { ok: false, error: field }, field);
+  }
+});
+
+test("feedback: the note to Patrick is readable and escaped", () => {
+  const note = renderFeedbackNotification(pack, validateFeedback(pack, feedback()).data);
+  assert.match(note.subject, /ZU HOCH · Einrichtungskosten · 50-100k/);
+  assert.match(note.text, /Angebote erstellen, Kundenanfragen per E-Mail/);
+  assert.doesNotMatch(note.html, /<script/);
 });

@@ -95,6 +95,9 @@ Nur wenn Sie das Formular „Ergebnis per E-Mail“ aktiv absenden, verarbeiten 
 
 **Auftragsverarbeiter:** Das Formular nimmt ein Cloudflare Worker entgegen (Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA; zertifiziert nach dem EU-US Data Privacy Framework), die E-Mail wird über Brevo versendet (Sendinblue SAS, 106 boulevard Haussmann, 75008 Paris, Frankreich). Beide handeln in unserem Auftrag auf Grundlage eines Auftragsverarbeitungsvertrags.
 
+### Feedback zum Ergebnis
+Wenn Sie unter „Fühlen sich die Zahlen richtig an?“ auf „Anonymes Feedback senden“ klicken, erhalten wir Ihre Bewertung, welche Zahl Ihnen daneben vorkam, die gewählten Prozesse, ein grobes Kostenband und den Potenzial-Score, über denselben Cloudflare Worker und als E-Mail über Brevo. Darin stehen keine E-Mail-Adresse und keine Antworten auf einzelne Fragen. Rechtsgrundlage: unser berechtigtes Interesse, die Standardwerte des Checks zu verbessern (Art. 6 Abs. 1 lit. f DSGVO).
+
 **Speicherdauer:** Die E-Mail und die Kopie, die wir erhalten, bleiben höchstens 12 Monate nach dem letzten Kontakt in unserem Postfach und werden dann gelöscht, sofern Sie nicht vorher die Löschung verlangen.
 
 ## 5. Webanalyse {#analytics}

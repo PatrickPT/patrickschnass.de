@@ -23,6 +23,9 @@ browser ──POST JSON──▶ Worker ──▶ validate (ids + bounded number
 - **Contract:** `{ email, followUp, lang, website, resultUrl, summary }`, built in
   `assets/check/app.mjs` → `mailPayload`. Validation lives in `src/email.mjs` and is unit-tested
   in `tests/check/mailer.test.mjs`.
+- **Feedback** ("Do these numbers feel right?"): `{ type: "feedback", lang, rating, reason, summary }`
+  with ids, a cost band and the score only. It sends a one-line note to `NOTIFY_TO` and never
+  e-mails the visitor. Built in `app.mjs` → `feedbackPayload`.
 
 ## Deploy (one-off, about 30 minutes)
 

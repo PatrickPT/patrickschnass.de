@@ -68,6 +68,53 @@ export function validatePayload(pack, body, { resultPrefixes = [] } = {}) {
   };
 }
 
+/* ---------- Feedback: "Do these numbers feel right?" (no e-mail address, no individual answers) ---------- */
+
+export const FEEDBACK_RATINGS = ["right", "high", "low"];
+export const FEEDBACK_REASONS = ["rate", "time", "share", "setup", "other"];
+export const COST_BANDS = ["<10k", "10-50k", "50-100k", "100-250k", ">250k"];
+
+/** Checks a feedback request. Returns { ok: false, error } or { ok: true, spam, data }. */
+export function validateFeedback(pack, body) {
+  const fail = (error) => ({ ok: false, error });
+  if (!body || typeof body !== "object" || body.type !== "feedback") return fail("type");
+  if (!LANGS.includes(body.lang)) return fail("lang");
+  if (!FEEDBACK_RATINGS.includes(body.rating)) return fail("rating");
+  if (body.reason !== null && !FEEDBACK_REASONS.includes(body.reason)) return fail("reason");
+  const s = body.summary;
+  if (!s || typeof s !== "object" || s.pack !== pack.id) return fail("summary");
+  const procIds = ids(pack.processes);
+  if (!Array.isArray(s.processes) || s.processes.length === 0 || s.processes.length > 10 || !s.processes.every((id) => procIds.has(id))) return fail("summary.processes");
+  if (!COST_BANDS.includes(s.costBand)) return fail("summary.costBand");
+  if (!isNum(s.score, 0, 100)) return fail("summary.score");
+  return {
+    ok: true,
+    spam: typeof body.website === "string" && body.website.length > 0,
+    data: {
+      lang: body.lang, rating: body.rating, reason: body.reason ?? null,
+      summary: { packVersion: typeof s.packVersion === "string" ? s.packVersion.slice(0, 20) : "", processes: [...new Set(s.processes)], costBand: s.costBand, score: s.score },
+    },
+  };
+}
+
+/** The one-line notification Patrick gets for each feedback. */
+export function renderFeedbackNotification(pack, data) {
+  const rating = { right: "passt ungefähr", high: "ZU HOCH", low: "ZU NIEDRIG" }[data.rating];
+  const reason = { rate: "Stundensatz", time: "Zeit pro Vorgang", share: "Automatisierungsanteil", setup: "Einrichtungskosten", other: "etwas anderes" }[data.reason] ?? "–";
+  const procs = data.summary.processes.map((id) => pack.processes.find((p) => p.id === id)?.label?.de ?? id).join(", ");
+  const text = [
+    `Bewertung: ${rating}`,
+    `Welche Zahl: ${reason}`,
+    `Prozesse: ${procs}`,
+    `Kostenband: ${data.summary.costBand} € · Potenzial genutzt: ${data.summary.score} % · Sprache: ${data.lang} · Pack ${data.summary.packVersion}`,
+  ].join("\n");
+  return {
+    subject: `[Check-Feedback] ${rating}${data.reason ? ` · ${reason}` : ""} · ${data.summary.costBand}`,
+    text,
+    html: `<pre style="font:14px/1.5 ui-monospace,Menlo,monospace;white-space:pre-wrap;">${esc(text)}</pre>`,
+  };
+}
+
 const COPY = {
   de: {
     subject: "Ihr KI-Potenzial-Check: rund {cost} pro Jahr",

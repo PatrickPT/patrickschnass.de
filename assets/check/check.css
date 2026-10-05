@@ -233,6 +233,21 @@
 .ck-pcard__approach span { display: inline-block; min-width: 92px; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; opacity: .55; }
 .ck-pcard__approach strong { font-weight: 600; }
 
+/* Feedback: "Do these numbers feel right?" (light background, so light chips) */
+.ck-fb { margin-top: 28px; padding: 24px 30px; border-radius: 16px; background: #fff; border: 1px dashed rgba(0, 0, 0, .22); }
+.ck-fb h3 { font-size: 22px; font-weight: 500; }
+.ck-fb__lead { margin: 6px 0 16px; font-size: 15px; line-height: 1.5; opacity: .75; max-width: 640px; }
+.ck-fb .ck-qblock { margin-top: 18px; }
+.ck-fb .ck-qlabel { color: var(--ink); font-size: 15px; }
+.ck-fb .ck-chip { color: var(--ink); border-color: rgba(0, 0, 0, .2); background: #fff; }
+.ck-fb .ck-chip:hover { border-color: rgba(0, 0, 0, .5); background: #fafafa; }
+.ck-fb .ck-chip[aria-pressed="true"] { background: linear-gradient(#fff, #fff) padding-box, var(--gradient-text) border-box; box-shadow: 0 6px 18px rgba(var(--glow), .15); }
+.ck-fb__send { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+.ck-fb__send .cta { padding: 13px 20px; }
+.ck-fb__send small { flex: 1; min-width: 240px; font-size: 12.5px; line-height: 1.45; opacity: .6; }
+.ck-fb__thanks { font-size: 16px; font-weight: 500; }
+.ck-fb__error { margin-top: 12px; font-size: 14px; color: #b3261e; }
+
 /* Assumptions */
 .ck-assume { margin-top: 32px; background: #fff; border: 1px solid rgba(0, 0, 0, .1); border-radius: 16px; padding: 22px 30px; }
 .ck-assume summary { cursor: pointer; display: grid; gap: 2px; list-style: none; }
@@ -365,7 +380,7 @@
   .ck-pcard__head h3 { font-size: 21px; }
   .ck-pcard__figures { grid-template-columns: 1fr; gap: 10px; }
   .ck-pcard__figures dd { font-size: 21px; }
-  .ck-assume { padding: 18px 20px; }
+  .ck-assume, .ck-fb { padding: 18px 20px; }
   .ck-take { grid-template-columns: 1fr; gap: 24px; }
   .ck-take p:not(.eyebrow) { font-size: 17px; }
   .ck-book, .ck-mail { padding: 24px 20px; }
