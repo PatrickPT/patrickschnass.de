@@ -61,6 +61,27 @@ tests/check/                   # node --test "tests/**/*.test.mjs"
 - **Share links:** answers are encoded in the URL fragment (`#r=…`), which browsers never send to a
   server.
 
+## Analytics (Plausible, cookieless)
+
+Off until `hugo.toml` → `[params.analytics] plausible` holds the script URL from Plausible's site
+settings (never loads on `hugo server`). The fragment (`#r=…`) is stripped from every request.
+Events, which only carry step names and coarse labels, never answers or figures:
+
+| Event | Props | When |
+|---|---|---|
+| `cta_check` | `where`, `page` | any link to the check (hero, teaser, nav, footer, service page) |
+| `cta_book` / `cta_email` | `where`, `page` | booking / e-mail buttons anywhere |
+| `check_start` | | "Let's find out" |
+| `check_step` | `step` (`context`, `guess`, `processes`, `detail_1`…, `honest`) | each screen of the flow |
+| `check_complete` | `processes` (count) | result reached through the flow |
+| `shared_open` | | someone opens a result link shared with them |
+| `explain_open` | `what` (`score`, `process`, `assume`) | first time per kind |
+| `assumptions_edit` | | first edit of an assumption |
+| `result_pdf` / `result_share` / `result_mail` | `via` / `followUp` | next-step actions |
+| `check_restart` | | "Start over" |
+
+In Plausible, add these names as **custom event goals** so they show up in the dashboard.
+
 ---
 
 ## Homepage vs Blog

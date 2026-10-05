@@ -15,6 +15,31 @@ function wireEmailLinks(root = document) {
   root.querySelectorAll("[data-email]").forEach((a) => { a.href = `mailto:${address}`; });
 }
 
+/* ---------- Analytics (cookieless; a no-op unless [params.analytics] is set) ---------- */
+// Never pass answers, figures or anything personal: event names and coarse labels only.
+function trackEvent(name, props) {
+  try { if (typeof window.plausible === "function") window.plausible(name, props ? { props } : undefined); }
+  catch { /* analytics must never break the page */ }
+}
+
+// Where on the page a CTA sits: footer, nav, or the id of the closest section (hero = "top").
+function ctaWhere(el) {
+  if (el.dataset.trackWhere) return el.dataset.trackWhere;
+  if (el.closest("footer")) return "footer";
+  if (el.closest(".nav, .mobile-menu")) return "nav";
+  const id = el.closest("[id]")?.id;
+  return id === "top" ? "hero" : id || "page";
+}
+
+document.addEventListener("click", (e) => {
+  const el = e.target.closest("a, button");
+  if (!el) return;
+  const where = ctaWhere(el);
+  if (el.hasAttribute("data-book")) trackEvent("cta_book", { where, page: location.pathname });
+  else if (el.hasAttribute("data-email")) trackEvent("cta_email", { where, page: location.pathname });
+  else if (/\/check\/$/.test(el.getAttribute("href") || "")) trackEvent("cta_check", { where, page: location.pathname });
+}, { capture: true });
+
 /* ---------- Nav, services menu, mobile menu, to-top (all advisory pages) ---------- */
 const nav = document.getElementById("nav");
 const totop = document.getElementById("totop");

@@ -127,6 +127,11 @@ disableKinds = ["taxonomy", "term"]
   [params.check]
     mailer = ""
 
+  # Cookieless analytics: paste the script URL from Plausible → Site settings → Tracking
+  # (https://plausible.io/js/pa-….js). Empty = no analytics script at all. Never loads on `hugo server`.
+  [params.analytics]
+    plausible = ""
+
   [params.footer]
     showScrollToTop = true
     showThemeAttribution = false
