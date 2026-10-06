@@ -233,7 +233,7 @@ function resultShell() {
     <div class="ck-print-head">${esc(T.printHead)} · ${esc(new Date().toLocaleDateString(locale))}</div>
     ${shared ? `<div class="ck-shared"><span>${esc(T.resumeShared)}</span><button type="button" class="ck-link" data-action="restart">${esc(T.startOwn)} →</button></div>` : ""}
     <section class="ck-r-hero" id="ck-r-hero"></section>
-    <section class="ck-r-ice" id="ck-r-ice"></section>
+    <section class="ck-r-costs" id="ck-r-costs"></section>
     <section class="ck-r-score" id="ck-r-score"></section>
     <section class="ck-r-rank">
       <div class="ck-wrap">
@@ -281,31 +281,35 @@ function heroHtml(r) {
     </div>`;
 }
 
-function icebergHtml(r) {
-  const below = ["rework", "focus", "talent"].filter((k) => r.layers[k] > 0);
-  const all = r.layers.work + below.reduce((s, k) => s + r.layers[k], 0) + r.table;
-  const h = (v) => Math.round(clamp((v / Math.max(all, 1)) * 520, 64, 300));
-  const block = (key, v, i, cls = "") => {
+function hiddenHtml(r) {
+  const unseen = ["rework", "focus", "talent"].filter((k) => r.layers[k] > 0).map((k) => [k, r.layers[k]]);
+  if (r.table > 0) unseen.push(["table", r.table]);
+  const unseenSum = unseen.reduce((s, [, v]) => s + v, 0);
+  const seg = ([key, v], i) => `<span class="ck-hid__seg ck-hid__seg--${key}" style="flex-grow:${Math.round(v)};--i:${i}"></span>`;
+  const group = (label, sum, layers, from) => `
+    <div class="ck-hid__group" style="flex-grow:${Math.round(sum)}">
+      <p class="ck-hid__head">${esc(label)} <strong>${eur(sum)}</strong></p>
+      <div class="ck-hid__bar">${layers.map((l, i) => seg(l, from + i)).join("")}</div>
+    </div>`;
+  const item = ([key, v], i) => {
     const [name, desc] = T.layers[key];
-    return `<li class="ck-ice__layer ck-ice__layer--${key} ${cls}" style="--h:${h(v)}px;--i:${i}">
-      <span class="ck-ice__name">${esc(name)}${cls ? ` <em>${esc(T.estimate)}</em>` : ""}</span>
-      <span class="ck-ice__eur">${eur(v)}</span>
-      <span class="ck-ice__desc">${esc(desc)}</span>
+    return `<li class="ck-hid__item ck-hid__item--${key}" style="--i:${i}">
+      <span class="ck-hid__name">${esc(name)}${key === "table" ? ` <em>${esc(T.estimate)}</em>` : ""}</span>
+      <strong class="ck-hid__eur">${eur(v)}</strong>
+      <span class="ck-hid__desc">${esc(desc)}</span>
     </li>`;
   };
+  const all = [["work", r.layers.work], ...unseen];
   return `
     <div class="ck-wrap">
-      <p class="eyebrow">${esc(T.icebergEyebrow)}</p>
-      <h2 class="t-section">${esc(T.icebergTitle)}</h2>
-      <p class="ck-r-lead">${esc(T.icebergLead)}</p>
-      <div class="ck-ice">
-        <ol class="ck-ice__above">${block("work", r.layers.work, 0)}</ol>
-        <div class="ck-ice__line"><span>${esc(T.waterline)}</span></div>
-        <ol class="ck-ice__below">
-          ${below.map((k, i) => block(k, r.layers[k], i + 1)).join("")}
-          ${r.table > 0 ? block("table", r.table, below.length + 1, "ck-ice__layer--est") : ""}
-        </ol>
+      <p class="eyebrow">${esc(T.hiddenEyebrow)}</p>
+      <h2 class="t-section">${esc(T.hiddenTitle)}</h2>
+      <p class="ck-r-lead">${esc(T.hiddenLead)}</p>
+      <div class="ck-hid" role="img" aria-label="${esc(`${T.seen}: ${eur(r.layers.work)}. ${T.unseen}: ${eur(unseenSum)}.`)}">
+        ${group(T.seen, r.layers.work, [["work", r.layers.work]], 0)}
+        ${unseen.length ? group(T.unseen, unseenSum, unseen, 1) : ""}
       </div>
+      <ul class="ck-hid__legend">${all.map(item).join("")}</ul>
     </div>`;
 }
 
@@ -526,7 +530,7 @@ function updateResult({ animate = false } = {}) {
   result = computeResult(pack, state);
   const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
   set("ck-r-hero", heroHtml(result));
-  set("ck-r-ice", icebergHtml(result));
+  set("ck-r-costs", hiddenHtml(result));
   set("ck-r-score", scoreHtml(result));
   set("ck-r-list", rankHtml(result));
   set("ck-r-take", takeHtml(result));
