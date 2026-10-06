@@ -75,9 +75,11 @@ export const copy = {
     ctaMail: "Email me the results",
     ctaPdf: "Save as PDF",
 
-    icebergEyebrow: "What you see vs. what's really going on",
-    icebergTitle: "The part below the waterline",
-    icebergLead: "Most people only see the top: the hours of actual work. The rest is just as real. It simply doesn't show up anywhere.",
+    hiddenEyebrow: "What you see vs. what it really costs",
+    hiddenTitle: "The costs nobody writes down",
+    hiddenLead: "Most people only count the hours of actual work. The rest is just as real. It simply doesn't show up anywhere.",
+    seen: "What you see",
+    unseen: "What you don't see",
     layers: {
       work: ["The work itself", "The hours you'd write down if someone asked."],
       rework: ["Doing it twice", "Corrections, follow-ups, \"can you check this again\"."],
@@ -85,7 +87,6 @@ export const copy = {
       talent: ["Expensive people, cheap work", "What it costs extra when specialists or management do routine work."],
       table: ["Money on the table", "Skonto, errors, lost orders. Estimates, see each process."],
     },
-    waterline: "waterline",
     estimate: "estimate",
 
     scoreEyebrow: "Do you reach your potential?",
@@ -246,9 +247,11 @@ export const copy = {
     ctaMail: "Ergebnis per E-Mail",
     ctaPdf: "Als PDF speichern",
 
-    icebergEyebrow: "Was Sie sehen und was wirklich passiert",
-    icebergTitle: "Der Teil unter Wasser",
-    icebergLead: "Die meisten sehen nur die Spitze: die Stunden der eigentlichen Arbeit. Der Rest ist genauso echt, er taucht nur nirgends auf.",
+    hiddenEyebrow: "Was Sie sehen und was es wirklich kostet",
+    hiddenTitle: "Die Kosten, die niemand aufschreibt",
+    hiddenLead: "Die meisten zählen nur die Stunden der eigentlichen Arbeit. Der Rest ist genauso echt, er taucht nur nirgends auf.",
+    seen: "Was Sie sehen",
+    unseen: "Was Sie nicht sehen",
     layers: {
       work: ["Die Arbeit selbst", "Die Stunden, die Sie aufschreiben würden, wenn jemand fragt."],
       rework: ["Doppelt gemacht", "Korrekturen, Nachfragen, „kannst du das nochmal prüfen“."],
@@ -256,7 +259,6 @@ export const copy = {
       talent: ["Teure Leute, einfache Arbeit", "Was es extra kostet, wenn Fachkräfte oder die Geschäftsführung Routine erledigen."],
       table: ["Liegen gelassenes Geld", "Skonto, Fehler, verlorene Aufträge. Schätzungen, siehe die einzelnen Prozesse."],
     },
-    waterline: "Wasserlinie",
     estimate: "Schätzung",
 
     scoreEyebrow: "Schöpfen Sie Ihr Potenzial aus?",
